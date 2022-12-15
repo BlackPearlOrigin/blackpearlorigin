@@ -1,0 +1,4 @@
+node_modules
+package-lock.json
+src-tauri/Cargo.toml
+src-tauri/target

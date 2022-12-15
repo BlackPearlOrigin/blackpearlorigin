@@ -71,7 +71,7 @@ fn initial_startup() -> std::io::Result<()> {
 
     let entries: Vec<Result<fs::DirEntry, std::io::Error>> = scan_2.collect();
     let entry_len = entries.len();
-    println!("{}", entry_len);
+    println!("{} scrapers found.", entry_len);
 
     file.write(format!(r#"{{ "scrapers": [ "#).as_bytes())?;
 

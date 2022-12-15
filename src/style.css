@@ -12,7 +12,8 @@
 }
 
 body {
-  color: hsl(280, 0%, 100%);
+  background-color: #181a1b;
+  color: rgb(255, 255, 255);
 }
 
 .sidenav {

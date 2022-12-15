@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "org.pbp.ProjectBlackPearl",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 720,
+        "height": 960,
         "resizable": true,
         "title": "Project Black Pearl | version 0.2.0",
-        "width": 1280
+        "width": 720
       }
     ]
   }

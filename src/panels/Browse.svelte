@@ -21,6 +21,7 @@
     }
 
     .search > input {
+        color: white;
         background-color: rgb(41, 41, 41);
         border-color: #393939;
         border-style: solid;
@@ -45,5 +46,9 @@
         border-radius: 3px;
 
         cursor: pointer;
+    }
+
+    .search > button > i {
+        color: white;
     }
 </style>

@@ -1,44 +1,52 @@
+<svelte:head>
+  <script src="https://kit.fontawesome.com/dacbc752b2.js" crossorigin="anonymous"></script>
+</svelte:head>
+
 <script lang="ts">
-  
-  function switch_panels(panel: number) {
+  import Browse from "./panels/Browse.svelte";
+  import Downloads from "./panels/Downloads.svelte";
+  import Home from "./panels/Home.svelte";
+  import Library from "./panels/Library.svelte";
+  import Preferences from "./panels/Preferences.svelte";
 
-    
-    
-    switch (panel) {
-      case 0:
-        console.log("Home");
-        break;
+  var currentPage: number;
 
-      case 1:
-        console.log("Library");
-        break;
-
-      case 2:
-        console.log("Browse");
-        break;
-
-      case 3:
-        console.log("Downloads");
-        break;
-
-      case 4:
-        console.log("Preferences");
-        break;
-    }
-
-    return 0;
+  function SwitchPage(Option: number) {
+    currentPage = Option
   }
-
 </script>
 
 <main class="container">
-  
   <div class="sidenav">
-    <button id="home" class="menu_button" on:click={() => switch_panels(0)}>Home</button>
-    <button id="library" class="menu_button" on:click={() => switch_panels(1)}>Library</button>
-    <button id="browse" class="menu_button" on:click={() => switch_panels(2)}>Browse</button>
-    <button id="downloads" class="menu_button" on:click={() => switch_panels(3)}>Downloads</button>
-    <button id="preferences" class="menu_button" on:click={() => switch_panels(4)}>Preferences</button>
+    <button class="menu_button" on:click={() => SwitchPage(0)}>      
+      Home
+    </button>
+    <button class="menu_button" on:click={() => SwitchPage(1)}>      
+      Library
+    </button>
+    <button class="menu_button" on:click={() => SwitchPage(2)}>      
+      Browse
+    </button>
+    <button class="menu_button" on:click={() => SwitchPage(3)}>      
+      Downloads
+    </button>
+    <button class="menu_button" on:click={() => SwitchPage(4)}>      
+      Preferences
+    </button>
   </div>
 
+  {#if currentPage == 0}
+    <Home/>
+  {:else if currentPage == 1}
+    <Library/>
+  {:else if currentPage == 2}
+    <Browse/>
+  {:else if currentPage == 3}
+    <Downloads/>
+  {:else if currentPage == 4}
+    <Preferences/>
+  {:else}
+    <Home/>
+  {/if}
+  
 </main>

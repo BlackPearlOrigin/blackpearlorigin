@@ -28,16 +28,18 @@ body {
   padding-top: 20px;
 }
 
-.sidenav a {
+.sidenav .menu_button {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 18px;
   color: hsl(0, 0%, 100%);
   display: block;
   transition: all 0.25s;
+  background-color: transparent;
+  border-style: none;
 }
 
-.sidenav a:hover {
+.sidenav .menu_button:hover {
   text-shadow: 0px 0px 10px hsla(0, 0%, 100%, 0.5);
 }
 

@@ -12,8 +12,8 @@
 }
 
 body {
-  background-color: hsl(280, 0%, 8%);
-  color: hsl(280, 0%, 100%);
+  background-color: #181a1b;
+  color: rgb(255, 255, 255);
 }
 
 .sidenav {
@@ -30,8 +30,9 @@ body {
 
 .sidenav .menu_button {
   padding: 6px 8px 6px 16px;
+  margin-bottom: 8px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   color: hsl(0, 0%, 100%);
   display: block;
   transition: all 0.25s;
@@ -41,11 +42,13 @@ body {
 
 .sidenav .menu_button:hover {
   text-shadow: 0px 0px 10px hsla(0, 0%, 100%, 0.5);
+  cursor: pointer;
 }
 
 .main {
   margin-left: 160px;
   padding: 0px 10px;
+  font-size: 16px;
 }
 
 .main h1 {

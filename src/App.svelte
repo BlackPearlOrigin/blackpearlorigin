@@ -3,10 +3,13 @@
 </script>
 
 <main class="container">
-  <h1>Welcome to Tauri!</h1>
-
-  <div class="row">
-    <Greet />
+  
+  <div class="sidenav">
+    <a href="#">Home</a>
+    <a href="#">Library</a>
+    <a href="#">Browse</a>
+    <a href="#">Downloads</a>
+    <a href="#">Preferences</a>
   </div>
 
 </main>

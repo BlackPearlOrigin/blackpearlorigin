@@ -56,10 +56,10 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 720,
         "resizable": true,
-        "title": "pbpl",
-        "width": 800
+        "title": "Project Black Pearl | version 0.2.0",
+        "width": 1280
       }
     ]
   }

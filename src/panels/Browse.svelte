@@ -25,7 +25,7 @@
         background-color: rgb(41, 41, 41);
         border-color: #393939;
         border-style: solid;
-        border-width: 4px;
+        border-width: 2px;
         border-radius: 3px;
         padding: 5px 5px 5px 5px;
 
@@ -42,7 +42,7 @@
         background-color: rgb(41, 41, 41);
         border-color: #393939;
         border-style: solid;
-        border-width: 4px;
+        border-width: 2px;
         border-radius: 3px;
 
         cursor: pointer;

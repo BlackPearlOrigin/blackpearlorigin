@@ -1,5 +1,5 @@
 <main class="container">
     <div class="main">
-        <h1>Prefs</h1>
+        <h1>Preferences</h1>
     </div>
 </main>

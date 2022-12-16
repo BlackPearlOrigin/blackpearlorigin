@@ -14,7 +14,7 @@
 }
 
 body {
-  background-color: #181a1b;
+  background-color: #121212;
   color: rgb(255, 255, 255);
 }
 
@@ -25,7 +25,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: hsl(0, 0%, 4%);
+  background-color: #0b0b0b;
   overflow-x: hidden;
   padding-top: 20px;
 }
@@ -44,6 +44,7 @@ body {
 }
 
 .sidenav .menu_button:hover {
+  text-shadow: 0px 0px 10px hsla(0, 0%, 100%, 0.4);
   cursor: pointer;
 }
 

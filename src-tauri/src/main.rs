@@ -23,9 +23,12 @@ fn initial_startup() -> std::io::Result<()> {
     let username = whoami::username();
 
     let local_path = match whoami::platform() {
+        // Windows: C:\Users\username\AppData\Local\Project Black Pearl
         whoami::Platform::Windows => Path::new(r"C:\").join("Users").join(format!("{}", username)).join("AppData").join("Local").join("Project Black Pearl"),
-        whoami::Platform::Linux => Path::new(r"/home").join(format!("{}", username)).join(".local").join("Project Black Pearl"),
-        whoami::Platform::MacOS => Path::new(r"/Users").join(format!("{}", username)).join(".local").join("Project Black Pearl"),
+        // Linux: /home/username/.local/share/Project Black Pearl
+        whoami::Platform::Linux => Path::new(r"/home").join(format!("{}", username)).join(".local").join("share").join("Project Black Pearl"),
+        // macOS: /home/username/Library/Application Support/Project Black Pearl
+        whoami::Platform::MacOS => Path::new(r"/home").join(format!("{}", username)).join("Library").join("Application Support").join("Project Black Pearl"),
         _ => Path::new("").to_path_buf()
     };
 
@@ -68,7 +71,7 @@ fn initial_startup() -> std::io::Result<()> {
 
     let entries: Vec<Result<fs::DirEntry, std::io::Error>> = scan_2.collect();
     let entry_len = entries.len();
-    println!("{}", entry_len);
+    println!("{} scrapers found.", entry_len);
 
     file.write(format!(r#"{{ "scrapers": [ "#).as_bytes())?;
 

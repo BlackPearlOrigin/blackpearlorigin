@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 :root {
   font-family: sans-serif;
   font-size: 16px;
@@ -29,10 +31,11 @@ body {
 }
 
 .sidenav .menu_button {
+  font-family: "Space Grotest", monospace;
   padding: 6px 8px 6px 16px;
   margin-bottom: 8px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   color: hsl(0, 0%, 100%);
   display: block;
   transition: all 0.25s;
@@ -41,7 +44,6 @@ body {
 }
 
 .sidenav .menu_button:hover {
-  text-shadow: 0px 0px 10px hsla(0, 0%, 100%, 0.5);
   cursor: pointer;
 }
 

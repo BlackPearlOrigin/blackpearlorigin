@@ -12,7 +12,12 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": true,
+      "fs": {
+        "scope": [
+          "*"
+        ]
+      }
     },
     "bundle": {
       "active": true,
@@ -29,7 +34,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "org.pbp.ProjectBlackPearl",
+      "identifier": "Project Black Pearl",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

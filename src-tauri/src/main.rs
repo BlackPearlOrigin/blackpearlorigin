@@ -94,8 +94,10 @@ fn initial_startup() -> std::io::Result<()> {
 
         file.write(bytes)?;
 
-        if entry.file_name().to_str().expect("").ends_with(".exe") {
-            println!("Found scraper: {}", entry.file_name().to_string_lossy());
+        if entry.file_name().to_str().expect("Error converting file name to str").ends_with(".exe") {
+            println!("Found binary scraper: {}", entry.file_name().to_string_lossy());
+        } else if entry.file_name().to_str().expect("Error converting file name to str").ends_with("py") {
+            println!("Found python scraper: {}", entry.file_name().to_string_lossy());
         }
     }
 

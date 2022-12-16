@@ -17,7 +17,5 @@ export async function search(title: string, path: string, query: string) {
     // Invoke the rust backend for initializing the scraper when a user presses the search button
     if (path.endsWith(".exe")) {
         invoke('handle_scraper', { scraper: 0, path: path, query: query })
-    } else if (path.endsWith(".lua")) {
-        invoke('handle_scraper', { scraper: 1, path: path, query: query })
     }
 }

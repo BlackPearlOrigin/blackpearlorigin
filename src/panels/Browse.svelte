@@ -43,7 +43,7 @@
                 <div class="game">
                     <p>{Response.Title}</p>
                     <a href={Response.URL1} target="_blank" rel="noreferrer">
-                        Download
+                        <i class="fa-solid fa-download"></i> Download
                     </a>
                 </div>
             {/each}
@@ -127,6 +127,6 @@
         border-width: 0px;
         border-radius: 5px;
 
-        padding: 4px 4px 4px 4px;
+        padding: 4px 10px 4px 10px;
     }
 </style>

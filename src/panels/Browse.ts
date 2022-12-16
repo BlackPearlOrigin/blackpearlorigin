@@ -13,9 +13,22 @@ export async function browse() {
     return json
 }
 
-export async function search(title: string, path: string, query: string) {
+export async function search(path: string, query: string) {
+    // Params:
+    // title: Game title
+    // path: Path to the scraper
+
     // Invoke the rust backend for initializing the scraper when a user presses the search button
     if (path.endsWith(".exe")) {
         invoke('handle_scraper', { scraper: 0, path: path, query: query })
     }
+}
+
+export async function displayResults() {
+    const file = await readTextFile('queries/cache.json', {
+        dir: BaseDirectory.AppLocalData
+    })
+
+    const json = JSON.parse(file)
+    return json
 }

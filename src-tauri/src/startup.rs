@@ -20,12 +20,16 @@ pub fn init() -> std::io::Result<()> {
     let scraper_path = pbp_path.join("scrapers");
     let tempfile_path = temp_path.join("scrapers.json");
     let gamedb_path = pbp_path.join("library.db");
+    let queries_path = pbp_path.join("queries");
 
     if !pbp_path.exists() {
         create(&pbp_path)
     }
     if !temp_path.exists() {
         create(&temp_path)
+    }
+    if !queries_path.exists() {
+        create(&queries_path)
     }
     if !scraper_path.exists() {
         create(&scraper_path)

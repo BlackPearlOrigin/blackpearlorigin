@@ -1,8 +1,12 @@
 <script lang="ts">
-    import { browse, search } from "./Browse"
+    import { browse, search, displayResults } from "./Browse"
 
     let inputText: string;
     let selectedScraper: string;
+    let searchData: any = {
+        response: []
+    };
+    let buttonClicked: number;
 
     const data = browse()
 </script>
@@ -18,16 +22,32 @@
                 {#await data}
                     {void(0)}
                 {:then d}
-                    {d}
-                    {#each d.scrapers as Scrapers }
-                        <option value="{Scrapers.location}">{Scrapers.name.replace(/(\.exe)|(\.py)/g, "")}</option>
+                    {#each d.scrapers as Scrapers}
+                        <option value="{Scrapers.location}">{Scrapers.name.replace(/(\.exe)|(\.lua)/g, "")}</option>
                     {/each}
                 {/await}
             </select>
-            <button type="submit" on:click={() => search("", selectedScraper, inputText)}>
+            <button type="submit" on:click={() => search(selectedScraper, inputText).then(() => {
+                searchData = displayResults()
+            })}>
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
+        {#await searchData}
+            {void(0)}
+        {:then sd}
+            {#each sd.response as Response}
+                {#if sd.response.length == 0}
+                    <h1>No games found</h1>
+                {/if}
+                <div class="game">
+                    <p>{Response.Title}</p>
+                    <a href={Response.URL1} target="_blank" rel="noreferrer">
+                        <i class="fa-solid fa-download"></i> Download
+                    </a>
+                </div>
+            {/each}
+        {/await}
     </div>
 </main>
 
@@ -71,5 +91,42 @@
 
     .search > button > i {
         color: white;
+        font-size: 16px;
+    }
+
+    .game {
+        display: block;
+
+        border-style: solid;
+        border-color: #555555;
+        background-color: #555555;
+        border-radius: 5px;
+
+        margin: 10px 0 10px 0;
+        padding: 0px 6px 18px 6px;
+
+        line-height: 10px;
+    }
+
+    .game p {
+        padding-bottom: 5px;
+        font-size: 18px;
+
+        font-weight: 700;
+    }
+
+    .game a {
+        text-decoration: none;
+        
+        border-style: solid;
+        border-color: #3a3a3a;
+        background-color: #3a3a3a;
+
+        color: white;
+        margin-bottom: 100px;
+        border-width: 0px;
+        border-radius: 5px;
+
+        padding: 4px 10px 4px 10px;
     }
 </style>

@@ -13,7 +13,5 @@
 use std::path::Path;
 
 pub fn connect(path: &Path) {
-
     let connection = sqlite::open(path);
-
 }

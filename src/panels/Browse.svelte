@@ -24,7 +24,7 @@
                     {/each}
                 {/await}
             </select>
-            <button type="submit" on:click={() => search("", selectedScraper)}>
+            <button type="submit" on:click={() => search("", selectedScraper, inputText)}>
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>

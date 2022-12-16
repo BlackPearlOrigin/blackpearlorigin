@@ -10,30 +10,19 @@
 
 */
 
-use std::{path::Path, fs, io::Write};
-use crate::database::{self, connect};
+use crate::{database, paths};
+use std::{fs, io::Write, path::Path};
 
 pub fn init() -> std::io::Result<()> {
+    let pbp_path = paths::get_pbp();
 
-    let username = whoami::username();
-
-    let local_path = match whoami::platform() {
-        // Windows: C:\Users\username\AppData\Local\Project Black Pearl
-        whoami::Platform::Windows => Path::new(r"C:\").join("Users").join(format!("{}", username)).join("AppData").join("Local").join("Project Black Pearl"),
-        // Linux: /home/username/.local/share/Project Black Pearl
-        whoami::Platform::Linux => Path::new(r"/home").join(format!("{}", username)).join(".local").join("share").join("Project Black Pearl"),
-        // macOS: /home/username/Library/Application Support/Project Black Pearl
-        whoami::Platform::MacOS => Path::new(r"/home").join(format!("{}", username)).join("Library").join("Application Support").join("Project Black Pearl"),
-        _ => Path::new("").to_path_buf()
-    };
-
-    let temp_path = local_path.join("temp");
-    let scraper_path = local_path.join("scrapers");
+    let temp_path = pbp_path.join("temp");
+    let scraper_path = pbp_path.join("scrapers");
     let tempfile_path = temp_path.join("scrapers.json");
-    let gamedb_path = local_path.join("library.db");
+    let gamedb_path = pbp_path.join("library.db");
 
-    if !local_path.exists() {
-        create(&local_path)
+    if !pbp_path.exists() {
+        create(&pbp_path)
     }
     if !temp_path.exists() {
         create(&temp_path)
@@ -42,7 +31,7 @@ pub fn init() -> std::io::Result<()> {
         create(&scraper_path)
     }
     if !gamedb_path.exists() {
-        connect(&gamedb_path);
+        database::connect(&gamedb_path);
     }
     if tempfile_path.exists() {
         fs::remove_file(&tempfile_path).expect("Error while deleting temp file.");
@@ -53,8 +42,12 @@ pub fn init() -> std::io::Result<()> {
             Ok(k) => {
                 println!("Successfully created folder {}", &path.display());
                 k
-            },
-            Err(e) => eprintln!("Error while creating folder {}: {}\n Your data will not be saved.", &path.display(), e)
+            }
+            Err(e) => eprintln!(
+                "Error while creating folder {}: {}\n Your data will not be saved.",
+                &path.display(),
+                e
+            ),
         }
     }
 
@@ -82,10 +75,16 @@ pub fn init() -> std::io::Result<()> {
         let entry_location = format!("{}", entry.path().to_string_lossy());
         let entry_location = entry_location.replace(r#"\"#, r#"\\"#);
 
-        if entry_name.ends_with(".exe") || entry_name.ends_with(".py") {
+        if entry_name.ends_with(".exe") || entry_name.ends_with(".lua") {
+            let json = format!(
+                r#"{{ "name": "{}", "location": "{}" }}, "#,
+                entry_name, entry_location
+            );
 
-            let json = format!(r#"{{ "name": "{}", "location": "{}" }}, "#, entry_name, entry_location);
-            let json_end = format!(r#"{{ "name": "{}", "location": "{}" }} "#, entry_name, entry_location);
+            let json_end = format!(
+                r#"{{ "name": "{}", "location": "{}" }} "#,
+                entry_name, entry_location
+            );
 
             iter_count += 1;
 

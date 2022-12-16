@@ -2,3 +2,4 @@ node_modules
 package-lock.json
 src-tauri/Cargo.lock
 src-tauri/target
+.vscode/

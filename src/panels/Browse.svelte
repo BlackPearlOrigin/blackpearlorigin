@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { browse } from "./Browse"
+    import { browse, search } from "./Browse"
 
     let inputText: string;
     let selectedScraper: string;
@@ -18,12 +18,13 @@
                 {#await data}
                     {void(0)}
                 {:then d}
+                    {d}
                     {#each d.scrapers as Scrapers }
-                        <option value="{Scrapers.location}">{Scrapers.name}</option>
+                        <option value="{Scrapers.location}">{Scrapers.name.replace(/(\.exe)|(\.py)/g, "")}</option>
                     {/each}
                 {/await}
             </select>
-            <button type="submit" on:click={void(0)}>
+            <button type="submit" on:click={() => search("", selectedScraper)}>
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>

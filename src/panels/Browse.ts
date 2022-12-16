@@ -13,7 +13,7 @@ export async function browse() {
     return json
 }
 
-export async function search(title: string, path: string) {
+export async function search(path: string, query: string) {
     // Params:
     // title: Game title
     // path: Path to the scraper
@@ -22,4 +22,13 @@ export async function search(title: string, path: string) {
     if (path.endsWith(".exe")) {
         invoke('handle_scraper', { scraper: 0, path: path, query: query })
     }
+}
+
+export async function displayResults() {
+    const file = await readTextFile('queries/cache.json', {
+        dir: BaseDirectory.AppLocalData
+    })
+
+    const json = JSON.parse(file)
+    return json
 }

@@ -1,7 +1,7 @@
 /*
 
     Project name: Project Black Pearl
-    Date: Thursday, Decenber 16th 2022
+    Date: Thursday, December 16th 2022
     Copyright holder: Project Black Pearl and it's contributors
     Copyright year: 2022
 

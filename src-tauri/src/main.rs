@@ -23,36 +23,31 @@ mod paths;
 mod startup;
 
 #[tauri::command]
-fn handle_scraper(scraper: u8, path: String, query: String) {
+fn handle_scraper(path: String, query: String) {
+    // String to path conversion
     let path = Path::new(&path);
-    let pbp_path = paths::get_pbp();
 
-    // Support for different kinds of scrapers is to be implemented in the future.
-    match scraper {
-        0 => {
-            println!(
-                "Searching for {} with binary scraper: {}",
-                query,
-                path.display()
-            );
+    println!(
+        "Searching for {} with binary scraper: {}",
+        query,
+        path.display()
+    );
 
-            let mut command = Command::new(path);
-            command.arg(query);
-            command.arg(pbp_path.join("queries"));
+    // Create a command object for the scraper chosen (The command is just it's path)
+    // Pass in it's path, a query and the destination folder for the cache file as arguments
+    let mut command = Command::new(path);
+    command.arg(query);
+    command.arg(paths::get_pbp().join("queries"));
 
-            if let Some(exit_code) = command.execute().unwrap() {
-                if exit_code == 0 {
-                    println!("Scraper query completed successfully.");
-                } else {
-                    println!("Scraper query failed successfully.");
-                }
-            } else {
-                println!("Scraper query interrupted.");
-            }
+    // Run the scraper and tell us about it's exit code
+    if let Some(exit_code) = command.execute().unwrap() {
+        if exit_code == 0 {
+            println!("Scraper query completed successfully.");
+        } else {
+            println!("Scraper query failed successfully.");
         }
-        _ => {
-            // Invalid scraper type
-        }
+    } else {
+        println!("Scraper query interrupted.");
     }
 }
 
@@ -60,34 +55,42 @@ fn handle_scraper(scraper: u8, path: String, query: String) {
 fn file_dialog() -> String {
     println!("Executable file dialog opened.");
 
+    // Prompt the user to select a file from their computer as an input
+    // For error handling, you can use if- and match statements
     match FileDialog::new()
             .add_filter("Executables", &["exe", "com", "lnk", "cmd", "bat"])
             .set_directory("/")
             .pick_file()
         {
+        // If the user picked a file, return the path to the frontend
         Some(file) => {
-            return file.display().to_string();
+            file.display().to_string()
         }
+        // If the user just closed the window, without picking a file, return "None" to the frontend
         None => {
-            return "None".to_string();
+            "None".to_string()
         }
-    };
+    }
 }
 
 #[tauri::command]
 fn save_to_db(title: String, exe_path: String) {
+    // Establish a connection to the database file (library.db)
     let connection = sqlite::open(paths::get_pbp().join("library.db")).expect("Crashed while connecting to database.");
+
+    // Declare the query to execute in the sqlite file
     let query = format!("INSERT INTO games VALUES ('{}', '{}', {});", title, exe_path, 0.0);
+
+    // Execute the query
     connection.execute(query).expect("Error while adding game to database.");
 }
 
 fn main() {
     // Create the usual directories and look for scrapers.
-    match startup::init() {
-        Ok(k) => k,
-        Err(e) => panic!("Failed to run initial startup: {}", e),
-    }
+    startup::init();
 
+    // This object is the initial tauri window
+    // Tauri commands that can be called from the frontend are to be invoked below
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             handle_scraper,

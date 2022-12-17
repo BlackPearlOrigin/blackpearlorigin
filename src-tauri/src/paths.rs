@@ -13,26 +13,29 @@
 use std::path::{Path, PathBuf};
 
 pub fn get_pbp() -> PathBuf {
+
+    // Get the username of the current user and define the local paths for Windows, MacOS and Linux
+
     let username = whoami::username();
     let pbp_path = match whoami::platform() {
         // Windows: C:\Users\username\AppData\Local\Project Black Pearl
         whoami::Platform::Windows => Path::new(r"C:\")
             .join("Users")
-            .join(format!("{}", username))
+            .join(username)
             .join("AppData")
             .join("Local")
             .join("Project Black Pearl"),
 
         // Linux: /home/username/.local/share/Project Black Pearl
         whoami::Platform::Linux => Path::new(r"/home")
-            .join(format!("{}", username))
+            .join(username)
             .join(".local")
             .join("share")
             .join("Project Black Pearl"),
 
         // macOS: /home/username/Library/Application Support/Project Black Pearl
         whoami::Platform::MacOS => Path::new(r"/home")
-            .join(format!("{}", username))
+            .join(username)
             .join("Library")
             .join("Application Support")
             .join("Project Black Pearl"),
@@ -40,5 +43,6 @@ pub fn get_pbp() -> PathBuf {
         _ => Path::new("").to_path_buf(),
     };
 
+    // Return the corresponding path
     pbp_path
 }

@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "pbpl",
+    "productName": "Project Black Pearl",
     "version": "0.0.0"
   },
   "tauri": {
@@ -34,7 +34,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "Project Black Pearl",
+      "identifier": "org.blackpearl.PBP",
       "longDescription": "",
       "macOS": {
         "entitlements": null,

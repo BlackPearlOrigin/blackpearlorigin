@@ -15,12 +15,18 @@
     windows_subsystem = "windows"
 )]
 
-use execute::Execute;
-use rfd::FileDialog;
-use std::{path::Path, process::Command};
+mod models {
+    pub mod game;
+}
 
-mod startup;
+use execute::Execute;
+use models::game::build_game;
+use models::game::Game;
+use rfd::FileDialog;
+use std::{path::Path, process::Command, vec};
+
 mod paths;
+mod startup;
 
 #[tauri::command]
 fn handle_scraper(path: String, query: String) {
@@ -58,31 +64,58 @@ fn file_dialog() -> String {
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
     match FileDialog::new()
-            .add_filter("Executables", &["exe", "com", "lnk", "cmd", "bat"])
-            .set_directory("/")
-            .pick_file()
-        {
+        .add_filter("Executables", &["exe", "com", "lnk", "cmd", "bat"])
+        .set_directory("/")
+        .pick_file()
+    {
         // If the user picked a file, return the path to the frontend
-        Some(file) => {
-            file.display().to_string()
-        }
+        Some(file) => file.display().to_string(),
         // If the user just closed the window, without picking a file, return "None" to the frontend
-        None => {
-            "None".to_string()
-        }
+        None => "None".to_string(),
     }
 }
 
 #[tauri::command]
 fn save_to_db(title: String, exe_path: String) {
     // Establish a connection to the database file (library.db)
-    let connection = sqlite::open(paths::get_pbp().join("library.db")).expect("Crashed while connecting to database.");
+    let connection = sqlite::open(paths::get_pbp().join("library.db"))
+        .expect("Crashed while connecting to database.");
 
     // Declare the query to execute in the sqlite file
-    let query = format!("INSERT INTO games VALUES ('{}', '{}', {});", title, exe_path, 0.0);
+    let query = format!(
+        "INSERT INTO games VALUES ('{}', '{}', {});",
+        title, exe_path, 0.0
+    );
 
     // Execute the query
-    connection.execute(query).expect("Error while adding game to database.");
+    connection
+        .execute(query)
+        .expect("Error while adding game to database.");
+}
+
+#[tauri::command]
+fn get_from_db() -> vec::Vec<Game> {
+    // Establish a connection to the database file (library.db)
+    let connection = sqlite::open(paths::get_pbp().join("library.db"))
+        .expect("Crashed while connecting to database.");
+
+    // Declare the query to execute in the sqlite file
+    let query = "SELECT * FROM games";
+    let mut result_vec = vec::Vec::new();
+    // Execute the query
+    for row in connection
+        .prepare(query)
+        .unwrap()
+        .into_iter()
+        .map(|row| row.unwrap())
+    {
+        result_vec.push(build_game(
+            row.read::<&str, _>("name").to_string(),
+            row.read::<&str, _>("executable").to_string(),
+            row.read::<f64, _>("hours"),
+        ))
+    }
+    result_vec
 }
 
 fn main() {
@@ -95,7 +128,8 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             handle_scraper,
             file_dialog,
-            save_to_db
+            save_to_db,
+            get_from_db
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

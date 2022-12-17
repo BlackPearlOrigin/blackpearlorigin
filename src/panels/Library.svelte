@@ -13,7 +13,8 @@
             <h1 style="text-align:left; display:inline-block;">
                 Library
             </h1>
-        
+            
+            <!-- Creates a modal when the button is clicked -->
             <Modal show={$modal}>
                 <button on:click={showModal}>
                     <i class="fa-solid fa-plus"></i>

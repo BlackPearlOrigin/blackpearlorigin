@@ -1,3 +1,6 @@
+<!-- Only touch this file if adding a new page -->
+<!-- Otherwise, ignore it -->
+
 <svelte:head>
   <script src="https://kit.fontawesome.com/dacbc752b2.js" crossorigin="anonymous"></script>
 </svelte:head>
@@ -11,6 +14,8 @@
 
   var currentPage: number;
 
+  // TS Function
+  // - Changes the currentPage variable to the number on args
   function SwitchPage(Option: number) {
     currentPage = Option
   }

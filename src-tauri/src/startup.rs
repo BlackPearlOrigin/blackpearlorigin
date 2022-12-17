@@ -10,8 +10,9 @@
 
 */
 
-use crate::paths;
 use std::{fs::{self, File}, io::Write, path::Path};
+
+use crate::paths;
 
 pub fn init() {
     

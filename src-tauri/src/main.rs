@@ -19,8 +19,8 @@ use execute::Execute;
 use rfd::FileDialog;
 use std::{path::Path, process::Command};
 
-mod paths;
 mod startup;
+mod paths;
 
 #[tauri::command]
 fn handle_scraper(path: String, query: String) {

@@ -10,38 +10,14 @@
 
 */
 
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
+use tauri::api::path::local_data_dir;
 
 pub fn get_pbp() -> PathBuf {
-    // Get the username of the current user and define the local paths for Windows, MacOS and Linux
+
     let identifier = "org.blackpearl.PBP";
-    let username = whoami::username();
-    let pbp_path = match whoami::platform() {
-        // Windows: C:\Users\username\AppData\Local\org.blackpearl.PBP
-        whoami::Platform::Windows => Path::new(r"C:\")
-            .join("Users")
-            .join(username)
-            .join("AppData")
-            .join("Local")
-            .join(format!("{}", identifier)),
+    let local_dir = &local_data_dir().expect("Failed to get local data directory.");
 
-        // Linux: /home/username/.local/share/org.blackpearl.PBP
-        whoami::Platform::Linux => Path::new(r"/home")
-            .join(username)
-            .join(".local")
-            .join("share")
-            .join(format!("{}", identifier)),
-
-        // macOS: /home/username/Library/Application Support/org.blackpearl.PBP
-        whoami::Platform::MacOS => Path::new(r"/home")
-            .join(username)
-            .join("Library")
-            .join("Application Support")
-            .join(format!("{}", identifier)),
-
-        _ => Path::new("").to_path_buf(),
-    };
-
-    // Return the corresponding path
-    pbp_path
+    // Return the PBP directory
+    local_dir.join(identifier)
 }

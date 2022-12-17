@@ -28,9 +28,10 @@ body {
   border-right: 2px dashed #00ff66;
   overflow-x: hidden;
   padding-top: 20px;
+  background-color: #040404;
 }
 
-.sidenav .menu_button {
+.sidenav .menu-button {
   font-family: "Space Grotest", monospace;
   padding: 6px 8px 6px 16px;
   margin-bottom: 8px;
@@ -43,8 +44,19 @@ body {
   border-style: none;
 }
 
-.sidenav .menu_button:hover {
+.sidenav .menu-button:hover {
   text-shadow: 0px 0px 12px hsla(0, 0%, 100%, 0.8);
+  cursor: pointer;
+}
+
+.branding {
+  padding: 16px 16px 16px 24px;
+  margin-bottom: 32px;
+  transition: all 0.5s;
+  filter: drop-shadow(0px 0px 12px #ffffff22);
+}
+
+.branding:hover {
   cursor: pointer;
 }
 

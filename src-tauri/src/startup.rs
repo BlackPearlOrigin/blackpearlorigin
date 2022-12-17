@@ -10,12 +10,15 @@
 
 */
 
-use std::{fs::{self, File}, io::Write, path::Path};
+use std::{
+    fs::{self, File},
+    io::Write,
+    path::Path,
+};
 
 use crate::paths;
 
 pub fn init() {
-    
     // Declare paths for directories and files inside of the PBP folder
     let pbp_path = paths::get_pbp();
 
@@ -49,7 +52,9 @@ pub fn init() {
         // Establish a connection with the database, declare a query in a string and execute it
         let connection = sqlite::open(&gamedb_path).expect("Connecting to new database failed");
         let query = "CREATE TABLE games (name TEXT, executable TEXT, hours FLOAT);";
-        connection.execute(query).expect("Failed to setup database table");
+        connection
+            .execute(query)
+            .expect("Failed to setup database table");
     }
 
     // If there are any temporary files created in the last instance of PBP, delete them.
@@ -59,7 +64,6 @@ pub fn init() {
 
     // Simplified function for creating directories
     fn create(path: &Path) {
-
         match fs::create_dir_all(path) {
             Ok(k) => {
                 println!("Successfully created folder {}", &path.display());
@@ -95,7 +99,8 @@ pub fn init() {
     println!("{} scrapers found.", entries.len());
 
     // Write this to the tempfile, this is the array which holds all of the entries
-    file.write_all(r#"{ "scrapers": [ "#.as_bytes()).expect("Writing to tempfile failed");
+    file.write_all(r#"{ "scrapers": [ "#.as_bytes())
+        .expect("Writing to tempfile failed");
 
     // Declare an iteration count
     let mut iter_count = 0;
@@ -114,7 +119,6 @@ pub fn init() {
         // If the files found in the scrapers directory end with .exe,
         // write their file name and path to the json file
         if entry_name.ends_with(".exe") {
-
             // Declare the string to write to the json file, it contains the file name and location of the scraper
             let json = format!(
                 r#"{{ "name": "{}", "location": "{}" }}, "#,
@@ -141,12 +145,14 @@ pub fn init() {
             };
 
             // Finally, write the bytes
-            file.write_all(bytes).expect("Writing to scraper tempfile failed");
+            file.write_all(bytes)
+                .expect("Writing to scraper tempfile failed");
 
             println!("Found scraper: {}", entry.file_name().to_string_lossy());
         }
     }
 
     // Close the array
-    file.write_all(r#"] }"#.as_bytes()).expect("Writing to tempfile failed");
+    file.write_all(r#"] }"#.as_bytes())
+        .expect("Writing to tempfile failed");
 }

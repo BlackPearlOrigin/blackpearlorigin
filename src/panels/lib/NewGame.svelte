@@ -19,7 +19,7 @@
     }
 </script>
 
-<div>
+<div class="modal-main">
     <div class="newgame">
         <input type="text" name="Title" placeholder="Title" bind:value={title}>
         <div class="show-path">
@@ -42,9 +42,6 @@
 
 <style>
 
-    * {
-        background-color: #040404;
-    }
     .path {
         padding-top: 6px;
     }

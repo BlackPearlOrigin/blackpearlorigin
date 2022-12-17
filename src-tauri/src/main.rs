@@ -25,6 +25,10 @@ use models::game::Game;
 use rfd::FileDialog;
 use std::thread;
 use std::{path::Path, process::Command, vec};
+use tauri::CustomMenuItem;
+use tauri::Manager;
+use tauri::SystemTray;
+use tauri::SystemTrayMenu;
 
 mod paths;
 mod startup;
@@ -121,19 +125,19 @@ fn get_from_db() -> Vec<Game> {
 
 #[tauri::command]
 fn delete_from_db(name: String) {
-
     let connection = sqlite::open(paths::get_pbp().join("library.db"))
         .expect("Crashed while connecting to database");
 
     let query = format!(r#"DELETE FROM games WHERE name="{}";"#, name);
-    connection.execute(query).expect("Failed to execute database query");
+    connection
+        .execute(query)
+        .expect("Failed to execute database query");
 
     get_from_db();
 }
 
 #[tauri::command]
 fn run_game(path: String) {
-
     // String to path conversion
     let path = Path::new(&path);
 
@@ -141,16 +145,46 @@ fn run_game(path: String) {
     thread::spawn(move || {
         command.execute().expect("Failed to run game");
     });
-
 }
 
 fn main() {
     // Create the usual directories and look for scrapers.
     startup::init();
 
+    // Create the system tray icon
+    let tray = SystemTray::new().with_menu(
+        SystemTrayMenu::new()
+            .add_item(CustomMenuItem::new("hide", "Hide"))
+            .add_item(CustomMenuItem::new("quit", "Quit")),
+    );
+
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below
     tauri::Builder::default()
+        // Add the system tray to the tauri object and handle it's events
+        .system_tray(tray)
+        .on_system_tray_event(|app, event| match event {
+            tauri::SystemTrayEvent::MenuItemClick { id, .. } => {
+                let item_handle = app.tray_handle().get_item(&id);
+
+                match id.as_str() {
+                    "hide" => {
+                        let window = app.get_window("main").unwrap();
+                        if !window.is_visible().unwrap() {
+                            window.show().unwrap();
+                            item_handle.set_title("Hide").unwrap();
+                        } else {
+                            window.hide().unwrap();
+                            item_handle.set_title("Show").unwrap();
+                        }
+                    }
+                    "quit" => std::process::exit(0),
+                    _ => {}
+                }
+            }
+            _ => {}
+        })
+        // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
             handle_scraper,
             file_dialog,
@@ -159,6 +193,13 @@ fn main() {
             delete_from_db,
             run_game
         ])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+        .build(tauri::generate_context!())
+        .expect("error while running tauri application")
+        // If you close the window, it won't be terminated, but minimized to your system tray
+        .run(|_app_handle, event| match event {
+            tauri::RunEvent::ExitRequested { api, .. } => {
+                api.prevent_exit();
+            }
+            _ => {}
+        });
 }

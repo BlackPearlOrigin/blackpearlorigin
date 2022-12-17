@@ -14,7 +14,6 @@ use std::path::PathBuf;
 use tauri::api::path::local_data_dir;
 
 pub fn get_pbp() -> PathBuf {
-
     let identifier = "org.blackpearl.PBP";
     let local_dir = &local_data_dir().expect("Failed to get local data directory.");
 

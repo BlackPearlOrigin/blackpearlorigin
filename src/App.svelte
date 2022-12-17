@@ -6,6 +6,7 @@
 </svelte:head>
 
 <script lang="ts">
+  import { invoke } from "@tauri-apps/api/tauri";
   import Browse from "./panels/Browse.svelte";
   import Downloads from "./panels/Downloads.svelte";
   import Home from "./panels/Home.svelte";
@@ -23,19 +24,20 @@
 
 <main class="container">
   <div class="sidenav">
-    <button class="menu_button" on:click={() => SwitchPage(0)}>      
+    <img src="../src-tauri/icons/icon.png" width="100" class="branding" alt="branding"/>
+    <button class="menu-button" on:click={() => SwitchPage(0)}>      
       Home
     </button>
-    <button class="menu_button" on:click={() => SwitchPage(1)}>      
+    <button class="menu-button" on:click={() => SwitchPage(1)}>      
       Library
     </button>
-    <button class="menu_button" on:click={() => SwitchPage(2)}>      
+    <button class="menu-button" on:click={() => SwitchPage(2)}>      
       Browse
     </button>
-    <button class="menu_button" on:click={() => SwitchPage(3)}>      
+    <button class="menu-button" on:click={() => SwitchPage(3)}>      
       Downloads
     </button>
-    <button class="menu_button" on:click={() => SwitchPage(4)}>      
+    <button class="menu-button" on:click={() => SwitchPage(4)}>      
       Preferences
     </button>
   </div>

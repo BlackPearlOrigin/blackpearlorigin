@@ -1,6 +1,6 @@
 <script lang="ts">
     import { browse, search, displayResults } from "./Browse"
-
+    
     let inputText: string;
     let selectedScraper: string;
     let searchData: any = {
@@ -33,18 +33,20 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </div>
+        <!-- svelte-ignore empty-block -->
         {#await searchData}
-            {void(0)}
         {:then sd}
             {#each sd.response as Response}
                 {#if sd.response.length == 0}
                     <h1>No games found</h1>
                 {/if}
                 <div class="game">
-                    <p>{Response.Title}</p>
-                    <a href={Response.URL1} target="_blank" rel="noreferrer">
-                        <i class="fa-solid fa-download"></i> Download
-                    </a>
+                    <p>{Response.title}</p>
+                    {#each Response.urls as urls }
+                        <a href={urls} target="_blank" rel="noreferrer">
+                            <i class="fa-solid fa-download"></i> Download
+                        </a>
+                    {/each}
                 </div>
             {/each}
         {/await}

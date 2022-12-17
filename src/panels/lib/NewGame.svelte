@@ -1,10 +1,9 @@
 <script lang="ts">
-    import { writable } from "svelte/store";
     import { invoke } from '@tauri-apps/api/tauri';
 
-    let title;
-    let savedMessage;
-    let executablePath;
+    let title: string;
+    let savedMessage: string;
+    let executablePath: any;
 
     function chooseExecutable() {
         invoke('file_dialog').then((message) => executablePath = message)
@@ -25,7 +24,7 @@
         </div>
     </div>
 
-    <p contenteditable="true" bind:innerHTML={savedMessage}>
+    <p style="font-size:13px" contenteditable="true" bind:innerHTML={savedMessage}>
     </p>
 
     <button on:click={saveData} class="button">
@@ -36,7 +35,7 @@
 <style>
 
     .path {
-        padding: 4px 4px 4px 4px;
+        padding-top: 6px;
     }
 
     .show-path {
@@ -59,7 +58,7 @@
     }
 
     .newgame > input {
-        font-size: 17px;
+        font-size: 13px;
     }
 
     button {
@@ -69,5 +68,13 @@
     p {
         line-height: 0px;
         padding-left: 3px;
+    }
+
+    .show-path > p {
+        font-size: 13px;
+    }
+
+    .show-path {
+        font-size: 13px;
     }
 </style>

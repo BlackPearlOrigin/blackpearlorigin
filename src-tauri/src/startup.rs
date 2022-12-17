@@ -94,7 +94,7 @@ pub fn init() {
     println!("{} scrapers found.", entries.len());
 
     // Write this to the tempfile, this is the array which holds all of the entries
-    file.write_all(r#"{{ "scrapers": [ "#.as_bytes()).expect("Writing to tempfile failed");
+    file.write_all(r#"{ "scrapers": [ "#.as_bytes()).expect("Writing to tempfile failed");
 
     // Declare an iteration count
     let mut iter_count = 0;
@@ -147,5 +147,5 @@ pub fn init() {
     }
 
     // Close the array
-    file.write_all(r#"] }}"#.as_bytes()).expect("Writing to tempfile failed");
+    file.write_all(r#"] }"#.as_bytes()).expect("Writing to tempfile failed");
 }

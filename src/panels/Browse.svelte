@@ -74,11 +74,10 @@
     .search > input {
         font-size: 1rem;
         color: white;
-        background-color: #0a0a0a;
-        border-color: #060606;
-        border-style: solid;
+        background-color: #040404;
+        border-color: #00ff66;
+        border-style: dashed;
         border-width: 1px;
-        border-radius: 3px;
         padding: 8px 8px 8px 8px;
 
         flex-grow: 1;
@@ -91,17 +90,21 @@
     .search > button {
         margin-left: 10px;
         padding: 8px 16px 8px 16px;
-        background-color: #0a0a0a;
-        border-color: #060606;
-        border-style: solid;
+        background-color: #040404;
+        border-color: #00ff66;
+        border-style: dashed;
         border-width: 1px;
-        border-radius: 3px;
 
         cursor: pointer;
     }
 
     .search > select {
         margin-left: 8px;
+        background-color: #040404;
+        color: #ffffff;
+        border-style: dashed;
+        border-width: 1px;
+        border-color: #00ff66;
     }
 
     .search > button > i {

@@ -23,6 +23,7 @@ use execute::Execute;
 use models::game::build_game;
 use models::game::Game;
 use rfd::FileDialog;
+use std::thread;
 use std::{path::Path, process::Command, vec};
 
 mod paths;
@@ -94,18 +95,18 @@ fn save_to_db(title: String, exe_path: String) {
 }
 
 #[tauri::command]
-fn get_from_db() -> vec::Vec<Game> {
+fn get_from_db() -> Vec<Game> {
     // Establish a connection to the database file (library.db)
     let connection = sqlite::open(paths::get_pbp().join("library.db"))
         .expect("Crashed while connecting to database.");
 
     // Declare the query to execute in the sqlite file
     let query = "SELECT * FROM games";
-    let mut result_vec = vec::Vec::new();
+    let mut result_vec = vec![];
     // Execute the query
     for row in connection
         .prepare(query)
-        .unwrap()
+        .expect("Preparing query failed")
         .into_iter()
         .map(|row| row.unwrap())
     {
@@ -116,6 +117,31 @@ fn get_from_db() -> vec::Vec<Game> {
         ))
     }
     result_vec
+}
+
+#[tauri::command]
+fn delete_from_db(name: String) {
+
+    let connection = sqlite::open(paths::get_pbp().join("library.db"))
+        .expect("Crashed while connecting to database");
+
+    let query = format!(r#"DELETE FROM games WHERE name="{}";"#, name);
+    connection.execute(query).expect("Failed to execute database query");
+
+    get_from_db();
+}
+
+#[tauri::command]
+fn run_game(path: String) {
+
+    // String to path conversion
+    let path = Path::new(&path);
+
+    let mut command = Command::new(path);
+    thread::spawn(move || {
+        command.execute().expect("Failed to run game");
+    });
+
 }
 
 fn main() {
@@ -129,7 +155,9 @@ fn main() {
             handle_scraper,
             file_dialog,
             save_to_db,
-            get_from_db
+            get_from_db,
+            delete_from_db,
+            run_game
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

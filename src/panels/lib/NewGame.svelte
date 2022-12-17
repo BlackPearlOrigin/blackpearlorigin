@@ -42,6 +42,9 @@
 
 <style>
 
+    * {
+        background-color: #040404;
+    }
     .path {
         padding-top: 6px;
     }

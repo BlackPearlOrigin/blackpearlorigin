@@ -13,9 +13,7 @@
 use std::path::{Path, PathBuf};
 
 pub fn get_pbp() -> PathBuf {
-
     // Get the username of the current user and define the local paths for Windows, MacOS and Linux
-
     let identifier = "org.blackpearl.PBP";
     let username = whoami::username();
     let pbp_path = match whoami::platform() {

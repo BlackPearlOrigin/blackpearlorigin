@@ -1,4 +1,4 @@
-// DO NOT FUCKING EDIT THIS FILE
+//! DO NOT FUCKING EDIT THIS FILE
 import "./style.css";
 import App from "./App.svelte";
 

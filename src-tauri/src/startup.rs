@@ -10,8 +10,8 @@
 
 */
 
-use crate::{database, paths};
-use std::{fs, io::Write, path::Path};
+use crate::paths;
+use std::{fs::{self, File}, io::Write, path::Path};
 
 pub fn init() -> std::io::Result<()> {
     let pbp_path = paths::get_pbp();
@@ -35,10 +35,13 @@ pub fn init() -> std::io::Result<()> {
         create(&scraper_path)
     }
     if !gamedb_path.exists() {
-        database::connect(&gamedb_path);
+        File::create(&gamedb_path).expect("Failed to create database file");
+        let connection = sqlite::open(&gamedb_path).expect("Connecting to new database failed");
+        let query = "CREATE TABLE games (name TEXT, executable TEXT, hours FLOAT);";
+        connection.execute(query).expect("Failed to setup database table");
     }
     if tempfile_path.exists() {
-        fs::remove_file(&tempfile_path).expect("Error while deleting temp file.");
+        fs::remove_file(&tempfile_path).expect("Error while deleting temp file");
     }
 
     fn create(path: &Path) {

@@ -16,9 +16,9 @@
 )]
 
 use execute::Execute;
+use rfd::FileDialog;
 use std::{path::Path, process::Command};
 
-mod database;
 mod paths;
 mod startup;
 
@@ -56,6 +56,31 @@ fn handle_scraper(scraper: u8, path: String, query: String) {
     }
 }
 
+#[tauri::command]
+fn file_dialog() -> String {
+    println!("Executable file dialog opened.");
+
+    match FileDialog::new()
+            .add_filter("Executables", &["exe", "com", "lnk", "cmd", "bat"])
+            .set_directory("/")
+            .pick_file()
+        {
+        Some(file) => {
+            return file.display().to_string();
+        }
+        None => {
+            return "None".to_string();
+        }
+    };
+}
+
+#[tauri::command]
+fn save_to_db(title: String, exe_path: String) {
+    let connection = sqlite::open(paths::get_pbp().join("library.db")).expect("Crashed while connecting to database.");
+    let query = format!("INSERT INTO games VALUES ('{}', '{}', {});", title, exe_path, 0.0);
+    connection.execute(query).expect("Error while adding game to database.");
+}
+
 fn main() {
     // Create the usual directories and look for scrapers.
     match startup::init() {
@@ -64,7 +89,11 @@ fn main() {
     }
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![handle_scraper])
+        .invoke_handler(tauri::generate_handler![
+            handle_scraper,
+            file_dialog,
+            save_to_db
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

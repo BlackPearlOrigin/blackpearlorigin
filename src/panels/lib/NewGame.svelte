@@ -1,41 +1,51 @@
 <script lang="ts">
     import { writable } from "svelte/store";
+    import { invoke } from '@tauri-apps/api/tauri';
 
-    let title: string;
-    let exeLocation: string;
-    let imgLocation: string;
-    let inn;
+    let title;
+    let savedMessage;
+    let executablePath;
 
-    function returnData() {
-        let resObj: object = {
-            title: title,
-            exe: exeLocation,
-            img: imgLocation
-        }
-
-        inn = "Data saved, you can now close the modal"
+    function chooseExecutable() {
+        invoke('file_dialog').then((message) => executablePath = message)
     }
 
-    // Implement game adding here
-    // Zuni
+    function saveData() {
+        invoke('save_to_db', { title: title, exePath: executablePath })
+        savedMessage = "Data saved, you can now close the modal."
+    }
 </script>
 
 <div>
     <div class="newgame">
         <input type="text" name="Title" placeholder="Title" bind:value={title}>
-        <input type="text" name="Location" placeholder="Location" bind:value={exeLocation}>
-        <input type="text" name="Image" placeholder="Image" bind:value={imgLocation}>
+        <div class="show-path">
+            <button on:click={chooseExecutable} class="button">Add Executable</button>
+            <p class="path" contenteditable=true bind:innerHTML={executablePath}>None</p>
+        </div>
     </div>
 
-    <p contenteditable="true" bind:innerHTML={inn}>
+    <p contenteditable="true" bind:innerHTML={savedMessage}>
     </p>
 
-    <button on:click={returnData}>
+    <button on:click={saveData} class="button">
         Done
     </button>
 </div>
 
 <style>
+
+    .path {
+        padding: 4px 4px 4px 4px;
+    }
+
+    .show-path {
+        display: flex;
+    }
+
+    .button {
+        margin: 6px 6px 0px 0px;
+    }
     .newgame {
         display: flex;
         flex-grow: 1;

@@ -15,7 +15,6 @@ tauri-build = { version = "1.1", features = [] }
 
 [dependencies]
 serde_json = "1.0"
-whoami = "1.2.3"
 rfd = "0.10.0"
 sqlite = "0.30.3"
 execute = "0.2.11"

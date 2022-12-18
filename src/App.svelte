@@ -6,12 +6,12 @@
 </svelte:head>
 
 <script lang="ts">
-  import { invoke } from "@tauri-apps/api/tauri";
   import Browse from "./panels/Browse.svelte";
   import Downloads from "./panels/Downloads.svelte";
   import Home from "./panels/Home.svelte";
   import Library from "./panels/Library.svelte";
   import Preferences from "./panels/Preferences.svelte";
+  import { Modal } from "svelte-simple-modal";
 
   var currentPage: number;
 
@@ -45,7 +45,9 @@
   {#if currentPage == 0}
     <Home/>
   {:else if currentPage == 1}
-    <Library/>
+    <Modal>
+      <Library/>
+    </Modal>
   {:else if currentPage == 2}
     <Browse/>
   {:else if currentPage == 3}

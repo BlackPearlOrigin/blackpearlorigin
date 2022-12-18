@@ -1,6 +1,8 @@
 <script lang="ts">
     import { invoke } from '@tauri-apps/api/tauri';
+    import { getContext } from 'svelte';
 
+    export let close: any;
     let title: string;
     let savedMessage: string;
     let executablePath: any;
@@ -15,7 +17,6 @@
     // - Saves the data on the input fields to a SQLite DB
     function saveData() {
         invoke('save_to_db', { title: title, exePath: executablePath })
-        savedMessage = "Data saved, you can now close the modal."
     }
 </script>
 
@@ -31,11 +32,8 @@
         </div>
     </div>
 
-    <p style="font-size:13px" contenteditable="true" bind:innerHTML={savedMessage}>
-    </p>
-
     <!-- I think you get it by now -->
-    <button on:click={saveData} class="button">
+    <button on:click={() => {saveData(); close()}} class="button">
         Done
     </button>
 </div>

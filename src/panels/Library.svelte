@@ -1,40 +1,25 @@
 <script lang="ts">
-    import { writable } from "svelte/store";
-    import Modal from "svelte-simple-modal";
+    import { getGames, deleteGame, runGame, editGame } from "./Library";
     import NewGame from "./lib/NewGame.svelte";
-    import { invoke } from "@tauri-apps/api/tauri";
 
-    const modal = writable(null);
-    const showModal = () => modal.set(NewGame);
-    const games = invoke("get_from_db");
+    import { getContext } from "svelte";
+    const { open }: any = getContext('simple-modal')
+    const showModal = () => open(NewGame)
 
-    function runGame(path: string) {
-        invoke('run_game', { path: path })
-    }
+    let games: any = getGames()
 
-    function deleteGame(name: string) {
-        invoke('delete_from_db', { name: name })
-    }
-
-    function editGame(name: string) {
-
-    }
 </script>
 
 <main class="container">
     <div class="main">
         <div class="top">
             <h1 style="text-align:left; display:inline-block;">Library</h1>
-
             <!-- Creates a modal when the button is clicked -->
-            <Modal
-                show={$modal}>
-                <button on:click={showModal}>Add</button>
-            </Modal>
+            <button on:click={showModal}>Add</button>
         </div>
 
+        <!-- svelte-ignore empty-block -->
         {#await games}
-            <p>Loading your library...</p>
         {:then data}
             {#each data as game}
                 <div class="game-panel">
@@ -45,7 +30,7 @@
                     <div class="buttons">
                         <button class="game-button-run" on:click={() => runGame(game.exe_path)}>Run</button>
                         <button class="game-button-run" on:click={() => editGame(game.name)}>Edit</button>
-                        <button class="game-button-delete" on:click={() => deleteGame(game.name)}>Delete</button>
+                        <button class="game-button-delete" on:click={() => { games = deleteGame(game.name) }}>Delete</button>
                     </div>
                 </div>
             {/each}

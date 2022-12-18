@@ -6,11 +6,11 @@
 </svelte:head>
 
 <script lang="ts">
-  import Browse from "./panels/Browse.svelte";
-  import Downloads from "./panels/Downloads.svelte";
-  import Home from "./panels/Home.svelte";
-  import Library from "./panels/Library.svelte";
-  import Preferences from "./panels/Preferences.svelte";
+  import Browse from "./components/Browse.svelte";
+  import Downloads from "./components/Downloads.svelte";
+  import Home from "./components/Home.svelte";
+  import Library from "./components/Library.svelte";
+  import Preferences from "./components/Preferences.svelte";
   import { Modal } from "svelte-simple-modal";
 
   var currentPage: number;

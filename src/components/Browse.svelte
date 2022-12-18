@@ -1,6 +1,7 @@
 <script lang="ts">
-    import { browse, search, displayResults } from "./Browse"
-    
+    import { browse, search, displayResults } from "../scripts/Browse"
+    import "../styles/Browse.css"
+
     // Defines variables for the:
     // - Search text
     // - Scraper selected
@@ -65,86 +66,3 @@
         {/await}
     </div>
 </main>
-
-<style>
-    .search {
-        display: flex;
-    }
-
-    .search > input {
-        font-size: 1rem;
-        color: white;
-        background-color: #040404;
-        border-color: #00ff66;
-        border-style: dashed;
-        border-width: 1px;
-        padding: 8px 8px 8px 8px;
-
-        flex-grow: 1;
-    }
-
-    .search > input[type=text]:focus {
-        outline-style: none;
-    }
-
-    .search > button {
-        margin-left: 10px;
-        padding: 8px 16px 8px 16px;
-        background-color: #040404;
-        border-color: #00ff66;
-        border-style: dashed;
-        border-width: 1px;
-
-        cursor: pointer;
-    }
-
-    .search > select {
-        margin-left: 8px;
-        background-color: #040404;
-        color: #ffffff;
-        border-style: dashed;
-        border-width: 1px;
-        border-color: #00ff66;
-    }
-
-    .search > button > i {
-        color: white;
-        font-size: 16px;
-    }
-
-    .game {
-        display: block;
-
-        border-style: solid;
-        border-color: #555555;
-        background-color: #555555;
-        border-radius: 5px;
-
-        margin: 10px 0 10px 0;
-        padding: 0px 6px 18px 6px;
-
-        line-height: 10px;
-    }
-
-    .game p {
-        padding-bottom: 5px;
-        font-size: 18px;
-
-        font-weight: 700;
-    }
-
-    .game a {
-        text-decoration: none;
-        
-        border-style: solid;
-        border-color: #3a3a3a;
-        background-color: #3a3a3a;
-
-        color: white;
-        margin-bottom: 100px;
-        border-width: 0px;
-        border-radius: 5px;
-
-        padding: 4px 10px 4px 10px;
-    }
-</style>

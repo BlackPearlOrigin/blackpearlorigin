@@ -1,8 +1,8 @@
 //! DO NOT FUCKING EDIT THIS FILE
-import "./style.css";
-import App from "./App.svelte";
+import "./styles/Global.css";
+import Main from "./Main.svelte";
 
-const app = new App({
+const app = new Main({
   target: document.getElementById("app"),
 });
 

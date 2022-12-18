@@ -20,7 +20,7 @@ body {
 
 .sidenav {
   height: 100%;
-  width: 160px;
+  width: 175px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -36,7 +36,7 @@ body {
   padding: 6px 8px 6px 16px;
   margin-bottom: 8px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 17px;
   color: hsl(0, 0%, 100%);
   display: block;
   transition: all 0.25s;
@@ -50,8 +50,8 @@ body {
 }
 
 .branding {
-  padding: 16px 16px 16px 24px;
-  margin-bottom: 32px;
+  padding: 16px 0px 5px 30px;
+  margin-bottom: 17px;
   transition: all 0.5s;
   filter: drop-shadow(0px 0px 12px #ffffff22);
 }
@@ -61,11 +61,7 @@ body {
 }
 
 .main {
-  margin-left: 160px;
+  margin-left: 175px;
   padding: 0px 10px;
   font-size: 16px;
-}
-
-.main h1 {
-  text-align: center;
 }

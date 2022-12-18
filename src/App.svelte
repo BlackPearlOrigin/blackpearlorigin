@@ -26,19 +26,19 @@
   <div class="sidenav">
     <img src="../src-tauri/icons/icon.png" width="100" class="branding" alt="branding"/>
     <button class="menu-button" on:click={() => SwitchPage(0)}>      
-      Home
+      <i class="fa-solid fa-house" /> Home
     </button>
     <button class="menu-button" on:click={() => SwitchPage(1)}>      
-      Library
+      <i class="fa-solid fa-gamepad" /> Library
     </button>
     <button class="menu-button" on:click={() => SwitchPage(2)}>      
-      Browse
+      <i class="fa-solid fa-magnifying-glass" /> Browse
     </button>
     <button class="menu-button" on:click={() => SwitchPage(3)}>      
-      Downloads
+      <i class="fa-solid fa-download" /> Downloads
     </button>
     <button class="menu-button" on:click={() => SwitchPage(4)}>      
-      Preferences
+      <i class="fa-solid fa-gear" /> Preferences
     </button>
   </div>
 

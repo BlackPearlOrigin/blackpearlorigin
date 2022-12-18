@@ -19,7 +19,7 @@
 <main class="container">
     <div class="main">
         <div class="top">
-            <h1 style="text-align:left; display:inline-block;">Library</h1>
+            <h1 style="display:inline-block;">Library</h1>
             <!-- Creates a modal when the button is clicked -->
             <button on:click={() => showModal()}>Add</button>
         </div>

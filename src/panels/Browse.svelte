@@ -16,7 +16,7 @@
 
 <main class="container">
     <div class="main">
-        <h1 style="text-align:left">Browse</h1>
+        <h1>Browse</h1>
 
         <div class="search">
             <input placeholder="Search" type="text" bind:value={inputText}>

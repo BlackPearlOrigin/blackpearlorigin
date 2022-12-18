@@ -1,6 +1,7 @@
 <script lang="ts">
     import { invoke } from '@tauri-apps/api/tauri';
     import { getContext } from 'svelte';
+    import "./../../styles/NewGame.css"
 
     const { close }: any = getContext("simple-modal")
     let title: string;
@@ -25,7 +26,7 @@
         <input type="text" name="Title" placeholder="Title" bind:value={title}>
         <div class="show-path">
             <!-- When the button is clicked, run chooseExecutable -->
-            <button on:click={chooseExecutable} class="button">Add Executable</button>
+            <button on:click={chooseExecutable} class="ng-button">Add Executable</button>
 
             <!-- Binds the inner html to executablePath -->
             <p class="path" contenteditable=true bind:innerHTML={executablePath}>None</p>
@@ -33,53 +34,7 @@
     </div>
 
     <!-- I think you get it by now -->
-    <button on:click={() => {saveData(); close()}} class="button">
+    <button on:click={() => {saveData(); close()}} class="ng-button done-btn">
         Done
     </button>
 </div>
-
-<style>
-    .path {
-        padding-top: 6px;
-    }
-
-    .show-path {
-        display: flex;
-    }
-
-    .button {
-        margin: 6px 6px 0px 0px;
-    }
-    .newgame {
-        display: flex;
-        flex-grow: 1;
-        flex-direction: column;
-
-        padding-right: 5%;
-    }
-
-    .newgame > input::placeholder {
-        color: rgb(75, 75, 75)
-    }
-
-    .newgame > input {
-        font-size: 13px;
-    }
-
-    button {
-        font-size: 13px;
-    }
-
-    p {
-        line-height: 0px;
-        padding-left: 3px;
-    }
-
-    .show-path > p {
-        font-size: 13px;
-    }
-
-    .show-path {
-        font-size: 13px;
-    }
-</style>

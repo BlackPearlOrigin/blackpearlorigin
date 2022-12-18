@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getGames, deleteGame, runGame, editGame } from "../scripts/Library";
-    import NewGame from "./modals/NewGame.svelte";
     import { getContext } from "svelte";
+    import NewGame from "./modals/NewGame.svelte";
     import "../styles/Library.css"
 
     // Gets the open function from simple-modal context

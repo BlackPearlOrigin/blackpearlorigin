@@ -1,0 +1,51 @@
+.ng-button {
+    color: white;
+    background-color: #040404;
+    border-color: #00ff66;
+    border-style: dashed;
+    border-width: 1px;
+    margin-left: 2px;
+    padding: 8px 8px 8px 8px;
+
+    font-size: 15px;
+}
+
+.done-btn {
+    margin-top: 15px;
+}
+
+.newgame {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.newgame > input {
+    color: white;
+    background-color: #040404;
+    border-color: #00ff66;
+    border-style: dashed;
+    border-width: 1px;
+    padding: 8px 8px 8px 8px;
+
+
+    outline-style: none;
+}
+
+.newgame > input[type="text"] {
+    font-size: 15px;
+}
+
+.newgame > input[type="text"]::placeholder {
+    color: rgb(130, 130, 130);
+    font-size: 15px;
+}
+
+.show-path > p {
+    display: inline;
+    color: white;
+    font-size: 15px !important;
+    padding-top: 4px;
+    padding-left: 5px;
+    word-wrap: break-word;
+}

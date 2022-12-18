@@ -57,8 +57,8 @@
 }
 
 .top {
-    display: inline;
-    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
 }
 
 .top > button {
@@ -66,11 +66,11 @@
     border-color: #00ff66;
     border-style: dashed;
     border-width: 1px;
-    margin-top: 1.2rem;
     padding: 4px 16px 4px 16px;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
     color: #fff;
     font-size: 16px;
-    float: right;
     cursor: pointer;
     transition: all 0.25s;
 }

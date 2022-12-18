@@ -1,4 +1,5 @@
 <!-- Only touch this file if adding a new page -->
+<!-- Or styling a Modal -->
 <!-- Otherwise, ignore it -->
 
 <svelte:head>
@@ -24,7 +25,7 @@
 
 <main class="container">
   <div class="sidenav">
-    <img src="icon.png" width="100" class="branding" alt="branding"/>
+    <img src="src/icon.png" width="100" class="branding" alt="branding"/>
     <button class="menu-button" on:click={() => SwitchPage(0)}>      
       <i class="fa-solid fa-house" /> Home
     </button>
@@ -45,7 +46,16 @@
   {#if currentPage == 0}
     <Home/>
   {:else if currentPage == 1}
-    <Modal>
+    <Modal
+      styleBg={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+      styleWindow={{ 
+        backgroundColor: "#000",
+        border: "2px dashed #00ff66",
+        borderRadius: "0px",
+        float: "center"
+      }}
+      closeButton={false}
+    >
       <Library/>
     </Modal>
   {:else if currentPage == 2}

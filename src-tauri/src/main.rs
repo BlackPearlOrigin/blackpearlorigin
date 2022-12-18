@@ -15,11 +15,8 @@
     windows_subsystem = "windows"
 )]
 
-use curl::easy::Easy;
 use execute::Execute;
 use rfd::FileDialog;
-use std::fs::File;
-use std::io::{Write, copy};
 use std::thread;
 use std::{path::Path, process::Command};
 use tauri::CustomMenuItem;

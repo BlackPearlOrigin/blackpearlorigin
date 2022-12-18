@@ -32,6 +32,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Compiled-Files
-          path: src-tauri/target/release/bundle/
+          path: src-tauri/target/release/bundle/**/*.(msi|deb|AppImage|app|dmg)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

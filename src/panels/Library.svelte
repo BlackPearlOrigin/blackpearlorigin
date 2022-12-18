@@ -2,18 +2,28 @@
     import { getGames, deleteGame, runGame, editGame } from "./Library";
     import NewGame from "./lib/NewGame.svelte";
     import { getContext } from "svelte";
-   
+
     // Gets the open function from simple-modal context
-    const { open }: any = getContext('simple-modal')
+    const { open }: any = getContext("simple-modal");
 
     // When the modal is closed re-run the function getGames
-    const showModal = () => open(NewGame, {}, {}, {
-        onClose: () => {
-            games = getGames()
-        }
-    })
+    const showModal = () =>
+        open(
+            NewGame,
+            {},
+            {},
+            {
+                onClose: () => {
+                    games = getGames();
+                },
+            }
+        );
 
-    let games: any = getGames()
+    let games: any = getGames();
+    function operation_handler(operation: () => void) {
+        operation();
+        games = getGames();
+    }
 </script>
 
 <main class="container">
@@ -28,8 +38,7 @@
         <!-- After that, loop over every object in that array -->
         <!-- And add those results to a div -->
         <!-- svelte-ignore empty-block -->
-        {#await games}
-        {:then data}
+        {#await games then data}
             {#each data as game}
                 <div class="game-panel">
                     <div class="game-text">
@@ -37,9 +46,24 @@
                         <p class="small-info">{game.playtime} hours played</p>
                     </div>
                     <div class="buttons">
-                        <button class="game-button-run" on:click={() => runGame(game.exe_path)}>Run</button>
-                        <button class="game-button-run" on:click={() => editGame(game.name)}>Edit</button>
-                        <button class="game-button-delete" on:click={() => { games = deleteGame(game.name) }}>Delete</button>
+                        <button
+                            class="game-button-run"
+                            on:click={() =>
+                                operation_handler(() => runGame(game.exe_path))}
+                            >Run</button
+                        >
+                        <button
+                            class="game-button-run"
+                            on:click={() =>
+                                operation_handler(() => editGame(game.name))}
+                            >Edit</button
+                        >
+                        <button
+                            class="game-button-delete"
+                            on:click={() => {
+                                operation_handler(() => deleteGame(game.name));
+                            }}>Delete</button
+                        >
                     </div>
                 </div>
             {/each}
@@ -50,7 +74,6 @@
 </main>
 
 <style>
-
     .buttons {
         padding: 8px 8px 8px 8px;
     }

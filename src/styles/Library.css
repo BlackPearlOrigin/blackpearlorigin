@@ -1,3 +1,7 @@
+:root {
+    --accent-color: #00ff00;
+}
+
 .buttons {
     padding: 8px 8px 8px 8px;
 }
@@ -6,8 +10,8 @@
     background-color: #040404;
     border-style: dashed;
     border-width: 1px;
-    border-color: #00ff66;
-    color: #00ff66;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
     padding: 4px 16px 4px 16px;
     margin-right: 8px;
     cursor: pointer;
@@ -33,7 +37,7 @@
     margin: 8px 0px 8px 0px;
     border-style: dashed;
     border-width: 1px;
-    border-color: #00ff66;
+    border-color: var(--accent-color);
 }
 
 .game-panel {
@@ -63,7 +67,7 @@
 
 .top > button {
     background-color: #040404;
-    border-color: #00ff66;
+    border-color: var(--accent-color);
     border-style: dashed;
     border-width: 1px;
     padding: 4px 16px 4px 16px;
@@ -76,5 +80,5 @@
 }
 
 .top > button:hover {
-    text-shadow: 0px 0px 12px hsla(0, 0%, 100%, 0.8);
+    text-shadow: 0px 0px 12px #ffffff;
 }

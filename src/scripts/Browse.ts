@@ -32,7 +32,7 @@ export async function search(path: string, query: string) {
 // - Returns the results of queries/cache.json
 export async function displayResults() {
     // Reads the cache file
-    const file = await readTextFile('queries/cache.json', {
+    const file = await readTextFile('queries/results.json', {
         dir: BaseDirectory.AppLocalData
     })
 

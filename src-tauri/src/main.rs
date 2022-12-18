@@ -15,10 +15,13 @@
     windows_subsystem = "windows"
 )]
 
+use curl::easy::Easy;
 use execute::Execute;
 use rfd::FileDialog;
+use std::fs::File;
+use std::io::{Write, copy};
 use std::thread;
-use std::{path::Path, process::Command, vec};
+use std::{path::Path, process::Command};
 use tauri::CustomMenuItem;
 use tauri::SystemTray;
 use tauri::SystemTrayMenu;
@@ -85,6 +88,11 @@ fn run_game(path: String) {
     });
 }
 
+#[tauri::command]
+fn download_test() {
+
+}
+
 fn main() {
     // Create the usual directories and look for scrapers.
     startup::init();
@@ -110,6 +118,7 @@ fn main() {
             handle_scraper,
             file_dialog,
             run_game,
+            download_test,
             database::save_to_db,
             database::get_from_db,
             database::delete_from_db

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  font-family: sans-serif;
+  font-family: "Space Grotest", monospace;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -11,6 +11,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --accent-color: #00ff00;
 }
 
 body {
@@ -25,7 +26,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  border-right: 2px dashed #00ff66;
+  border-right: 2px dashed var(--accent-color);
   overflow-x: hidden;
   padding-top: 20px;
   background-color: #040404;

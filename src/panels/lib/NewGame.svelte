@@ -2,7 +2,7 @@
     import { invoke } from '@tauri-apps/api/tauri';
     import { getContext } from 'svelte';
 
-    export let close: any;
+    const { close }: any = getContext("simple-modal")
     let title: string;
     let savedMessage: string;
     let executablePath: any;

@@ -1,13 +1,19 @@
 <script lang="ts">
     import { getGames, deleteGame, runGame, editGame } from "./Library";
     import NewGame from "./lib/NewGame.svelte";
-
     import { getContext } from "svelte";
+   
+    // Gets the open function from simple-modal context
     const { open }: any = getContext('simple-modal')
-    const showModal = () => open(NewGame)
+
+    // When the modal is closed re-run the function getGames
+    const showModal = () => open(NewGame, {}, {}, {
+        onClose: () => {
+            games = getGames()
+        }
+    })
 
     let games: any = getGames()
-
 </script>
 
 <main class="container">
@@ -15,9 +21,12 @@
         <div class="top">
             <h1 style="text-align:left; display:inline-block;">Library</h1>
             <!-- Creates a modal when the button is clicked -->
-            <button on:click={showModal}>Add</button>
+            <button on:click={() => showModal()}>Add</button>
         </div>
 
+        <!-- Awaits for games to be resolved -->
+        <!-- After that, loop over every object in that array -->
+        <!-- And add those results to a div -->
         <!-- svelte-ignore empty-block -->
         {#await games}
         {:then data}

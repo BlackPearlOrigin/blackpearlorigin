@@ -1,11 +1,11 @@
-name: 'build-app-on-push'
+name: 'Build app on Push'
 on:
   push:
     branches:
       - main
 
 jobs:
-  test-tauri:
+  Build-App:
     strategy:
       fail-fast: false
       matrix:

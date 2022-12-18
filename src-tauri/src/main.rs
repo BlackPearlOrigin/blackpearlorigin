@@ -26,7 +26,6 @@ use rfd::FileDialog;
 use std::thread;
 use std::{path::Path, process::Command, vec};
 use tauri::CustomMenuItem;
-use tauri::Manager;
 use tauri::SystemTray;
 use tauri::SystemTrayMenu;
 
@@ -152,36 +151,19 @@ fn main() {
     startup::init();
 
     // Create the system tray icon
-    let tray = SystemTray::new().with_menu(
-        SystemTrayMenu::new()
-            .add_item(CustomMenuItem::new("hide", "Hide"))
-            .add_item(CustomMenuItem::new("quit", "Quit")),
-    );
+    let tray = SystemTray::new()
+        .with_menu(SystemTrayMenu::new().add_item(CustomMenuItem::new("quit", "Quit")));
 
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below
     tauri::Builder::default()
         // Add the system tray to the tauri object and handle it's events
         .system_tray(tray)
-        .on_system_tray_event(|app, event| match event {
-            tauri::SystemTrayEvent::MenuItemClick { id, .. } => {
-                let item_handle = app.tray_handle().get_item(&id);
-
-                match id.as_str() {
-                    "hide" => {
-                        let window = app.get_window("main").unwrap();
-                        if !window.is_visible().unwrap() {
-                            window.show().unwrap();
-                            item_handle.set_title("Hide").unwrap();
-                        } else {
-                            window.hide().unwrap();
-                            item_handle.set_title("Show").unwrap();
-                        }
-                    }
-                    "quit" => std::process::exit(0),
-                    _ => {}
-                }
-            }
+        .on_system_tray_event(|_app, event| match event {
+            tauri::SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
+                "quit" => std::process::exit(0),
+                _ => {}
+            },
             _ => {}
         })
         // Invoke your commands here

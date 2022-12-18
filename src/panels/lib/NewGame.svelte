@@ -41,7 +41,6 @@
 </div>
 
 <style>
-
     .path {
         padding-top: 6px;
     }

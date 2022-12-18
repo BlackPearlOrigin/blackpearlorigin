@@ -6,11 +6,11 @@
 </svelte:head>
 
 <script lang="ts">
-  import Browse from "./panels/Browse.svelte";
-  import Downloads from "./panels/Downloads.svelte";
-  import Home from "./panels/Home.svelte";
-  import Library from "./panels/Library.svelte";
-  import Preferences from "./panels/Preferences.svelte";
+  import Browse from "./components/Browse.svelte";
+  import Downloads from "./components/Downloads.svelte";
+  import Home from "./components/Home.svelte";
+  import Library from "./components/Library.svelte";
+  import Preferences from "./components/Preferences.svelte";
   import { Modal } from "svelte-simple-modal";
 
   var currentPage: number;
@@ -24,7 +24,7 @@
 
 <main class="container">
   <div class="sidenav">
-    <img src="../src-tauri/icons/icon.png" width="100" class="branding" alt="branding"/>
+    <img src="icon.png" width="100" class="branding" alt="branding"/>
     <button class="menu-button" on:click={() => SwitchPage(0)}>      
       <i class="fa-solid fa-house" /> Home
     </button>

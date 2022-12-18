@@ -28,10 +28,5 @@ jobs:
         run: |
           npm install
           npm run tauri build
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Compiled-Files
-          path: src-tauri/target/release/bundle/*/*.*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

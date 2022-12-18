@@ -25,7 +25,7 @@
 
 <main class="container">
   <div class="sidenav">
-    <img src="src/icon.png" width="100" class="branding" alt="branding"/>
+    <img src="../src-tauri/icons/icon.png" width="100" class="branding" alt="branding"/>
     <button class="menu-button" on:click={() => SwitchPage(0)}>      
       <i class="fa-solid fa-house" /> Home
     </button>

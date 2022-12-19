@@ -17,7 +17,7 @@
 
 use execute::Execute;
 use rfd::FileDialog;
-use std::thread;
+use std::{thread, fs};
 use std::{path::Path, process::Command};
 use tauri::CustomMenuItem;
 use tauri::SystemTray;
@@ -57,13 +57,38 @@ fn handle_scraper(path: String, query: String) {
 }
 
 #[tauri::command]
+fn install_scraper() {
+    let file = match FileDialog::new()
+        .add_filter("Executables", &["exe", "com", "cmd", "bat"])
+        .set_directory("/")
+        .pick_file()
+    {
+        Some(file) => file.display().to_string(),
+        None => "None".to_string(),
+    };
+
+    // Copy the scraper from the location the user selected to the scrapers folder
+    if file != "None" {
+        let file = Path::new(&file);
+        fs::copy(file, paths::get_pbp().join("scrapers").join(file.file_name().unwrap())).expect("Installing scraper failed");
+    }
+}
+
+#[tauri::command]
+fn wipe_library() {
+    let connection = sqlite::open(paths::get_pbp().join("library.db")).expect("Connecting to database failed");
+    let query = "DELETE FROM games;";
+    connection.execute(query).expect("Executing database query failed");
+}
+
+#[tauri::command]
 fn file_dialog() -> String {
     println!("Executable file dialog opened.");
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
     match FileDialog::new()
-        .add_filter("Executables", &["exe", "com", "lnk", "cmd", "bat"])
+        .add_filter("Executables", &["exe", "com", "cmd", "bat"])
         .set_directory("/")
         .pick_file()
     {
@@ -116,6 +141,8 @@ fn main() {
             file_dialog,
             run_game,
             download_test,
+            install_scraper,
+            wipe_library,
             database::save_to_db,
             database::get_from_db,
             database::delete_from_db

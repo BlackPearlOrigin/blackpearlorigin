@@ -155,5 +155,4 @@ pub fn init() {
     // Close the array
     file.write_all(r#"] }"#.as_bytes())
         .expect("Writing to tempfile failed");
-    
 }

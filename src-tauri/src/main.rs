@@ -17,15 +17,12 @@
 
 use execute::Execute;
 use rfd::FileDialog;
-use std::{thread, fs};
+use std::{fs, thread};
 use std::{path::Path, process::Command};
-use tauri::CustomMenuItem;
-use tauri::SystemTray;
-use tauri::SystemTrayMenu;
 
+mod database;
 mod paths;
 mod startup;
-mod database;
 
 #[tauri::command]
 fn handle_scraper(path: String, query: String) {
@@ -70,15 +67,24 @@ fn install_scraper() {
     // Copy the scraper from the location the user selected to the scrapers folder
     if file != "None" {
         let file = Path::new(&file);
-        fs::copy(file, paths::get_pbp().join("scrapers").join(file.file_name().unwrap())).expect("Installing scraper failed");
+        fs::copy(
+            file,
+            paths::get_pbp()
+                .join("scrapers")
+                .join(file.file_name().unwrap()),
+        )
+        .expect("Installing scraper failed");
     }
 }
 
 #[tauri::command]
 fn wipe_library() {
-    let connection = sqlite::open(paths::get_pbp().join("library.db")).expect("Connecting to database failed");
+    let connection =
+        sqlite::open(paths::get_pbp().join("library.db")).expect("Connecting to database failed");
     let query = "DELETE FROM games;";
-    connection.execute(query).expect("Executing database query failed");
+    connection
+        .execute(query)
+        .expect("Executing database query failed");
 }
 
 #[tauri::command]
@@ -110,37 +116,18 @@ fn run_game(path: String) {
     });
 }
 
-#[tauri::command]
-fn download_test() {
-
-}
-
 fn main() {
     // Create the usual directories and look for scrapers.
     startup::init();
 
-    // Create the system tray icon
-    let tray = SystemTray::new()
-        .with_menu(SystemTrayMenu::new().add_item(CustomMenuItem::new("quit", "Quit")));
-
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below
     tauri::Builder::default()
-        // Add the system tray to the tauri object and handle it's events
-        .system_tray(tray)
-        .on_system_tray_event(|_app, event| match event {
-            tauri::SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
-                "quit" => std::process::exit(0),
-                _ => {}
-            },
-            _ => {}
-        })
         // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
             handle_scraper,
             file_dialog,
             run_game,
-            download_test,
             install_scraper,
             wipe_library,
             database::save_to_db,
@@ -150,10 +137,7 @@ fn main() {
         .build(tauri::generate_context!())
         .expect("error while running tauri application")
         // If you close the window, it won't be terminated, but minimized to your system tray
-        .run(|_app_handle, event| match event {
-            tauri::RunEvent::ExitRequested { api, .. } => {
-                api.prevent_exit();
-            }
+        .run(|_app, event| match event {
             _ => {}
-    });
+        });
 }

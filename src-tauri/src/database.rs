@@ -1,4 +1,4 @@
-use crate::{paths};
+use crate::paths;
 
 #[derive(serde::Serialize)]
 pub struct Game {

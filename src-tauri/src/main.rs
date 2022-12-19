@@ -106,6 +106,24 @@ fn file_dialog() -> String {
 }
 
 #[tauri::command]
+fn image_dialog() -> String {
+    println!("Image file dialog opened.");
+
+    // Prompt the user to select a file from their computer as an input
+    // For error handling, you can use if- and match statements
+    match FileDialog::new()
+        .add_filter("Images", &["png", "jpg", "jpeg", "gif", "bmp", "ico"])
+        .set_directory("/")
+        .pick_file()
+    {
+        // If the user picked a file, return the path to the frontend
+        Some(file) => file.display().to_string(),
+        // If the user just closed the window, without picking a file, return "None" to the frontend
+        None => "None".to_string(),
+    }
+}
+
+#[tauri::command]
 fn run_game(path: String) {
     // String to path conversion
     let path = Path::new(&path);
@@ -127,6 +145,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             handle_scraper,
             file_dialog,
+            image_dialog,
             run_game,
             install_scraper,
             wipe_library,

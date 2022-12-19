@@ -48,6 +48,13 @@
             {#each data as game}
                 <div class="game-panel">
                     <div class="game-text">
+                        <img
+                            class="game-image"
+                            src={game.image}
+                            alt={game.name}
+                            height="100"
+                            width="100"
+                        />
                         <p class="game-title">{game.name}</p>
                         <p class="small-info">{game.playtime} hours played</p>
                     </div>

@@ -28,6 +28,7 @@ pub fn init() {
     let scraper_path = pbp_path.join("scrapers");
     let gamedb_path = pbp_path.join("library.db");
     let queries_path = pbp_path.join("queries");
+    let images_path = pbp_path.join("images");
 
     // Create the default directories if they don't exist
     if !pbp_path.exists() {
@@ -42,6 +43,9 @@ pub fn init() {
     if !scraper_path.exists() {
         create(&scraper_path)
     }
+    if !images_path.exists() {
+        create(&images_path)
+    }
 
     // If the library database doesn't exist, create it
     // Also execute an SQL query for creating the initial tables
@@ -51,7 +55,7 @@ pub fn init() {
 
         // Establish a connection with the database, declare a query in a string and execute it
         let connection = sqlite::open(&gamedb_path).expect("Connecting to new database failed");
-        let query = "CREATE TABLE games (name TEXT, executable TEXT, hours FLOAT);";
+        let query = "CREATE TABLE games (name TEXT, executable TEXT, hours FLOAT, description TEXT, image TEXT);";
         connection
             .execute(query)
             .expect("Failed to setup database table");

@@ -1,1 +1,27 @@
-/* Currently Empty */
+:root {
+    --accent-color: #00ff00;
+}
+
+.section {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: var(--accent-color);
+    margin-top: 8px;
+    text-align: center;
+}
+
+.section > button {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    padding: 8px;
+    background-color: transparent;
+    color: white;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: var(--accent-color);
+}
+
+.wipe {
+    border-color: #ff0000 !important;
+}

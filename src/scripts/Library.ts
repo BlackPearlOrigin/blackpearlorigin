@@ -9,7 +9,7 @@ export async function deleteGame(name: string) {
 }
 
 export function editGame(name: string) {
-
+    invoke('edit_from_db', { name: name })
 }
 
 export async function getGames() {

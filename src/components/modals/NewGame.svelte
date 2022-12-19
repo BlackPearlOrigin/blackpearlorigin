@@ -1,11 +1,10 @@
 <script lang="ts">
     import { invoke } from '@tauri-apps/api/tauri';
     import { getContext } from 'svelte';
-    import "./../../styles/NewGame.css"
+    import "./../../styles/Modal.css"
 
     const { close }: any = getContext("simple-modal")
     let title: string;
-    let savedMessage: string;
     let executablePath: any;
 
     // TS Function -> Rust Function

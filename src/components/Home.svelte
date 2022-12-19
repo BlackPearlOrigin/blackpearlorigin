@@ -4,6 +4,6 @@
 
 <main class="container">
     <div class="main">
-        <h1>Welcome to Project Black Pearl <a class="underscore">|</a></h1>
+        <h1>Welcome to Project Black Pearl <a class="underscore">_</a></h1>
     </div>
 </main>

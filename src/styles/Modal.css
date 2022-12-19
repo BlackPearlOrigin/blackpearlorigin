@@ -1,67 +1,66 @@
 :root {
-    --accent-color: #00ff00;
+	--accent-color: #00ff00;
 }
 
 .ng-button {
-    color: white;
-    background-color: #040404;
-    border-color: var(--accent-color);
-    border-style: dashed;
-    border-width: 1px;
-    margin-left: 2px;
-    padding: 8px 8px 8px 8px;
+	color: white;
+	background-color: #040404;
+	border-color: var(--accent-color);
+	border-style: dashed;
+	border-width: 1px;
+	margin-left: 2px;
+	padding: 8px 8px 8px 8px;
 
-    font-size: 15px;
+	font-size: 15px;
 }
 
 .done-btn {
-    margin-top: 15px;
+	margin-top: 15px;
 }
 
 button {
-    transition: all 0.25s;
+	transition: all 0.25s;
 }
 
 button:hover {
-    text-shadow: 0px 0px 12px #ffffff;
+	text-shadow: 0px 0px 12px #ffffff;
 }
 
 .newgame {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
+	display: flex;
+	flex-grow: 1;
+	flex-direction: column;
 }
 
-.newgame>input,
-.newgame>textarea {
-    color: white;
-    background-color: #040404;
-    border-color: var(--accent-color);
-    border-style: dashed;
-    border-width: 1px;
-    padding: 8px 8px 8px 8px;
+.newgame > input,
+.newgame > textarea {
+	color: white;
+	background-color: #040404;
+	border-color: var(--accent-color);
+	border-style: dashed;
+	border-width: 1px;
+	padding: 8px 8px 8px 8px;
 
-
-    outline-style: none;
+	outline-style: none;
 }
 
-.newgame>input[type="text"],
-.newgame>textarea {
-    font-size: 15px;
-    margin-bottom: 8px;
+.newgame > input[type='text'],
+.newgame > textarea {
+	font-size: 15px;
+	margin-bottom: 8px;
 }
 
-.newgame>input[type="text"]::placeholder,
-.newgame>textarea::placeholder {
-    color: rgb(130, 130, 130);
-    font-size: 15px;
+.newgame > input[type='text']::placeholder,
+.newgame > textarea::placeholder {
+	color: rgb(130, 130, 130);
+	font-size: 15px;
 }
 
-.show-path>p {
-    display: inline;
-    color: white;
-    font-size: 15px !important;
-    padding-top: 4px;
-    padding-left: 5px;
-    word-wrap: break-word;
+.show-path > p {
+	display: inline;
+	color: white;
+	font-size: 15px !important;
+	padding-top: 4px;
+	padding-left: 5px;
+	word-wrap: break-word;
 }

@@ -1,68 +1,68 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  font-family: "Space Grotest", monospace;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+	font-family: 'Space Grotest', monospace;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  --accent-color: #00ff00;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	--accent-color: #00ff00;
 }
 
 body {
-  background-color: #040404;
-  color: rgb(255, 255, 255);
+	background-color: #040404;
+	color: rgb(255, 255, 255);
 }
 
 .sidenav {
-  height: 100%;
-  width: 175px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  border-right: 2px dashed var(--accent-color);
-  overflow-x: hidden;
-  padding-top: 20px;
-  background-color: #040404;
+	height: 100%;
+	width: 175px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	border-right: 1px solid var(--accent-color);
+	overflow-x: hidden;
+	padding-top: 20px;
+	background-color: #040404;
 }
 
 .sidenav .menu-button {
-  font-family: "Space Grotest", monospace;
-  padding: 6px 8px 6px 16px;
-  margin-bottom: 8px;
-  text-decoration: none;
-  font-size: 17px;
-  color: hsl(0, 0%, 100%);
-  display: block;
-  transition: all 0.25s;
-  background-color: transparent;
-  border-style: none;
+	font-family: 'Space Grotest', monospace;
+	padding: 6px 8px 6px 16px;
+	margin-bottom: 8px;
+	text-decoration: none;
+	font-size: 17px;
+	color: hsl(0, 0%, 100%);
+	display: block;
+	transition: all 0.25s;
+	background-color: transparent;
+	border-style: none;
 }
 
 .sidenav .menu-button:hover {
-  text-shadow: 0px 0px 12px hsla(0, 0%, 100%, 0.8);
-  cursor: pointer;
+	text-shadow: 0px 0px 12px hsla(0, 0%, 100%, 0.8);
+	cursor: pointer;
 }
 
 .branding {
-  padding: 16px 0px 5px 30px;
-  margin-bottom: 17px;
-  transition: all 0.5s;
-  filter: drop-shadow(0px 0px 12px #ffffff22);
+	padding: 16px 0px 5px 30px;
+	margin-bottom: 17px;
+	transition: all 0.5s;
+	filter: drop-shadow(0px 0px 12px #ffffff22);
 }
 
 .branding:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .main {
-  margin-left: 175px;
-  padding: 0px 10px;
-  font-size: 16px;
+	margin-left: 175px;
+	padding: 0px 10px;
+	font-size: 16px;
 }

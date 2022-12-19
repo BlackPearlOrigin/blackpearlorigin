@@ -19,9 +19,12 @@
     color: white;
     border-style: dashed;
     border-width: 1px;
-    border-color: var(--accent-color);
 }
 
-.wipe {
-    border-color: #ff0000 !important;
+.section #wipe {
+    border-color: #ff0000;
+}
+
+.section #install {
+    border-color: var(--accent-color)
 }

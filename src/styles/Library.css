@@ -1,84 +1,84 @@
 :root {
-    --accent-color: #00ff00;
+	--accent-color: #00ff00;
 }
 
 .buttons {
-    padding: 8px 8px 8px 8px;
+	padding: 8px 8px 8px 8px;
 }
 
 .game-button-run {
-    background-color: #040404;
-    border-style: dashed;
-    border-width: 1px;
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    padding: 4px 16px 4px 16px;
-    margin-right: 8px;
-    cursor: pointer;
+	background-color: #040404;
+	border-style: dashed;
+	border-width: 1px;
+	border-color: var(--accent-color);
+	color: var(--accent-color);
+	padding: 4px 16px 4px 16px;
+	margin-right: 8px;
+	cursor: pointer;
 }
 
 .game-button-delete {
-    background-color: #040404;
-    border-style: dashed;
-    border-width: 1px;
-    border-color: #ff0000;
-    color: #ff0000;
-    padding: 4px 16px 4px 16px;
-    margin-right: 8px;
-    cursor: pointer;
+	background-color: #040404;
+	border-style: dashed;
+	border-width: 1px;
+	border-color: #ff0000;
+	color: #ff0000;
+	padding: 4px 16px 4px 16px;
+	margin-right: 8px;
+	cursor: pointer;
 }
 
 .game-text {
-    display: flex;
+	display: flex;
 }
 
 .game-panel {
-    padding: 8px 8px 8px 8px;
-    margin: 8px 0px 8px 0px;
-    border-style: dashed;
-    border-width: 1px;
-    border-color: var(--accent-color);
+	padding: 8px 8px 8px 8px;
+	margin: 8px 0px 8px 0px;
+	border-style: dashed;
+	border-width: 1px;
+	border-color: var(--accent-color);
 }
 
 .game-panel {
-    background-color: #040404;
+	background-color: #040404;
 }
 
 .game-panel p {
-    margin: 0;
+	margin: 0;
 }
 
 .game-title {
-    padding: 0px 8px 0px 8px;
-    font-weight: 550;
-    font-size: 24px;
+	padding: 0px 8px 0px 8px;
+	font-weight: 550;
+	font-size: 24px;
 }
 
 .small-info {
-    padding: 2px 0px 0px 8px;
-    font-size: 16px;
-    color: #cccccc;
+	padding: 2px 0px 0px 8px;
+	font-size: 16px;
+	color: #cccccc;
 }
 
 .top {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
-.top>button {
-    background-color: #040404;
-    border-color: var(--accent-color);
-    border-style: dashed;
-    border-width: 1px;
-    padding: 4px 16px 4px 16px;
-    margin-bottom: 1.2rem;
-    margin-top: 1.2rem;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.25s;
+.top > button {
+	background-color: #040404;
+	border-color: var(--accent-color);
+	border-style: dashed;
+	border-width: 1px;
+	padding: 4px 16px 4px 16px;
+	margin-bottom: 1.2rem;
+	margin-top: 1.2rem;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.25s;
 }
 
-.top>button:hover {
-    text-shadow: 0px 0px 12px #ffffff;
+.top > button:hover {
+	text-shadow: 0px 0px 12px #ffffff;
 }

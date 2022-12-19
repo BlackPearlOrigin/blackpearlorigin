@@ -1,6 +1,6 @@
 # Project Black Pearl
 
-![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 "Svelte") ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 "Tauri")
+![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
 ![Version](https://img.shields.io/badge/Version-0.1.0-blue?style=for-the-badge) ![Build Status](https://img.shields.io/badge/Status-Alpha-red?style=for-the-badge) ![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)
 
@@ -20,29 +20,29 @@ The project is currently in very early stages of development.
 
 ### Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer).
+[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) .
 
-* ### Clone the repository
+-   ### Clone the repository
 
 ```bash
 git clone https://github.com/ProjectBlackPearl/pbpl.git
 cd pbpl
 ```
 
-* ### Install the dependencies
+-   ### Install the dependencies
 
 ```bash
  npm install
 ```
 
-* ### Make your changes
-* ### Run the project
+-   ### Make your changes
+-   ### Run the project
 
 ```bash
 npm run tauri dev
 ```
 
-* ### Create a Pull Request!
+-   ### Create a Pull Request!
 
 ## Support
 

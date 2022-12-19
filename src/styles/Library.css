@@ -65,7 +65,7 @@
     justify-content: space-between;
 }
 
-.top > button {
+.top>button {
     background-color: #040404;
     border-color: var(--accent-color);
     border-style: dashed;
@@ -79,6 +79,6 @@
     transition: all 0.25s;
 }
 
-.top > button:hover {
+.top>button:hover {
     text-shadow: 0px 0px 12px #ffffff;
 }

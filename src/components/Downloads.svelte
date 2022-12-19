@@ -1,6 +1,6 @@
 <script lang="ts">
-    import "../styles/Downloads.css"
-    import { downloadTest } from "../scripts/Downloads"
+    import "../styles/Downloads.css";
+    import { downloadTest } from "../scripts/Downloads";
 </script>
 
 <main class="container">

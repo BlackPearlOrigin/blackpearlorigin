@@ -6,7 +6,7 @@
     display: flex;
 }
 
-.search > input {
+.search>input {
     font-size: 1rem;
     color: white;
     background-color: #040404;
@@ -18,11 +18,11 @@
     flex-grow: 1;
 }
 
-.search > input[type=text]:focus {
+.search>input[type=text]:focus {
     outline-style: none;
 }
 
-.search > button {
+.search>button {
     margin-left: 10px;
     padding: 8px 16px 8px 16px;
     background-color: #040404;
@@ -33,7 +33,7 @@
     cursor: pointer;
 }
 
-.search > select {
+.search>select {
     margin-left: 8px;
     background-color: #040404;
     color: #ffffff;
@@ -42,7 +42,7 @@
     border-color: var(--accent-color);
 }
 
-.search > button > i {
+.search>button>i {
     color: white;
     font-size: 16px;
 }
@@ -70,7 +70,7 @@
 
 .game a {
     text-decoration: none;
-    
+
     border-style: solid;
     border-color: #3a3a3a;
     background-color: #3a3a3a;

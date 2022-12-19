@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "../styles/Preferences.css"
+    import "../styles/Preferences.css";
 </script>
 
 <main class="container">

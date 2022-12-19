@@ -7,10 +7,12 @@
         color: #040404;
         text-shadow: 0px 0px 12px #000000;
     }
+
     50% {
         color: #ffffff;
         text-shadow: 0px 0px 12px #ffffff55;
     }
+
     100% {
         color: #040404;
         text-shadow: 0px 0px 12px #000000;

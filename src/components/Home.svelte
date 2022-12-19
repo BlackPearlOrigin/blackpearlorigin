@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "../styles/Home.css"
+    import "../styles/Home.css";
 </script>
 
 <main class="container">

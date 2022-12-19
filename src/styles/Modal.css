@@ -32,7 +32,7 @@ button:hover {
     flex-direction: column;
 }
 
-.newgame > input {
+.newgame>input {
     color: white;
     background-color: #040404;
     border-color: var(--accent-color);
@@ -44,17 +44,17 @@ button:hover {
     outline-style: none;
 }
 
-.newgame > input[type="text"] {
+.newgame>input[type="text"] {
     font-size: 15px;
     margin-bottom: 8px;
 }
 
-.newgame > input[type="text"]::placeholder {
+.newgame>input[type="text"]::placeholder {
     color: rgb(130, 130, 130);
     font-size: 15px;
 }
 
-.show-path > p {
+.show-path>p {
     display: inline;
     color: white;
     font-size: 15px !important;

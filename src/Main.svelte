@@ -1,11 +1,14 @@
 <script lang="ts">
+	import translations from './locale/locales';
 	import Browse from './components/Browse.svelte';
 	import Downloads from './components/Downloads.svelte';
 	import Home from './components/Home.svelte';
 	import Library from './components/Library.svelte';
 	import Preferences from './components/Preferences.svelte';
 	import { Modal } from 'svelte-simple-modal';
-	import { t } from './locale/i18n';
+	import { dict, locale, t } from './locale/i18n';
+	$: languages = Object.keys(translations);
+	$: dict.set(translations);
 
 	var currentPage: number;
 

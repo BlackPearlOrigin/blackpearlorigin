@@ -8,6 +8,14 @@
 
 	var currentPage: number;
 
+	enum Pages {
+		Home = 0,
+		Browse = 2,
+		Library = 1,
+		Downloads = 3,
+		Prefs = 4,
+	}
+
 	// TS Function
 	// - Changes the currentPage variable to the number on args
 	function SwitchPage(Option: number) {
@@ -15,30 +23,38 @@
 	}
 </script>
 
+<svelte:head>
+	<script
+		src="https://kit.fontawesome.com/dacbc752b2.js"
+		crossorigin="anonymous"
+	></script>
+</svelte:head>
+
 <!-- Only touch this file if adding a new page -->
 <!-- Or styling a Modal -->
 <!-- Otherwise, ignore it -->
 <main class="container">
 	<div class="sidenav">
-		<img
-			src="../src-tauri/icons/icon.png"
-			width="100"
-			class="branding"
-			alt="branding"
-		/>
-		<button class="menu-button" on:click="{() => SwitchPage(0)}">
+		<img src="icon.png" width="100" class="branding" alt="branding" />
+		<button class="menu-button" on:click="{() => SwitchPage(Pages.Home)}">
 			Home
 		</button>
-		<button class="menu-button" on:click="{() => SwitchPage(2)}">
+		<button class="menu-button" on:click="{() => SwitchPage(Pages.Browse)}">
 			Browse
 		</button>
-		<button class="menu-button" on:click="{() => SwitchPage(1)}">
+		<button
+			class="menu-button"
+			on:click="{() => SwitchPage(Pages.Library)}"
+		>
 			Library
 		</button>
-		<button class="menu-button" on:click="{() => SwitchPage(3)}">
+		<button
+			class="menu-button"
+			on:click="{() => SwitchPage(Pages.Downloads)}"
+		>
 			Downloads
 		</button>
-		<button class="menu-button" on:click="{() => SwitchPage(4)}">
+		<button class="menu-button" on:click="{() => SwitchPage(Pages.Prefs)}">
 			Preferences
 		</button>
 	</div>

@@ -82,3 +82,7 @@
 .top > button:hover {
 	text-shadow: 0px 0px 12px #ffffff;
 }
+
+.main {
+	padding-left: 5px;
+}

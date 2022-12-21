@@ -55,7 +55,6 @@
 		<!-- Awaits for search data to be resolved-->
 		<!-- After that add an div with the game title -->
 		<!-- And url for each object -->
-		<!-- svelte-ignore empty-block -->
 		{#await searchData then sd}
 			{#each sd.response as Response}
 				{#if sd.response.length == 0}

@@ -30,7 +30,7 @@ pub fn build_game(
 pub fn save_to_db(title: String, exe_path: String, description: String, image: String) {
     // copy the image to the images folder
     let mut image_path = Path::new("").to_path_buf();
-    if image != "" {
+    if !image.is_empty() {
         let image = Path::new(&image);
         image_path = paths::get_pbp()
             .join("images")

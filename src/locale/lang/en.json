@@ -1,0 +1,41 @@
+{
+	"homeText": "Home",
+	"browseText": "Browse",
+	"libraryText": "Library",
+	"downloadsText": "Downloads",
+	"prefsText": "Preferences",
+	"loadingText": "Loading",
+	"languageText": "Language",
+	"preferences": {
+		"installPlugin": "Install a plugin",
+		"wipeLibrary": "Wipe library"
+	},
+	"library": {
+		"add": "Add",
+		"playtime": "hours played",
+		"editGame": "Edit",
+		"deleteGame": "Delete",
+		"run": "Run"
+	},
+	"home": {
+		"welcomeText": "Welcome to Project Black Pearl",
+		"changelogText": "Changelog: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Select a plugin",
+		"nothingFound": "No games found",
+		"downloadText": "Download",
+		"search": "Search"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Title",
+			"addExec": "Add executable",
+			"none": "None",
+			"addImg": "Add Image",
+			"desc": "Description",
+			"done": "Done"
+		}
+	}
+}

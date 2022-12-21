@@ -2,6 +2,7 @@
 	import { invoke } from '@tauri-apps/api/tauri';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.css';
+	import { t } from './../../locale/i18n';
 
 	const { close }: any = getContext('simple-modal');
 	let title: string;
@@ -35,13 +36,13 @@
 		<input
 			type="text"
 			name="Title"
-			placeholder="Title"
+			placeholder="{$t('modals.newGame.gameTitle')}"
 			bind:value="{title}"
 		/>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseExecutable -->
 			<button on:click="{chooseExecutable}" class="ng-button"
-				>Add Executable</button
+				>{$t('modals.newGame.addExec')}</button
 			>
 
 			<!-- Binds the inner html to executablePath -->
@@ -50,12 +51,13 @@
 				contenteditable="true"
 				bind:innerHTML="{executablePath}"
 			>
-				None
+				{$t('modals.newGame.none')}
 			</p>
 		</div>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseImage -->
-			<button on:click="{chooseImage}" class="ng-button">Add Image</button
+			<button on:click="{chooseImage}" class="ng-button"
+				>{$t('modals.newGame.addImg')}</button
 			>
 
 			<!-- Binds the inner html to image_path -->
@@ -64,12 +66,12 @@
 				contenteditable="true"
 				bind:innerHTML="{image_path}"
 			>
-				None
+				{$t('modals.newGame.none')}
 			</p>
 		</div>
 		<textarea
 			name="Description"
-			placeholder="Description"
+			placeholder="{$t('modals.newGame.desc')}"
 			bind:value="{description}"></textarea>
 	</div>
 
@@ -81,6 +83,6 @@
 		}}"
 		class="ng-button done-btn"
 	>
-		Done
+		{$t('modals.newGame.done')}
 	</button>
 </div>

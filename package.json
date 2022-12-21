@@ -12,6 +12,7 @@
 	},
 	"dependencies": {
 		"@tauri-apps/api": "^1.1.0",
+		"svelte-i18n": "^3.6.0",
 		"svelte-simple-modal": "^1.4.5"
 	},
 	"devDependencies": {

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { browse, search, displayResults } from '../scripts/Browse';
 	import '../styles/Browse.css';
+	import { t } from '../locale/i18n';
 
 	// Defines variables for the:
 	// - Search text
@@ -17,12 +18,16 @@
 
 <main class="container">
 	<div class="main">
-		<h1>Browse</h1>
+		<h1>{$t('browseText')}</h1>
 
 		<div class="search">
-			<input placeholder="Search" type="text" bind:value="{inputText}" />
+			<input
+				placeholder="{$t('browse.search')}"
+				type="text"
+				bind:value="{inputText}"
+			/>
 			<select bind:value="{selectedScraper}" name="Plugins">
-				<option value="Select">Select a plugin</option>
+				<option value="Select">{$t('browse.selectPlugin')}</option>
 
 				<!-- Awaits the data to be resolved -->
 				<!-- After that adds an option for each scraper -->
@@ -58,13 +63,14 @@
 		{#await searchData then sd}
 			{#each sd.response as Response}
 				{#if sd.response.length == 0}
-					<h1>No games found</h1>
+					<h1>{$t('browse.nothingFound')}</h1>
 				{/if}
 				<div class="game">
 					<p>{Response.title}</p>
 					{#each Response.urls as urls}
 						<a href="{urls}" target="_blank" rel="noreferrer">
-							<i class="fa-solid fa-download"></i> Download
+							<i class="fa-solid fa-download"></i>
+							{$t('browse.downloadText')}
 						</a>
 					{/each}
 				</div>

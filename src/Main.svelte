@@ -5,6 +5,7 @@
 	import Library from './components/Library.svelte';
 	import Preferences from './components/Preferences.svelte';
 	import { Modal } from 'svelte-simple-modal';
+	import { t } from './locale/i18n';
 
 	var currentPage: number;
 
@@ -37,25 +38,25 @@
 	<div class="sidenav">
 		<img src="icon.png" width="100" class="branding" alt="branding" />
 		<button class="menu-button" on:click="{() => SwitchPage(Pages.Home)}">
-			Home
+			{$t('homeText')}
 		</button>
 		<button class="menu-button" on:click="{() => SwitchPage(Pages.Browse)}">
-			Browse
+			{$t('browseText')}
 		</button>
 		<button
 			class="menu-button"
 			on:click="{() => SwitchPage(Pages.Library)}"
 		>
-			Library
+			{$t('libraryText')}
 		</button>
 		<button
 			class="menu-button"
 			on:click="{() => SwitchPage(Pages.Downloads)}"
 		>
-			Downloads
+			{$t('downloadsText')}
 		</button>
 		<button class="menu-button" on:click="{() => SwitchPage(Pages.Prefs)}">
-			Preferences
+			{$t('prefsText')}
 		</button>
 	</div>
 

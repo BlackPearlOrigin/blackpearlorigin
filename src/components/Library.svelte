@@ -8,6 +8,7 @@
 	import { getContext } from 'svelte';
 	import NewGame from './modals/NewGame.svelte';
 	import '../styles/Library.css';
+	import { t } from '../locale/i18n';
 
 	// Gets the open function from simple-modal context
 	const { open }: any = getContext('simple-modal');
@@ -35,9 +36,9 @@
 <main class="container">
 	<div class="main">
 		<div class="top">
-			<h1 style="display:inline-block;">Library</h1>
+			<h1 style="display:inline-block;">{$t('libraryText')}</h1>
 			<!-- Creates a modal when the button is clicked -->
-			<button on:click="{() => showModal()}">Add</button>
+			<button on:click="{() => showModal()}">{$t('library.add')}</button>
 		</div>
 
 		<!-- Awaits for games to be resolved -->
@@ -56,7 +57,10 @@
 							width="100"
 						/>
 						<p class="game-title">{game.name}</p>
-						<p class="small-info">{game.playtime} hours played</p>
+						<p class="small-info">
+							{game.playtime}
+							{$t('library.playtime')}
+						</p>
 					</div>
 					<div class="buttons">
 						<button
@@ -64,19 +68,19 @@
 							on:click="{() =>
 								operation_handler(() =>
 									runGame(game.exe_path)
-								)}">Run</button
+								)}">{$t('library.run')}</button
 						>
 						<button
 							class="game-button-run"
 							on:click="{() =>
 								operation_handler(() => editGame(game.name))}"
-							>Edit</button
+							>{$t('library.editGame')}</button
 						>
 						<button
 							class="game-button-delete"
 							on:click="{() => {
 								operation_handler(() => deleteGame(game.name));
-							}}">Delete</button
+							}}">{$t('library.deleteGame')}</button
 						>
 					</div>
 				</div>

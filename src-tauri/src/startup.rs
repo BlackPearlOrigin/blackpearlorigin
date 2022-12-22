@@ -87,7 +87,7 @@ pub fn init() {
 
     // Creates the config file and writes to it
     fn create_config(path: &Path) {
-        let file = match File::create(path) {
+        let mut file = match File::create(path) {
             Ok(k) => {
                 println!("Successfully created file {}", &path.display());
                 k

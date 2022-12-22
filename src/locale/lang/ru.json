@@ -1,0 +1,42 @@
+{
+	"homeText": "Дома",
+	"browseText": "Обозреватель",
+	"libraryText": "Библиотека",
+	"downloadsText": "Загрузки",
+	"prefsText": "Предпочтения",
+	"loadingText": "Загрузка",
+	"languageText": "Язык",
+	"preferences": {
+		"installPlugin": "Установить плагин",
+		"wipeLibrary": "Очистить библиотеку",
+		"saveText": "Спасать"
+	},
+	"library": {
+		"add": "Добавить",
+		"playtime": "сыграно часов",
+		"editGame": "Редактирование",
+		"deleteGame": "Удалить",
+		"run": "Запуск"
+	},
+	"home": {
+		"welcomeText": "Добро пожаловать в проект Black Pearl",
+		"changelogText": "Список изменений: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Выбрать плагин",
+		"nothingFound": "Игры не найдено",
+		"downloadText": "Скачать",
+		"search": "Искать"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Название",
+			"addExec": "Добавить исполняемый файл",
+			"none": "Никакой",
+			"addImg": "Добавить изображение",
+			"desc": "Описание",
+			"done": "Готово"
+		}
+	}
+}

@@ -1,0 +1,42 @@
+{
+	"homeText": "Home",
+	"browseText": "Bladeren",
+	"libraryText": "Bibliotheek",
+	"downloadsText": "Downloads",
+	"prefsText": "Voorkeuren",
+	"loadingText": "Laden",
+	"languageText": "Taal",
+	"preferences": {
+		"installPlugin": "Een plugin installeren",
+		"wipeLibrary": "Wis bibliotheek",
+		"saveText": "Opslaan"
+	},
+	"library": {
+		"add": "Toevoegen",
+		"playtime": "uren gespeeld",
+		"editGame": "Bewerken",
+		"deleteGame": "Verwijderen",
+		"run": "Uitvoeren"
+	},
+	"home": {
+		"welcomeText": "Welkom bij Project Black Pearl",
+		"changelogText": "Wijzigingen: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Selecteer een plugin",
+		"nothingFound": "Geen games gevonden",
+		"downloadText": "Downloaden",
+		"search": "Zoeken"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Titel",
+			"addExec": "Programma toevoegen",
+			"none": "Geen",
+			"addImg": "Afbeelding Toevoegen",
+			"desc": "Beschrijving",
+			"done": "Voltooien"
+		}
+	}
+}

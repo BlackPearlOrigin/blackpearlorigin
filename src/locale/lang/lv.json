@@ -1,0 +1,42 @@
+{
+	"homeText": "Mājas",
+	"browseText": "Pārlūkot",
+	"libraryText": "Bibliotēka",
+	"downloadsText": "Lejupielādes",
+	"prefsText": "Iestatījumus",
+	"loadingText": "Lekraušanas",
+	"languageText": "Valoda",
+	"preferences": {
+		"installPlugin": "Spraudņa instalēšana",
+		"wipeLibrary": "Tīrīšanas bibliotēka",
+		"saveText": "Glābt"
+	},
+	"library": {
+		"add": "Pievienot",
+		"playtime": "nospēlētās stundas",
+		"editGame": "Rediģēt",
+		"deleteGame": "Dzēst",
+		"run": "Skriet"
+	},
+	"home": {
+		"welcomeText": "Laipni lūdzam Project Black Pearl",
+		"changelogText": "Izmaiņu žurnāls: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Atlasiet spraudni",
+		"nothingFound": "Spēles nav atrastas",
+		"downloadText": "Lejupielādēt",
+		"search": "Meklēt"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Nosaukums",
+			"addExec": "Pievienot izpildāmo",
+			"none": "Neviens",
+			"addImg": "Pievienot attēlu",
+			"desc": "Apraksts",
+			"done": "Darīts"
+		}
+	}
+}

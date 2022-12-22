@@ -1,0 +1,42 @@
+{
+	"homeText": "Hlavní stránka",
+	"browseText": "Procházet",
+	"libraryText": "Knihovna",
+	"downloadsText": "Stahování",
+	"prefsText": "Nastavení",
+	"loadingText": "Načítání",
+	"languageText": "Jazyky",
+	"preferences": {
+		"installPlugin": "Nainstalovat plugin",
+		"wipeLibrary": "Vymazat knihovnu",
+		"saveText": "Uložit"
+	},
+	"library": {
+		"add": "Přidat",
+		"playtime": "odehraný čas",
+		"editGame": "Upravit",
+		"deleteGame": "Odstranit",
+		"run": "Spustit"
+	},
+	"home": {
+		"welcomeText": "Vítejte v Projektu Black Pearl",
+		"changelogText": "Seznam změn: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Vyberte modul",
+		"nothingFound": "Nebyly nalezeny žádné hry",
+		"downloadText": "Stáhnout",
+		"search": "Hledat"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Název",
+			"addExec": "Přidat spustitelný soubor",
+			"none": "Nepřidáno",
+			"addImg": "Přidat obrázek",
+			"desc": "Popis hry",
+			"done": "Hotovo"
+		}
+	}
+}

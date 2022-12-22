@@ -1,0 +1,42 @@
+{
+	"homeText": "Hem",
+	"browseText": "Sökfält",
+	"libraryText": "Bibliotek",
+	"downloadsText": "Nerladdningar",
+	"prefsText": "Inställningar",
+	"loadingText": "Laddar",
+	"languageText": "Språk",
+	"preferences": {
+		"installPlugin": "Installera ett plugin",
+		"wipeLibrary": "Rensa Bibliotek",
+		"saveText": "Spara"
+	},
+	"library": {
+		"add": "Lägg till",
+		"playtime": "timmar spelat",
+		"editGame": "Redigera",
+		"deleteGame": "Ta bort",
+		"run": "Kör"
+	},
+	"home": {
+		"welcomeText": "Välkommen till Project Black Pearl",
+		"changelogText": "Ändringslogg: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Välj ett plugin",
+		"nothingFound": "Inga spel hittades",
+		"downloadText": "Ladda ned",
+		"search": "Sök"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Titel",
+			"addExec": "Lägg till körbar fil",
+			"none": "Ingen",
+			"addImg": "Lägg till bild",
+			"desc": "Beskrivning",
+			"done": "Klar"
+		}
+	}
+}

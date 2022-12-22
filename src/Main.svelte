@@ -7,8 +7,10 @@
 	import Library from './components/Library.svelte';
 	import Preferences from './components/Preferences.svelte';
 	import { Modal } from 'svelte-simple-modal';
-	import { dict, locale, t } from './locale/i18n';
+	import { dict, t } from './locale/i18n';
 	import { loadLocale } from './scripts/Main';
+
+	$: dict.set(translations);
 
 	// Loads the current locale
 	loadLocale();
@@ -73,7 +75,7 @@
 			styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}"
 			styleWindow="{{
 				backgroundColor: '#000',
-				border: '2px dashed #00ff00',
+				border: '1px solid #00ff00',
 				borderRadius: '0px',
 				float: 'center',
 			}}"

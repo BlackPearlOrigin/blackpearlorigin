@@ -6,7 +6,7 @@
 	color: white;
 	background-color: #040404;
 	border-color: var(--accent-color);
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	margin-bottom: 8px;
 	padding: 8px 8px 8px 8px;
@@ -37,7 +37,7 @@ button:hover {
 	color: white;
 	background-color: #040404;
 	border-color: var(--accent-color);
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	padding: 8px 8px 8px 8px;
 

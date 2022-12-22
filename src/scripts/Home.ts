@@ -1,5 +1,7 @@
 import { fetch, ResponseType } from '@tauri-apps/api/http';
 
+// TS Function
+// - Gets news from a json file on github and returns the parsed version of it
 export async function pbpNews() {
 	// TODO: Change the URI to a file named CHANGELOG.json on the repo
 	const uri =

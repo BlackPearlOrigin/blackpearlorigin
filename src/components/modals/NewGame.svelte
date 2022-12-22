@@ -2,7 +2,7 @@
 	import { invoke } from '@tauri-apps/api/tauri';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.css';
-	import { t } from './../../locale/i18n';
+	import { t } from '../../locale/i18n';
 
 	const { close }: any = getContext('simple-modal');
 	let title: string;

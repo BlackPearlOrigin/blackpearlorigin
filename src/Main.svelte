@@ -1,4 +1,5 @@
 <script lang="ts">
+	// Imports all pages and modules
 	import translations from './locale/locales';
 	import Browse from './components/Browse.svelte';
 	import Downloads from './components/Downloads.svelte';
@@ -7,8 +8,10 @@
 	import Preferences from './components/Preferences.svelte';
 	import { Modal } from 'svelte-simple-modal';
 	import { dict, locale, t } from './locale/i18n';
-	$: languages = Object.keys(translations);
-	$: dict.set(translations);
+	import { loadLocale } from './scripts/Main';
+
+	// Loads the current locale
+	loadLocale();
 
 	var currentPage: number;
 

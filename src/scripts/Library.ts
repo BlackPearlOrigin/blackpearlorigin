@@ -14,6 +14,5 @@ export function editGame(name: string) {
 
 export async function getGames() {
 	const games = await invoke('get_from_db');
-	console.log(games);
 	return games;
 }

@@ -3,30 +3,57 @@
 }
 
 .section {
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	border-color: var(--accent-color);
 	margin-top: 8px;
-	text-align: center;
+	padding-left: 10px;
+	padding-top: 4px;
+	padding-bottom: 10px;
 }
 
-.section > button {
+.button-group {
+	margin-bottom: 3px;
+}
+
+.button-group > button {
+	font-size: 13px;
 	margin-top: 8px;
 	margin-bottom: 8px;
-	margin-right: 8px;
+	margin-right: 0px;
 	padding: 8px;
 	background-color: transparent;
 	color: white;
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 }
 
-.section #wipe {
+.button-group #wipe {
 	border-color: #ff0000;
 }
 
-.section #install {
+.button-group #install {
 	border-color: var(--accent-color);
+}
+
+.locale-settings {
+	font-size: 13px;
+	margin-left: 2px;
+	display: inline;
+
+	border-color: #00ff00;
+	border-width: 1px;
+	border-style: solid;
+	padding: 7px;
+}
+
+.save-button {
+	font-size: 13px;
+	background-color: inherit;
+	border-color: #00ff00;
+	color: white;
+	padding: 7px;
+	margin-top: 25px;
 }
 
 .main {

@@ -41,10 +41,37 @@ h1 {
 	font-size: 24px;
 }
 
+.version {
+	font-size: 25px;
+	font-weight: 700;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin: 0;
+}
+
+.news {
+	padding-left: 10px;
+}
+
 .body {
 	text-align: justify;
 	padding-left: 15px;
 	padding-top: 13px;
 	padding-right: 2rem;
 	font-size: 17px;
+}
+
+.additions {
+	padding-left: 15px;
+}
+
+.welcome-text {
+	margin-bottom: 10px;
+	padding-bottom: 20px;
+	border-style: solid;
+	border-color: #00ff00;
+	border-width: 1px;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
 }

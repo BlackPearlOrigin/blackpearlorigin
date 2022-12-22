@@ -29,6 +29,7 @@ pub fn init() {
     let gamedb_path = pbp_path.join("library.db");
     let queries_path = pbp_path.join("queries");
     let images_path = pbp_path.join("images");
+    let configfile_path = pbp_path.join("config.json");
 
     // Create the default directories if they don't exist
     if !pbp_path.exists() {
@@ -45,6 +46,9 @@ pub fn init() {
     }
     if !images_path.exists() {
         create(&images_path)
+    }
+    if !configfile_path.exists() {
+        create(&configfile_path)
     }
 
     // If the library database doesn't exist, create it

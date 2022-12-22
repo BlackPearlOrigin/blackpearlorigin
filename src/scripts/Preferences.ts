@@ -1,5 +1,6 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
+import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
 
 // TS Function -> Rust Function
 // Invokes a function that installs a scraper
@@ -18,4 +19,16 @@ export async function wipeLibrary() {
 		invoke('wipe_library');
 		await message('Library successfully deleted', 'Library Deletion');
 	}
+}
+
+export async function saveData(lang: string) {
+	let dataObj = {
+		currentLang: lang,
+	};
+
+	let dataObjString = JSON.stringify(dataObj);
+
+	await writeTextFile('config.json', dataObjString, {
+		dir: BaseDirectory.AppLocalData,
+	});
 }

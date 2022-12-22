@@ -65,7 +65,6 @@
 							</p>
 							<p class="game-desc">
 								{game.description}
-								{game.exe_path}
 							</p>
 						</div>
 					</div>

@@ -6,20 +6,25 @@
 
 <main class="container">
 	<div style="text-align:center;" class="main">
-		<h1>{$t('home.welcomeText')} <b class="underscore">|</b></h1>
+		<h1 class="welcome-text">
+			{$t('home.welcomeText')} <b class="underscore">|</b>
+		</h1>
 	</div>
 
 	<div class="main">
 		{#await pbpNews()}
-			<p class="title">{$t('loadingText')}</p>
+			<p class="news">{$t('loadingText')}</p>
 		{:then newsResolved}
-			<div class="title">
-				<span id="title">Changelog:</span>
-				{newsResolved.title}
-			</div>
-			<div class="body">
-				{newsResolved.body}
-			</div>
+			{#each newsResolved as newsObj}
+				<div class="news">
+					<p class="version">{newsObj.version}</p>
+					<div class="additions">
+						{#each newsObj.additions as additions}
+							<li>{additions}</li>
+						{/each}
+					</div>
+				</div>
+			{/each}
 		{/await}
 	</div>
 </main>

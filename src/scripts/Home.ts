@@ -10,9 +10,5 @@ export async function pbpNews() {
 	});
 
 	const responseParsed = JSON.parse(response.data);
-
-	return {
-		title: responseParsed.title,
-		body: responseParsed.body,
-	};
+	return responseParsed;
 }

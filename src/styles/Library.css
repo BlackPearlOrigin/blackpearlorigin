@@ -8,7 +8,7 @@
 
 .game-button-run {
 	background-color: #040404;
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	border-color: var(--accent-color);
 	color: var(--accent-color);
@@ -19,7 +19,7 @@
 
 .game-button-delete {
 	background-color: #040404;
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	border-color: #ff0000;
 	color: #ff0000;
@@ -40,13 +40,13 @@
 
 .game-desc {
 	padding-left: 8px;
-	padding-top: 5px;
+	padding-top: 10px;
 }
 
 .game-panel {
 	padding: 8px 8px 8px 8px;
 	margin: 8px 0px 8px 0px;
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	border-color: var(--accent-color);
 }
@@ -79,7 +79,7 @@
 .top > button {
 	background-color: #040404;
 	border-color: var(--accent-color);
-	border-style: dashed;
+	border-style: solid;
 	border-width: 1px;
 	padding: 4px 16px 4px 16px;
 	margin-bottom: 1.2rem;

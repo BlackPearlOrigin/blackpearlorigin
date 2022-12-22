@@ -8,7 +8,8 @@
 	"languageText": "Idioma",
 	"preferences": {
 		"installPlugin": "Instalar um Plugin",
-		"wipeLibrary": "Apagar a Biblioteca"
+		"wipeLibrary": "Apagar a Biblioteca",
+		"saveText": "Salvar"
 	},
 	"library": {
 		"add": "Adicionar",

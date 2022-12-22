@@ -33,7 +33,7 @@
         "newGame": {
             "gameTitle": "Cím",
             "addExec": "Futtatható fájl hozzáadása",
-            "none": "None",
+            "none": "Nincs kép",
             "addImg": "Borítókép hozzáadása",
             "desc": "Leírás",
             "done": "Kész"

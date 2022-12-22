@@ -16,7 +16,6 @@ export default {
 	fr: frLang
 };
 
-// note to self:
 // credit to ohvii for swedish translation
 // credit to despair for french translation
 // credit to plaga for hungarian translation

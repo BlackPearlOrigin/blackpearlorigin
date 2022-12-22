@@ -5,6 +5,7 @@ import eoLang from './lang/eo.json';
 import huLang from './lang/hu.json';
 import seLang from './lang/se.json';
 import frLang from './lang/fr.json';
+import plLang from './lang/pl.json';
 
 export default {
 	en: enLang,
@@ -13,7 +14,8 @@ export default {
 	eo: eoLang,
 	hu: huLang,
 	se: seLang,
-	fr: frLang
+	fr: frLang,
+	pl: plLang
 };
 
 // credit to ohvii for swedish translation

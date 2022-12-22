@@ -24,16 +24,14 @@
 					>{$t('preferences.wipeLibrary')}</button
 				>
 			</div>
-
+			<label for="select">{$t('languageText')}</label>
 			<div class="locale-settings">
-				<label for="select">{$t('languageText')}</label>
 				<select bind:value="{$locale}">
 					{#each languages as lang}
 						<option value="{lang}">{lang}</option>
 					{/each}
 				</select>
 			</div>
-			<br />
 			<button class="save-button" on:click="{() => saveData($locale)}"
 				>{$t('preferences.saveText')}</button
 			>

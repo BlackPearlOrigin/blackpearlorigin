@@ -2,18 +2,11 @@
 	--accent-color: #00ff00;
 }
 
-.section {
+.button-group {
 	border-style: solid;
 	border-width: 1px;
 	border-color: var(--accent-color);
-	margin-top: 8px;
-	padding-left: 10px;
-	padding-top: 4px;
-	padding-bottom: 10px;
-}
-
-.button-group {
-	margin-bottom: 3px;
+	text-align: center;
 }
 
 .button-group > button {
@@ -40,17 +33,24 @@
 	font-size: 13px;
 	margin-left: 2px;
 	display: inline;
-
-	border-color: #00ff00;
-	border-width: 1px;
-	border-style: solid;
 	padding: 7px;
+}
+
+.locale-settings > select {
+	background-color: black;
+	color: white;
+	padding: 6px;
+	border-color: #00ff00;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .save-button {
 	font-size: 13px;
 	background-color: inherit;
 	border-color: #00ff00;
+	border-style: solid;
+	border-width: 1px;
 	color: white;
 	padding: 7px;
 	margin-top: 25px;

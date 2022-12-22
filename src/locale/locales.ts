@@ -20,7 +20,7 @@ export default {
 	fr: frLang,
 	ee: eeLang,
 	ar: arLang,
-	fi: fiLang,,
+	fi: fiLang,
 	pl: plLang
 };
 

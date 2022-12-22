@@ -33,7 +33,7 @@
 		"newGame": {
 			"gameTitle": "Titel",
 			"addExec": "Ausführbare Datei hinzufügen",
-			"none": "Kein Bild",
+			"none": "Kein",
 			"addImg": "Bild hinzufügen",
 			"desc": "Beschreibung",
 			"done": "Fertig"

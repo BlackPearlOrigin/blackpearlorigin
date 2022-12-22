@@ -94,7 +94,7 @@ fn file_dialog() -> String {
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
     match FileDialog::new()
-        .add_filter("Executables", &["exe", "com", "cmd", "bat"])
+        .add_filter("Executables", &["exe", "com", "cmd", "bat", "sh"])
         .set_directory("/")
         .pick_file()
     {
@@ -112,7 +112,7 @@ fn image_dialog() -> String {
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
     match FileDialog::new()
-        .add_filter("Images", &["png", "jpg", "jpeg", "gif", "bmp", "ico"])
+        .add_filter("Images", &["png", "jpg", "jpeg", "gif", "bmp", "ico", "webp"])
         .set_directory("/")
         .pick_file()
     {

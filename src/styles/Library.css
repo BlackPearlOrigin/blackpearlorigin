@@ -3,7 +3,7 @@
 }
 
 .buttons {
-	padding: 8px 8px 8px 8px;
+	padding: 15px 0px 8px 8px;
 }
 
 .game-button-run {
@@ -30,6 +30,17 @@
 
 .game-text {
 	display: flex;
+	padding-top: 8px;
+	padding-left: 10px;
+}
+
+.game-info {
+	padding-left: 5px;
+}
+
+.game-desc {
+	padding-left: 8px;
+	padding-top: 5px;
 }
 
 .game-panel {

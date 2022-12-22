@@ -5,5 +5,7 @@
 	"editor.formatOnType": true,
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
-	}
+	},
+	"i18n-ally.localesPaths": ["src/locale/lang"],
+	"i18n-ally.keystyle": "nested"
 }

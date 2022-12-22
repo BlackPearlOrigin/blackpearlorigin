@@ -11,7 +11,7 @@
 
 	<div class="main">
 		{#await pbpNews()}
-			<p class="title">Loading</p>
+			<p class="title">{$t('loadingText')}</p>
 		{:then newsResolved}
 			<div class="title">
 				<span id="title">Changelog:</span>

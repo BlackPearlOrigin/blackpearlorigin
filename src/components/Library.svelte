@@ -9,6 +9,7 @@
 	import NewGame from './modals/NewGame.svelte';
 	import '../styles/Library.css';
 	import { t } from '../locale/i18n';
+	import { convertFileSrc } from '@tauri-apps/api/tauri';
 
 	// Gets the open function from simple-modal context
 	const { open }: any = getContext('simple-modal');
@@ -51,16 +52,22 @@
 					<div class="game-text">
 						<img
 							class="game-image"
-							src="{game.image}"
+							src="{convertFileSrc(game.image)}"
 							alt="{game.name}"
 							height="100"
 							width="100"
 						/>
-						<p class="game-title">{game.name}</p>
-						<p class="small-info">
-							{game.playtime}
-							{$t('library.playtime')}
-						</p>
+						<div class="game-info">
+							<p class="game-title">{game.name}</p>
+							<p class="small-info">
+								{game.playtime}
+								{$t('library.playtime')}
+							</p>
+							<p class="game-desc">
+								{game.description}
+								{game.exe_path}
+							</p>
+						</div>
 					</div>
 					<div class="buttons">
 						<button

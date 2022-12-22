@@ -73,7 +73,7 @@
 			styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}"
 			styleWindow="{{
 				backgroundColor: '#000',
-				border: '2px dashed #00ff00',
+				border: '1px solid #00ff00',
 				borderRadius: '0px',
 				float: 'center',
 			}}"

@@ -33,22 +33,22 @@ pub fn init() {
 
     // Create the default directories if they don't exist
     if !pbp_path.exists() {
-        create(&pbp_path)
+        create_folder(&pbp_path)
     }
     if !temp_path.exists() {
-        create(&temp_path)
+        create_folder(&temp_path)
     }
     if !queries_path.exists() {
-        create(&queries_path)
+        create_folder(&queries_path)
     }
     if !scraper_path.exists() {
-        create(&scraper_path)
+        create_folder(&scraper_path)
     }
     if !images_path.exists() {
-        create(&images_path)
+        create_folder(&images_path)
     }
     if !configfile_path.exists() {
-        create(&configfile_path)
+        create_config(&configfile_path)
     }
 
     // If the library database doesn't exist, create it
@@ -71,7 +71,7 @@ pub fn init() {
     }
 
     // Simplified function for creating directories
-    fn create(path: &Path) {
+    fn create_folder(path: &Path) {
         match fs::create_dir_all(path) {
             Ok(k) => {
                 println!("Successfully created folder {}", &path.display());
@@ -83,6 +83,21 @@ pub fn init() {
                 e
             ),
         }
+    }
+
+    // Creates the config file and writes to it
+    fn create_config(path: &Path) {
+        let file = match File::create(path) {
+            Ok(k) => {
+                println!("Successfully created file {}", &path.display());
+                k
+            },
+            Err(e) => {
+                panic!("Error while creating config file: {}", e)
+            }
+        };
+
+        file.write_all(br#"{{ "currentLang": "en" }}"#).expect("Failed to write to config file");
     }
 
     // Create a new file object

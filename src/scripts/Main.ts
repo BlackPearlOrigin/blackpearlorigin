@@ -15,6 +15,5 @@ export async function getCurrentLocale() {
 // TS Function
 // - Loads the current locale
 export async function loadLocale() {
-	locale.set('en');
-	//locale.set(await getCurrentLocale());
+	locale.set(await getCurrentLocale());
 }

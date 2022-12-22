@@ -1,0 +1,42 @@
+{
+	"homeText": "Kodu",
+	"browseText": "Valik",
+	"libraryText": "Mängud",
+	"downloadsText": "Allalaadimised",
+	"prefsText": "Eelistused",
+	"loadingText": "Laedakse",
+	"languageText": "Keel",
+	"preferences": {
+		"installPlugin": "Installi pluginad",
+		"wipeLibrary": "Tühista mängud",
+		"saveText": "Salvesta"
+	},
+	"library": {
+		"add": "Lisa",
+		"playtime": "tunde mängitud",
+		"editGame": "Muuda",
+		"deleteGame": "Kustuta",
+		"run": "Alusta"
+	},
+	"home": {
+		"welcomeText": "Tere tulemast Project Black Pearli",
+		"changelogText": "Muudatuste logi: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Valitse plugina",
+		"nothingFound": "Mänge ei leitud",
+		"downloadText": "Lae alla",
+		"search": "Otsi"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Nimi",
+			"addExec": "Lisa mäng",
+			"none": "Puuduv",
+			"addImg": "Lisa pilt",
+			"desc": "Kirjeldus",
+			"done": "Valmis"
+		}
+	}
+}

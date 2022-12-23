@@ -14,6 +14,16 @@
 		"allowlist": {
 			"all": true,
 			"fs": {
+				"all": false,
+				"readFile": true,
+				"writeFile": true,
+				"exists": true,
+				"createDir": true,
+				"readDir": false,
+				"removeDir": false,
+				"removeFile": false,
+				"renameFile": false,
+				"copyFile": false,
 				"scope": ["$APPLOCALDATA/*"]
 			},
 			"path": {
@@ -67,9 +77,6 @@
 				"digestAlgorithm": "sha256",
 				"timestampUrl": ""
 			}
-		},
-		"security": {
-			"csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost"
 		},
 		"updater": {
 			"active": false

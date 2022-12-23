@@ -8,8 +8,8 @@ export async function runGame(path: string) {
 
 // TS Function -> Rust Function
 // - Deletes the game from the db
-export async function deleteGame(name: string) {
-	invoke('delete_from_db', { name: name });
+export async function deleteGame(id: number) {
+	invoke('delete_from_db', { id: id });
 }
 
 // TS Function -> Rust Function

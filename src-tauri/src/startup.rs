@@ -59,7 +59,13 @@ pub fn init() {
 
         // Establish a connection with the database, declare a query in a string and execute it
         let connection = sqlite::open(&gamedb_path).expect("Connecting to new database failed");
-        let query = "CREATE TABLE games (name TEXT, executable TEXT, hours FLOAT, description TEXT, image TEXT);";
+        let query = "CREATE TABLE games (\
+            id INTEGER PRIMARY KEY, \
+            name TEXT, \
+            executable TEXT, \
+            hours FLOAT, \
+            description TEXT, \
+            image TEXT);";
         connection
             .execute(query)
             .expect("Failed to setup database table");
@@ -91,13 +97,14 @@ pub fn init() {
             Ok(k) => {
                 println!("Successfully created file {}", &path.display());
                 k
-            },
+            }
             Err(e) => {
                 panic!("Error while creating config file: {}", e)
             }
         };
 
-        file.write_all(br#"{{ "currentLang": "en" }}"#).expect("Failed to write to config file");
+        file.write_all(br#"{{ "currentLang": "en" }}"#)
+            .expect("Failed to write to config file");
     }
 
     // Create a new file object

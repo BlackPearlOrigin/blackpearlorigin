@@ -85,7 +85,7 @@
 						<button
 							class="game-button-delete"
 							on:click="{() => {
-								operation_handler(() => deleteGame(game.name));
+								operation_handler(() => deleteGame(game.id));
 							}}">{$t('library.deleteGame')}</button
 						>
 					</div>

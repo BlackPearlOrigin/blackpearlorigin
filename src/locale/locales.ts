@@ -19,6 +19,7 @@ import dutchNL from './lang/nl.json';
 import russianRU from './lang/ru.json';
 import serbianSR from './lang/sr.json';
 import turkishTR from './lang/tr.json';
+import romanianRO from './lang/ro.json';
 
 export default {
 	en: englishUS,
@@ -42,6 +43,7 @@ export default {
 	ru: russianRU,
 	sr: serbianSR,
 	tr: turkishTR,
+	ro: romanianRO,
 };
 
 /*
@@ -62,5 +64,7 @@ export default {
 		SteinScanner and Mr Mango:	Polish translation
 		Sup3r:			     		Portuguese (Portugal) translation
 		AlexanderMaxRanabel: 		Turkish translation
+		SoulStyle:					Romanian translation
+		TeeNam:						Vietnamese translation (To be finished)
 		Terrence Tingleberry:		Proofreading those translations
 */

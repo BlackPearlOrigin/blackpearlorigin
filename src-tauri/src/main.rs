@@ -78,16 +78,6 @@ fn install_scraper() {
 }
 
 #[tauri::command]
-fn wipe_library() {
-    let connection =
-        sqlite::open(paths::get_pbp().join("library.db")).expect("Connecting to database failed");
-    let query = "DELETE FROM games;";
-    connection
-        .execute(query)
-        .expect("Executing database query failed");
-}
-
-#[tauri::command]
 fn file_dialog() -> String {
     println!("Executable file dialog opened.");
 
@@ -151,11 +141,11 @@ fn main() {
             image_dialog,
             run_game,
             install_scraper,
-            wipe_library,
             database::save_to_db,
             database::get_from_db,
             database::edit_in_db,
-            database::delete_from_db
+            database::delete_from_db,
+            database::wipe_library,
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

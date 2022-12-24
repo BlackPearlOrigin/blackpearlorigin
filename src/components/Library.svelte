@@ -1,10 +1,5 @@
 <script lang="ts">
-	import {
-		getGames,
-		deleteGame,
-		runGame,
-		editData,
-	} from '../scripts/Library';
+	import { getGames, deleteGame, runGame } from '../scripts/Library';
 	import { getContext } from 'svelte';
 	import NewGame from './modals/NewGame.svelte';
 	import '../styles/Library.css';
@@ -46,7 +41,7 @@
 			}
 		);
 	let games: any = getGames();
-	function operation_handler(operation: () => void) {
+	function operationHandler(operation: () => void) {
 		operation();
 		games = getGames();
 	}
@@ -92,20 +87,19 @@
 						<button
 							class="game-button-run"
 							on:click="{() =>
-								operation_handler(() =>
-									runGame(game.exe_path)
-								)}">{$t('library.run')}</button
+								operationHandler(() => runGame(game.exe_path))}"
+							>{$t('library.run')}</button
 						>
 						<button
 							class="game-button-run"
 							on:click="{() =>
-								operation_handler(() => showEditModal(game))}"
+								operationHandler(() => showEditModal(game))}"
 							>{$t('library.editGame')}</button
 						>
 						<button
 							class="game-button-delete"
 							on:click="{() => {
-								operation_handler(() => deleteGame(game.id));
+								operationHandler(() => deleteGame(game.id));
 							}}">{$t('library.deleteGame')}</button
 						>
 					</div>

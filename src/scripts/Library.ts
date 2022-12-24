@@ -21,23 +21,23 @@ export async function getGames() {
 
 // TS Function -> Rust Function
 // - Saves game to db
-export function saveData(title: string, executablePath: string, description: string, image_path: string) {
+export function saveData(title: string, executablePath: string, description: string, imagePath: string) {
 	invoke('save_to_db', {
 		title: title,
 		exePath: executablePath,
 		description: description,
-		image: image_path,
+		image: imagePath,
 	});
 }
 
 // TS Function -> Rust Function
 // - Edits game in db
-export function editData(id: number, title: string, executablePath: string, description: string, image_path: string) {
+export function editData(id: number, title: string, executablePath: string, description: string, imagePath: string) {
 	invoke('edit_in_db', {
 		id: id,
 		name: title,
 		executable: executablePath,
 		description: description,
-		image: image_path,
+		image: imagePath,
 	});
 }

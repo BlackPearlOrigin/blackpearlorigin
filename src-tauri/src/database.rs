@@ -140,3 +140,13 @@ pub fn delete_from_db(id: i64) {
 
     while let Ok(sqlite::State::Row) = statement.next() {}
 }
+
+#[tauri::command]
+pub fn wipe_library() {
+    let connection =
+        sqlite::open(paths::get_pbp().join("library.db")).expect("Connecting to database failed");
+    let query = "DELETE FROM games;";
+    connection
+        .execute(query)
+        .expect("Executing database query failed");
+}

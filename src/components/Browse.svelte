@@ -3,6 +3,19 @@
 	import '../styles/Browse.css';
 	import { t } from '../locale/i18n';
 
+  let key: string;
+
+  const handleKeypress = (event: any) => {
+    key = event.key;
+    
+    if (key.toString() == "Enter") {
+      search(selectedScraper, inputText).then(() => {
+        searchData = displayResults()
+      })
+    }
+  }
+  
+
 	// Defines variables for the:
 	// - Search text
 	// - Scraper selected
@@ -15,6 +28,9 @@
 
 	const data = browse();
 </script>
+
+<svelte:window on:keydown="{handleKeypress}" />
+
 
 <main class="container">
 	<div class="main">

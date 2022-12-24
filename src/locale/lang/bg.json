@@ -1,0 +1,42 @@
+{
+	"homeText": "Начална страница",
+	"browseText": "Търсене",
+	"libraryText": "Библиотека",
+	"downloadsText": "Свалени",
+	"prefsText": "Предпочитания",
+	"loadingText": "Зареждане",
+	"languageText": "Език",
+	"preferences": {
+		"installPlugin": "Инсталирай плъгин",
+		"wipeLibrary": "Изчисти библиотеката",
+		"saveText": "Запази"
+	},
+	"library": {
+		"add": "Добави",
+		"playtime": "изиграни часове",
+		"editGame": "Редактиране",
+		"deleteGame": "Изтрий",
+		"run": "Пусни"
+	},
+	"home": {
+		"welcomeText": "Добре дошли в Project Black Pearl",
+		"changelogText": "Списък на промените: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Изперете плъгин",
+		"nothingFound": "Няма намерени игри",
+		"downloadText": "Свали",
+		"search": "Търсене"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Заглавие",
+			"addExec": "Добави изпълнителен файл",
+			"none": "Нито един",
+			"addImg": "Добави снимка",
+			"desc": "Описание",
+			"done": "Свършено"
+		}
+	}
+}

@@ -56,13 +56,6 @@ pub fn save_to_db(title: String, exe_path: String, description: String, image: S
     (name, executable, hours, description, image) \
     VALUES (?, ?, ?, ?, ?);";
     let mut statement = connection.prepare(query).expect("Failed to prepare query");
-    println!(
-        "Title: {:?}, Exe: {:?}, Desc: {:?}, Image: {:?}",
-        title,
-        exe_path,
-        description,
-        image_path.display().to_string()
-    );
     statement.bind((1, &*title)).expect("Failed to bind title");
     statement
         .bind((2, &*exe_path))

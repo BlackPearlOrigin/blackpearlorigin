@@ -30,9 +30,7 @@ pub fn build_game(
     }
 }
 
-#[tauri::command]
-pub fn save_to_db(title: String, exe_path: String, description: String, image: String) {
-    // copy the image to the images folder
+pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> {
     let uuid = Uuid::new_v4();
     let uuid_simple = uuid.simple().to_string();
 
@@ -46,6 +44,13 @@ pub fn save_to_db(title: String, exe_path: String, description: String, image: S
         ));
         std::fs::copy(image, image_path.clone()).expect("Copying image failed");
     };
+    Ok(image_path)
+}
+
+#[tauri::command]
+pub fn save_to_db(title: String, exe_path: String, description: String, image: String) {
+    // copy the image to the images folder
+    let image_path = copy_image(&image).expect("Copying image failed");
 
     // Establish a connection to the database file (library.db)
     let connection = sqlite::open(paths::get_pbp().join("library.db"))
@@ -98,6 +103,30 @@ pub fn get_from_db() -> Vec<Game> {
         ))
     }
     result_vec
+}
+
+#[tauri::command]
+pub fn edit_in_db(id: i64, name: String, executable: String, description: String, image: String) {
+    let connection = sqlite::open(paths::get_pbp().join("library.db"))
+        .expect("Crashed while connecting to database");
+    // copy new image to location
+    let image_path = copy_image(&image).expect("Copying image failed");
+    let query =
+        "UPDATE games SET name = ?, executable = ?, description = ?, image = ? WHERE id = ?;";
+    let mut statement = connection.prepare(query).expect("Failed to prepare query");
+    statement.bind((1, &*name)).expect("Failed to bind name");
+    statement
+        .bind((2, &*executable))
+        .expect("Failed to bind executable");
+    statement
+        .bind((3, &*description))
+        .expect("Failed to bind description");
+    statement
+        .bind((4, &*image_path.display().to_string()))
+        .expect("Failed to bind image");
+    statement.bind((5, id)).expect("Failed to bind id");
+
+    while let Ok(sqlite::State::Row) = statement.next() {}
 }
 
 #[tauri::command]

@@ -154,6 +154,7 @@ fn main() {
             wipe_library,
             database::save_to_db,
             database::get_from_db,
+            database::edit_in_db,
             database::delete_from_db
         ])
         .build(tauri::generate_context!())

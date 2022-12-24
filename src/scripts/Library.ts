@@ -13,14 +13,31 @@ export async function deleteGame(id: number) {
 }
 
 // TS Function -> Rust Function
-// - Edits the game data, TBD
-export function editGame(name: string) {
-	invoke('edit_from_db', { name: name });
-}
-
-// TS Function -> Rust Function
 // - Gets all games from the db
 export async function getGames() {
 	const games = await invoke('get_from_db');
 	return games;
+}
+
+// TS Function -> Rust Function
+// - Saves game to db
+export function saveData(title: string, executablePath: string, description: string, image_path: string) {
+	invoke('save_to_db', {
+		title: title,
+		exePath: executablePath,
+		description: description,
+		image: image_path,
+	});
+}
+
+// TS Function -> Rust Function
+// - Edits game in db
+export function editData(id: number, title: string, executablePath: string, description: string, image_path: string) {
+	invoke('edit_in_db', {
+		id: id,
+		name: title,
+		executable: executablePath,
+		description: description,
+		image: image_path,
+	});
 }

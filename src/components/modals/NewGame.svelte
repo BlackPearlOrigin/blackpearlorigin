@@ -3,12 +3,14 @@
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.css';
 	import { t } from '../../locale/i18n';
+	import { saveData, editData } from '../../scripts/Library';
 
 	const { close }: any = getContext('simple-modal');
-	let title: string;
-	let executablePath: any;
-	let description: string;
-	let image_path: any;
+	export let title: string;
+	export let id: number;
+	export let executablePath: any;
+	export let description: string;
+	export let imagePath: any;
 
 	// TS Function -> Rust Function
 	// - Opens a File selector dialog
@@ -16,18 +18,17 @@
 		invoke('file_dialog').then((message) => (executablePath = message));
 	}
 	function chooseImage() {
-		invoke('image_dialog').then((message) => (image_path = message));
+		invoke('image_dialog').then((message) => (imagePath = message));
 	}
 
-	// TS Function -> Rust Function
-	// - Saves the data on the input fields to a SQLite DB
-	function saveData() {
-		invoke('save_to_db', {
-			title: title,
-			exePath: executablePath,
-			description: description,
-			image: image_path,
-		});
+	export let operationToPerform: string = 'Save';
+	function operation_handler(operation: string) {
+		if (operation === 'Save') {
+			saveData(title, executablePath, description, imagePath);
+		} else if (operation === 'Edit') {
+			editData(id, title, executablePath, description, imagePath);
+		}
+		close();
 	}
 </script>
 
@@ -60,12 +61,8 @@
 				>{$t('modals.newGame.addImg')}</button
 			>
 
-			<!-- Binds the inner html to image_path -->
-			<p
-				class="path"
-				contenteditable="true"
-				bind:innerHTML="{image_path}"
-			>
+			<!-- Binds the inner html to imagePath -->
+			<p class="path" contenteditable="true" bind:innerHTML="{imagePath}">
 				{$t('modals.newGame.none')}
 			</p>
 		</div>
@@ -78,7 +75,7 @@
 	<!-- I think you get it by now -->
 	<button
 		on:click="{() => {
-			saveData();
+			operation_handler(operationToPerform);
 			close();
 		}}"
 		class="ng-button done-btn"

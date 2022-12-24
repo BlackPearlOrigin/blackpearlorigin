@@ -3,7 +3,7 @@
 		getGames,
 		deleteGame,
 		runGame,
-		editGame,
+		editData,
 	} from '../scripts/Library';
 	import { getContext } from 'svelte';
 	import NewGame from './modals/NewGame.svelte';
@@ -15,7 +15,7 @@
 	const { open }: any = getContext('simple-modal');
 
 	// When the modal is closed re-run the function getGames
-	const showModal = () =>
+	const showNewModal = () =>
 		open(
 			NewGame,
 			{},
@@ -26,7 +26,25 @@
 				},
 			}
 		);
-
+	// show modal to edit games using prepolulated values
+	const showEditModal = (game: any) =>
+		open(
+			NewGame,
+			{
+				id: game.id,
+				title: game.name,
+				description: game.description,
+				imagePath: game.image,
+				executablePath: game.exe_path,
+				operationToPerform: 'Edit',
+			},
+			{},
+			{
+				onClose: () => {
+					games = getGames();
+				},
+			}
+		);
 	let games: any = getGames();
 	function operation_handler(operation: () => void) {
 		operation();
@@ -39,7 +57,9 @@
 		<div class="top">
 			<h1 style="display:inline-block;">{$t('libraryText')}</h1>
 			<!-- Creates a modal when the button is clicked -->
-			<button on:click="{() => showModal()}">{$t('library.add')}</button>
+			<button on:click="{() => showNewModal()}"
+				>{$t('library.add')}</button
+			>
 		</div>
 
 		<!-- Awaits for games to be resolved -->
@@ -79,7 +99,7 @@
 						<button
 							class="game-button-run"
 							on:click="{() =>
-								operation_handler(() => editGame(game.name))}"
+								operation_handler(() => showEditModal(game))}"
 							>{$t('library.editGame')}</button
 						>
 						<button

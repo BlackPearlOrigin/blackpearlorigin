@@ -21,7 +21,7 @@
 				"createDir": true,
 				"readDir": false,
 				"removeDir": false,
-				"removeFile": false,
+				"removeFile": true,
 				"renameFile": false,
 				"copyFile": false,
 				"scope": ["$APPLOCALDATA/*"]

@@ -1,5 +1,5 @@
 import { BaseDirectory } from '@tauri-apps/api/path';
-import { readTextFile } from '@tauri-apps/api/fs';
+import { readTextFile, removeFile } from '@tauri-apps/api/fs';
 import { invoke } from '@tauri-apps/api/tauri';
 
 // TS Function
@@ -24,7 +24,7 @@ export async function search(path: string, query: string) {
 
 	// Invoke the rust backend for initializing the scraper when a user presses the search button
 	if (path.endsWith('.exe')) {
-		invoke('handle_scraper', { path: path, query: query });
+		await invoke('handle_scraper', { path: path, query: query });
 	}
 }
 
@@ -38,5 +38,15 @@ export async function displayResults() {
 
 	// Parses that same file and then returns it
 	const json = JSON.parse(file);
+
+  await removeResults()
 	return json;
+}
+
+// Exported TS Function
+// - Deletes the results file
+export async function removeResults() {
+  await removeFile('queries/results.json', {
+    dir: BaseDirectory.AppLocalData
+  })
 }

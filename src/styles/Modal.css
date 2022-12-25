@@ -2,6 +2,12 @@
 	--accent-color: #00ff00;
 }
 
+.error {
+	color: red;
+	margin-bottom: 8px;
+	margin-top: 0;
+}
+
 .ng-button {
 	color: white;
 	background-color: #040404;
@@ -48,6 +54,7 @@ button:hover {
 .newgame > textarea {
 	font-size: 15px;
 	margin-bottom: 8px;
+	margin-top: 8px;
 }
 
 .newgame > input[type='text']::placeholder,

@@ -37,22 +37,12 @@ pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> 
     let mut image_path = Path::new("").to_path_buf();
     if !image.is_empty() {
         let image = Path::new(&image);
-
-        if image.ends_with(".png")
-        || image.ends_with(".jpg")
-        || image.ends_with(".jpeg")
-        || image.ends_with(".gif")
-        || image.ends_with(".bmp")
-        || image.ends_with(".ico")
-        || image.ends_with(".webp")
-        {
-            image_path = paths::get_pbp().join("images").join(format!(
-                "{}.{}",
-                uuid_simple,
-                image.extension().unwrap().to_str().unwrap()
-            ));
-            std::fs::copy(image, image_path.clone()).expect("Copying image failed");
-        }
+        image_path = paths::get_pbp().join("images").join(format!(
+            "{}.{}",
+            uuid_simple,
+            image.extension().unwrap().to_str().unwrap()
+        ));
+        std::fs::copy(image, image_path.clone()).expect("Copying image failed");
     };
     Ok(image_path)
 }

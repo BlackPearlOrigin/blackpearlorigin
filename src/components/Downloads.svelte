@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../styles/Downloads.css';
+	import '../styles/Downloads.scss';
 	import { t } from '../locale/i18n';
 </script>
 

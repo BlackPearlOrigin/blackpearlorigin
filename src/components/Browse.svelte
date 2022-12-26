@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browse, search, displayResults } from '../scripts/Browse';
-	import '../styles/Browse.css';
+	import '../styles/Browse.scss';
 	import { t } from '../locale/i18n';
 
   let key: string;

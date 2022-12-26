@@ -2,7 +2,7 @@
 	import { getGames, deleteGame, runGame } from '../scripts/Library';
 	import { getContext } from 'svelte';
 	import NewGame from './modals/NewGame.svelte';
-	import '../styles/Library.css';
+	import '../styles/Library.scss';
 	import { t } from '../locale/i18n';
 	import { convertFileSrc } from '@tauri-apps/api/tauri';
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import translations from '../locale/locales';
 	import { dict, locale, t } from '../locale/i18n';
-	import '../styles/Preferences.css';
+	import '../styles/Preferences.scss';
 	import {
 		installScraper,
 		saveData,

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { pbpNews } from '../scripts/Home';
-	import '../styles/Home.css';
+	import '../styles/Home.scss';
 	import { t } from '../locale/i18n';
 </script>
 

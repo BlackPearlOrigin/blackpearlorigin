@@ -17,6 +17,8 @@
 
 use execute::Execute;
 use rfd::FileDialog;
+use tauri::Manager;
+use window_vibrancy::apply_blur;
 use std::{fs, thread};
 use std::{path::Path, process::Command};
 
@@ -134,6 +136,19 @@ fn main() {
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below
     tauri::Builder::default()
+        .setup(|app| {
+            let win = app.get_window("main").unwrap();
+
+        #[cfg(target_os = "macos")]
+        apply_vibrancy(&win, NSVisualEffectMaterial::AppearanceBased, None, None)
+          .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
+
+        #[cfg(target_os = "windows")]
+        apply_blur(&win, Some((18, 18, 18, 125)))
+          .expect("Unsupported platform! 'apply_blur' is only supported on Windows");
+
+        Ok(())
+        })
         // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
             handle_scraper,

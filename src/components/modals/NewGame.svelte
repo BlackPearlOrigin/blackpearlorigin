@@ -24,6 +24,12 @@
 	export let operationToPerform: string = 'Save';
 	function operation_handler(operation: string) {
 		if (operation === 'Save') {
+      console.log(`${title}, ${executablePath}, ${description}, ${imagePath}`)
+  
+      if (title === undefined) title = 'No title'
+      if (description === undefined) description = 'No description'
+      if (executablePath === 'None') return;
+      if (imagePath === 'None') return;
 			saveData(title, executablePath, description, imagePath);
 		} else if (operation === 'Edit') {
 			editData(id, title, executablePath, description, imagePath);

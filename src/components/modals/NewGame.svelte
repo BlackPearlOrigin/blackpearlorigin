@@ -12,6 +12,11 @@
 	export let description: string;
 	export let imagePath: any;
 
+	// Defines a function that checks if the same string is empty
+	function isEmpty(string: string) {
+		return string === undefined || string.length === 0 || !string.trim();
+	}
+
 	// TS Function -> Rust Function
 	// - Opens a File selector dialog
 	function chooseExecutable() {
@@ -25,21 +30,20 @@
 	function operation_handler(operation: string) {
 		if (operation === 'Save') {
 			// Checks if there is no title, description, executable or image
-			if (title === undefined || title.length === 0) title = 'No title';
-			if (description === undefined || description.length === 0)
-				description = 'No description';
-			if (executablePath.length === 0) return;
-			if (imagePath.length === 0) return;
+			if (isEmpty(title)) title = 'No title';
+			if (isEmpty(description)) description = 'No description';
+			if (isEmpty(executablePath)) return;
+			if (isEmpty(imagePath)) return;
 
 			saveData(title, executablePath, description, imagePath);
 			close();
 		} else if (operation === 'Edit') {
 			// Checks if there are no title, description, exec or img
 			// If one of them isn't selected, do not let the user exit
-			if (title === undefined || title.length === 0) return;
-			if (description === undefined || description.length === 0) return;
-			if (executablePath.length === 0) return;
-			if (imagePath.length === 0) return;
+			if (isEmpty(title)) return;
+			if (isEmpty(description)) return;
+			if (isEmpty(executablePath)) return;
+			if (isEmpty(imagePath)) return;
 
 			editData(id, title, executablePath, description, imagePath);
 			close();

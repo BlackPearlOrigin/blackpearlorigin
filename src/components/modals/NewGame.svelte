@@ -24,23 +24,26 @@
 	export let operationToPerform: string = 'Save';
 	function operation_handler(operation: string) {
 		if (operation === 'Save') {
-      // Checks if there is no title, description, executable or image
-      if (title === undefined) title = 'No title';
-      if (description === undefined) description = 'No description';
-      if (executablePath === 'None') return;
-      if (imagePath === 'None') return;
-    
-      saveData(title, executablePath, description, imagePath);
-		  close();
-    } else if (operation === 'Edit') {
-      if (title === undefined) return;
-      if (description === undefined) return;
-      if (executablePath === 'None') return;
-      if (imagePath === 'None') return;
+			// Checks if there is no title, description, executable or image
+			if (title === undefined || title.length === 0) title = 'No title';
+			if (description === undefined || description.length === 0)
+				description = 'No description';
+			if (executablePath.length === 0) return;
+			if (imagePath.length === 0) return;
+
+			saveData(title, executablePath, description, imagePath);
+			close();
+		} else if (operation === 'Edit') {
+			// Checks if there are no title, description, exec or img
+			// If one of them isn't selected, do not let the user exit
+			if (title === undefined || title.length === 0) return;
+			if (description === undefined || description.length === 0) return;
+			if (executablePath.length === 0) return;
+			if (imagePath.length === 0) return;
 
 			editData(id, title, executablePath, description, imagePath);
-	    close();
-    }
+			close();
+		}
 	}
 </script>
 
@@ -63,9 +66,7 @@
 				class="path"
 				contenteditable="true"
 				bind:innerHTML="{executablePath}"
-			>
-				{$t('modals.newGame.none')}
-			</p>
+			></p>
 		</div>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseImage -->
@@ -74,9 +75,11 @@
 			>
 
 			<!-- Binds the inner html to imagePath -->
-			<p class="path" contenteditable="true" bind:innerHTML="{imagePath}">
-				{$t('modals.newGame.none')}
-			</p>
+			<p
+				class="path"
+				contenteditable="true"
+				bind:innerHTML="{imagePath}"
+			></p>
 		</div>
 		<textarea
 			name="Description"

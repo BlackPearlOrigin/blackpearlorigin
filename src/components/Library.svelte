@@ -74,10 +74,10 @@
 						/>
 						<div class="game-info">
 							<p class="game-title">{game.name}</p>
-							<p class="small-info">
+							<!-- <p class="small-info">
 								{game.playtime}
 								{$t('library.playtime')}
-							</p>
+							</p> -->
 							<p class="game-desc">
 								{game.description}
 							</p>

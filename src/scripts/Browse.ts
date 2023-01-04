@@ -1,4 +1,4 @@
-import { BaseDirectory } from '@tauri-apps/api/path';
+import { BaseDirectory, join } from '@tauri-apps/api/path';
 import { readTextFile, removeFile } from '@tauri-apps/api/fs';
 import { invoke } from '@tauri-apps/api/tauri';
 
@@ -31,22 +31,24 @@ export async function search(path: string, query: string) {
 // Exported TS Function -> Rust Function
 // - Returns the results of queries/cache.json
 export async function displayResults() {
+	let locationCache: string = await join('queries', 'results.json');
+
 	// Reads the cache file
-	const file = await readTextFile('queries/results.json', {
+	const file = await readTextFile(locationCache, {
 		dir: BaseDirectory.AppLocalData,
 	});
 
 	// Parses that same file and then returns it
 	const json = JSON.parse(file);
 
-  await removeResults()
+	await removeResults();
 	return json;
 }
 
 // Exported TS Function
 // - Deletes the results file
 export async function removeResults() {
-  await removeFile('queries/results.json', {
-    dir: BaseDirectory.AppLocalData
-  })
+	await removeFile('queries/results.json', {
+		dir: BaseDirectory.AppLocalData,
+	});
 }

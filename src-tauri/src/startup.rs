@@ -63,7 +63,6 @@ pub fn init() {
             id INTEGER PRIMARY KEY, \
             name TEXT, \
             executable TEXT, \
-            hours FLOAT, \
             description TEXT, \
             image TEXT);";
         connection

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { invoke } from '@tauri-apps/api/tauri';
+	import { join, appLocalDataDir } from '@tauri-apps/api/path';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
@@ -27,13 +28,18 @@
 	}
 
 	export let operationToPerform: string = 'Save';
-	function operation_handler(operation: string) {
+	async function operation_handler(operation: string) {
 		if (operation === 'Save') {
 			// Checks if there is no title, description, executable or image
 			if (isEmpty(title)) title = 'No title';
 			if (isEmpty(description)) description = 'No description';
 			if (isEmpty(executablePath)) return;
-			if (isEmpty(imagePath)) return;
+			if (isEmpty(imagePath))
+				imagePath = await join(
+					await appLocalDataDir(),
+					'images',
+					'Default.png'
+				);
 
 			saveData(title, executablePath, description, imagePath);
 			close();

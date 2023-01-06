@@ -3,18 +3,17 @@
 	import '../styles/Browse.scss';
 	import { t } from '../locale/i18n';
 
-  let key: string;
+	let key: string;
 
-  const handleKeypress = (event: any) => {
-    key = event.key;
-    
-    if (key.toString() == "Enter") {
-      search(selectedScraper, inputText).then(() => {
-        searchData = displayResults()
-      })
-    }
-  }
-  
+	const handleKeypress = (event: any) => {
+		key = event.key;
+
+		if (key.toString() == 'Enter') {
+			search(selectedScraper, inputText).then(() => {
+				searchData = displayResults();
+			});
+		}
+	};
 
 	// Defines variables for the:
 	// - Search text
@@ -30,7 +29,6 @@
 </script>
 
 <svelte:window on:keydown="{handleKeypress}" />
-
 
 <main class="container">
 	<div class="main">

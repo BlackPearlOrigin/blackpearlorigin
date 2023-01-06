@@ -57,12 +57,12 @@
 		>
 			{$t('libraryText')}
 		</button>
-		<button
+		<!-- <button
 			class="menu-button"
 			on:click="{() => SwitchPage(Pages.Downloads)}"
 		>
 			{$t('downloadsText')}
-		</button>
+		</button> -->
 		<button class="menu-button" on:click="{() => SwitchPage(Pages.Prefs)}">
 			{$t('prefsText')}
 		</button>

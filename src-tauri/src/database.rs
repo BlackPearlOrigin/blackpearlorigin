@@ -7,7 +7,6 @@ pub struct Game {
     pub id: i64,
     pub name: String,
     pub exe_path: String,
-    pub playtime: f64,
     pub description: String,
     pub image: String,
 }
@@ -16,7 +15,6 @@ pub fn build_game(
     id: i64,
     name: String,
     exe_path: String,
-    playtime: f64,
     description: String,
     image: String,
 ) -> Game {
@@ -24,7 +22,6 @@ pub fn build_game(
         id,
         name,
         exe_path,
-        playtime,
         description,
         image,
     }
@@ -58,19 +55,18 @@ pub fn save_to_db(title: String, exe_path: String, description: String, image: S
 
     // Declare the query to execute in the sqlite file
     let query = "INSERT INTO games \
-    (name, executable, hours, description, image) \
-    VALUES (?, ?, ?, ?, ?);";
+    (name, executable, description, image) \
+    VALUES (?, ?, ?, ?);";
     let mut statement = connection.prepare(query).expect("Failed to prepare query");
     statement.bind((1, &*title)).expect("Failed to bind title");
     statement
         .bind((2, &*exe_path))
         .expect("Failed to bind exe_path");
-    statement.bind((3, 0.0)).expect("Failed to bind playtime");
     statement
-        .bind((4, &*description))
+        .bind((3, &*description))
         .expect("Failed to bind description");
     statement
-        .bind((5, &*(image_path.display().to_string())))
+        .bind((4, &*(image_path.display().to_string())))
         .expect("Failed to bind image");
 
     // Execute the query
@@ -97,7 +93,6 @@ pub fn get_from_db() -> Vec<Game> {
             row.read::<i64, _>("id"),
             row.read::<&str, _>("name").to_string(),
             row.read::<&str, _>("executable").to_string(),
-            row.read::<f64, _>("hours"),
             row.read::<&str, _>("description").to_string(),
             row.read::<&str, _>("image").to_string(),
         ))

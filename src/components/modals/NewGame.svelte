@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { invoke } from '@tauri-apps/api/tauri';
+	import { join, appLocalDataDir } from '@tauri-apps/api/path';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
@@ -12,6 +13,11 @@
 	export let description: string;
 	export let imagePath: any;
 
+	// Defines a function that checks if the same string is empty
+	function isEmpty(string: string) {
+		return string === undefined || string.length === 0 || !string.trim();
+	}
+
 	// TS Function -> Rust Function
 	// - Opens a File selector dialog
 	function chooseExecutable() {
@@ -22,25 +28,32 @@
 	}
 
 	export let operationToPerform: string = 'Save';
-	function operation_handler(operation: string) {
+	async function operation_handler(operation: string) {
 		if (operation === 'Save') {
-      // Checks if there is no title, description, executable or image
-      if (title === undefined) title = 'No title';
-      if (description === undefined) description = 'No description';
-      if (executablePath === 'None') return;
-      if (imagePath === 'None') return;
-    
-      saveData(title, executablePath, description, imagePath);
-		  close();
-    } else if (operation === 'Edit') {
-      if (title === undefined) return;
-      if (description === undefined) return;
-      if (executablePath === 'None') return;
-      if (imagePath === 'None') return;
+			// Checks if there is no title, description, executable or image
+			if (isEmpty(title)) title = 'No title';
+			if (isEmpty(description)) description = 'No description';
+			if (isEmpty(executablePath)) return;
+			if (isEmpty(imagePath))
+				imagePath = await join(
+					await appLocalDataDir(),
+					'images',
+					'Default.png'
+				);
+
+			saveData(title, executablePath, description, imagePath);
+			close();
+		} else if (operation === 'Edit') {
+			// Checks if there are no title, description, exec or img
+			// If one of them isn't selected, do not let the user exit
+			if (isEmpty(title)) return;
+			if (isEmpty(description)) return;
+			if (isEmpty(executablePath)) return;
+			if (isEmpty(imagePath)) return;
 
 			editData(id, title, executablePath, description, imagePath);
-	    close();
-    }
+			close();
+		}
 	}
 </script>
 
@@ -63,9 +76,7 @@
 				class="path"
 				contenteditable="true"
 				bind:innerHTML="{executablePath}"
-			>
-				{$t('modals.newGame.none')}
-			</p>
+			></p>
 		</div>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseImage -->
@@ -74,9 +85,11 @@
 			>
 
 			<!-- Binds the inner html to imagePath -->
-			<p class="path" contenteditable="true" bind:innerHTML="{imagePath}">
-				{$t('modals.newGame.none')}
-			</p>
+			<p
+				class="path"
+				contenteditable="true"
+				bind:innerHTML="{imagePath}"
+			></p>
 		</div>
 		<textarea
 			name="Description"

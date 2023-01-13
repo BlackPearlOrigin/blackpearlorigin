@@ -10,13 +10,32 @@
 
 */
 
+use crate::paths;
+use lazy_static::lazy_static;
+use rusqlite::{Connection, Result};
+use rusqlite_migration::{Migrations, M};
 use std::{
     fs::{self, File},
     io::Write,
-    path::Path,
+    path::{Path, PathBuf},
 };
 
-use crate::paths;
+// Define migrations. These are applied atomically.
+lazy_static! {
+    static ref MIGRATIONS: Migrations<'static> =
+        Migrations::new(vec![
+            M::up(include_str!("migrations/1_up.sql")).down(include_str!("migrations/1_down.sql")),
+            // In the future, if the need to change the schema arises, put
+            // migrations below.
+        ]);
+}
+
+fn setup_database(gamedb_path: &PathBuf) -> Result<(), rusqlite_migration::Error> {
+    let mut conn = Connection::open(gamedb_path)?;
+
+    // Update the database schema, atomically
+    MIGRATIONS.to_latest(&mut conn)
+}
 
 pub fn init() {
     // Declare paths for directories and files inside of the PBP folder
@@ -50,24 +69,24 @@ pub fn init() {
     if !configfile_path.exists() {
         create_config(&configfile_path)
     }
-
-    // If the library database doesn't exist, create it
-    // Also execute an SQL query for creating the initial tables
     if !gamedb_path.exists() {
-        // Create the library.db file here
-        File::create(&gamedb_path).expect("Failed to create database file");
+        match File::create(&gamedb_path) {
+            Ok(_k) => {
+                println!("Successfully created file {}", &gamedb_path.display());
+            }
+            Err(e) => {
+                panic!("Error while creating config file: {}", e)
+            }
+        }
+    }
 
-        // Establish a connection with the database, declare a query in a string and execute it
-        let connection = sqlite::open(&gamedb_path).expect("Connecting to new database failed");
-        let query = "CREATE TABLE games (\
-            id INTEGER PRIMARY KEY, \
-            name TEXT, \
-            executable TEXT, \
-            description TEXT, \
-            image TEXT);";
-        connection
-            .execute(query)
-            .expect("Failed to setup database table");
+    match setup_database(&gamedb_path) {
+        Ok(_k) => {
+            println!("Successfully created database {}", &gamedb_path.display());
+        }
+        Err(e) => {
+            panic!("Error while creating database: {}", e)
+        }
     }
 
     // If there are any temporary files created in the last instance of PBP, delete them.

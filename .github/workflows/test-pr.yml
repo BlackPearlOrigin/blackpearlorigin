@@ -5,7 +5,7 @@
 #   Runs the command "yarn tauri build --bundle none"
 #   Runs on every Push to the main branch
 
-name: Push Build Test
+name: PR Build Test
 
 on:
     push:

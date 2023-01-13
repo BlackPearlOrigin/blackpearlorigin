@@ -7,9 +7,7 @@
 
 name: PR Build Test
 
-on:
-    push:
-        branches: [main]
+on: [pull_request]
 
 jobs:
   test-tauri:

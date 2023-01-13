@@ -37,7 +37,11 @@ pub fn save_to_db(
     image: String,
 ) -> Result<(), String> {
     // copy the image to the images folder
-    let image_path = copy_image(&image).unwrap_or(Path::new("").to_path_buf());
+    let image_path = if image == "None" {
+        "None".to_string()
+    } else {
+        copy_image(&image).unwrap_or(Path::new("").to_path_buf()).display().to_string()
+    };
 
     // Establish a connection to the database file (library.db)
     let mut connection =
@@ -53,7 +57,7 @@ pub fn save_to_db(
             title,
             exe_path,
             description,
-            image_path.display().to_string()
+            image_path
         ],
     )
     .map_err(|e| e.to_string())?;

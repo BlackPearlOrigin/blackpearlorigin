@@ -15,7 +15,8 @@
 	"dependencies": {
 		"@tauri-apps/api": "^1.1.0",
 		"svelte-i18n": "^3.6.0",
-		"svelte-modals": "^1.2.0"
+		"svelte-modals": "^1.2.0",
+		"svelte-navigator": "^3.2.2"
 	},
 	"devDependencies": {
 		"@sveltejs/vite-plugin-svelte": "^1.0.1",

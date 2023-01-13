@@ -1929,9 +1929,11 @@ name = "pbpl"
 version = "0.1.0"
 dependencies = [
  "execute",
+ "lazy_static",
  "reqwest",
  "rfd",
  "rusqlite",
+ "rusqlite_migration",
  "serde",
  "serde_json",
  "tauri",
@@ -2396,6 +2398,16 @@ dependencies = [
  "hashlink",
  "libsqlite3-sys",
  "smallvec",
+]
+
+[[package]]
+name = "rusqlite_migration"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e2a7ba8908f9b41e2b240a3de0790517c7a636df1f7bb7612276a2d0a42f9ce2"
+dependencies = [
+ "log",
+ "rusqlite",
 ]
 
 [[package]]

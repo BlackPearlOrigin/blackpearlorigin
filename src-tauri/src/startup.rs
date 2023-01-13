@@ -11,85 +11,30 @@
 */
 
 use crate::paths;
+use lazy_static::lazy_static;
 use rusqlite::{Connection, Result};
+use rusqlite_migration::{Migrations, M};
 use std::{
     fs::{self, File},
     io::Write,
     path::{Path, PathBuf},
 };
 
-fn setup_database(gamedb_path: &PathBuf) -> Result<()> {
+// Define migrations. These are applied atomically.
+lazy_static! {
+    static ref MIGRATIONS: Migrations<'static> =
+        Migrations::new(vec![
+            M::up(include_str!("migrations/1_up.sql")).down(include_str!("migrations/1_down.sql")),
+            // In the future, if the need to change the schema arises, put
+            // migrations below.
+        ]);
+}
+
+fn setup_database(gamedb_path: &PathBuf) -> Result<(), rusqlite_migration::Error> {
     let mut conn = Connection::open(gamedb_path)?;
-    let tx = conn.transaction()?;
-    if tx
-        .query_row(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name='schema_version'",
-            [],
-            //  Do nothing in the third argument because we want to only check if the table exists
-            |_| Ok(()),
-        )
-        .is_err()
-    {
-        tx.execute(
-            "CREATE TABLE schema_version (version INTEGER NOT NULL);",
-            rusqlite::params![],
-        )?;
-        tx.execute(
-            "INSERT INTO schema_version (version) VALUES (1)",
-            rusqlite::params![],
-        )?;
-    }
-    if tx
-        .query_row(
-            "SELECT name FROM sqlite_master WHERE type='table' AND name='games'",
-            [],
-            |_| Ok(()),
-        )
-        .is_err()
-    {
-        tx.execute(
-            "CREATE TABLE IF NOT EXISTS games (\
-                        id INTEGER PRIMARY KEY, \
-                        name TEXT NOT NULL, \
-                        executable TEXT NOT NULL, \
-                        description TEXT, \
-                        image TEXT);",
-            rusqlite::params![],
-        )?;
-    } else {
-        let mut statement: rusqlite::Statement =
-            tx.prepare("SELECT \"notnull\" FROM PRAGMA_TABLE_INFO('games') WHERE name = 'name' OR name = 'executable'")?;
-        let notnull = statement.query_map([], |row| row.get::<_, i32>(0))?;
-        let mut name_notnull = false;
-        let mut executable_notnull = false;
-        for row in notnull {
-            match row {
-                Ok(1) => name_notnull = true,
-                Ok(2) => executable_notnull = true,
-                _ => (),
-            }
-        }
-        if !name_notnull || !executable_notnull {
-            tx.execute(
-                "CREATE TABLE games_new (\
-                            id INTEGER PRIMARY KEY, \
-                            name TEXT NOT NULL, \
-                            executable TEXT NOT NULL, \
-                            description TEXT, \
-                            image TEXT);",
-                rusqlite::params![],
-            )?;
-            tx.execute(
-                "INSERT INTO games_new (id, name, executable, description, image) \
-                            SELECT id, name, executable, description, image FROM games;",
-                rusqlite::params![],
-            )?;
-            tx.execute("DROP TABLE games", rusqlite::params![])?;
-            tx.execute("ALTER TABLE games_new RENAME TO games", rusqlite::params![])?;
-        }
-    }
-    tx.commit()?;
-    Ok(())
+
+    // Update the database schema, atomically
+    MIGRATIONS.to_latest(&mut conn)
 }
 
 pub fn init() {

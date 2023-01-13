@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { invoke } from '@tauri-apps/api/tauri';
-	import { join, appLocalDataDir } from '@tauri-apps/api/path';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
@@ -31,23 +30,25 @@
 	async function operation_handler(operation: string) {
 		if (operation === 'Save') {
 			// Checks if there is no title, description, executable or image
+			// -----------------------------------------------------------
+			// If the user doesn't select an title, set it as "No title"
+			// If the user doesn't select an description set it blank
+			// If the user doesn't select an image, set it to "None"
+			// And if the user doesn't select an exec, don't allow them to confirm
+
 			if (isEmpty(title)) title = 'No title';
-			if (isEmpty(description)) description = 'No description';
+			if (isEmpty(description)) description = '';
 			if (isEmpty(executablePath)) return;
-			if (isEmpty(imagePath))
-				imagePath = await join(
-					await appLocalDataDir(),
-					'images',
-					'Default.png'
-				);
+			if (isEmpty(imagePath)) imagePath = 'None';
 
 			saveData(title, executablePath, description, imagePath);
 			close();
 		} else if (operation === 'Edit') {
 			// Checks if there are no title, description, exec or img
 			// If one of them isn't selected, do not let the user exit
+			// Except for the description
 			if (isEmpty(title)) return;
-			if (isEmpty(description)) return;
+			if (isEmpty(description)) description = '';
 			if (isEmpty(executablePath)) return;
 			if (isEmpty(imagePath)) return;
 

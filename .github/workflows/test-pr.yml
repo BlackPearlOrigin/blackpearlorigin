@@ -1,0 +1,38 @@
+# Build Test Action
+# -----------------
+# - Builds the app as debug to test if it compiles
+#   Runs on ubuntu-latest
+#   Runs the command "yarn tauri build --bundle none"
+#   Runs on every PR to the main branch
+
+name: Build Test
+
+on:
+    pull_request:
+        types:
+            - opened
+            - reopened
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+
+            # Sets up Node
+            - name: Setup Node.js 16.x
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16.x
+
+            # Runs "yarn install"
+            - name: Install NPM packages
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: install
+
+            # Runs "yarn build:debug"
+            - name: Build with --debug flag
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: build:debug

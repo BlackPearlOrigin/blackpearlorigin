@@ -1925,24 +1925,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8835116a5c179084a830efb3adc117ab007512b535bc1a21c991d3b32a6b44dd"
 
 [[package]]
-name = "pbpl"
-version = "0.1.0"
-dependencies = [
- "execute",
- "lazy_static",
- "reqwest",
- "rfd",
- "rusqlite",
- "rusqlite_migration",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "uuid 1.2.2",
- "window-vibrancy",
-]
-
-[[package]]
 name = "percent-encoding"
 version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2160,6 +2142,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "57a8eca9f9c4ffde41714334dee777596264c7825420f521abc92b5b5deb63a5"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "project_black_pearl"
+version = "0.2.0"
+dependencies = [
+ "execute",
+ "lazy_static",
+ "reqwest",
+ "rfd",
+ "rusqlite",
+ "rusqlite_migration",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "uuid 1.2.2",
+ "window-vibrancy",
 ]
 
 [[package]]

@@ -14,7 +14,7 @@ on:
             - reopened
 
 jobs:
-    deploy:
+    build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@master
@@ -24,7 +24,18 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: 16.x
-
+                  
+            # Installs Rust
+            - name: install Rust stable
+              uses: dtolnay/rust-toolchain@stable
+            
+            # Install Ubuntu deps
+            - name: Install ubuntu deps
+              if: matrix.platform == 'ubuntu-20.04'
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+            
             # Runs "yarn install"
             - name: Install NPM packages
               uses: borales/actions-yarn@v4
@@ -36,3 +47,7 @@ jobs:
               uses: borales/actions-yarn@v4
               with:
                   cmd: build:debug
+                  
+            - uses: tauri-apps/tauri-action@v0
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

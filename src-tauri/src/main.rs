@@ -17,10 +17,9 @@
 
 use execute::Execute;
 use rfd::FileDialog;
-use tauri::Manager;
-use window_vibrancy::apply_blur;
 use std::{fs, thread};
 use std::{path::Path, process::Command};
+use tauri::Manager;
 
 mod database;
 mod paths;
@@ -139,15 +138,20 @@ fn main() {
         .setup(|app| {
             let win = app.get_window("main").unwrap();
 
-        #[cfg(target_os = "macos")]
-        apply_vibrancy(&win, NSVisualEffectMaterial::AppearanceBased, None, None)
-          .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
+            #[cfg(target_os = "macos")]
+            window_vibrancy::apply_vibrancy(
+                &win,
+                window_vibrancy::NSVisualEffectMaterial::AppearanceBased,
+                None,
+                None,
+            )
+            .expect("Unsupported platform! 'apply_vibrancy' is only supported on macOS");
 
-        #[cfg(target_os = "windows")]
-        apply_blur(&win, Some((18, 18, 18, 125)))
-          .expect("Unsupported platform! 'apply_blur' is only supported on Windows");
+            #[cfg(target_os = "windows")]
+            window_vibrancy::apply_blur(&win, Some((18, 18, 18, 125)))
+                .expect("Unsupported platform! 'apply_blur' is only supported on Windows");
 
-        Ok(())
+            Ok(())
         })
         // Invoke your commands here
         .invoke_handler(tauri::generate_handler![

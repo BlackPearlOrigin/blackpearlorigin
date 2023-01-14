@@ -12,8 +12,13 @@ on:
         description: "Channel to publish"
         required: true
         default: "stable"
-        options: ["stable", "beta", "alpha", "test"]
-        type: string
+        options:
+          - "stable"
+          - "beta"
+          - "alpha"
+          - "dev"
+          - "test"
+        type: choice
 
 jobs:
   create-release:

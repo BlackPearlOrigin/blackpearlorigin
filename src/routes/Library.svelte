@@ -40,6 +40,9 @@
 				},
 			}
 		);
+
+	var query: string;
+
 	let games: any = getGames();
 	function operationHandler(operation: () => void) {
 		operation();
@@ -52,6 +55,12 @@
 		<div class="top">
 			<h1 style="display:inline-block;">{$t('libraryText')}</h1>
 			<!-- Creates a modal when the button is clicked -->
+			<input
+				type="text"
+				placeholder="Search"
+				class="search-bar"
+				bind:value="{query}"
+			/>
 			<button on:click="{() => showNewModal()}"
 				>{$t('library.add')}</button
 			>
@@ -63,52 +72,105 @@
 		<!-- svelte-ignore empty-block -->
 		{#await games then data}
 			{#each data as game}
-				<div class="game-panel">
-					<div class="game-text">
-						<img
-							class="game-image"
-							src="{game.image == 'None'
-								? 'Default.png'
-								: convertFileSrc(game.image)}"
-							alt="{game.name}"
-							height="100"
-							width="100"
-						/>
-						<div class="game-info">
-							<p class="game-title">{game.name}</p>
-							<!-- <p class="small-info">
+				{#if !query}
+					<div class="game-panel">
+						<div class="game-text">
+							<img
+								class="game-image"
+								src="{game.image == 'None'
+									? 'Default.png'
+									: convertFileSrc(game.image)}"
+								alt="{game.name}"
+								height="100"
+								width="100"
+							/>
+							<div class="game-info">
+								<p class="game-title">{game.name}</p>
+								<!-- <p class="small-info">
 								{game.playtime}
 								{$t('library.playtime')}
 							</p> -->
-							<p class="game-desc">
-								{game.description}
-							</p>
+								<p class="game-desc">
+									{game.description}
+								</p>
+							</div>
+						</div>
+						<div class="buttons">
+							<button
+								class="game-button-run"
+								on:click="{() =>
+									operationHandler(() =>
+										runGame(game.exe_path)
+									)}">{$t('library.run')}</button
+							>
+							<button
+								class="game-button-run"
+								on:click="{() =>
+									operationHandler(() =>
+										showEditModal(game)
+									)}">{$t('library.editGame')}</button
+							>
+							<button
+								class="game-button-delete"
+								on:click="{() => {
+									{
+										console.log(game.id);
+									}
+									operationHandler(() => deleteGame(game.id));
+								}}">{$t('library.deleteGame')}</button
+							>
 						</div>
 					</div>
-					<div class="buttons">
-						<button
-							class="game-button-run"
-							on:click="{() =>
-								operationHandler(() => runGame(game.exe_path))}"
-							>{$t('library.run')}</button
-						>
-						<button
-							class="game-button-run"
-							on:click="{() =>
-								operationHandler(() => showEditModal(game))}"
-							>{$t('library.editGame')}</button
-						>
-						<button
-							class="game-button-delete"
-							on:click="{() => {
-								{
-									console.log(game.id);
-								}
-								operationHandler(() => deleteGame(game.id));
-							}}">{$t('library.deleteGame')}</button
-						>
+				{:else if game.name.toLowerCase().includes(query.toLowerCase())}
+					<div class="game-panel">
+						<div class="game-text">
+							<img
+								class="game-image"
+								src="{game.image == 'None'
+									? 'Default.png'
+									: convertFileSrc(game.image)}"
+								alt="{game.name}"
+								height="100"
+								width="100"
+							/>
+							<div class="game-info">
+								<p class="game-title">{game.name}</p>
+								<!-- <p class="small-info">
+								{game.playtime}
+								{$t('library.playtime')}
+							</p> -->
+								<p class="game-desc">
+									{game.description}
+								</p>
+							</div>
+						</div>
+						<div class="buttons">
+							<button
+								class="game-button-run"
+								on:click="{() =>
+									operationHandler(() =>
+										runGame(game.exe_path)
+									)}">{$t('library.run')}</button
+							>
+							<button
+								class="game-button-run"
+								on:click="{() =>
+									operationHandler(() =>
+										showEditModal(game)
+									)}">{$t('library.editGame')}</button
+							>
+							<button
+								class="game-button-delete"
+								on:click="{() => {
+									{
+										console.log(game.id);
+									}
+									operationHandler(() => deleteGame(game.id));
+								}}">{$t('library.deleteGame')}</button
+							>
+						</div>
 					</div>
-				</div>
+				{/if}
 			{/each}
 		{:catch error}
 			<p style="color: red">{error.message}</p>

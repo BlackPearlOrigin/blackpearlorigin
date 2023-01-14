@@ -97,3 +97,14 @@
 .main {
 	padding-left: 5px;
 }
+
+.search-bar {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 1px;
+	border-color: var(--accent-color);
+	color: var(--accent-color);
+	padding: 8px;
+	margin: 16px;
+	width: 40%;
+}

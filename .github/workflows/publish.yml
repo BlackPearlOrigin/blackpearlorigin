@@ -8,16 +8,11 @@ name: Publish Release
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Version to publish'
-        required: false
-        default: '0.0.0'
-        type: string
       channel:
-        description: 'Channel to publish'
+        description: "Channel to publish"
         required: true
-        default: 'stable'
-        options: ['stable', 'beta', 'alpha', 'test']
+        default: "stable"
+        options: ["stable", "beta", "alpha", "test"]
         type: string
 
 jobs:
@@ -33,10 +28,7 @@ jobs:
         with:
           node-version: 16
       - name: get version
-      if: github.event.inputs.version == '0.0.0'
         run: echo "PACKAGE_VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
-      else:
-        run: echo "PACKAGE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
       - name: create release
         id: create-release
         uses: actions/github-script@v6

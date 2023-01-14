@@ -19,7 +19,6 @@ use execute::Execute;
 use rfd::FileDialog;
 use std::{fs, thread};
 use std::{path::Path, process::Command};
-use tauri::Manager;
 
 mod database;
 mod paths;

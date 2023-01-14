@@ -14,6 +14,10 @@
 	--accent-color: #00ff00;
 }
 
+:focus {
+	outline: none;
+}
+
 body {
 	background-color: #040404;
 	color: rgb(255, 255, 255);

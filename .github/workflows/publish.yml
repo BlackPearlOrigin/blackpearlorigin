@@ -4,7 +4,7 @@
 #   Runs on ubuntu-latest, macos-latest and windows-latest
 # - Publishes the app to GitHub Releases
 
-name: 'publish'
+name: Publish Release
 on:
   workflow_dispatch:
   push:

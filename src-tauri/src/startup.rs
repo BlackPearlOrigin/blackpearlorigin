@@ -57,14 +57,16 @@ pub fn init() {
         &scraper_path,
         &queries_path,
         &images_path,
-        &temp_path
+        &temp_path,
     ];
 
     // Create the default directories if they don't exist
     for path in paths {
-        create_folder(path.as_path());
+        if !path.exists() {
+            create_folder(path.as_path());
+        }
     }
-    
+
     if !configfile_path.exists() {
         let mut file = match File::create(&configfile_path) {
             Ok(k) => {

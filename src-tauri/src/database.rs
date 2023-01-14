@@ -40,7 +40,10 @@ pub fn save_to_db(
     let image_path = if image == "None" {
         "None".to_string()
     } else {
-        copy_image(&image).unwrap_or(Path::new("").to_path_buf()).display().to_string()
+        copy_image(&image)
+            .unwrap_or(Path::new("").to_path_buf())
+            .display()
+            .to_string()
     };
 
     // Establish a connection to the database file (library.db)
@@ -51,16 +54,8 @@ pub fn save_to_db(
     let query = "INSERT INTO games (name, executable, description, image) VALUES (?, ?, ?, ?)";
 
     let tx = connection.transaction().map_err(|e| e.to_string())?;
-    tx.execute(
-        query,
-        params![
-            title,
-            exe_path,
-            description,
-            image_path
-        ],
-    )
-    .map_err(|e| e.to_string())?;
+    tx.execute(query, params![title, exe_path, description, image_path])
+        .map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;
     Ok(())
 }

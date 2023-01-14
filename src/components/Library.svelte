@@ -67,7 +67,9 @@
 					<div class="game-text">
 						<img
 							class="game-image"
-							src="{convertFileSrc(game.image)}"
+							src="{game.image == 'None'
+								? 'Default.png'
+								: convertFileSrc(game.image)}"
 							alt="{game.name}"
 							height="100"
 							width="100"
@@ -99,6 +101,9 @@
 						<button
 							class="game-button-delete"
 							on:click="{() => {
+								{
+									console.log(game.id);
+								}
 								operationHandler(() => deleteGame(game.id));
 							}}">{$t('library.deleteGame')}</button
 						>

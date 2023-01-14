@@ -46,7 +46,7 @@ jobs:
               name: `Project Black Pearl ${{ github.event.inputs.channel }} v${process.env.PACKAGE_VERSION}`,
               body: 'Take a look at the assets to download and install this app.',
               draft: true,
-              prerelease: false if ${{ github.event.inputs.channel }} == 'stable' else true
+              prerelease: (`${{ github.event.inputs.channel }}` !== "stable")
             })
 
             return data.id

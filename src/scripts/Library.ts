@@ -1,5 +1,13 @@
 import { invoke } from '@tauri-apps/api/tauri';
 
+interface Game {
+	id: number;
+	name: string;
+	exe_path: string;
+	description: string;
+	image: string;
+}
+
 // TS Function -> Rust Function
 // - Starts the game defined in the path arg
 export async function runGame(path: string) {
@@ -10,8 +18,8 @@ export async function runGame(path: string) {
 // - Deletes the game from the db
 export async function deleteGame(id: number) {
 	invoke('delete_from_db', { id: id }).then((data) => {
-			console.log("Deleted from db");
-		})
+		console.log("Deleted from db");
+	})
 		.catch((error) => {
 			console.log(error);
 		});
@@ -19,10 +27,11 @@ export async function deleteGame(id: number) {
 
 // TS Function -> Rust Function
 // - Gets all games from the db
+// Return an array of games object
 export async function getGames() {
 	const games = await invoke('get_from_db').then((data) => {
-			return data;
-		})
+		return data;
+	})
 		.catch((error) => {
 			console.log(error);
 			return error;
@@ -39,8 +48,8 @@ export function saveData(title: string, executablePath: string, description: str
 		description: description,
 		image: imagePath,
 	}).then((data) => {
-			console.log("Saved to db");
-		})
+		console.log("Saved to db");
+	})
 		.catch((error) => {
 			console.log(error);
 		});;
@@ -56,9 +65,19 @@ export function editData(id: number, title: string, executablePath: string, desc
 		description: description,
 		image: imagePath,
 	}).then((data) => {
-			console.log("Edited in db");
-		})
+		console.log("Edited in db");
+	})
 		.catch((error) => {
 			console.log(error);
 		});;
+}
+
+export function getFilteredGames(games: Game[], gameToSearch?: string) {
+	if (typeof gameToSearch !== 'undefined') {
+		return games.filter(game => {
+			return game.name.toLowerCase().includes(gameToSearch.toLowerCase());
+		});
+	} else {
+		return games;
+	}
 }

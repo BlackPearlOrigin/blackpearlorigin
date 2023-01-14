@@ -1,9 +1,9 @@
 <script lang="ts">
 	// Imports all pages and modules
 	import translations from './locale/locales';
-	import Browse from './components/Browse.svelte';
-	import Library from './components/Library.svelte';
-	import Preferences from './components/Preferences.svelte';
+	import Browse from './routes/Browse.svelte';
+	import Library from './routes/Library.svelte';
+	import Preferences from './routes/Preferences.svelte';
 	import { Modal } from 'svelte-simple-modal';
 	import { dict, t } from './locale/i18n';
 	import { loadLocale } from './scripts/Main';

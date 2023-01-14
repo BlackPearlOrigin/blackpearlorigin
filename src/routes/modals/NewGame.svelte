@@ -93,6 +93,7 @@
 			></p>
 		</div>
 		<textarea
+			maxlength="250"
 			name="Description"
 			placeholder="{$t('modals.newGame.desc')}"
 			bind:value="{description}"></textarea>

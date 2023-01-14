@@ -2,7 +2,7 @@
 
     Project name: Project Black Pearl
     Date: Thursday, December 16th 2022
-    Copyright holder: Project Black Pearl and it's contributors
+    Copyright holder: Project Black Pearl and its contributors
     Copyright year: 2022
 
     This software is licensed under the BSD-3-Clause license.
@@ -39,36 +39,47 @@ fn setup_database(gamedb_path: &PathBuf) -> Result<(), rusqlite_migration::Error
 
 pub fn init() {
     // Declare paths for directories and files inside of the PBP folder
+
+    // Folders
     let pbp_path = paths::get_pbp();
-
-    let temp_path = pbp_path.join("temp");
-    let tempfile_path = temp_path.join("scrapers.json");
-
     let scraper_path = pbp_path.join("scrapers");
-    let gamedb_path = pbp_path.join("library.db");
     let queries_path = pbp_path.join("queries");
     let images_path = pbp_path.join("images");
+    let temp_path = pbp_path.join("temp");
+
+    // Files
+    let tempfile_path = temp_path.join("scrapers.json");
+    let gamedb_path = pbp_path.join("library.db");
     let configfile_path = pbp_path.join("config.json");
 
+    let paths = [
+        &pbp_path,
+        &scraper_path,
+        &queries_path,
+        &images_path,
+        &temp_path
+    ];
+
     // Create the default directories if they don't exist
-    if !pbp_path.exists() {
-        create_folder(&pbp_path)
+    for path in paths {
+        create_folder(path.as_path());
     }
-    if !temp_path.exists() {
-        create_folder(&temp_path)
-    }
-    if !queries_path.exists() {
-        create_folder(&queries_path)
-    }
-    if !scraper_path.exists() {
-        create_folder(&scraper_path)
-    }
-    if !images_path.exists() {
-        create_folder(&images_path)
-    }
+    
     if !configfile_path.exists() {
-        create_config(&configfile_path)
+        let mut file = match File::create(&configfile_path) {
+            Ok(k) => {
+                println!("Successfully created file {}", &configfile_path.display());
+                k
+            }
+            Err(e) => {
+                panic!("Error while creating config file: {}", e)
+            }
+        };
+
+        file.write_all(br#"{{ "currentLang": "en" }}"#)
+            .expect("Failed to write to config file");
     }
+
     if !gamedb_path.exists() {
         match File::create(&gamedb_path) {
             Ok(_k) => {
@@ -107,22 +118,6 @@ pub fn init() {
                 e
             ),
         }
-    }
-
-    // Creates the config file and writes to it
-    fn create_config(path: &Path) {
-        let mut file = match File::create(path) {
-            Ok(k) => {
-                println!("Successfully created file {}", &path.display());
-                k
-            }
-            Err(e) => {
-                panic!("Error while creating config file: {}", e)
-            }
-        };
-
-        file.write_all(br#"{{ "currentLang": "en" }}"#)
-            .expect("Failed to write to config file");
     }
 
     // Create a new file object

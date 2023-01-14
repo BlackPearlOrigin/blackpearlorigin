@@ -1,3 +1,9 @@
+# Build Test Action
+# -----------------
+# - Builds the app for all platforms
+#   Runs on ubuntu-latest, macos-latest and windows-latest
+# - Publishes the app to GitHub Releases
+
 name: 'publish'
 on:
   push:
@@ -36,3 +42,5 @@ jobs:
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: true
           prerelease: false
+          iconPath: 'src-tauri\icons\icon.png'
+          configPath: 'src-tauri\tauri.conf.json'

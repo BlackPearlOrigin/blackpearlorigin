@@ -4,6 +4,7 @@
 		deleteGame,
 		runGame,
 		getFilteredGames,
+		operationHandler,
 	} from '../scripts/Library';
 	import { getContext } from 'svelte';
 	import NewGame from './modals/NewGame.svelte';
@@ -17,6 +18,10 @@
 	// When the modal is closed re-run the function getGames
 	const showNewModal = () =>
 		open(
+			// 1° Arg: Component
+			// 2° Arg: Props
+			// 3° Arg: Options
+			// 4° Arg: Callbacks
 			NewGame,
 			{},
 			{},
@@ -26,9 +31,14 @@
 				},
 			}
 		);
-	// show modal to edit games using prepolulated values
+
+	// Show modal to edit games using prepolulated values
 	const showEditModal = (game: any) =>
 		open(
+			// 1° Arg: Component
+			// 2° Arg: Props
+			// 3° Arg: Options
+			// 4° Arg: Callbacks
 			NewGame,
 			{
 				id: game.id,
@@ -46,13 +56,8 @@
 			}
 		);
 
-	var query: string;
-
+	let query: string;
 	let games: any = getGames();
-	function operationHandler(operation: () => void) {
-		operation();
-		games = getGames();
-	}
 </script>
 
 <main class="container">
@@ -103,14 +108,20 @@
 						<button
 							class="game-button-run"
 							on:click="{() =>
-								operationHandler(() => runGame(game.exe_path))}"
-							>{$t('library.run')}</button
+								operationHandler(() =>
+									runGame(game.exe_path)
+								).then(() => {
+									games = getGames();
+								})}">{$t('library.run')}</button
 						>
 						<button
 							class="game-button-run"
 							on:click="{() =>
-								operationHandler(() => showEditModal(game))}"
-							>{$t('library.editGame')}</button
+								operationHandler(() =>
+									showEditModal(game)
+								).then(() => {
+									games = getGames();
+								})}">{$t('library.editGame')}</button
 						>
 						<button
 							class="game-button-delete"
@@ -118,7 +129,11 @@
 								{
 									console.log(game.id);
 								}
-								operationHandler(() => deleteGame(game.id));
+								operationHandler(() =>
+									deleteGame(game.id)
+								).then(() => {
+									games = getGames();
+								});
 							}}">{$t('library.deleteGame')}</button
 						>
 					</div>

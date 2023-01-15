@@ -2,15 +2,22 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
 
-// TS Function -> Rust Function
-// - Invokes a function that installs a scraper
-export function installScraper() {
-	invoke('install_scraper');
-}
+/**
+ * Typescript Function -> Rust Function
+ * - Invokes a function that installs a scraper
+ *
+ * @returns Nothing
+ */
+export const installScraper = () => invoke('install_scraper');
 
-// TS Function -> Rust Function
-// - Invokes a function that wipes the library
-export async function wipeLibrary() {
+/**
+ * Typescript Function -> Rust Function
+ * - Opens a pop-up window, then if the user selects yes,
+ *   wipes the library
+ *
+ * @returns {Promise<void>} Nothing
+ */
+export const wipeLibrary = async (): Promise<void> => {
 	const areYouSure = await ask(
 		"Are you sure, this action can't be undone",
 		'Library Deletion'
@@ -19,11 +26,15 @@ export async function wipeLibrary() {
 		invoke('wipe_library');
 		await message('Library successfully deleted', 'Library Deletion');
 	}
-}
+};
 
-// TS Function
-// - Saves data to config.json
-export async function saveData(lang: string) {
+/**
+ * Typescript Function
+ * - Saves the selected language to config.json
+ *
+ * @param {string} lang
+ */
+export const saveLangData = async (lang: string): Promise<void> => {
 	let dataObj = {
 		currentLang: lang,
 	};
@@ -33,4 +44,4 @@ export async function saveData(lang: string) {
 	await writeTextFile('config.json', dataObjString, {
 		dir: BaseDirectory.AppLocalData,
 	});
-}
+};

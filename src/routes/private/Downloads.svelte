@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../styles/Downloads.scss';
-	import { t } from '../locale/i18n';
+	import { t } from '../../locale/i18n';
 </script>
 
 <main class="container">

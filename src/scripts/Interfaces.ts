@@ -19,3 +19,11 @@ export interface Response {
 	title: string;
 	urls: string[];
 }
+
+export interface Game {
+	id: number;
+	name: string;
+	exe_path: string;
+	description: string;
+	image: string;
+}

@@ -1,83 +1,143 @@
 import { invoke } from '@tauri-apps/api/tauri';
+import type { Game } from './Interfaces';
 
-interface Game {
-	id: number;
-	name: string;
-	exe_path: string;
-	description: string;
-	image: string;
-}
+/**
+ * Typescript Function -> Rust Function
+ * - Starts the game on the path argument
+ *
+ * @param {string} path
+ * @returns {Promise<void>} Nothing
+ */
+export const runGame = async (path: string): Promise<void> =>
+	await invoke('run_game', { path: path });
 
-// TS Function -> Rust Function
-// - Starts the game defined in the path arg
-export async function runGame(path: string) {
-	invoke('run_game', { path: path });
-}
-
-// TS Function -> Rust Function
-// - Deletes the game from the db
-export async function deleteGame(id: number) {
-	invoke('delete_from_db', { id: id }).then((data) => {
-		console.log("Deleted from db");
-	})
+/**
+ * Typescript Function -> Rust Function
+ * - Deletes the game from the DB using the id
+ *
+ * @param {number} id
+ * @returns {Promise<void>} Nothing
+ */
+export const deleteGame = async (id: number): Promise<void> => {
+	await invoke('delete_from_db', { id: id })
+		.then(() => {
+			console.log('Deleted from db');
+		})
 		.catch((error) => {
 			console.log(error);
 		});
-}
+};
 
-// TS Function -> Rust Function
-// - Gets all games from the db
-// Return an array of games object
-export async function getGames() {
-	const games = await invoke('get_from_db').then((data) => {
-		return data;
-	})
+/**
+ * Typescript Function -> Rust Function
+ * - Gets all games from the DB and returns it
+ * 	 as an Array of objects
+ *
+ * @returns {Promise<unknown>} An array of games object
+ */
+export const getGames = async (): Promise<unknown> => {
+	const games = await invoke('get_from_db')
+		.then((data) => {
+			return data;
+		})
 		.catch((error) => {
 			console.log(error);
 			return error;
-		});;
+		});
 	return games;
-}
+};
 
-// TS Function -> Rust Function
-// - Saves game to db
-export function saveData(title: string, executablePath: string, description: string, imagePath: string) {
-	invoke('save_to_db', {
+/**
+ * Typescript Function -> Rust Function
+ * - Saves game on DB
+ *
+ * @param title
+ * @param executablePath
+ * @param description
+ * @param imagePath
+ * @returns {Promise<void>} Nothing
+ */
+export const saveData = async (
+	title: string,
+	executablePath: string,
+	description: string,
+	imagePath: string
+): Promise<void> => {
+	await invoke('save_to_db', {
 		title: title,
 		exePath: executablePath,
 		description: description,
 		image: imagePath,
-	}).then((data) => {
-		console.log("Saved to db");
 	})
+		.then(() => {
+			console.log('Saved to db');
+		})
 		.catch((error) => {
 			console.log(error);
-		});;
-}
+		});
+};
 
-// TS Function -> Rust Function
-// - Edits game in db
-export function editData(id: number, title: string, executablePath: string, description: string, imagePath: string) {
-	invoke('edit_in_db', {
+/**
+ * Typescript Function -> Rust Function
+ * - Edits games in DB based on the id
+ *
+ * @param {number} id
+ * @param {string} title
+ * @param {string} executablePath
+ * @param {string} description
+ * @param {string} imagePath
+ * @returns {Promise<void>} Nothing
+ */
+export const editData = async (
+	id: number,
+	title: string,
+	executablePath: string,
+	description: string,
+	imagePath: string
+): Promise<void> => {
+	await invoke('edit_in_db', {
 		id: id,
 		name: title,
 		executable: executablePath,
 		description: description,
 		image: imagePath,
-	}).then((data) => {
-		console.log("Edited in db");
 	})
+		.then(() => {
+			console.log('Edited in db');
+		})
 		.catch((error) => {
 			console.log(error);
-		});;
-}
+		});
+};
 
-export function getFilteredGames(games: Game[], gameToSearch?: string) {
+/**
+ * Typescript Function
+ * - Filters games based on an array given and query params
+ *
+ * @param games
+ * @param gameToSearch
+ * @returns {Game[]} An array of type Game[]
+ */
+export const getFilteredGames = (
+	games: Game[],
+	gameToSearch?: string
+): Game[] => {
 	if (typeof gameToSearch !== 'undefined') {
-		return games.filter(game => {
+		return games.filter((game) => {
 			return game.name.toLowerCase().includes(gameToSearch.toLowerCase());
+			//     ^?
 		});
 	} else {
 		return games;
 	}
-}
+};
+
+/**
+ * Typescript Functiom
+ * - Runs the function inside the params
+ *
+ * @param {VoidFunction} operation
+ * @returns {Promise<void>} Nothing
+ */
+export const operationHandler = async (operation: () => void): Promise<void> =>
+	operation();

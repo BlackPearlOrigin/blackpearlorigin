@@ -4,7 +4,7 @@
 	import '../styles/Preferences.scss';
 	import {
 		installScraper,
-		saveData,
+		saveLangData,
 		wipeLibrary,
 	} from '../scripts/Preferences';
 
@@ -27,12 +27,12 @@
 			<label for="select">{$t('languageText')}</label>
 			<div class="locale-settings">
 				<select bind:value="{$locale}">
-					{#each languages as lang}
-						<option value="{lang}">{lang}</option>
+					{#each languages as languageName}
+						<option value="{languageName}">{languageName}</option>
 					{/each}
 				</select>
 			</div>
-			<button class="save-button" on:click="{() => saveData($locale)}"
+			<button class="save-button" on:click="{() => saveLangData($locale)}"
 				>{$t('preferences.saveText')}</button
 			>
 		</div>

@@ -44,6 +44,11 @@ npm run tauri dev
 
 -   ### Create a Pull Request!
 
+## Wiki
+
+[Wiki](https://projectblackpearl.github.io/wiki/#/) for making contributions 
+
 ## Support
 
 You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) server to get help or just to hang out with us!
+

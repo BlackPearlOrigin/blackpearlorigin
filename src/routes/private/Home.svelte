@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { pbpNews } from '../scripts/Home';
+	import { pbpNews } from '../../scripts/private/Home';
 	import '../styles/Home.scss';
-	import { t } from '../locale/i18n';
+	import { t } from '../../locale/i18n';
 </script>
 
 <main class="container">

@@ -118,9 +118,6 @@ fn image_dialog() -> String {
 
 #[tauri::command]
 fn run_game(path: String) {
-    // String to path conversion
-    let path = Path::new(&path);
-
     let mut command = Command::new(path);
     thread::spawn(move || {
         command.execute().expect("Failed to run game");

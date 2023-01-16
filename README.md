@@ -52,3 +52,17 @@ npm run tauri dev
 
 You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) server to get help or just to hang out with us!
 
+## Donations
+
+If you would to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
+
+**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please submit a ticket under **Claim Donation** in [the PBP Discord server](https://discord.gg/NMwySKFjQY) and send proof of your donation.
+
+
+**BTC (Bitcoin):** bc1qhmjt2vz72gxxeqmh4sah24j67lzpvum945c5eq
+
+**XMR (Monero):** 47d6EAGzmMb4ofL1fRgYaM4TDvjigcQfe5t64JLez97fJrrSoJvBwJLHzpVayWJUScE4WLcF79pdGQRWuPSPdMqT1MdXGjG
+
+**ETH (Ethereum):** 0x76a1e6A87Abb8Cd2AA1811E489b0C67d00DAdB3f
+
+**LTC (Litecoin):** LZbyxofFgXBBRQJKu5MsLT8cdf418WaVuk

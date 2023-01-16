@@ -56,7 +56,7 @@ You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) serv
 
 If you would to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
 
-**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM **Terrence#9699** on Discord.
+**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM **Terrence#9699** on Discord with proof of your donation.
 
 
 **BTC (Bitcoin):** bc1qhmjt2vz72gxxeqmh4sah24j67lzpvum945c5eq

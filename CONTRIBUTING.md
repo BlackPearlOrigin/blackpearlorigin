@@ -68,7 +68,7 @@ Most of these here are taken from the Atom guidelines <sup>(they're really good)
 
 All of our code is styled with [Prettier](https://prettier.io)
 
--   Prefer using the spread syntax `{...someObj}` to `Object.assign()`
+-   Prefer using the spread syntax `{...someObj}` instead `Object.assign()`
 -   Use different cases:
     -   camelCase for constants, variables and functions
     -   PascalCase for classes

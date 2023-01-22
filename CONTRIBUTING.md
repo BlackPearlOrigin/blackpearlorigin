@@ -69,6 +69,9 @@ Most of these here are taken from the Atom guidelines <sup>(they're really good)
 All of our code is styled with [Prettier](https://prettier.io)
 
 -   Prefer using the spread syntax `{...someObj}` to `Object.assign()`
+-   Use different cases:
+    -   camelCase for constants, variables and functions
+    -   PascalCase for classes
 -   Inline exports when possible
 
 ```ts
@@ -97,6 +100,13 @@ function functionName(): void {
 	// ...
 }
 ```
+
+### **Rust Guidelines**
+
+-   Use different cases:
+    -   `snake_case` for functions and variables
+    -   `camelCase` for structs
+    -   `SCREAMING_SNAKE_CASE` for constants
 
 ### **Documentation guideline**
 

@@ -102,7 +102,15 @@ pub fn edit_in_db(
     let mut connection =
         Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
     // copy new image to location
-    let image_path = copy_image(&image).unwrap_or(Path::new("").to_path_buf());
+    let image_path = if image == "None" {
+        "None".to_string()
+    } else {
+        copy_image(&image)
+            .unwrap_or(Path::new("").to_path_buf())
+            .display()
+            .to_string()
+    };
+
     let query =
         "UPDATE games SET name = ?, executable = ?, description = ?, image = ? WHERE id = ?";
 
@@ -113,7 +121,7 @@ pub fn edit_in_db(
             name,
             executable,
             description,
-            image_path.display().to_string(),
+            image_path,
             id
         ],
     )

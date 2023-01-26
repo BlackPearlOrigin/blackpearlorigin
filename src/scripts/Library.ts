@@ -125,7 +125,6 @@ export const getFilteredGames = (
 	if (typeof gameToSearch !== 'undefined') {
 		return games.filter((game) => {
 			return game.name.toLowerCase().includes(gameToSearch.toLowerCase());
-			//     ^?
 		});
 	} else {
 		return games;

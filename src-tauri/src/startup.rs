@@ -14,6 +14,7 @@ use lazy_static::lazy_static;
 use std::{fs, io::Write, path};
 use rusqlite::{Connection, Result};
 use rusqlite_migration::{Migrations, M};
+use crate::commands::logging::{LogLevel, log};
 
 // Define migrations. These are applied atomically.
 lazy_static! {
@@ -65,11 +66,11 @@ pub fn init() {
     if !configfile_path.exists() {
         let mut file = match fs::File::create(&configfile_path) {
             Ok(k) => {
-                println!("Successfully created file {}", &configfile_path.display());
+                log(LogLevel::INFO, &format!("Successfully created file {}", &configfile_path.display()));
                 k
             }
             Err(e) => {
-                panic!("Error while creating config file: {}", e)
+                panic!("[ERROR] Error while creating config file: {}", e)
             }
         };
 
@@ -80,20 +81,20 @@ pub fn init() {
     if !gamedb_path.exists() {
         match fs::File::create(&gamedb_path) {
             Ok(_) => {
-                println!("Successfully created file {}", &gamedb_path.display());
+                log(LogLevel::INFO, &format!("Successfully created file {}", &gamedb_path.display()));
             }
             Err(e) => {
-                panic!("Error while creating config file: {}", e)
+                panic!("[ERROR] Error while creating config file: {}", e)
             }
         }
     }
 
     match setup_database(&gamedb_path) {
         Ok(_) => {
-            println!("Successfully created database {}", &gamedb_path.display());
+            log(LogLevel::INFO, &format!("Successfully created database {}", &gamedb_path.display()));            
         }
         Err(e) => {
-            panic!("Error while creating database: {}", e)
+            panic!("[ERROR] Error while creating database: {}", e)
         }
     }
 
@@ -106,11 +107,11 @@ pub fn init() {
     fn create_folder(path: &path::Path) {
         match fs::create_dir_all(path) {
             Ok(k) => {
-                println!("Successfully created folder {}", &path.display());
+                log(LogLevel::INFO, &format!("Successfully created folder {}", &path.display()));            
                 k
             }
             Err(e) => eprintln!(
-                "Error while creating folder {}: {}\n Your data will not be saved.",
+                "[ERROR] Error while creating folder {}: {}\n Your data will not be saved.",
                 &path.display(),
                 e
             ),
@@ -143,4 +144,6 @@ pub fn init() {
     let json = Json { scrapers };
     let json = serde_json::to_vec_pretty(&json).unwrap();
     file.write_all(&json).unwrap();
+
+    log(LogLevel::INFO, "Welcome to Project Black Pearl")
 }

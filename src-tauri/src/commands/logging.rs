@@ -4,7 +4,7 @@ use serde::Deserialize;
 pub enum LogLevel {
     ERROR = 0,
     WARNING = 1,
-    INFO = 2
+    INFO = 2,
 }
 
 #[tauri::command]

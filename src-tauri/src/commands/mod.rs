@@ -18,20 +18,14 @@ pub fn handle_scraper(path: String, query: String) {
     command.arg(query.clone());
     command.arg(crate::paths::get_pbp().join("queries"));
 
-    log(
-        2,
-        &format!("Searching for \"{}\" with {}", query, path),
-    );
+    log(2, &format!("Searching for \"{}\" with {}", query, path));
 
     // Run the scraper and tell us about its exit code
     if let Some(exit_code) = command.execute().unwrap() {
         if exit_code == 0 {
             log(2, "Scraper query completed successfully");
             let final_time = Instant::now() - start_time;
-            log(
-                2,
-                &format!("Took {} second(s)", final_time.as_secs()),
-            )
+            log(2, &format!("Took {} second(s)", final_time.as_secs()))
         } else {
             log(0, "Scraper query failed successfully");
         }

@@ -18,7 +18,10 @@ pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> 
     let uuid = Uuid::new_v4();
     let uuid_simple = uuid.simple().to_string();
 
-    log(2, &format!("Generated the following (simple) UUID: {}", uuid_simple));
+    log(
+        2,
+        &format!("Generated the following (simple) UUID: {}", uuid_simple),
+    );
 
     let mut image_path = Path::new("").to_path_buf();
     if !image.is_empty() {

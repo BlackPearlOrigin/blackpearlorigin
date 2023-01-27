@@ -6,10 +6,15 @@ import type { Game } from './Interfaces';
  * - Starts the game on the path argument
  *
  * @param {string} path
- * @returns {Promise<void>} Nothing
+ * @returns {Promise<void | unknown>} Nothing
  */
-export const runGame = async (path: string): Promise<void> =>
-	await invoke('run_game', { path: path });
+export const runGame = async (path: string): Promise<void | unknown> =>
+	await invoke('run_game', { path: path }).catch(() => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to invoke function "run_game"',
+		});
+	});
 
 /**
  * Typescript Function -> Rust Function
@@ -19,13 +24,12 @@ export const runGame = async (path: string): Promise<void> =>
  * @returns {Promise<void>} Nothing
  */
 export const deleteGame = async (id: number): Promise<void> => {
-	await invoke('delete_from_db', { id: id })
-		.then(() => {
-			console.log('Deleted from db');
-		})
-		.catch((error) => {
-			console.log(error);
+	await invoke('delete_from_db', { id: id }).catch(() => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed delete from db',
 		});
+	});
 };
 
 /**
@@ -41,7 +45,10 @@ export const getGames = async (): Promise<unknown> => {
 			return data;
 		})
 		.catch((error) => {
-			console.log(error);
+			invoke('log', {
+				logLevel: 0,
+				logMessage: 'Failed to get games',
+			});
 			return error;
 		});
 	return games;
@@ -68,13 +75,12 @@ export const saveData = async (
 		exePath: executablePath,
 		description: description,
 		image: imagePath,
-	})
-		.then(() => {
-			console.log('Saved to db');
-		})
-		.catch((error) => {
-			console.log(error);
+	}).catch((error) => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to save data',
 		});
+	});
 };
 
 /**
@@ -101,13 +107,12 @@ export const editData = async (
 		executable: executablePath,
 		description: description,
 		image: imagePath,
-	})
-		.then(() => {
-			console.log('Edited in db');
-		})
-		.catch((error) => {
-			console.log(error);
+	}).catch(() => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to edit game',
 		});
+	});
 };
 
 /**

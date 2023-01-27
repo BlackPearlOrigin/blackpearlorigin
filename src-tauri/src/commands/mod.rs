@@ -4,6 +4,7 @@ use execute::Execute;
 use rfd::FileDialog;
 
 pub mod database;
+pub mod logging;
 
 #[tauri::command]
 // This function is ran everytime a search query is made

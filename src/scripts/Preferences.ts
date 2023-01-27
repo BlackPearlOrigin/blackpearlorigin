@@ -43,5 +43,12 @@ export const saveLangData = async (lang: string): Promise<void> => {
 
 	await writeTextFile('config.json', dataObjString, {
 		dir: BaseDirectory.AppLocalData,
+	}).catch(() => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to write file',
+		});
+
+		return '';
 	});
 };

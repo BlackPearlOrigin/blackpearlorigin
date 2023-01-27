@@ -11,8 +11,15 @@ import type { TempScrapers, SearchResults } from './Interfaces';
  */
 export const getScrapers = async (): Promise<TempScrapers> => {
 	// Read the file from AppData path
-	const file = await readTextFile('temp/scrapers.json', {
+	const file: string = await readTextFile('temp/scrapers.json', {
 		dir: BaseDirectory.AppLocalData,
+	}).catch((e) => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to open file',
+		});
+
+		return e;
 	});
 
 	// Parse the JSON and return it
@@ -56,6 +63,13 @@ export const displayResults = async (): Promise<SearchResults> => {
 	// Reads the cache file
 	const file = await readTextFile(locationCache, {
 		dir: BaseDirectory.AppLocalData,
+	}).catch((e) => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to open file',
+		});
+
+		return e;
 	});
 
 	// Parses that same file and then returns it
@@ -74,6 +88,13 @@ export const displayResults = async (): Promise<SearchResults> => {
 export const removeResults = async (): Promise<void> => {
 	await removeFile('queries/results.json', {
 		dir: BaseDirectory.AppLocalData,
+	}).catch((e) => {
+		invoke('log', {
+			logLevel: 0,
+			logMessage: 'Failed to remove file',
+		});
+
+		return e;
 	});
 };
 

@@ -108,11 +108,8 @@
 						<button
 							class="game-button-run"
 							on:click="{() =>
-								operationHandler(() =>
-									runGame(game.exe_path)
-								).then(() => {
-									games = getGames();
-								})}">{$t('library.run')}</button
+								operationHandler(() => runGame(game.exe_path))}"
+							>{$t('library.run')}</button
 						>
 						<button
 							class="game-button-run"

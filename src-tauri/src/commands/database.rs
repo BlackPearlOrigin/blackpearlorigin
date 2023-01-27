@@ -117,13 +117,7 @@ pub fn edit_in_db(
     let tx = connection.transaction().map_err(|e| e.to_string())?;
     tx.execute(
         query,
-        params![
-            name,
-            executable,
-            description,
-            image_path,
-            id
-        ],
+        params![name, executable, description, image_path, id],
     )
     .map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;

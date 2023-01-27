@@ -10,15 +10,10 @@
 
 */
 
-use crate::paths;
 use lazy_static::lazy_static;
+use std::{fs, io::Write, path};
 use rusqlite::{Connection, Result};
 use rusqlite_migration::{Migrations, M};
-use std::{
-    fs::{self, File},
-    io::Write,
-    path::{Path, PathBuf},
-};
 
 // Define migrations. These are applied atomically.
 lazy_static! {
@@ -30,7 +25,7 @@ lazy_static! {
         ]);
 }
 
-fn setup_database(gamedb_path: &PathBuf) -> Result<(), rusqlite_migration::Error> {
+fn setup_database(gamedb_path: &path::PathBuf) -> Result<(), rusqlite_migration::Error> {
     let mut conn = Connection::open(gamedb_path)?;
 
     // Update the database schema, atomically
@@ -41,7 +36,7 @@ pub fn init() {
     // Declare paths for directories and files inside of the PBP folder
 
     // Folders
-    let pbp_path = paths::get_pbp();
+    let pbp_path = crate::paths::get_pbp();
     let scraper_path = pbp_path.join("scrapers");
     let queries_path = pbp_path.join("queries");
     let images_path = pbp_path.join("images");
@@ -68,7 +63,7 @@ pub fn init() {
     }
 
     if !configfile_path.exists() {
-        let mut file = match File::create(&configfile_path) {
+        let mut file = match fs::File::create(&configfile_path) {
             Ok(k) => {
                 println!("Successfully created file {}", &configfile_path.display());
                 k
@@ -83,8 +78,8 @@ pub fn init() {
     }
 
     if !gamedb_path.exists() {
-        match File::create(&gamedb_path) {
-            Ok(_k) => {
+        match fs::File::create(&gamedb_path) {
+            Ok(_) => {
                 println!("Successfully created file {}", &gamedb_path.display());
             }
             Err(e) => {
@@ -94,7 +89,7 @@ pub fn init() {
     }
 
     match setup_database(&gamedb_path) {
-        Ok(_k) => {
+        Ok(_) => {
             println!("Successfully created database {}", &gamedb_path.display());
         }
         Err(e) => {
@@ -108,7 +103,7 @@ pub fn init() {
     }
 
     // Simplified function for creating directories
-    fn create_folder(path: &Path) {
+    fn create_folder(path: &path::Path) {
         match fs::create_dir_all(path) {
             Ok(k) => {
                 println!("Successfully created folder {}", &path.display());
@@ -122,82 +117,30 @@ pub fn init() {
         }
     }
 
-    // Create a new file object
-    // This will be the file where we save the scrapers that were found in the scrapers directory
-    // I will refer to this file as "tempfile" from now on
-    let mut file = fs::OpenOptions::new()
-        .read(true)
-        .write(true)
-        .create(true)
-        .append(true)
-        .open(tempfile_path)
-        .expect("Creating tempfile failed");
-
-    // Read the directory 2 times
-    // This is only a workaround for the rust borrow checker
-    // This should be fixed sometime...
-    let scan = fs::read_dir(&scraper_path).expect("Reading scrapers path failed");
-    let scan_2 = fs::read_dir(&scraper_path).expect("Reading scrapers path failed");
-
-    // This variable stores all of the scrapers paths found in the scrapers folder
-    let entries: Vec<Result<fs::DirEntry, std::io::Error>> = scan_2.collect();
-    println!("{} scrapers found.", entries.len());
-
-    // Write this to the tempfile, this is the array which holds all of the entries
-    file.write_all(r#"{ "scrapers": [ "#.as_bytes())
-        .expect("Writing to tempfile failed");
-
-    // Declare an iteration count
-    let mut iter_count = 0;
-
-    for entry in scan {
-        // Handle the result of the entries
-        // If there is an error, the function will return it
-        let entry = entry.expect("Failed to handle scrapers directory entry");
-
-        // Perform path to string conversion
-        let entry_name = format!("{}", entry.file_name().to_string_lossy());
-        let entry_location = format!("{}", entry.path().to_string_lossy());
-        // Replace the single backslashes with 2 because it will otherwise escape the json string
-        let entry_location = entry_location.replace('\\', r"\\");
-
-        // If the files found in the scrapers directory end with .exe,
-        // write their file name and path to the json file
-        if entry_name.ends_with(".exe") {
-            // Declare the string to write to the json file, it contains the file name and location of the scraper
-            let json = format!(
-                r#"{{ "name": "{}", "location": "{}" }}, "#,
-                entry_name, entry_location
-            );
-
-            // Declare the line that should be written for the last scraper entry
-            // This is the same as the first one, but without a trailing comma, that would lead to invalid json code
-            let json_end = format!(
-                r#"{{ "name": "{}", "location": "{}" }} "#,
-                entry_name, entry_location
-            );
-
-            // Increase the iter count
-            iter_count += 1;
-
-            // If the iteration count is smaller than the amount of entries,
-            // write the usual json string, otherwise, write the json_end string
-            // It works like this because the last entry is not allowed to have a trailing comma
-            let bytes = if iter_count < entries.len() {
-                json.as_bytes()
-            } else {
-                json_end.as_bytes()
-            };
-
-            // Finally, write the bytes
-            file.write_all(bytes)
-                .expect("Writing to scraper tempfile failed");
-
-            println!("Found scraper: {}", entry.file_name().to_string_lossy());
-        }
+    #[derive(serde::Serialize)]
+    struct Json {
+        scrapers: Vec<Scraper>,
     }
 
-    // Close the array
-    file.write_all(r#"] }"#.as_bytes())
-        .expect("Writing to tempfile failed");
+    #[derive(serde::Serialize)]
+    struct Scraper {
+        name: String,
+        location: String,
+    }
+
+    let mut file = fs::File::create(tempfile_path).unwrap();
+    let scan = fs::read_dir(&scraper_path).expect("Reading scrapers path failed");
+
+    let mut scrapers = vec![];
+    for entry in scan {
+        let entry = entry.unwrap();
+        scrapers.push(Scraper {
+            name: entry.file_name().to_string_lossy().to_string(),
+            location: entry.path().to_string_lossy().to_string(),
+        })
+    }
+
+    let json = Json { scrapers };
+    let json = serde_json::to_vec_pretty(&json).unwrap();
+    file.write_all(&json).unwrap();
 }

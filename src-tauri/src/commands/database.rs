@@ -3,6 +3,8 @@ use rusqlite::{params, Connection};
 use std::path::Path;
 use uuid::Uuid;
 
+use crate::commands::logging::{LogLevel, log};
+
 #[derive(serde::Serialize)]
 pub struct Game {
     pub id: i64,
@@ -16,6 +18,8 @@ pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> 
     let uuid = Uuid::new_v4();
     let uuid_simple = uuid.simple().to_string();
 
+    log(LogLevel::INFO, &format!("Generated the following (simple) UUID: {}", uuid_simple));
+
     let mut image_path = Path::new("").to_path_buf();
     if !image.is_empty() {
         let image = Path::new(&image);
@@ -25,6 +29,7 @@ pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> 
             image.extension().unwrap().to_str().unwrap()
         ));
         std::fs::copy(image, image_path.clone()).expect("Copying image failed");
+        log(LogLevel::INFO, "Copied image");
     };
     Ok(image_path)
 }
@@ -38,8 +43,10 @@ pub fn save_to_db(
 ) -> Result<(), String> {
     // copy the image to the images folder
     let image_path = if image == "None" {
+        log(LogLevel::WARNING, "No image was copied since no image was provided");
         "None".to_string()
     } else {
+        log(LogLevel::INFO, "Copying image");
         copy_image(&image)
             .unwrap_or(Path::new("").to_path_buf())
             .display()
@@ -54,9 +61,12 @@ pub fn save_to_db(
     let query = "INSERT INTO games (name, executable, description, image) VALUES (?, ?, ?, ?)";
 
     let tx = connection.transaction().map_err(|e| e.to_string())?;
+
     tx.execute(query, params![title, exe_path, description, image_path])
         .map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;
+
+    log(LogLevel::INFO, &format!("Saved game with name \"{}\" to the DB", title));
     Ok(())
 }
 
@@ -88,6 +98,8 @@ pub fn get_from_db() -> Result<Vec<Game>, String> {
             image,
         });
     }
+
+    log(LogLevel::INFO, &format!("Got {} game(s) from DB", games.len()));
     Ok(games)
 }
 
@@ -103,8 +115,10 @@ pub fn edit_in_db(
         Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
     // copy new image to location
     let image_path = if image == "None" {
+        log(LogLevel::WARNING, "No image was copied since no image was provided");
         "None".to_string()
     } else {
+        log(LogLevel::INFO, "Copying image");
         copy_image(&image)
             .unwrap_or(Path::new("").to_path_buf())
             .display()
@@ -133,6 +147,8 @@ pub fn delete_from_db(id: i64) -> Result<(), String> {
     let tx = connection.transaction().map_err(|e| e.to_string())?;
     tx.execute(query, params![id]).map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;
+
+    log(LogLevel::INFO, &format!("Deleted game with id: {}", id));
     Ok(())
 }
 
@@ -144,5 +160,7 @@ pub fn wipe_library() -> Result<(), String> {
     let tx = connection.transaction().map_err(|e| e.to_string())?;
     tx.execute(query, []).map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;
+
+    log(LogLevel::INFO, "Wiped the entire library");
     Ok(())
 }

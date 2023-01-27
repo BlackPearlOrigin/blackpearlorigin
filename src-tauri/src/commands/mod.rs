@@ -1,5 +1,6 @@
-use std::{fs, path, process, thread};
+use std::{fs, path, process, thread, time::Instant};
 
+use crate::commands::logging::{log, LogLevel};
 use execute::Execute;
 use rfd::FileDialog;
 
@@ -9,21 +10,33 @@ pub mod logging;
 #[tauri::command]
 // This function is ran everytime a search query is made
 pub fn handle_scraper(path: String, query: String) {
+    let start_time = Instant::now();
+
     // Create a command object for the scraper chosen (The command is just its path)
     // Pass in its path, a query and the destination folder for the cache file as arguments
-    let mut command = process::Command::new(path);
-    command.arg(query);
+    let mut command = process::Command::new(path.clone());
+    command.arg(query.clone());
     command.arg(crate::paths::get_pbp().join("queries"));
+
+    log(
+        LogLevel::INFO,
+        &format!("Searching for \"{}\" with {}", query, path),
+    );
 
     // Run the scraper and tell us about its exit code
     if let Some(exit_code) = command.execute().unwrap() {
         if exit_code == 0 {
-            println!("Scraper query completed successfully.");
+            log(LogLevel::INFO, "Scraper query completed successfully");
+            let final_time = Instant::now() - start_time;
+            log(
+                LogLevel::INFO,
+                &format!("Took {} second(s)", final_time.as_secs()),
+            )
         } else {
-            println!("Scraper query failed successfully.");
+            log(LogLevel::ERROR, "Scraper query failed successfully");
         }
     } else {
-        println!("Scraper query interrupted.");
+        log(LogLevel::INFO, "Scraper query interrupted");
     }
 }
 
@@ -50,12 +63,20 @@ pub fn install_scraper() {
         )
         .expect("Installing scraper failed");
     }
+
+    log(
+        LogLevel::INFO,
+        &format!(
+            "Installed scraper with path {}",
+            path::Path::new(&file).display().to_string()
+        ),
+    );
 }
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable
 pub fn file_dialog() -> String {
-    println!("Executable file dialog opened.");
+    log(LogLevel::INFO, "Executable file dialog opened");
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
@@ -74,7 +95,7 @@ pub fn file_dialog() -> String {
 #[tauri::command]
 // Opens a file dialog that prompts the user for an image
 pub fn image_dialog() -> String {
-    println!("Image file dialog opened.");
+    log(LogLevel::INFO, "Image file dialog opened");
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
@@ -96,8 +117,21 @@ pub fn image_dialog() -> String {
 #[tauri::command]
 // This function is ran everytime the user clicks "Run" on a library entry
 pub fn run_game(path: String) {
+    let start_time = Instant::now();
     let mut command = process::Command::new(path);
+
     thread::spawn(move || {
-        command.execute().expect("Failed to run game");
+        if let Some(exit_code) = command.execute().unwrap() {
+            if exit_code == 0 {
+                log(LogLevel::INFO, "Game ran successfully");
+                let final_time = Instant::now() - start_time;
+                log(
+                    LogLevel::INFO,
+                    &format!("Game ran for {} second(s)", final_time.as_secs()),
+                )
+            } else {
+                log(LogLevel::ERROR, "Scraper query failed successfully");
+            }
+        };
     });
 }

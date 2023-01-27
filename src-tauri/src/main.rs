@@ -33,6 +33,7 @@ fn main() {
             commands::image_dialog,
             commands::run_game,
             commands::install_scraper,
+            commands::logging::log,
             commands::database::save_to_db,
             commands::database::get_from_db,
             commands::database::edit_in_db,

@@ -14,7 +14,7 @@ use lazy_static::lazy_static;
 use std::{fs, io::Write, path};
 use rusqlite::{Connection, Result};
 use rusqlite_migration::{Migrations, M};
-use crate::commands::logging::{LogLevel, log};
+use crate::commands::logging::log;
 
 // Define migrations. These are applied atomically.
 lazy_static! {
@@ -66,7 +66,7 @@ pub fn init() {
     if !configfile_path.exists() {
         let mut file = match fs::File::create(&configfile_path) {
             Ok(k) => {
-                log(LogLevel::INFO, &format!("Successfully created file {}", &configfile_path.display()));
+                log(2, &format!("Successfully created file {}", &configfile_path.display()));
                 k
             }
             Err(e) => {
@@ -81,7 +81,7 @@ pub fn init() {
     if !gamedb_path.exists() {
         match fs::File::create(&gamedb_path) {
             Ok(_) => {
-                log(LogLevel::INFO, &format!("Successfully created file {}", &gamedb_path.display()));
+                log(2, &format!("Successfully created file {}", &gamedb_path.display()));
             }
             Err(e) => {
                 panic!("[ERROR] Error while creating config file: {}", e)
@@ -91,7 +91,7 @@ pub fn init() {
 
     match setup_database(&gamedb_path) {
         Ok(_) => {
-            log(LogLevel::INFO, &format!("Successfully created database {}", &gamedb_path.display()));            
+            log(2, &format!("Successfully created database {}", &gamedb_path.display()));            
         }
         Err(e) => {
             panic!("[ERROR] Error while creating database: {}", e)
@@ -107,7 +107,7 @@ pub fn init() {
     fn create_folder(path: &path::Path) {
         match fs::create_dir_all(path) {
             Ok(k) => {
-                log(LogLevel::INFO, &format!("Successfully created folder {}", &path.display()));            
+                log(2, &format!("Successfully created folder {}", &path.display()));            
                 k
             }
             Err(e) => eprintln!(
@@ -145,5 +145,5 @@ pub fn init() {
     let json = serde_json::to_vec_pretty(&json).unwrap();
     file.write_all(&json).unwrap();
 
-    log(LogLevel::INFO, "Welcome to Project Black Pearl")
+    log(2, "Welcome to Project Black Pearl")
 }

@@ -46,7 +46,7 @@ npm run tauri dev
 
 ## Wiki
 
-[Wiki](https://projectblackpearl.github.io/wiki/#/) for making contributions 
+You can find the official wiki [here](https://projectblackpearl.github.io/wiki/#/).
 
 ## Support
 

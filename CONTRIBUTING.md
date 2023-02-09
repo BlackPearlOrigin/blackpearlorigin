@@ -1,6 +1,6 @@
 # Contributing to PBP
 
-The following is a few ways you can contribute to the project along with an guideline to follow when writing code or commiting something
+The following is a few ways you can contribute to the project along with an guideline to follow when writing code or commiting something.
 
 ## **With code**
 

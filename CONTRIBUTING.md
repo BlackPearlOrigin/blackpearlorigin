@@ -1,7 +1,5 @@
 # Contributing to PBP
 
-We're glad that you want to contribute to Project Black Pearl
-
 The following is a few ways you can contribute to the project along with an guideline to follow when writing code or commiting something
 
 ## **With code**

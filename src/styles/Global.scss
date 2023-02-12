@@ -13,9 +13,9 @@
 	-webkit-text-size-adjust: 100%;
 
 	// Variables, These are set not using SCSS variables
-	// Because they will be modified by the user.
-
-	--item-bg-color: #00000065;
+	// because they will be modified by the user.
+	// No variables are set here, because they are
+	// set on Main.svelte (Router>main.container)
 }
 
 :focus {
@@ -59,9 +59,11 @@ body {
 	}
 
 	.branding {
-		padding: 16px 0px 5px 30px;
-		margin-bottom: 17px;
+		margin: 16px 0 17px 30px;
 		transition: all 0.5s;
+		border: 5px solid var(--text-color);
+		background-color: var(--text-color);
+		border-radius: 100%;
 	}
 }
 

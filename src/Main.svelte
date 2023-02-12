@@ -37,7 +37,7 @@
 	"
 	>
 		<div class="sidenav">
-			<img src="icon.png" width="100" class="branding" alt="branding" />
+			<img src="Logo.svg" width="100" class="branding" alt="branding" />
 			<Link class="menu-button" to="browse">{$t('browseText')}</Link>
 			<Link class="menu-button" to="/">{$t('libraryText')}</Link>
 			<Link class="menu-button" to="prefs">{$t('prefsText')}</Link>

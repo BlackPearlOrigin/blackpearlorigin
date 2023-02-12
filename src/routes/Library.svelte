@@ -63,48 +63,48 @@
 <main class="container">
 	<div class="main">
 		<div class="top">
-			<h1 style="display:inline-block;">{$t('libraryText')}</h1>
 			<!-- Creates a modal when the button is clicked -->
+			<button on:click="{() => showNewModal()}"
+				>{$t('library.add')}</button
+			>
 			<input
 				type="text"
 				placeholder="Search"
 				class="search-bar"
 				bind:value="{query}"
 			/>
-			<button on:click="{() => showNewModal()}"
-				>{$t('library.add')}</button
-			>
 		</div>
 
 		<!-- Awaits for games to be resolved -->
 		<!-- After that, loop over every object in that array -->
 		<!-- And add those results to a div -->
 		<!-- svelte-ignore empty-block -->
-		{#await games then data}
-			{#each getFilteredGames(data, query) as game}
-				<div class="game-panel">
-					<div class="game-text">
-						<img
-							class="game-image"
-							src="{game.image == 'None'
-								? 'Default.png'
-								: convertFileSrc(game.image)}"
-							alt="{game.name}"
-							height="100"
-							width="100"
-						/>
-						<div class="game-info">
+		<div class="game-panel">
+			{#await games then data}
+				{#each getFilteredGames(data, query) as game}
+					<div class="game-panel">
+						<div class="game-text">
+							<img
+								class="game-image"
+								src="{game.image == 'None'
+									? 'Default.png'
+									: convertFileSrc(game.image)}"
+								alt="{game.name}"
+								height="270"
+								width="200"
+							/>
 							<p class="game-title">{game.name}</p>
-							<!-- <p class="small-info">
+							<!-- <div class="game-info">
+							<p class="small-info">
 								{game.playtime}
 								{$t('library.playtime')}
-							</p> -->
+							</p>
 							<p class="game-desc">
 								{game.description}
 							</p>
+						</div> -->
 						</div>
-					</div>
-					<div class="buttons">
+						<!-- <div class="buttons">
 						<button
 							class="game-button-run"
 							on:click="{() =>
@@ -133,11 +133,12 @@
 								});
 							}}">{$t('library.deleteGame')}</button
 						>
+					</div> -->
 					</div>
-				</div>
-			{/each}
-		{:catch error}
-			<p style="color: red">{error.message}</p>
-		{/await}
+				{/each}
+			{:catch error}
+				<p style="color: red">{error.message}</p>
+			{/await}
+		</div>
 	</div>
 </main>

@@ -75,7 +75,7 @@
 				With the function displayResults
 			-->
 		</div>
-		
+
 		<!-- 
 			Awaits for search data to be resolved
 			After that add an div with the game title 

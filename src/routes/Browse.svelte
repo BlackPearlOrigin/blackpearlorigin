@@ -35,9 +35,18 @@
 
 <main class="container">
 	<div class="main">
-		<h1>{$t('browseText')}</h1>
+		<!-- <h1>{$t('browseText')}</h1> -->
 
 		<div class="search">
+			<button
+				type="submit"
+				on:click="{() =>
+					searchGame(selectedScraper, inputText).then(() => {
+						searchData = displayResults();
+					})}"
+			>
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
 			<input
 				placeholder="{$t('browse.search')}"
 				type="text"
@@ -65,15 +74,38 @@
 				When the button is clicked, refefine the var searchData
 				With the function displayResults
 			-->
-			<button
-				type="submit"
-				on:click="{() =>
-					searchGame(selectedScraper, inputText).then(() => {
-						searchData = displayResults();
-					})}"
-			>
-				<i class="fa-solid fa-magnifying-glass"></i>
-			</button>
+		</div>
+
+		<div class="game">
+			<p>Test</p>
+			<a href="#" target="_blank" rel="noreferrer">
+				<i class="fa-solid fa-cloud-arrow-down"></i>
+				{$t('browse.downloadText')}
+			</a>
+		</div>
+		<div class="game">
+			<p>Test</p>
+			<a href="#" target="_blank" rel="noreferrer">
+				<i class="fa-solid fa-cloud-arrow-down"></i>
+
+				{$t('browse.downloadText')}
+			</a>
+		</div>
+		<div class="game">
+			<p>Test</p>
+			<a href="#" target="_blank" rel="noreferrer">
+				<i class="fa-solid fa-cloud-arrow-down"></i>
+
+				{$t('browse.downloadText')}
+			</a>
+		</div>
+		<div class="game">
+			<p>Test</p>
+			<a href="#" target="_blank" rel="noreferrer">
+				<i class="fa-solid fa-cloud-arrow-down"></i>
+
+				{$t('browse.downloadText')}
+			</a>
 		</div>
 
 		<!-- 

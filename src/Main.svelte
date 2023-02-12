@@ -18,15 +18,24 @@
 <svelte:head>
 	<script
 		src="https://kit.fontawesome.com/dacbc752b2.js"
-		crossorigin="anonymous"
-	></script>
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles/Variables.css" />
 </svelte:head>
 
 <!-- Only touch this file if adding a new page -->
 <!-- Or styling a Modal -->
 <!-- Otherwise, ignore it -->
 <Router>
-	<main class="container">
+	<main
+		class="container"
+		style="
+		--item-bg-color: #00000065;
+		--accent-color: #733380;
+		--darker-accent: #632c6e;
+		--text-color: #fff;
+		--border-search-color: #ffffff68;
+	"
+	>
 		<div class="sidenav">
 			<img src="icon.png" width="100" class="branding" alt="branding" />
 			<Link class="menu-button" to="browse">{$t('browseText')}</Link>

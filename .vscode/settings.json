@@ -4,7 +4,7 @@
 	"editor.formatOnPaste": true,
 	"editor.formatOnType": true,
 	"[svelte]": {
-		"editor.defaultFormatter": "svelte.svelte-vscode"
+		"editor.defaultFormatter": "svelte.svelte-vscode-nightly"
 	},
 	"i18n-ally.localesPaths": ["src/locale/lang"],
 	"i18n-ally.keystyle": "nested"

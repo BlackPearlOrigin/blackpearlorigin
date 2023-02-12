@@ -75,39 +75,7 @@
 				With the function displayResults
 			-->
 		</div>
-
-		<div class="game">
-			<p>Test</p>
-			<a href="#" target="_blank" rel="noreferrer">
-				<i class="fa-solid fa-cloud-arrow-down"></i>
-				{$t('browse.downloadText')}
-			</a>
-		</div>
-		<div class="game">
-			<p>Test</p>
-			<a href="#" target="_blank" rel="noreferrer">
-				<i class="fa-solid fa-cloud-arrow-down"></i>
-
-				{$t('browse.downloadText')}
-			</a>
-		</div>
-		<div class="game">
-			<p>Test</p>
-			<a href="#" target="_blank" rel="noreferrer">
-				<i class="fa-solid fa-cloud-arrow-down"></i>
-
-				{$t('browse.downloadText')}
-			</a>
-		</div>
-		<div class="game">
-			<p>Test</p>
-			<a href="#" target="_blank" rel="noreferrer">
-				<i class="fa-solid fa-cloud-arrow-down"></i>
-
-				{$t('browse.downloadText')}
-			</a>
-		</div>
-
+		
 		<!-- 
 			Awaits for search data to be resolved
 			After that add an div with the game title 

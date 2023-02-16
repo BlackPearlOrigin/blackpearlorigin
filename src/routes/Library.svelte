@@ -84,16 +84,18 @@
 				{#each getFilteredGames(data, query) as game}
 					<div class="game-panel">
 						<div class="game-text">
-							<img
-								class="game-image"
-								src="{game.image == 'None'
-									? 'Default.png'
-									: convertFileSrc(game.image)}"
-								alt="{game.name}"
-								height="270"
-								width="200"
-							/>
-							<p class="game-title">{game.name}</p>
+							<button>
+								<img
+									class="game-image"
+									src="{game.image == 'None'
+										? 'Default.png'
+										: convertFileSrc(game.image)}"
+									alt="{game.name}"
+									height="270"
+									width="200"
+								/>
+								<p class="game-title">{game.name}</p>
+							</button>
 							<!-- <div class="game-info">
 							<p class="small-info">
 								{game.playtime}

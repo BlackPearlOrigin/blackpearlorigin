@@ -18,7 +18,8 @@
 <svelte:head>
 	<script
 		src="https://kit.fontawesome.com/dacbc752b2.js"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous"
+	></script>
 	<link rel="stylesheet" href="styles/Variables.css" />
 </svelte:head>
 
@@ -30,10 +31,15 @@
 		class="container"
 		style="
 		--item-bg-color: #00000065;
+		--bg: #121719;
+		--bg-darker: #0b0e10;
 		--accent-color: #733380;
 		--darker-accent: #632c6e;
 		--text-color: #fff;
 		--border-search-color: #ffffff68;
+		--white-bg-color: #ffffff;
+		--white-comp-color: #d2d5d6;
+		--white-ph-color: #696969;
 	"
 	>
 		<div class="sidenav">
@@ -50,9 +56,9 @@
 			<Modal
 				styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}"
 				styleWindow="{{
-					backgroundColor: '#000',
-					border: '1px solid #00ff00',
-					borderRadius: '0px',
+					backgroundColor: 'var(--bg)',
+					border: '1px solid var(--bg)',
+					borderRadius: '30px',
 					float: 'center',
 				}}"
 				closeButton="{false}"

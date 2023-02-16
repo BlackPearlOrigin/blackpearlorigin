@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { invoke } from '@tauri-apps/api/tauri';
+	import { convertFileSrc, invoke } from '@tauri-apps/api/tauri';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
 	import { saveData, editData } from '../../scripts/Library';
+	import { exists } from '@tauri-apps/api/fs';
 
 	const { close }: any = getContext('simple-modal');
 	export let title: string;
@@ -11,6 +12,7 @@
 	export let executablePath: any;
 	export let description: string;
 	export let imagePath: any;
+	let imageSelected: boolean;
 
 	// Defines a function that checks if the same string is empty
 	function isEmpty(string: string) {
@@ -23,7 +25,9 @@
 		invoke('file_dialog').then((message) => (executablePath = message));
 	}
 	function chooseImage() {
-		invoke('image_dialog').then((message) => (imagePath = message));
+		invoke('image_dialog')
+			.then((message) => (imagePath = message))
+			.then(() => (imageSelected = true));
 	}
 
 	export let operationToPerform: string = 'Save';
@@ -81,16 +85,14 @@
 		</div>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseImage -->
-			<button on:click="{chooseImage}" class="ng-button"
+			<button on:click="{chooseImage}" class="ng-button image-add"
 				>{$t('modals.newGame.addImg')}</button
 			>
 
 			<!-- Binds the inner html to imagePath -->
-			<p
-				class="path"
-				contenteditable="true"
-				bind:innerHTML="{imagePath}"
-			></p>
+			{#if imageSelected && imagePath != 'None'}
+				<img src="{convertFileSrc(imagePath)}" alt="" width="100px" />
+			{/if}
 		</div>
 		<textarea
 			maxlength="250"
@@ -100,12 +102,13 @@
 	</div>
 
 	<!-- I think you get it by now -->
-	<button
-		on:click="{() => {
-			operation_handler(operationToPerform);
-		}}"
-		class="ng-button done-btn"
-	>
-		{$t('modals.newGame.done')}
-	</button>
+	<div class="done-btn">
+		<button
+			on:click="{() => {
+				operation_handler(operationToPerform);
+			}}"
+		>
+			{$t('modals.newGame.done')}
+		</button>
+	</div>
 </div>

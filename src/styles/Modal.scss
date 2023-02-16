@@ -8,68 +8,91 @@
 	margin-top: 0;
 }
 
-.ng-button {
-	color: white;
-	background-color: #040404;
-	border-color: var(--accent-color);
-	border-style: solid;
-	border-width: 1px;
-	margin-bottom: 8px;
-	padding: 8px 8px 8px 8px;
+.modal-main {
+	.newgame {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
 
-	font-size: 15px;
-}
+		.ng-button {
+			margin-top: 15px;
+			padding: 8px 8px 8px 8px;
+		}
 
-.done-btn {
-	margin-top: 15px;
-}
+		input,
+		textarea {
+			color: var(--text-color);
+			background-color: var(--bg-darker);
+			border-color: var(--bg-darker);
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 10px;
+			padding: 8px 8px 8px 8px;
 
-button {
-	transition: all 0.25s;
-}
+			outline-style: none;
 
-button:hover {
-	text-shadow: 0px 0px 12px #ffffff;
-}
+			font-size: 15px;
+			margin-bottom: 8px;
+			margin-top: 8px;
 
-.newgame {
-	display: flex;
-	flex-grow: 1;
-	flex-direction: column;
-}
+			&::placeholder {
+				color: var(--white-ph-color);
+				font-size: 15px;
+			}
+		}
 
-.newgame > input,
-.newgame > textarea {
-	color: white;
-	background-color: #040404;
-	border-color: var(--accent-color);
-	border-style: solid;
-	border-width: 1px;
-	padding: 8px 8px 8px 8px;
+		.show-path {
+			display: flex;
+			flex-direction: row;
 
-	outline-style: none;
-}
+			.ng-button {
+				transition: all 0.25s;
 
-.newgame > input[type='text'],
-.newgame > textarea {
-	font-size: 15px;
-	margin-bottom: 8px;
-	margin-top: 8px;
-}
+				color: var(--white-ph-color);
+				background-color: var(--bg-darker);
+				border-color: var(--bg-darker);
+				border-style: solid;
+				border-width: 1px;
+				border-radius: 10px;
+				//margin-bottom: 16px;
+				//margin-top: 16px;
+				margin: 15px 0;
+				margin-right: 10px;
 
-.newgame > input[type='text']::placeholder,
-.newgame > textarea::placeholder {
-	color: rgb(130, 130, 130);
-	font-size: 15px;
-}
+				font-size: 15px;
 
-.show-path > p {
-	display: inline;
-	color: white;
-	font-size: 15px !important;
-	padding-top: 4px;
-	padding-left: 5px;
-	word-wrap: break-word;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+
+			.image-add {
+				height: 38px;
+			}
+
+			img {
+				border-style: solid;
+				border-width: 1px;
+				border-radius: 10px;
+				padding: 5px;
+				background-color: var(--bg-darker);
+				border-color: var(--bg-darker);
+			}
+		}
+	}
+
+	.done-btn {
+		display: flex;
+		flex-flow: row-reverse;
+
+		button {
+			background-color: var(--bg-darker);
+			border: 1px solid var(--bg-darker);
+			border-radius: 10px;
+			font-size: 1rem;
+			color: var(--white-ph-color);
+		}
+	}
 }
 
 .main {

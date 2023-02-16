@@ -89,7 +89,11 @@
 				>{$t('modals.newGame.addImg')}</button
 			>
 
-			<!-- Binds the inner html to imagePath -->
+			<!-- 
+				Adds an image preview of the cover art
+				Only if imageSelected = true and
+				imagePath != "None"
+			-->
 			{#if imageSelected && imagePath != 'None'}
 				<img src="{convertFileSrc(imagePath)}" alt="" width="100px" />
 			{/if}

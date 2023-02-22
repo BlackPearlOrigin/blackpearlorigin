@@ -11,6 +11,12 @@
 	import '../styles/Library.scss';
 	import { t } from '../locale/i18n';
 	import { convertFileSrc } from '@tauri-apps/api/tauri';
+	import { fly } from 'svelte/types/runtime/transition';
+	import type { Game } from 'src/scripts/Interfaces';
+
+	let gameModal: HTMLDialogElement;
+	let gameOnModal: Game;
+	let gameModalOpened: boolean;
 
 	// Gets the open function from simple-modal context
 	const { open }: any = getContext('simple-modal');
@@ -56,6 +62,8 @@
 			}
 		);
 
+	const openGameModal = () => gameModal.showModal();
+
 	let query: string;
 	let games: any = getGames();
 </script>
@@ -65,7 +73,7 @@
 		<div class="top">
 			<!-- Creates a modal when the button is clicked -->
 			<button on:click="{() => showNewModal()}"
-				>{$t('library.add')}</button
+				><i class="fa-solid fa-plus"></i></button
 			>
 			<input
 				type="text"
@@ -84,7 +92,14 @@
 				{#each getFilteredGames(data, query) as game}
 					<div class="game-panel">
 						<div class="game-text">
-							<button>
+							<button
+								on:click="{() => {
+									gameModalOpened = true;
+
+									gameOnModal = game;
+									openGameModal();
+								}}"
+							>
 								<img
 									class="game-image"
 									src="{game.image == 'None'
@@ -106,38 +121,57 @@
 							</p>
 						</div> -->
 						</div>
-						<!-- <div class="buttons">
-						<button
-							class="game-button-run"
-							on:click="{() =>
-								operationHandler(() => runGame(game.exe_path))}"
-							>{$t('library.run')}</button
-						>
-						<button
-							class="game-button-run"
-							on:click="{() =>
-								operationHandler(() =>
-									showEditModal(game)
-								).then(() => {
-									games = getGames();
-								})}">{$t('library.editGame')}</button
-						>
-						<button
-							class="game-button-delete"
-							on:click="{() => {
-								{
-									console.log(game.id);
-								}
-								operationHandler(() =>
-									deleteGame(game.id)
-								).then(() => {
-									games = getGames();
-								});
-							}}">{$t('library.deleteGame')}</button
-						>
-					</div> -->
 					</div>
 				{/each}
+
+				<div class="gm-flex">
+					<dialog class="game-modal" bind:this="{gameModal}">
+						{#if gameModalOpened}
+							<span id="game-name">
+								{gameOnModal.name}
+							</span>
+
+							<button
+								class="game-button-run"
+								id="execute"
+								on:click="{() =>
+									operationHandler(() =>
+										runGame(gameOnModal.exe_path)
+									)}">{$t('library.run')}</button
+							>
+							<p id="game-desc">
+								{gameOnModal.description}
+							</p>
+
+							<div class="buttons">
+								<button
+									class="game-button-run"
+									on:click="{() =>
+										operationHandler(() =>
+											showEditModal(gameOnModal)
+										).then(() => {
+											games = getGames();
+										})}"
+									><i class="fa-solid fa-pen"></i></button
+								>
+								<button
+									class="game-button-delete"
+									on:click="{() => {
+										{
+											console.log(gameOnModal.id);
+										}
+										operationHandler(() =>
+											deleteGame(gameOnModal.id)
+										).then(() => {
+											games = getGames();
+										});
+									}}"
+									><i class="fa-solid fa-trash"></i></button
+								>
+							</div>
+						{/if}
+					</dialog>
+				</div>
 			{:catch error}
 				<p style="color: red">{error.message}</p>
 			{/await}

@@ -20,7 +20,6 @@
 		src="https://kit.fontawesome.com/dacbc752b2.js"
 		crossorigin="anonymous"
 	></script>
-	<link rel="stylesheet" href="styles/Variables.css" />
 </svelte:head>
 
 <!-- Only touch this file if adding a new page -->
@@ -36,10 +35,16 @@
 		--accent-color: #733380;
 		--darker-accent: #632c6e;
 		--text-color: #fff;
+		--black-text: #000;
 		--border-search-color: #ffffff68;
 		--white-bg-color: #ffffff;
 		--white-comp-color: #d2d5d6;
 		--white-ph-color: #696969;
+		--edit-game-color: #0087fe;
+		--delete-game-color: #ff0000;
+		--game-modal-border-color: #fff;
+		--game-modal-bg: #0000003b;
+		--game-modal-run: #fff;
 	"
 	>
 		<div class="sidenav">

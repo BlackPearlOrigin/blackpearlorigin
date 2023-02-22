@@ -99,7 +99,7 @@
 			{/if}
 		</div>
 		<textarea
-			maxlength="250"
+			maxlength="800"
 			name="Description"
 			placeholder="{$t('modals.newGame.desc')}"
 			bind:value="{description}"></textarea>

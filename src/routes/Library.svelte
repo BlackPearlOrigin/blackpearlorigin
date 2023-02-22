@@ -11,7 +11,6 @@
 	import '../styles/Library.scss';
 	import { t } from '../locale/i18n';
 	import { convertFileSrc } from '@tauri-apps/api/tauri';
-	import { fly } from 'svelte/types/runtime/transition';
 	import type { Game } from 'src/scripts/Interfaces';
 
 	let gameModal: HTMLDialogElement;

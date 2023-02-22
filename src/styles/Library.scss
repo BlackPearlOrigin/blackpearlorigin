@@ -50,10 +50,6 @@
 		font-size: 16px;
 		cursor: pointer;
 		transition: all 0.25s;
-
-		&:hover {
-			text-shadow: 0px 0px 12px #ffffff;
-		}
 	}
 }
 
@@ -119,12 +115,13 @@
 
 		.game-modal {
 			background-color: var(--game-modal-bg);
-			backdrop-filter: blur(2px);
-			-webkit-backdrop-filter: blur(2px);
+			backdrop-filter: blur(100px);
+			-webkit-backdrop-filter: blur(6px);
 			margin: 0;
 			margin-left: auto;
 			height: 100%;
-			border-color: var(--game-modal-border-color);
+			border-color: var(--white-ph-color);
+			border-width: 1px;
 
 			&::backdrop {
 				background-color: inherit;
@@ -134,7 +131,7 @@
 				color: var(--text-color);
 				display: flex;
 				flex-direction: column;
-				width: 350px;
+				width: 300px;
 			}
 
 			#game-name {

@@ -8,7 +8,6 @@
 	import { dict, t } from './locale/i18n';
 	import { loadLocale } from './scripts/Main';
 	import { Router, Link, Route } from 'svelte-navigator';
-
 	$: dict.set(translations);
 
 	// Loads the current locale
@@ -43,7 +42,7 @@
 		--edit-game-color: #0087fe;
 		--delete-game-color: #ff0000;
 		--game-modal-border-color: #fff;
-		--game-modal-bg: #0000003b;
+		--game-modal-bg: #0b0e10bd;
 		--game-modal-run: #fff;
 	"
 	>
@@ -59,13 +58,14 @@
 
 		<Route path="/" primary="{false}">
 			<Modal
-				styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}"
+				styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}"
 				styleWindow="{{
 					backgroundColor: 'var(--bg)',
 					border: '1px solid var(--bg)',
 					borderRadius: '30px',
 					float: 'center',
 				}}"
+				transitionBgProps="{{ duration: 0 }}"
 				closeButton="{false}"
 			>
 				<Library />

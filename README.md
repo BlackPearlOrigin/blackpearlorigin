@@ -52,6 +52,10 @@ You can find the official wiki [here](https://projectblackpearl.github.io/wiki/#
 
 You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) server to get help or just to hang out with us!
 
+## Credit
+
+Special thanks to the developers of the [Stremio Addon SDK](https://github.com/Stremio/stremio-addon-sdk) for allowing us to use their code as a base for our Plugin SDK.
+
 ## Donations
 
 If you would to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.

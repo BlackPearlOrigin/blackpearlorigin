@@ -4,8 +4,10 @@
 
 .search {
 	display: flex;
+	height: 69px;
 
 	input {
+		margin: 1rem 0;
 		color: #fff;
 		font-size: 1rem;
 		padding: 8px 8px 8px 8px;
@@ -29,8 +31,8 @@
 	}
 
 	button {
+		margin: 1rem 8px 1rem 0;
 		padding: 8px 12px;
-		margin-right: 8px;
 		background-color: var(--item-bg-color);
 		border: 1px solid var(--border-search-color);
 		border-radius: 10px;
@@ -51,7 +53,7 @@
 
 	select {
 		appearance: none;
-		margin-left: 8px;
+		margin: 1rem 0 1rem 8px;
 		padding: 3px 30px 3px 5px;
 		color: var(--text-color);
 		border: 1px solid #ffffff68;

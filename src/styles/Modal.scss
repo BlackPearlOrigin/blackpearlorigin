@@ -26,7 +26,7 @@
 			border-color: var(--bg-darker);
 			border-style: solid;
 			border-width: 1px;
-			border-radius: 10px;
+			border-radius: var(--border-radius);
 			padding: 8px 8px 8px 8px;
 
 			outline-style: none;
@@ -54,7 +54,7 @@
 				border-color: var(--bg-darker);
 				border-style: solid;
 				border-width: 1px;
-				border-radius: 10px;
+				border-radius: var(--border-radius);
 				//margin-bottom: 16px;
 				//margin-top: 16px;
 				margin: 15px 0;
@@ -74,7 +74,7 @@
 			img {
 				border-style: solid;
 				border-width: 1px;
-				border-radius: 10px;
+				border-radius: var(--border-radius);
 				padding: 5px;
 				background-color: var(--bg-darker);
 				border-color: var(--bg-darker);
@@ -89,7 +89,7 @@
 		button {
 			background-color: var(--bg-darker);
 			border: 1px solid var(--bg-darker);
-			border-radius: 10px;
+			border-radius: var(--border-radius);
 			font-size: 1rem;
 			color: var(--white-ph-color);
 		}

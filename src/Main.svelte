@@ -45,6 +45,9 @@
 		--game-modal-bg: #0b0e10bd;
 		--game-modal-run: #fff;
 		--settings-button: #24282a;
+		--input-blur-size: 2px;
+		--game-modal-blur-size: 6px;
+		--border-radius: 10px;
 	"
 	>
 		<div class="sidenav">

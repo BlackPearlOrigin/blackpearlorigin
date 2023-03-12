@@ -21,7 +21,7 @@
 		backdrop-filter: blur(2px);
 		-webkit-backdrop-filter: blur(2px);
 		border-width: 1px;
-		border-radius: 10px;
+		border-radius: var(--border-radius);
 		border-color: #ffffff68;
 
 		&[type='text']:focus {
@@ -40,7 +40,7 @@
 		backdrop-filter: blur(2px);
 		-webkit-backdrop-filter: blur(2px);
 		border-width: 1px;
-		border-radius: 10px;
+		border-radius: var(--border-radius);
 		border-color: #ffffff68;
 
 		padding: 0 15px 0 15px;
@@ -116,7 +116,7 @@
 		.game-modal {
 			background-color: var(--game-modal-bg);
 			backdrop-filter: blur(100px);
-			-webkit-backdrop-filter: blur(6px);
+			-webkit-backdrop-filter: blur(var(--game-modal-blur-size));
 			margin: 0;
 			margin-left: auto;
 			height: 100%;
@@ -157,7 +157,7 @@
 				font-weight: 900;
 				border-style: solid;
 				border-color: var(--game-modal-run);
-				border-radius: 10px;
+				border-radius: var(--border-radius);
 				background-color: var(--game-modal-run);
 				color: var(--black-text);
 			}

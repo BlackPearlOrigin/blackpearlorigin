@@ -15,7 +15,7 @@
 			background-color: var(--settings-button);
 			border-style: solid;
 			border-width: 1px;
-			border-radius: 10px;
+			border-radius: var(--border-radius);
 			border-color: var(--settings-button);
 		}
 	}
@@ -44,7 +44,7 @@
 			background-color: var(--settings-button);
 			border-style: solid;
 			border-width: 1px;
-			border-radius: 10px;
+			border-radius: var(--border-radius);
 			border-color: var(--settings-button);
 		}
 	}
@@ -57,7 +57,7 @@
 		background-color: var(--settings-button);
 		border-style: solid;
 		border-width: 1px;
-		border-radius: 10px;
+		border-radius: var(--border-radius);
 		border-color: var(--settings-button);
 	}
 }

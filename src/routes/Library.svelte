@@ -76,7 +76,7 @@
 			>
 			<input
 				type="text"
-				placeholder="Search"
+				placeholder="{$t('browseText')}"
 				class="search-bar"
 				bind:value="{query}"
 			/>

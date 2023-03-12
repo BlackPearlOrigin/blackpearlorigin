@@ -21,7 +21,7 @@
 	const data = getScrapers();
 </script>
 
-<!-- 
+<!--
 	Checks if the enter key has been pressed
  	If it has been pressed, then re-define the variable searchData
  	Otherwise, don't do nothing 

@@ -44,6 +44,7 @@
 		--game-modal-border-color: #fff;
 		--game-modal-bg: #0b0e10bd;
 		--game-modal-run: #fff;
+		--settings-button: #24282a;
 	"
 	>
 		<div class="sidenav">

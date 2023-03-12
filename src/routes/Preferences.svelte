@@ -7,6 +7,7 @@
 		saveLangData,
 		wipeLibrary,
 	} from '../scripts/Preferences';
+	import languageNames from '../locale/languages.json';
 
 	$: languages = Object.keys(translations);
 	$: dict.set(translations);
@@ -18,17 +19,21 @@
 		<div class="section">
 			<div class="button-group">
 				<button id="install" on:click="{installScraper}"
-					>{$t('preferences.installPlugin')}</button
+					><i class="fa-solid fa-download"></i>
+					{$t('preferences.installPlugin')}</button
 				>
 				<button id="wipe" on:click="{wipeLibrary}"
-					>{$t('preferences.wipeLibrary')}</button
+					><i class="fa-solid fa-trash-can"></i>
+					{$t('preferences.wipeLibrary')}</button
 				>
 			</div>
-			<label for="select">{$t('languageText')}</label>
+			<label for="select">{$t('languageText')}:</label>
 			<div class="locale-settings">
 				<select bind:value="{$locale}">
-					{#each languages as languageName}
-						<option value="{languageName}">{languageName}</option>
+					{#each languages as languageCode, i}
+						<option value="{languageCode}"
+							>{languageNames[i]}</option
+						>
 					{/each}
 				</select>
 			</div>

@@ -14,41 +14,44 @@ pub struct GameMeta {
 #[tauri::command]
 pub fn get_game_metadata(name: String) -> Result<Vec<GameMeta>, String> {
     let url = "https://igdb-api.onrender.com/api/v1/game/";
-    let client = match Client::builder().danger_accept_invalid_certs(true).build() {
-        Ok(it) => it,
-        Err(err) => panic!("Failed to build client: {}", err),
-    };
-    let response = match client.get(url.to_string() + &name).send() {
-        Ok(it) => it,
-        Err(err) => panic!("Failed to send request: {}", err),
-    };
+
+    let client = Client::builder()
+        .danger_accept_invalid_certs(true)
+        .build()
+        .map_err(|e| format!("Failed to build request client: {e}"))?;
+
+    let response = client
+        .get(url.to_string() + &name)
+        .send()
+        .and_then(|resp| resp.error_for_status())
+        .map_err(|e| format!("Failed to send request: {e}"))?;
+
     log(2, format!("Response: {:?}", response).as_str());
 
-    let game_meta: Vec<GameMeta> = match response.json() {
-        Ok(it) => it,
-        Err(err) => panic!("Failed to parse response: {}", err),
-    };
+    let game_meta: Vec<GameMeta> = response
+        .json()
+        .map_err(|e| format!("Failed to parse response: {e}"))?;
+
     Ok(game_meta)
 }
 
 #[tauri::command]
 pub fn download_image(url: String) -> Result<String, String> {
-    let response = match reqwest::blocking::get(url) {
-        Ok(it) => it,
-        Err(err) => panic!("Failed to send request: {}", err),
-    };
-    let image = match response.bytes() {
-        Ok(it) => it,
-        Err(err) => panic!("Failed to parse response: {}", err),
-    };
+    let response = reqwest::blocking::get(url)
+        .and_then(|resp| resp.error_for_status())
+        .map_err(|err| format!("Failed to send request: {}", err))?;
+
+    let image = response
+        .bytes()
+        .map_err(|err| format!("Failed to get image bytes: {}", err))?;
     let uuid = Uuid::new_v4();
     let image_path = paths::get_pbp()
         .join("images")
-        .join(format!("{}.jpg", uuid.simple().to_string()));
+        .join(format!("{}.jpg", uuid.simple().to_string())); // Extension is hardcoded for now
 
     //  Write the image to the images folder and return the path
-    match std::fs::write(image_path.clone(), image) {
-        Ok(_) => Ok(image_path.display().to_string()),
-        Err(err) => Err(err.to_string()),
-    }
+    std::fs::write(image_path.clone(), image)
+        .map_err(|err| format!("Failed to write image: {}", err))?;
+
+    Ok(image_path.to_str().unwrap().to_string())
 }

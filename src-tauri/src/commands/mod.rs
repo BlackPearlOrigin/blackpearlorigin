@@ -6,6 +6,7 @@ use rfd::FileDialog;
 
 pub mod database;
 pub mod logging;
+pub mod metadata;
 
 #[tauri::command]
 // This function is ran everytime a search query is made

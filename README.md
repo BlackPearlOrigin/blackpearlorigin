@@ -10,7 +10,7 @@ Unify your game sources in one place by using modules made by the community.
 
 ## What is Project Black Pearl?
 
-**Project Black Pearl** (or PBP) is an open source project that aims to unify the game sources in one place by using modules and extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
+**Project Black Pearl** (or PBP) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing  extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
 
 ## What is the current state of the project?
 

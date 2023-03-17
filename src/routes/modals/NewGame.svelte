@@ -3,7 +3,12 @@
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
-	import { saveData, editData } from '../../scripts/Library';
+	import {
+		saveData,
+		editData,
+		getGameMetadata,
+		downloadImage,
+	} from '../../scripts/Library';
 
 	const { close }: any = getContext('simple-modal');
 	export let title: string;
@@ -97,6 +102,35 @@
 			name="Description"
 			placeholder="{$t('modals.newGame.desc')}"
 			bind:value="{description}"></textarea>
+
+		<button
+			on:click="{() => {
+				if (!isEmpty(title)) {
+					getGameMetadata(title).then(async (gameMeta) => {
+						if ((gameMeta.length = 1)) {
+							description = gameMeta[0].summary;
+							title = gameMeta[0].name;
+
+							const downImagePath = await downloadImage(
+								gameMeta[0].cover_url
+							);
+
+							imagePath = downImagePath;
+						}
+
+						// TODO: Add an menu to select one of multiple games
+					});
+					return;
+				}
+
+				invoke('log', {
+					logLevel: 0,
+					logMessage: 'No title set',
+				});
+			}}"
+		>
+			Get metadata from IGDB
+		</button>
 	</div>
 
 	<!-- I think you get it by now -->

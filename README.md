@@ -63,10 +63,10 @@ If you would to support the project, you can donate to any of the following wall
 **NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM **Terrence#9699** on Discord with proof of your donation.
 
 
-**BTC (Bitcoin):** bc1qhmjt2vz72gxxeqmh4sah24j67lzpvum945c5eq
+**BTC (Bitcoin):** bc1q0c7kxkr3mh436htjpxhku87nhf859h7ens69zl
 
-**XMR (Monero):** 47d6EAGzmMb4ofL1fRgYaM4TDvjigcQfe5t64JLez97fJrrSoJvBwJLHzpVayWJUScE4WLcF79pdGQRWuPSPdMqT1MdXGjG
+**XMR (Monero):** 4AUjCnbeY5j6yz6xSHtHFuDMYkniHydz3fu48pr3eqUSV8vRjrRTpxgVSHfgp5gJpwiqbxiN7bVixX1YF6bED668LWMqqBX
 
-**ETH (Ethereum):** 0x76a1e6A87Abb8Cd2AA1811E489b0C67d00DAdB3f
+**ETH (Ethereum):** 0x53550c028f95b6a633D9c0EeaBd4887F013de038
 
-**LTC (Litecoin):** LZbyxofFgXBBRQJKu5MsLT8cdf418WaVuk
+**LTC (Litecoin):** Lg9Uim9p3dj2KGy4225x6vMnZXBtr5DneN

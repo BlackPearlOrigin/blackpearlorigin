@@ -14,9 +14,9 @@ Unify your game sources in one place by using modules made by the community.
 
 ## What is the current state of the project?
 
-PBP is currently in early Beta stages and its overall functionality is very limited.
+PBP is currently in early Beta stages and its overall functionality is very limited. You can check [the to-do list](https://github.com/orgs/ProjectBlackPearl/projects/3) to see what features are planned or currently in development.
 
-## How to contribute?
+## How can I contribute?
 
 ### Recommended IDE Setup
 

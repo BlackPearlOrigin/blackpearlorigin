@@ -3,6 +3,7 @@
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
+	import type { IGDBData } from '../../scripts/Interfaces';
 	import {
 		saveData,
 		editData,
@@ -16,6 +17,9 @@
 	export let executablePath: any;
 	export let description: string;
 	export let imagePath: any;
+	let moreThanOneGameMeta: boolean;
+	let gameMetadata: IGDBData[] = [];
+	let gameMetadataModal: HTMLDialogElement;
 
 	// Defines a function that checks if the same string is empty
 	function isEmpty(string: string) {
@@ -107,7 +111,9 @@
 			on:click="{() => {
 				if (!isEmpty(title)) {
 					getGameMetadata(title).then(async (gameMeta) => {
-						if ((gameMeta.length = 1)) {
+						gameMetadata = gameMeta;
+
+						if (gameMeta.length <= 1) {
 							description = gameMeta[0].summary;
 							title = gameMeta[0].name;
 
@@ -116,9 +122,13 @@
 							);
 
 							imagePath = downImagePath;
+
+							return;
 						}
 
+						console.log('More than one game');
 						// TODO: Add an menu to select one of multiple games
+						gameMetadataModal.showModal();
 					});
 					return;
 				}
@@ -129,9 +139,30 @@
 				});
 			}}"
 		>
-			Get metadata from IGDB
+			Fetch automatically
 		</button>
 	</div>
+
+	<dialog bind:this="{gameMetadataModal}">
+		{#each gameMetadata as gameMeta, i}
+			<button
+				on:click="{async () => {
+					description = gameMetadata[i].summary;
+					title = gameMetadata[i].name;
+
+					const downImagePath = await downloadImage(
+						gameMetadata[i].cover_url
+					);
+
+					imagePath = downImagePath;
+
+					gameMetadataModal.close();
+				}}"
+			>
+				{gameMeta.name}<br />
+			</button>
+		{/each}
+	</dialog>
 
 	<!-- I think you get it by now -->
 	<button

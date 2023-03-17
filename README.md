@@ -1,4 +1,4 @@
-# Project Black Pearl
+# Project Black Pearl (PBP)
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
@@ -14,13 +14,13 @@ Unify your game sources in one place by using modules made by the community.
 
 ## What is the current state of the project?
 
-The project is currently in very early stages of development.
+PBP is currently in early Beta stages and its overall functionality is very limited.
 
 ## How to contribute?
 
 ### Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) .
+[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
 -   ### Clone the repository
 

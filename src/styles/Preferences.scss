@@ -2,14 +2,18 @@
 	--accent-color: #00ff00;
 }
 
+* {
+	font-family: 'JetBrains Mono', monospace;
+}
+
 .section {
 	.button-group {
 		display: flex;
 		justify-content: space-evenly;
 
 		button {
-			font-size: 1.2rem;
-			margin: 8px 0px;
+			font-size: 1rem;
+			margin: 8px 0px 1.2rem;
 			padding: 10px;
 			color: white;
 			background-color: var(--settings-button);
@@ -20,8 +24,22 @@
 		}
 	}
 
-	label[for='select'] {
+	label {
 		font-size: 1.2rem;
+	}
+
+	.available-plugins {
+		margin: 10px 0;
+		padding: 5px;
+		width: 346px;
+		border-color: var(--settings-button);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		background-color: var(--settings-button);
+
+		span {
+			padding: 1rem;
+		}
 	}
 
 	.locale-settings {

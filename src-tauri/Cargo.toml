@@ -1,6 +1,6 @@
 [package]
 name = "project_black_pearl"
-version = "0.2.0"
+version = "0.3.0"
 description = "Unify your game sources in one place by using modules made by the community. "
 authors = ["zun1uwu", "infinity-plus", "Brisolo32", "Contributors of Project Black Pearl"]
 license = "BSD-3-Clause"

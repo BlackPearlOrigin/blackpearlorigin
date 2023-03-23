@@ -9,6 +9,7 @@
 	} from '../scripts/Preferences';
 	import languageNames from '../locale/languages.json';
 	import { getScrapers } from '../scripts/Browse';
+	import pkgJSON from '../../package.json';
 
 	const scrapersList = getScrapers();
 
@@ -56,5 +57,6 @@
 				>{$t('preferences.saveText')}</button
 			>
 		</div>
+		<span class="ver"> Project Black Pearl v{pkgJSON.version} </span>
 	</div>
 </main>

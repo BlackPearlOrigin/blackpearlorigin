@@ -48,7 +48,7 @@
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
 			<input
-				placeholder="{$t('browse.search')}"
+				placeholder="{$t('library.searchGame')}"
 				type="text"
 				bind:value="{inputText}"
 			/>

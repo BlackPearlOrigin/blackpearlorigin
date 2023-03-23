@@ -32,7 +32,9 @@
 				>
 			</div>
 			<div class="availb-plugins">
-				<label for="available-plugins">Available plugins:</label>
+				<label for="available-plugins"
+					>{$t('preferences.availablePlugins')}:</label
+				>
 				<div class="available-plugins">
 					{#await scrapersList then scrapersList}
 						{#each scrapersList.scrapers as scraper}

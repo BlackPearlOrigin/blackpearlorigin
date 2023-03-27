@@ -58,9 +58,9 @@ Special thanks to the developers of the [Stremio Addon SDK](https://github.com/S
 
 ## Donations
 
-If you would to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
+If you would like to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
 
-**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM **Terrence#9699** on Discord with proof of your donation.
+**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM any of the Senior Project Managers on Discord with the proof of your donation.
 
 
 **BTC (Bitcoin):** bc1q0c7kxkr3mh436htjpxhku87nhf859h7ens69zl

@@ -1,5 +1,5 @@
 node_modules
-package-lock.json
+yarn.lock
 src-tauri/target
 dist/
 src-tauri/.sentry-native

@@ -67,13 +67,13 @@
 		<input
 			type="text"
 			name="Title"
-			placeholder="{$t('newGame.gameTitle')}"
+			placeholder="{$t('modals.newGame.gameTitle')}"
 			bind:value="{title}"
 		/>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseExecutable -->
 			<button on:click="{chooseExecutable}" class="ng-button"
-				>{$t('newGame.addExec')}</button
+				>{$t('modals.newGame.addExec')}</button
 			>
 
 			<!-- Binds the inner html to executablePath -->
@@ -86,7 +86,7 @@
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseImage -->
 			<button on:click="{chooseImage}" class="ng-button image-add"
-				>{$t('newGame.addImg')}</button
+				>{$t('modals.newGame.addImg')}</button
 			>
 
 			<!-- 
@@ -101,7 +101,7 @@
 		<textarea
 			maxlength="800"
 			name="Description"
-			placeholder="{$t('newGame.desc')}"
+			placeholder="{$t('modals.newGame.desc')}"
 			bind:value="{description}"></textarea>
 	</div>
 

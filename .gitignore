@@ -3,4 +3,3 @@ package-lock.json
 src-tauri/target
 dist/
 src-tauri/.sentry-native
-yarn.lock

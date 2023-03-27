@@ -20,14 +20,12 @@
 		"downloadText": "Download",
 		"search": "Search"
 	},
-	"modals": {
-		"newGame": {
-			"gameTitle": "Title",
-			"addExec": "Add executable",
-			"none": "None",
-			"addImg": "Add Image",
-			"desc": "Description",
-			"done": "Done"
-		}
+	"newGame": {
+		"gameTitle": "Title",
+		"addExec": "Add executable",
+		"none": "None",
+		"addImg": "Add Image",
+		"desc": "Description",
+		"done": "Done"
 	}
 }

@@ -1,42 +1,33 @@
 {
-	"homeText": "Inicio",
-	"browseText": "Buscar",
-	"libraryText": "Biblioteca",
-	"downloadsText": "Downloads",
-	"prefsText": "Configurações",
-	"loadingText": "Carregando",
-	"languageText": "Idioma",
-	"preferences": {
-		"installPlugin": "Instalar um plugin",
-		"wipeLibrary": "Apagar biblioteca",
-		"saveText": "Salvar"
-	},
-	"library": {
-		"add": "Adicionar",
-		"playtime": "horas jogadas",
-		"editGame": "Editar",
-		"deleteGame": "Deletar",
-		"run": "Executar"
-	},
-	"home": {
-		"welcomeText": "Bem-vindo ao Project Black Pearl",
-		"changelogText": "Mudanças: "
-	},
-	"downloads": {},
-	"browse": {
-		"selectPlugin": "Selecione um plugin",
-		"nothingFound": "Nenhum jogo encontrado",
-		"downloadText": "Baixar",
-		"search": "Busque"
-	},
-	"modals": {
-		"newGame": {
-			"gameTitle": "Título",
-			"addExec": "Adicionar executável",
-			"none": "Nada",
-			"addImg": "Adicionar imagem",
-			"desc": "Descrição",
-			"done": "OK"
-		}
-	}
+    "browseText": "Buscar",
+    "libraryText": "Biblioteca",
+    "prefsText": "Configuração",
+    "loadingText": "Carregando",
+    "languageText": "Idioma",
+    "preferences": {
+        "installPlugin": "Instalar um plugin",
+        "wipeLibrary": "Apagar biblioteca",
+        "saveText": "Salvar",
+        "availablePlugins": "Plugins disponiveis"
+    },
+    "library": {
+        "run": "Executar",
+        "searchGame": "Buscar"
+    },
+    "browse": {
+        "selectPlugin": "Selecione um Plugin",
+        "nothingFound": "Nada foi encontrado",
+        "downloadText": "Download",
+        "search": "Buscar"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Título",
+            "addExec": "Adicionar executavel",
+            "none": "Nada",
+            "addImg": "Adicionar Imagem",
+            "desc": "Descrição",
+            "done": "OK"
+        }
+    }
 }

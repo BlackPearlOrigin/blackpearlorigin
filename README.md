@@ -1,4 +1,4 @@
-# Project Black Pearl
+# Project Black Pearl (PBP)
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
@@ -10,17 +10,17 @@ Unify your game sources in one place by using modules made by the community.
 
 ## What is Project Black Pearl?
 
-**Project Black Pearl** (or PBP) is an open source project that aims to unify the game sources in one place by using modules and extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
+**Project Black Pearl** (or PBP) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing  extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
 
 ## What is the current state of the project?
 
-The project is currently in very early stages of development.
+PBP is currently in early Beta stages and its overall functionality is very limited. You can check [the to-do list](https://github.com/orgs/ProjectBlackPearl/projects/3) to see what features are planned or currently in development.
 
-## How to contribute?
+## How can I contribute?
 
 ### Recommended IDE Setup
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) .
+[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
 
 -   ### Clone the repository
 
@@ -46,22 +46,26 @@ npm run tauri dev
 
 ## Wiki
 
-[Wiki](https://projectblackpearl.github.io/wiki/#/) for making contributions
+You can find the official wiki [here](https://projectblackpearl.github.io/wiki/#/).
 
 ## Support
 
 You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) server to get help or just to hang out with us!
 
+## Credit
+
+Special thanks to the developers of the [Stremio Addon SDK](https://github.com/Stremio/stremio-addon-sdk) for allowing us to use their code as a base for our Plugin SDK.
+
 ## Donations
 
-If you would to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
+If you would like to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
 
-**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM **Terrence#9699** on Discord with proof of your donation.
+**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM any of the Senior Project Managers on Discord with the proof of your donation.
 
-**BTC (Bitcoin):** bc1qhmjt2vz72gxxeqmh4sah24j67lzpvum945c5eq
+**BTC (Bitcoin):** bc1q0c7kxkr3mh436htjpxhku87nhf859h7ens69zl
 
-**XMR (Monero):** 47d6EAGzmMb4ofL1fRgYaM4TDvjigcQfe5t64JLez97fJrrSoJvBwJLHzpVayWJUScE4WLcF79pdGQRWuPSPdMqT1MdXGjG
+**XMR (Monero):** 4AUjCnbeY5j6yz6xSHtHFuDMYkniHydz3fu48pr3eqUSV8vRjrRTpxgVSHfgp5gJpwiqbxiN7bVixX1YF6bED668LWMqqBX
 
-**ETH (Ethereum):** 0x76a1e6A87Abb8Cd2AA1811E489b0C67d00DAdB3f
+**ETH (Ethereum):** 0x53550c028f95b6a633D9c0EeaBd4887F013de038
 
-**LTC (Litecoin):** LZbyxofFgXBBRQJKu5MsLT8cdf418WaVuk
+**LTC (Litecoin):** Lg9Uim9p3dj2KGy4225x6vMnZXBtr5DneN

@@ -1,8 +1,6 @@
 # Contributing to PBP
 
-We're glad that you want to contribute to Project Black Pearl
-
-The following is a few ways you can contribute to the project along with an guideline to follow when writing code or commiting something
+The following are a few ways you can contribute to the project, along with a guideline to follow when writing code or making a commit.
 
 ## **With code**
 
@@ -66,7 +64,7 @@ Most of these here are taken from the Atom guidelines <sup>(they're really good)
 
 ### **Typescript guideline**
 
-All of our code is styled with [Prettier](https://prettier.io)
+All of our code is styled with [Prettier](https://prettier.io).
 
 -   Prefer using the spread syntax `{...someObj}` instead `Object.assign()`
 -   Use different cases:
@@ -115,7 +113,7 @@ function functionName(): void {
 -   Reference types in documentation using `{}`
 -   When making a function use this
     -   If it invokes a Rust function use `Typescript Function -> Rust Function`
-    -   If its only a Typescript function use `Typescript Function`
+    -   If it's only a Typescript function use `Typescript Function`
 
 Example:
 

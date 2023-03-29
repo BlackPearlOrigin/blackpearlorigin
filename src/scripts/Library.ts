@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api/tauri';
-import type { Game } from './Interfaces';
+import type { Game, IGDBData } from './Interfaces';
 
 /**
  * Typescript Function -> Rust Function
@@ -145,3 +145,17 @@ export const getFilteredGames = (
  */
 export const operationHandler = async (operation: () => void): Promise<void> =>
 	operation();
+
+export const getGameMetadata = async (gameName: string) => {
+	const gameMeta: unknown = await invoke('get_game_metadata', {
+		name: gameName,
+	});
+
+	return gameMeta as IGDBData[];
+};
+
+export const downloadImage = async (imageURL: string) => {
+	const imageFile = await invoke('download_image', { url: imageURL });
+
+	return imageFile as string;
+};

@@ -3,7 +3,6 @@
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
-	import { saveData, editData } from '../../scripts/Library';
 	import { exists } from '@tauri-apps/api/fs';
 	import type { IGDBData } from '../../scripts/Interfaces';
 	import {

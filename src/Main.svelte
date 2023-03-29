@@ -8,7 +8,6 @@
 	import { dict, t } from './locale/i18n';
 	import { loadLocale } from './scripts/Main';
 	import { Router, Link, Route } from 'svelte-navigator';
-
 	$: dict.set(translations);
 
 	// Loads the current locale
@@ -26,9 +25,33 @@
 <!-- Or styling a Modal -->
 <!-- Otherwise, ignore it -->
 <Router>
-	<main class="container">
+	<main
+		class="container"
+		style="
+		--item-bg-color: #00000065;
+		--bg: #121719;
+		--bg-darker: #0b0e10;
+		--accent-color: #733380;
+		--darker-accent: #632c6e;
+		--text-color: #fff;
+		--black-text: #000;
+		--border-search-color: #ffffff68;
+		--white-bg-color: #ffffff;
+		--white-comp-color: #d2d5d6;
+		--white-ph-color: #696969;
+		--edit-game-color: #0087fe;
+		--delete-game-color: #ff0000;
+		--game-modal-border-color: #fff;
+		--game-modal-bg: #0b0e10bd;
+		--game-modal-run: #fff;
+		--settings-button: #24282a;
+		--input-blur-size: 2px;
+		--game-modal-blur-size: 6px;
+		--border-radius: 10px;
+	"
+	>
 		<div class="sidenav">
-			<img src="icon.png" width="100" class="branding" alt="branding" />
+			<img src="Logo.svg" width="100" class="branding" alt="branding" />
 			<Link class="menu-button" to="browse">{$t('browseText')}</Link>
 			<Link class="menu-button" to="/">{$t('libraryText')}</Link>
 			<Link class="menu-button" to="prefs">{$t('prefsText')}</Link>
@@ -39,13 +62,14 @@
 
 		<Route path="/" primary="{false}">
 			<Modal
-				styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}"
+				styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}"
 				styleWindow="{{
-					backgroundColor: '#000',
-					border: '1px solid #00ff00',
-					borderRadius: '0px',
+					backgroundColor: 'var(--bg)',
+					border: '1px solid var(--bg)',
+					borderRadius: '30px',
 					float: 'center',
 				}}"
+				transitionBgProps="{{ duration: 0 }}"
 				closeButton="{false}"
 			>
 				<Library />

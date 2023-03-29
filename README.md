@@ -2,7 +2,7 @@
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
-![Version](https://img.shields.io/badge/Version-0.2.0-blue?style=for-the-badge) ![Build Status](https://img.shields.io/badge/Status-Beta-green?style=for-the-badge) ![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-0.3.0-blue?style=for-the-badge) ![Build Status](https://img.shields.io/badge/Status-Beta-green?style=for-the-badge) ![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)
 
 ![Discord](https://img.shields.io/discord/1031496547696914482?label=Discord&logo=discord&logoColor=white&style=for-the-badge)
 
@@ -61,7 +61,6 @@ Special thanks to the developers of the [Stremio Addon SDK](https://github.com/S
 If you would like to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
 
 **NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM any of the Senior Project Managers on Discord with the proof of your donation.
-
 
 **BTC (Bitcoin):** bc1q0c7kxkr3mh436htjpxhku87nhf859h7ens69zl
 

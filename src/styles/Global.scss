@@ -11,7 +11,11 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
-	--accent-color: #00ff00;
+
+	// Variables, These are set not using SCSS variables
+	// because they will be modified by the user.
+	// No variables are set here, because they are
+	// set on Main.svelte (Router>main.container)
 }
 
 :focus {
@@ -19,8 +23,12 @@
 }
 
 body {
-	background-color: #040404;
+	background-size: 100%;
+	background-color: #121719;
+	background-repeat: repeat;
 	color: rgb(255, 255, 255);
+	overflow-x: hidden;
+	width: 100%;
 }
 
 .sidenav {
@@ -30,39 +38,34 @@ body {
 	z-index: 1;
 	top: 0;
 	left: 0;
-	border-right: 1px solid var(--accent-color);
 	overflow-x: hidden;
 	padding-top: 20px;
-	background-color: #040404;
-}
+	background-color: var(--accent-color);
 
-.sidenav .menu-button {
-	font-family: 'Space Grotest', monospace;
-	padding: 6px 8px 6px 16px;
-	margin-bottom: 8px;
-	text-decoration: none;
-	font-size: 17px;
-	color: hsl(0, 0%, 100%);
-	display: block;
-	transition: all 0.25s;
-	background-color: transparent;
-	border-style: none;
-}
+	a.menu-button {
+		font-family: 'Space Grotest', monospace;
+		padding: 15px 8px 15px 16px;
+		text-decoration: none;
+		font-size: 17px;
+		color: #fff;
+		display: block;
+		transition: all 0.25s;
+		background-color: transparent;
+		border-style: none;
 
-.sidenav .menu-button:hover {
-	text-shadow: 0px 0px 12px hsla(0, 0%, 100%, 0.8);
-	cursor: pointer;
-}
+		&:hover {
+			background-color: var(--darker-accent);
+			cursor: pointer;
+		}
+	}
 
-.branding {
-	padding: 16px 0px 5px 30px;
-	margin-bottom: 17px;
-	transition: all 0.5s;
-	filter: drop-shadow(0px 0px 12px #ffffff22);
-}
-
-.branding:hover {
-	cursor: pointer;
+	.branding {
+		margin: 16px 0 17px 30px;
+		transition: all 0.5s;
+		border: 5px solid var(--text-color);
+		background-color: var(--text-color);
+		border-radius: 100%;
+	}
 }
 
 .main {

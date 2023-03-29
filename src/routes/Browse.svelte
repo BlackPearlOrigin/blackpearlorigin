@@ -21,7 +21,7 @@
 	const data = getScrapers();
 </script>
 
-<!-- 
+<!--
 	Checks if the enter key has been pressed
  	If it has been pressed, then re-define the variable searchData
  	Otherwise, don't do nothing 
@@ -35,11 +35,20 @@
 
 <main class="container">
 	<div class="main">
-		<h1>{$t('browseText')}</h1>
+		<!-- <h1>{$t('browseText')}</h1> -->
 
 		<div class="search">
+			<button
+				type="submit"
+				on:click="{() =>
+					searchGame(selectedScraper, inputText).then(() => {
+						searchData = displayResults();
+					})}"
+			>
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
 			<input
-				placeholder="{$t('browse.search')}"
+				placeholder="{$t('library.searchGame')}"
 				type="text"
 				bind:value="{inputText}"
 			/>
@@ -65,15 +74,6 @@
 				When the button is clicked, refefine the var searchData
 				With the function displayResults
 			-->
-			<button
-				type="submit"
-				on:click="{() =>
-					searchGame(selectedScraper, inputText).then(() => {
-						searchData = displayResults();
-					})}"
-			>
-				<i class="fa-solid fa-magnifying-glass"></i>
-			</button>
 		</div>
 
 		<!-- 

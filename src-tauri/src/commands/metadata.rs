@@ -47,7 +47,7 @@ pub fn download_image(url: String) -> Result<String, String> {
     let uuid = Uuid::new_v4();
     let image_path = paths::get_pbp()
         .join("images")
-        .join(format!("{}.jpg", uuid.simple().to_string())); // Extension is hardcoded for now
+        .join(format!("{}.jpg", uuid.simple())); // Extension is hardcoded for now
 
     //  Write the image to the images folder and return the path
     std::fs::write(image_path.clone(), image)

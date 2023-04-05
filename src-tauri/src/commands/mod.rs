@@ -63,7 +63,7 @@ pub fn install_scraper() {
         2,
         &format!(
             "Installed scraper with path {}",
-            path::Path::new(&file).display().to_string()
+            path::Path::new(&file).display()
         ),
     );
 }

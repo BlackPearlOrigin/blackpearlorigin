@@ -1,6 +1,6 @@
 use std::{fs, path, process, thread, time::Instant};
 
-use crate::commands::logging::log;
+use crate::commands::logging::{LogLevel, log};
 use execute::Execute;
 use rfd::FileDialog;
 
@@ -19,19 +19,19 @@ pub fn handle_scraper(path: String, query: String) {
     command.arg(query.clone());
     command.arg(crate::paths::get_pbp().join("queries"));
 
-    log(2, &format!("Searching for \"{}\" with {}", query, path));
+    log(LogLevel::Info, &format!("Searching for \"{}\" with {}", query, path));
 
     // Run the scraper and tell us about its exit code
     if let Some(exit_code) = command.execute().unwrap() {
         if exit_code == 0 {
-            log(2, "Scraper query completed successfully");
+            log(LogLevel::Info, "Scraper query completed successfully");
             let final_time = Instant::now() - start_time;
-            log(2, &format!("Took {} second(s)", final_time.as_secs()))
+            log(LogLevel::Info, &format!("Took {} second(s)", final_time.as_secs()))
         } else {
-            log(0, "Scraper query failed successfully");
+            log(LogLevel::Error, "Scraper query failed successfully");
         }
     } else {
-        log(2, "Scraper query interrupted");
+        log(LogLevel::Info, "Scraper query interrupted");
     }
 }
 
@@ -60,7 +60,7 @@ pub fn install_scraper() {
     }
 
     log(
-        2,
+        LogLevel::Info,
         &format!(
             "Installed scraper with path {}",
             path::Path::new(&file).display()
@@ -71,7 +71,7 @@ pub fn install_scraper() {
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable
 pub fn file_dialog() -> String {
-    log(2, "Executable file dialog opened");
+    log(LogLevel::Info, "Executable file dialog opened");
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
@@ -90,7 +90,7 @@ pub fn file_dialog() -> String {
 #[tauri::command]
 // Opens a file dialog that prompts the user for an image
 pub fn image_dialog() -> String {
-    log(2, "Image file dialog opened");
+    log(LogLevel::Info, "Image file dialog opened");
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
@@ -118,14 +118,14 @@ pub fn run_game(path: String) {
     thread::spawn(move || {
         if let Some(exit_code) = command.execute().unwrap() {
             if exit_code == 0 {
-                log(2, "Game ran successfully");
+                log(LogLevel::Info, "Game ran successfully");
                 let final_time = Instant::now() - start_time;
                 log(
-                    2,
+                    LogLevel::Info,
                     &format!("Game ran for {} second(s)", final_time.as_secs()),
                 )
             } else {
-                log(0, "Scraper query failed successfully");
+                log(LogLevel::Error, "Scraper query failed successfully");
             }
         };
     });

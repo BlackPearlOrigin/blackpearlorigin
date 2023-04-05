@@ -3,6 +3,8 @@ use crate::paths;
 use reqwest::blocking::Client;
 use uuid::Uuid;
 
+use super::logging::LogLevel;
+
 #[derive(serde::Deserialize, serde::Serialize)]
 pub struct GameMeta {
     name: String,
@@ -26,7 +28,7 @@ pub fn get_game_metadata(name: String) -> Result<Vec<GameMeta>, String> {
         .and_then(|resp| resp.error_for_status())
         .map_err(|e| format!("Failed to send request: {e}"))?;
 
-    log(2, format!("Response: {:?}", response).as_str());
+    log(LogLevel::Info, format!("Response: {:?}", response).as_str());
 
     let game_meta: Vec<GameMeta> = response
         .json()

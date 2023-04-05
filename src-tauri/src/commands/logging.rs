@@ -2,19 +2,13 @@ use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 pub enum LogLevel {
-    Error = 0,
-    Warning = 1,
-    Info = 2,
+    ERROR = 0,
+    WARNING = 1,
+    INFO = 2,
 }
 
 #[tauri::command]
-pub fn log(level: LogLevel, log_message: &str) {
-
-    let log_level = match level {
-        LogLevel::Error => "ERROR",
-        LogLevel::Warning => "WARNING",
-        LogLevel::Info => "INFO",
-    };
-
-    println!("[{}] {}", log_level, log_message);
+pub fn log(log_level: usize, log_message: &str) {
+    let log_levels = ["ERROR", "WARNING", "INFO"];
+    println!("[{}] {}", log_levels[log_level], log_message);
 }

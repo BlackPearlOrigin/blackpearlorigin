@@ -10,7 +10,7 @@
 
 */
 
-use crate::commands::logging::{log, LogLevel};
+use crate::commands::logging::log;
 use lazy_static::lazy_static;
 use rusqlite::{Connection, Result};
 use rusqlite_migration::{Migrations, M};
@@ -67,7 +67,7 @@ pub fn init() {
         let mut file = match fs::File::create(&configfile_path) {
             Ok(k) => {
                 log(
-                    LogLevel::Info,
+                    2,
                     &format!("Successfully created file {}", &configfile_path.display()),
                 );
                 k
@@ -85,7 +85,7 @@ pub fn init() {
         match fs::File::create(&gamedb_path) {
             Ok(_) => {
                 log(
-                    LogLevel::Info,
+                    2,
                     &format!("Successfully created file {}", &gamedb_path.display()),
                 );
             }
@@ -98,7 +98,7 @@ pub fn init() {
     match setup_database(&gamedb_path) {
         Ok(_) => {
             log(
-                LogLevel::Info,
+                2,
                 &format!("Successfully created database {}", &gamedb_path.display()),
             );
         }
@@ -117,7 +117,7 @@ pub fn init() {
         match fs::create_dir_all(path) {
             Ok(k) => {
                 log(
-                    LogLevel::Info,
+                    2,
                     &format!("Successfully created folder {}", &path.display()),
                 );
                 k
@@ -157,5 +157,5 @@ pub fn init() {
     let json = serde_json::to_vec_pretty(&json).unwrap();
     file.write_all(&json).unwrap();
 
-    log(LogLevel::Info, "Welcome to Project Black Pearl")
+    log(2, "Welcome to Project Black Pearl")
 }

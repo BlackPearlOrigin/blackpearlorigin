@@ -799,6 +799,11 @@ svelte-i18n@^3.6.0:
     sade "^1.8.1"
     tiny-glob "^0.2.9"
 
+svelte-ionicons@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.npmjs.org/svelte-ionicons/-/svelte-ionicons-0.4.4.tgz"
+  integrity sha512-ufMaeRHpo20/Wl2BtujTUzu2BiaeWT3Sc0iZULyYVdN092aUUOqtvVeYCQY/Dzdt59Q/QsoxP7ColyWvTGpgdA==
+
 svelte-modals@^1.2.0:
   version "1.2.1"
   resolved "https://registry.npmjs.org/svelte-modals/-/svelte-modals-1.2.1.tgz"
@@ -828,7 +833,7 @@ svelte-simple-modal@^1.4.5:
   resolved "https://registry.npmjs.org/svelte-simple-modal/-/svelte-simple-modal-1.4.6.tgz"
   integrity sha512-XcbtsppcN2OQxYuyfmsikMEc+Y3AaH4aMFCPZ0+EpjUT1q4iGGlPoxuJC4OvejbUuxS9Is0J9J7YxF/3eiP/ag==
 
-svelte@^3.0.0, svelte@^3.23.0, svelte@^3.24, svelte@^3.24.0, svelte@^3.25.1, svelte@^3.31.2, svelte@^3.44.0, svelte@^3.49.0, svelte@>=3.19.0, svelte@3.x:
+svelte@^3.0.0, svelte@^3.23.0, svelte@^3.24, svelte@^3.24.0, svelte@^3.25.1, svelte@^3.31.2, svelte@^3.44.0, svelte@^3.49.0, svelte@^3.54.0, svelte@>=3.19.0, svelte@3.x:
   version "3.55.1"
   resolved "https://registry.npmjs.org/svelte/-/svelte-3.55.1.tgz"
   integrity sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==

@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 :root {
-	font-family: 'Space Grotest', monospace;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
@@ -24,7 +25,7 @@
 
 body {
 	background-size: 100%;
-	background-color: #121719;
+	background: #2d3739;
 	background-repeat: repeat;
 	color: rgb(255, 255, 255);
 	overflow-x: hidden;
@@ -42,20 +43,46 @@ body {
 	padding-top: 20px;
 	background-color: var(--accent-color);
 
-	a.menu-button {
-		font-family: 'Space Grotest', monospace;
-		padding: 15px 8px 15px 16px;
-		text-decoration: none;
-		font-size: 17px;
-		color: #fff;
-		display: block;
-		transition: all 0.25s;
-		background-color: transparent;
-		border-style: none;
+	.menu-item {
+		margin: 3px;
+		margin-bottom: 10px;
 
-		&:hover {
-			background-color: var(--darker-accent);
-			cursor: pointer;
+		.menu-button {
+			height: 30px;
+			max-height: 30px;
+			font-family: 'Montserrat', monospace;
+			padding: 4px;
+			text-decoration: none;
+			font-size: 17px;
+			color: #fff;
+			transition: all 0.25s;
+			border-style: none;
+
+			border-color: var(--darker-accent);
+
+			svg {
+				position: relative;
+				top: 4px;
+				padding-left: 10px;
+			}
+
+			.link {
+				padding-left: 5px;
+				font-family: 'Montserrat', monospace;
+				text-decoration: none;
+				font-size: 17px;
+				color: #fff;
+			}
+
+			&:hover {
+				border: 0px solid var(--darker-accent);
+				border-radius: 100px;
+
+				background-color: var(--darker-accent);
+
+				margin: inherit;
+				cursor: pointer;
+			}
 		}
 	}
 

@@ -1,15 +1,16 @@
 <script lang="ts">
-	import translations from '../locale/locales';
-	import { dict, locale, t } from '../locale/i18n';
+	import translations from '../locale/locales.js';
+	import { dict, locale, t } from '../locale/i18n.js';
 	import '../styles/Preferences.scss';
 	import {
 		installScraper,
 		saveLangData,
 		wipeLibrary,
-	} from '../scripts/Preferences';
+	} from '../scripts/Preferences.js';
 	import languageNames from '../locale/languages.json';
-	import { getScrapers } from '../scripts/Browse';
+	import { getScrapers } from '../scripts/Browse.js';
 	import pkgJSON from '../../package.json';
+	import { Cube, TrashBin, Albums } from 'svelte-ionicons';
 
 	const scrapersList = getScrapers();
 
@@ -19,33 +20,38 @@
 
 <main class="container">
 	<div class="main">
-		<h1>{$t('prefsText')}</h1>
 		<div class="section">
-			<div class="button-group">
-				<button id="install" on:click="{installScraper}"
-					><i class="fa-solid fa-download"></i>
-					{$t('preferences.installPlugin')}</button
-				>
-				<button id="wipe" on:click="{wipeLibrary}"
-					><i class="fa-solid fa-trash-can"></i>
-					{$t('preferences.wipeLibrary')}</button
-				>
-			</div>
-			<div class="availb-plugins">
-				<label for="available-plugins"
-					>{$t('preferences.availablePlugins')}:</label
-				>
-				<div class="available-plugins">
-					{#await scrapersList then scrapersList}
-						{#each scrapersList.scrapers as scraper}
-							<span>{scraper.name}</span>
-						{/each}
-					{/await}
+			<div class="plugin-card">
+				<div class="header">
+					<span>{$t('pluginText')}</span>
+					<Cube size="18px" />
+				</div>
+				<div class="buttons">
+					<button id="install" on:click="{installScraper}">
+						<Cube class="cube" size="18px" />
+						{$t('preferences.installPlugin')}</button
+					>
+					<button id="wipe" on:click="{wipeLibrary}"
+						><TrashBin class="bin" size="18px" />
+						{$t('preferences.wipeLibrary')}</button
+					>
 				</div>
 			</div>
-			<div class="lang-settings">
-				<label for="select">{$t('languageText')}:</label>
-				<div class="locale-settings">
+
+			<div class="plugin-card">
+				<div class="header">
+					<span>{$t('themeText')}</span>
+					<Albums size="18px" />
+				</div>
+				<p class="buttons">{$t('comingSoonText')}</p>
+			</div>
+
+			<div class="plugin-card">
+				<div class="header">
+					<span>{$t('languageText')}</span>
+					<Cube size="18px" />
+				</div>
+				<div class="buttons">
 					<select bind:value="{$locale}">
 						{#each languages as languageCode, i}
 							<option value="{languageCode}"
@@ -53,11 +59,28 @@
 							>
 						{/each}
 					</select>
+
+					<button
+						class="save-button"
+						on:click="{() => saveLangData($locale)}"
+						>{$t('preferences.saveText')}</button
+					>
 				</div>
 			</div>
-			<button class="save-button" on:click="{() => saveLangData($locale)}"
-				>{$t('preferences.saveText')}</button
-			>
+		</div>
+
+		<div class="available-plugins">
+			<div class="header">
+				<span>{$t('preferences.availablePlugins')}</span>
+				<Cube size="18px" />
+			</div>
+			<div class="buttons">
+				{#await scrapersList then scrapersList}
+					{#each scrapersList.scrapers as scraper}
+						<ul>- {scraper.name}</ul>
+					{/each}
+				{/await}
+			</div>
 		</div>
 		<span class="ver"> Project Black Pearl v{pkgJSON.version} </span>
 	</div>

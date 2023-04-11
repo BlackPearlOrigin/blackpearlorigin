@@ -1,13 +1,14 @@
 <script lang="ts">
 	// Imports all pages and modules
-	import translations from './locale/locales';
+	import translations from './locale/locales.js';
 	import Browse from './routes/Browse.svelte';
 	import Library from './routes/Library.svelte';
 	import Preferences from './routes/Preferences.svelte';
 	import { Modal } from 'svelte-simple-modal';
-	import { dict, t } from './locale/i18n';
-	import { loadLocale } from './scripts/Main';
+	import { dict, t } from './locale/i18n.js';
+	import { loadLocale } from './scripts/Main.js';
 	import { Router, Link, Route } from 'svelte-navigator';
+	import { Grid, AppsOutline, SettingsOutline } from "svelte-ionicons"
 	$: dict.set(translations);
 
 	// Loads the current locale
@@ -28,11 +29,11 @@
 	<main
 		class="container"
 		style="
-		--item-bg-color: #00000065;
+		--item-bg-color: #0B0E10;
 		--bg: #121719;
 		--bg-darker: #0b0e10;
-		--accent-color: #733380;
-		--darker-accent: #632c6e;
+		--accent-color: #0B0D0E;
+		--darker-accent: #1B2427;
 		--text-color: #fff;
 		--black-text: #000;
 		--border-search-color: #ffffff68;
@@ -52,9 +53,25 @@
 	>
 		<div class="sidenav">
 			<img src="Logo.svg" width="100" class="branding" alt="branding" />
-			<Link class="menu-button" to="browse">{$t('browseText')}</Link>
-			<Link class="menu-button" to="/">{$t('libraryText')}</Link>
-			<Link class="menu-button" to="prefs">{$t('prefsText')}</Link>
+
+			<div class="menu-item">
+				<div class="menu-button">
+					<AppsOutline size="20px"/>
+					<Link class="link" to="browse">{$t('browseText')}</Link>
+				</div>
+			</div>
+			<div class="menu-item">
+				<div class="menu-button">
+					<Grid size="20px"/>
+					<Link class="link" to="/">{$t('libraryText')}</Link>
+				</div>
+			</div>
+			<div class="menu-item">
+				<div class="menu-button">
+					<SettingsOutline size="20px"/>
+					<Link class="link" to="prefs">{$t('prefsText')}</Link>
+				</div>
+			</div>
 		</div>
 		<Route path="browse">
 			<Browse />

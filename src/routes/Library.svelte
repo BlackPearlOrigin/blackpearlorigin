@@ -5,13 +5,13 @@
 		runGame,
 		getFilteredGames,
 		operationHandler,
-	} from '../scripts/Library';
+	} from '../scripts/Library.js';
 	import { getContext } from 'svelte';
 	import NewGame from './modals/NewGame.svelte';
 	import '../styles/Library.scss';
-	import { t } from '../locale/i18n';
+	import { t } from '../locale/i18n.js';
 	import { convertFileSrc } from '@tauri-apps/api/tauri';
-	import type { Game } from 'src/scripts/Interfaces';
+	import type { Game } from '../scripts/Interfaces.js';
 
 	let gameModal: HTMLDialogElement;
 	let gameOnModal: Game;
@@ -105,8 +105,8 @@
 										? 'Default.png'
 										: convertFileSrc(game.image)}"
 									alt="{game.name}"
-									height="270"
-									width="200"
+									height="210"
+									width="150"
 								/>
 								<p class="game-title">{game.name}</p>
 							</button>

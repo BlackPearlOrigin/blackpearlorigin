@@ -43,7 +43,7 @@
 					<span>{$t('themeText')}</span>
 					<Albums size="18px" />
 				</div>
-				<p class="buttons">{$t('comingSoonText')}</p>
+				<p class="buttons">{$t('preferences.comingSoon')}</p>
 			</div>
 
 			<div class="plugin-card">

@@ -1,36 +1,36 @@
 {
-	"browseText": "Browse",
-	"libraryText": "Library",
-	"prefsText": "Preferences",
-	"loadingText": "Loading",
-	"languageText": "Language",
-	"pluginText": "Plugins",
-	"themeText": "Themes",
-	"preferences": {
-		"installPlugin": "Install a plugin",
-		"wipeLibrary": "Wipe library",
-		"saveText": "Save",
-		"availablePlugins": "Available plugins",
-		"comingSoon": "Coming soon..."
-	},
-	"library": {
-		"run": "Run",
-		"searchGame": "Search"
-	},
-	"browse": {
-		"selectPlugin": "Select a plugin",
-		"nothingFound": "Nothing Found",
-		"downloadText": "Download",
-		"search": "Search"
-	},
-	"modals": {
-		"newGame": {
-			"gameTitle": "Title",
-			"addExec": "Add Executable",
-			"none": "None",
-			"addImg": "Add Image",
-			"desc": "Description",
-			"done": "Done"
-		}
-	}
+    "browseText": "Browse",
+    "libraryText": "Library",
+    "prefsText": "Preferences",
+    "loadingText": "Loading",
+    "languageText": "Language",
+    "preferences": {
+        "installPlugin": "Install a plugin",
+        "wipeLibrary": "Wipe library",
+        "saveText": "Save",
+        "availablePlugins": "Available plugins",
+        "comingSoon": "Coming Soon..."
+    },
+    "library": {
+        "run": "Run",
+        "searchGame": "Search"
+    },
+    "browse": {
+        "selectPlugin": "Select a plugin",
+        "nothingFound": "Nothing Found",
+        "downloadText": "Download",
+        "search": "Search"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Title",
+            "addExec": "Add Executable",
+            "none": "None",
+            "addImg": "Add Image",
+            "desc": "Description",
+            "done": "Done"
+        }
+    },
+    "pluginText": "Plugins",
+    "themeText": "Themes"
 }

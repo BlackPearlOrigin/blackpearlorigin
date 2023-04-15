@@ -28,7 +28,8 @@
 			"none": "None",
 			"addImg": "Add Image",
 			"desc": "Description",
-			"done": "Done"
+			"done": "Done",
+			"autoFetch": "Fetch metadata automatically"
 		},
 		"fetchMeta": {
 			"selectGame": "Select a Game"

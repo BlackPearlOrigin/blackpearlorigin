@@ -12,6 +12,7 @@
 	import { t } from '../locale/i18n.js';
 	import { convertFileSrc } from '@tauri-apps/api/tauri';
 	import type { Game } from '../scripts/Interfaces.js';
+	import { AddOutline } from 'svelte-ionicons';
 
 	let gameModal: HTMLDialogElement;
 	let gameOnModal: Game;
@@ -72,7 +73,7 @@
 		<div class="top">
 			<!-- Creates a modal when the button is clicked -->
 			<button on:click="{() => showNewModal()}"
-				><i class="fa-solid fa-plus"></i></button
+				><AddOutline size="25" /></button
 			>
 			<input
 				type="text"

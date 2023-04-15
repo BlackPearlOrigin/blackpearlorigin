@@ -9,10 +9,68 @@
 }
 
 .modal-main {
+	dialog[open].fetch-meta {
+		display: flex;
+		flex-direction: column;
+
+		padding: 15px;
+		max-width: 350px;
+
+		border: 1px solid #fff;
+		border-radius: 15px;
+
+		background-color: #0b0d0e;
+
+		span {
+			color: #fff;
+			font-family: 'Montserrat';
+			font-weight: 500;
+
+			&::after {
+				content: ':';
+			}
+		}
+
+		button {
+			text-align: center;
+			transition: all 0.25s;
+			font-family: 'Montserrat';
+			background-color: #0b0d0e;
+			color: #fff;
+			border: 1px solid #0b0d0e;
+			border-radius: 15px;
+			padding: 10px;
+
+			&:hover {
+				cursor: pointer;
+				border-color: #fff;
+				background-color: #2d3739;
+			}
+		}
+	}
+
 	.newgame {
 		display: flex;
 		flex-grow: 1;
 		flex-direction: column;
+
+		button.fetch-meta {
+			transition: all 0.25s;
+
+			color: #fff;
+			background-color: #0b0d0e;
+			border-color: #fff;
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 15px;
+			margin: 15px 0;
+
+			font-size: 15px;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
 
 		.ng-button {
 			margin-top: 15px;
@@ -21,12 +79,12 @@
 
 		input,
 		textarea {
-			color: var(--text-color);
-			background-color: var(--bg-darker);
-			border-color: var(--bg-darker);
+			color: #fff;
+			background-color: #0b0d0e;
+			border-color: #fff;
 			border-style: solid;
 			border-width: 1px;
-			border-radius: var(--border-radius);
+			border-radius: 15px;
 			padding: 8px 8px 8px 8px;
 
 			outline-style: none;
@@ -36,25 +94,25 @@
 			margin-top: 8px;
 
 			&::placeholder {
-				color: var(--white-ph-color);
+				color: #fff;
 				font-size: 15px;
 			}
 		}
 
 		.show-path {
-			color: var(--white-ph-color);
+			color: #fff;
 			display: flex;
 			flex-direction: row;
 
 			.ng-button {
 				transition: all 0.25s;
 
-				color: var(--white-ph-color);
-				background-color: var(--bg-darker);
-				border-color: var(--bg-darker);
+				color: #fff;
+				background-color: #0b0d0e;
+				border-color: #fff;
 				border-style: solid;
 				border-width: 1px;
-				border-radius: var(--border-radius);
+				border-radius: 15px;
 				//margin-bottom: 16px;
 				//margin-top: 16px;
 				margin: 15px 0;
@@ -74,10 +132,10 @@
 			img {
 				border-style: solid;
 				border-width: 1px;
-				border-radius: var(--border-radius);
+				border-radius: 15px;
 				padding: 5px;
-				background-color: var(--bg-darker);
-				border-color: var(--bg-darker);
+				background-color: #0b0d0e;
+				border-color: #0d0b0e;
 			}
 		}
 	}
@@ -87,11 +145,12 @@
 		flex-flow: row-reverse;
 
 		button {
-			background-color: var(--bg-darker);
-			border: 1px solid var(--bg-darker);
-			border-radius: var(--border-radius);
+			background-color: #0b0d0e;
+			border: 1px solid #fff;
+			border-radius: 15px;
 			font-size: 1rem;
-			color: var(--white-ph-color);
+			color: #fff;
+			padding: 5px 10px;
 		}
 	}
 }

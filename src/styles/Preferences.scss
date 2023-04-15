@@ -5,7 +5,9 @@
 .section {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: space-between;
+
+	margin: 0px 10px 0px 10px;
 
 	.plugin-card {
 		display: flex;
@@ -252,8 +254,5 @@
 }
 
 .main {
-	margin-left: 167px;
-	h1 {
-		font-size: 1.5rem;
-	}
+	padding-left: 4px;
 }

@@ -8,7 +8,7 @@
 	import { dict, t } from './locale/i18n.js';
 	import { loadLocale } from './scripts/Main.js';
 	import { Router, Link, Route } from 'svelte-navigator';
-	import { Grid, AppsOutline, SettingsOutline } from "svelte-ionicons"
+	import { Grid, AppsOutline, SettingsOutline } from 'svelte-ionicons';
 	$: dict.set(translations);
 
 	// Loads the current locale
@@ -52,23 +52,25 @@
 	"
 	>
 		<div class="sidenav">
-			<img src="Logo.svg" width="100" class="branding" alt="branding" />
+			<div class="branding">
+				<img src="Logo.svg" width="100" alt="branding" />
+			</div>
 
 			<div class="menu-item">
 				<div class="menu-button">
-					<AppsOutline size="20px"/>
+					<AppsOutline size="20px" />
 					<Link class="link" to="browse">{$t('browseText')}</Link>
 				</div>
 			</div>
 			<div class="menu-item">
 				<div class="menu-button">
-					<Grid size="20px"/>
+					<Grid size="20px" />
 					<Link class="link" to="/">{$t('libraryText')}</Link>
 				</div>
 			</div>
 			<div class="menu-item">
 				<div class="menu-button">
-					<SettingsOutline size="20px"/>
+					<SettingsOutline size="20px" />
 					<Link class="link" to="prefs">{$t('prefsText')}</Link>
 				</div>
 			</div>
@@ -81,9 +83,9 @@
 			<Modal
 				styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}"
 				styleWindow="{{
-					backgroundColor: 'var(--bg)',
-					border: '1px solid var(--bg)',
-					borderRadius: '30px',
+					backgroundColor: '#0b0d0e',
+					border: '1px solid #0b0d0e',
+					borderRadius: '15px',
 					float: 'center',
 				}}"
 				transitionBgProps="{{ duration: 0 }}"

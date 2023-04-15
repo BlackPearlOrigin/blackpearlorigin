@@ -43,13 +43,18 @@
 		border-radius: 100px;
 		border-color: #fff;
 
-		padding: 0 12px;
+		//padding: 0 12px;
 		margin-bottom: 1rem;
 		margin-top: 1rem;
 		color: #fff;
 		font-size: 16px;
 		cursor: pointer;
 		transition: all 0.25s;
+
+		svg {
+			position: relative;
+			top: 2px;
+		}
 	}
 }
 
@@ -187,5 +192,5 @@
 }
 
 .main {
-	padding-left: 5px;
+	margin-left: 183px;
 }

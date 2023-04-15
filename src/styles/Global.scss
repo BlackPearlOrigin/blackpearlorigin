@@ -34,7 +34,7 @@ body {
 
 .sidenav {
 	height: 100%;
-	width: 175px;
+	width: 190px;
 	position: fixed;
 	z-index: 1;
 	top: 0;
@@ -67,6 +67,9 @@ body {
 			}
 
 			.link {
+				display: inline-block;
+				width: 100px;
+				height: 38px;
 				padding-left: 5px;
 				font-family: 'Montserrat', monospace;
 				text-decoration: none;
@@ -87,11 +90,20 @@ body {
 	}
 
 	.branding {
-		margin: 16px 0 17px 30px;
-		transition: all 0.5s;
-		border: 5px solid var(--text-color);
-		background-color: var(--text-color);
-		border-radius: 100%;
+		display: inline-flex;
+		margin: 0px;
+		width: 100%;
+
+		justify-content: center;
+		align-items: center;
+
+		img {
+			margin-bottom: 25px;
+			transition: all 0.5s;
+			border: 5px solid var(--text-color);
+			background-color: var(--text-color);
+			border-radius: 100%;
+		}
 	}
 }
 

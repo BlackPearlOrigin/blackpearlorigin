@@ -114,12 +114,21 @@
 			bind:value="{description}"></textarea>
 
 		<button
+			class="fetch-meta ng-button"
 			on:click="{() => {
 				if (!isEmpty(title)) {
 					getGameMetadata(title).then(async (gameMeta) => {
 						gameMetadata = gameMeta;
 
-						if (gameMeta.length <= 1) {
+						if (gameMeta.length === 0) {
+							invoke('log', {
+								logLevel: 0,
+								logMessage:
+									'No games found that match the title. Can be a 404 response or an incorrect title',
+							});
+
+							return;
+						} else if (gameMeta.length <= 1) {
 							description = gameMeta[0].summary;
 							title = gameMeta[0].name;
 
@@ -132,8 +141,12 @@
 							return;
 						}
 
-						console.log('More than one game');
-						// TODO: Add an menu to select one of multiple games
+						invoke('log', {
+							logLevel: 2,
+							logMessage:
+								'More than one result recieved: Opening dialog box',
+						});
+
 						gameMetadataModal.showModal();
 					});
 					return;
@@ -145,11 +158,12 @@
 				});
 			}}"
 		>
-			Fetch automatically
+			{$t('modals.newGame.autoFetch')}
 		</button>
 	</div>
 
-	<dialog bind:this="{gameMetadataModal}">
+	<dialog class="fetch-meta" bind:this="{gameMetadataModal}">
+		<span>{$t('modals.fetchMeta.selectGame')}</span>
 		{#each gameMetadata as gameMeta, i}
 			<button
 				on:click="{async () => {
@@ -177,7 +191,7 @@
 				operation_handler(operationToPerform);
 			}}"
 		>
-			{$t('newGame.done')}
+			{$t('modals.newGame.done')}
 		</button>
 	</div>
 </div>

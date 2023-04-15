@@ -29,7 +29,10 @@
             "addImg": "Add Image",
             "desc": "Description",
             "done": "Done"
-        }
+        },
+        "fetchMeta": {
+			"selectGame": "Select a Game"
+		}
     },
     "pluginText": "Plugins",
     "themeText": "Themes"

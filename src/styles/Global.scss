@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 :root {
-	font-family: 'Space Grotest', monospace;
+	font-family: 'Montserrat';
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
@@ -24,47 +25,85 @@
 
 body {
 	background-size: 100%;
-	background-color: #121719;
-	background-repeat: repeat;
+	background-color: var(--global-background-color);
 	color: rgb(255, 255, 255);
 	overflow-x: hidden;
 	width: 100%;
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .sidenav {
 	height: 100%;
-	width: 175px;
+	width: 190px;
 	position: fixed;
 	z-index: 1;
 	top: 0;
 	left: 0;
 	overflow-x: hidden;
 	padding-top: 20px;
-	background-color: var(--accent-color);
+	background-color: var(--sidebar-background-color);
 
-	a.menu-button {
-		font-family: 'Space Grotest', monospace;
-		padding: 15px 8px 15px 16px;
-		text-decoration: none;
-		font-size: 17px;
-		color: #fff;
-		display: block;
-		transition: all 0.25s;
-		background-color: transparent;
-		border-style: none;
+	.menu-item {
+		margin: 3px;
+		margin-bottom: 10px;
 
-		&:hover {
-			background-color: var(--darker-accent);
-			cursor: pointer;
+		.menu-button {
+			height: 30px;
+			max-height: 30px;
+			font-family: 'Montserrat', monospace;
+			padding: 4px;
+			text-decoration: none;
+			font-size: 17px;
+			color: #fff;
+			transition: all 0.25s;
+			border-style: none;
+
+			svg {
+				position: relative;
+				top: 4px;
+				padding-left: 10px;
+			}
+
+			.link {
+				display: inline-block;
+				width: 100px;
+				height: 38px;
+				padding-left: 5px;
+				font-family: 'Montserrat', monospace;
+				text-decoration: none;
+				font-size: 17px;
+				color: #fff;
+			}
+
+			&:hover {
+				border: 0px solid var(--sidebar-button-hover);
+				border-radius: 100px;
+
+				background-color: var(--sidebar-button-hover);
+
+				margin: inherit;
+				cursor: pointer;
+			}
 		}
 	}
 
 	.branding {
-		margin: 16px 0 17px 30px;
-		transition: all 0.5s;
-		border: 5px solid var(--text-color);
-		background-color: var(--text-color);
-		border-radius: 100%;
+		display: inline-flex;
+		margin: 0px;
+		width: 100%;
+
+		justify-content: center;
+		align-items: center;
+
+		img {
+			margin-bottom: 25px;
+			transition: all 0.5s;
+			border: 5px solid var(--sidebar-logo-color);
+			background-color: var(--sidebar-logo-color);
+			border-radius: 100%;
+		}
 	}
 }
 

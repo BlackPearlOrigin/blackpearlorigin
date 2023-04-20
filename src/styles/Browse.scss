@@ -7,17 +7,15 @@
 	height: 69px;
 
 	input {
+		border-color: var(--browse-border-color);
 		margin: 1rem 0;
-		color: #fff;
+		color: var(--font-color);
 		font-size: 1rem;
 		padding: 8px 8px 8px 8px;
-		background-color: var(--item-bg-color);
+		background-color: var(--browse-element-background);
 		border-style: solid;
-		backdrop-filter: blur(var(--blur-size));
-		-webkit-backdrop-filter: blur(var(--blur-size));
 		border-width: 1px;
-		border-radius: var(--border-radius);
-		border-color: #ffffff68;
+		border-radius: var(--radius-normal);
 
 		flex-grow: 1;
 
@@ -26,23 +24,21 @@
 		}
 
 		&[type='text']::placeholder {
-			color: darken(#fff, 20%);
+			color: var(--browse-input-placeholder-color);
 		}
 	}
 
 	button {
 		margin: 1rem 8px 1rem 0;
-		padding: 8px 12px;
-		background-color: var(--item-bg-color);
-		border: 1px solid var(--border-search-color);
-		border-radius: var(--border-radius);
-		backdrop-filter: blur(var(--blur-size));
-		-webkit-backdrop-filter: blur(var(--blur-size));
+		padding: 8px 9px;
+		background-color: var(--browse-element-background);
+		border: 1px solid var(--browse-border-color);
+		border-radius: var(--radius-round);
 
 		cursor: pointer;
 
 		i {
-			color: white;
+			color: var(--font-color);
 			font-size: 1.2rem;
 		}
 
@@ -55,14 +51,12 @@
 		appearance: none;
 		margin: 1rem 0 1rem 8px;
 		padding: 3px 30px 3px 5px;
-		color: var(--text-color);
-		border: 1px solid #ffffff68;
-		border-radius: var(--border-radius);
-		backdrop-filter: blur(var(--blur-size));
-		-webkit-backdrop-filter: blur(var(--blur-size));
+		color: var(--font-color);
+		border: 1px solid var(--browse-border-color);
+		border-radius: var(--radius-normal);
 
 		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAHCAYAAAD9NeaIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NDkxMSwgMjAxMy8xMC8yOS0xMTo0NzoxNiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDE1LTA0LTE3VDE3OjEyOjQyKzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxNS0wNC0yMFQxNzoxNjoyNCswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxNS0wNC0yMFQxNzoxNjoyNCswMjowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTU4MjBDRURERjVCMTFFNEEzN0FCODBEM0I5MTExMjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTU4MjBDRUVERjVCMTFFNEEzN0FCODBEM0I5MTExMjkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2RUVFRDJCNkREQzMxMUU0QTM3QUI4MEQzQjkxMTEyOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFNTgyMENFQ0RGNUIxMUU0QTM3QUI4MEQzQjkxMTEyOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuShL/sAAABeSURBVHjaYszOzjZnYGDYCcT8DMSBv0AcP2XKlKVEqmdgAuKTQOwOxB+JtQCIibYAZgkDkRaRZQGyJYQsItsCdEtwWUSRBdgsQbeIYgtAgAWHOMwiJSBezkAhAAgwAJSTG/DI0S9VAAAAAElFTkSuQmCC')
-			no-repeat right var(--item-bg-color);
+			no-repeat right var(--browse-element-background);
 	}
 }
 
@@ -71,13 +65,11 @@
 
 	border-style: solid;
 	border-width: 1px;
-	border-color: #ffffff68;
-	background-color: var(--item-bg-color);
-	backdrop-filter: blur(var(--blur-size));
-	-webkit-backdrop-filter: blur(var(--blur-size));
+	border-color: var(--browse-game-border);
+	background-color: var(--browse-game-background-color);
 	margin: 10px 1px 0px 2px;
 	padding: 5px 5px 20px 8px;
-	border-radius: var(--border-radius);
+	border-radius: var(--radius-normal);
 
 	line-height: 10px;
 
@@ -95,17 +87,17 @@
 		border-style: solid;
 		background-color: inherit;
 
-		color: white;
+		color: var(--font-color);
 		margin-bottom: 100px;
 		border-width: 1.5px;
 		margin: 0 5px;
 		padding: 4px 10px 4px 10px;
-		border-radius: var(--border-radius);
-		border-color: #ffffff68;
+		border-radius: var(--radius-normal);
+		border-color: var(--browse-game-dl-border);
 		border-width: 1px;
 	}
 }
 
 .main {
-	padding-left: 5px;
+	margin-left: 179px;
 }

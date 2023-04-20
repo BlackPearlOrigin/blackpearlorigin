@@ -8,26 +8,33 @@
 		"installPlugin": "Install a plugin",
 		"wipeLibrary": "Wipe library",
 		"saveText": "Save",
-		"availablePlugins": "Available plugins"
+		"availablePlugins": "Available plugins",
+		"comingSoon": "Coming Soon..."
 	},
 	"library": {
 		"run": "Run",
-		"searchGame": "Browse"
+		"searchGame": "Search"
 	},
 	"browse": {
 		"selectPlugin": "Select a plugin",
-		"nothingFound": "No games found",
+		"nothingFound": "Nothing Found",
 		"downloadText": "Download",
 		"search": "Search"
 	},
 	"modals": {
 		"newGame": {
 			"gameTitle": "Title",
-			"addExec": "Add executable",
+			"addExec": "Add Executable",
 			"none": "None",
 			"addImg": "Add Image",
 			"desc": "Description",
-			"done": "Done"
+			"done": "Done",
+			"autoFetch": "Fetch metadata automatically"
+		},
+		"fetchMeta": {
+			"selectGame": "Select a Game"
 		}
-	}
+	},
+	"pluginText": "Plugins",
+	"themeText": "Themes"
 }

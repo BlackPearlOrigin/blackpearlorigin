@@ -1,14 +1,15 @@
 {
     "browseText": "Buscar",
     "libraryText": "Biblioteca",
-    "prefsText": "Configuração",
+    "prefsText": "Configurações",
     "loadingText": "Carregando",
     "languageText": "Idioma",
     "preferences": {
         "installPlugin": "Instalar um plugin",
         "wipeLibrary": "Apagar biblioteca",
         "saveText": "Salvar",
-        "availablePlugins": "Plugins disponiveis"
+        "availablePlugins": "Plugins disponiveis",
+        "comingSoon": "Em breve..."
     },
     "library": {
         "run": "Executar",
@@ -27,7 +28,13 @@
             "none": "Nada",
             "addImg": "Adicionar Imagem",
             "desc": "Descrição",
-            "done": "OK"
+            "done": "OK",
+            "autoFetch": "Busque metadados"
+        },
+        "fetchMeta": {
+            "selectGame": "Selecione um jogo"
         }
-    }
+    },
+    "pluginText": "Plugins",
+    "themeText": "Temas"
 }

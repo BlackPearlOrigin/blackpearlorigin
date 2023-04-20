@@ -3,6 +3,7 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnPaste": true,
 	"editor.formatOnType": true,
+	"svelte.plugin.svelte.format.enable": true,
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},

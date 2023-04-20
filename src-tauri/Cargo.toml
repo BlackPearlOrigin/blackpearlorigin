@@ -1,6 +1,6 @@
 [package]
 name = "project_black_pearl"
-version = "0.2.0"
+version = "0.3.0"
 description = "Unify your game sources in one place by using modules made by the community. "
 authors = ["zun1uwu", "infinity-plus", "Brisolo32", "Contributors of Project Black Pearl"]
 license = "BSD-3-Clause"
@@ -19,7 +19,7 @@ rfd = "0.10.0"
 rusqlite = { version = "0.28.0", features = ["bundled"] }
 rusqlite_migration = "1.0.1"
 execute = "0.2.11"
-reqwest = { version = "0.11.13", features = ["blocking"] }
+reqwest = { version = "0.11.13", features = ["blocking", "json"] }
 serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.1", features = ["api-all", "macos-private-api", "system-tray"] }
 uuid = { version = "1.2.2", features = ["v4", "fast-rng"] }

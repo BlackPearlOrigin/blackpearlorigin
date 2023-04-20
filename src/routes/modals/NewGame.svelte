@@ -1,9 +1,16 @@
 <script lang="ts">
-	import { invoke } from '@tauri-apps/api/tauri';
+	import { convertFileSrc, invoke } from '@tauri-apps/api/tauri';
 	import { getContext } from 'svelte';
 	import './../../styles/Modal.scss';
 	import { t } from '../../locale/i18n';
-	import { saveData, editData } from '../../scripts/Library';
+	import { exists } from '@tauri-apps/api/fs';
+	import type { IGDBData } from '../../scripts/Interfaces';
+	import {
+		saveData,
+		editData,
+		getGameMetadata,
+		downloadImage,
+	} from '../../scripts/Library';
 
 	const { close }: any = getContext('simple-modal');
 	export let title: string;
@@ -11,6 +18,10 @@
 	export let executablePath: any;
 	export let description: string;
 	export let imagePath: any;
+	let imageSelected: boolean;
+	let moreThanOneGameMeta: boolean;
+	let gameMetadata: IGDBData[] = [];
+	let gameMetadataModal: HTMLDialogElement;
 
 	// Defines a function that checks if the same string is empty
 	function isEmpty(string: string) {
@@ -23,7 +34,9 @@
 		invoke('file_dialog').then((message) => (executablePath = message));
 	}
 	function chooseImage() {
-		invoke('image_dialog').then((message) => (imagePath = message));
+		invoke('image_dialog')
+			.then((message) => (imagePath = message))
+			.then(() => (imageSelected = true));
 	}
 
 	export let operationToPerform: string = 'Save';
@@ -81,31 +94,90 @@
 		</div>
 		<div class="show-path">
 			<!-- When the button is clicked, run chooseImage -->
-			<button on:click="{chooseImage}" class="ng-button"
+			<button on:click="{chooseImage}" class="ng-button image-add"
 				>{$t('modals.newGame.addImg')}</button
 			>
 
-			<!-- Binds the inner html to imagePath -->
-			<p
-				class="path"
-				contenteditable="true"
-				bind:innerHTML="{imagePath}"
-			></p>
+			<!-- 
+				Adds an image preview of the cover art
+				Only if imageSelected = true and
+				imagePath != "None"
+			-->
+			{#if imageSelected && imagePath != 'None'}
+				<img src="{convertFileSrc(imagePath)}" alt="" width="100px" />
+			{/if}
 		</div>
 		<textarea
-			maxlength="250"
+			maxlength="800"
 			name="Description"
 			placeholder="{$t('modals.newGame.desc')}"
 			bind:value="{description}"></textarea>
+
+		<button
+			on:click="{() => {
+				if (!isEmpty(title)) {
+					getGameMetadata(title).then(async (gameMeta) => {
+						gameMetadata = gameMeta;
+
+						if (gameMeta.length <= 1) {
+							description = gameMeta[0].summary;
+							title = gameMeta[0].name;
+
+							const downImagePath = await downloadImage(
+								gameMeta[0].cover_url
+							);
+
+							imagePath = downImagePath;
+
+							return;
+						}
+
+						console.log('More than one game');
+						// TODO: Add an menu to select one of multiple games
+						gameMetadataModal.showModal();
+					});
+					return;
+				}
+
+				invoke('log', {
+					logLevel: 0,
+					logMessage: 'No title set',
+				});
+			}}"
+		>
+			Fetch automatically
+		</button>
 	</div>
 
+	<dialog bind:this="{gameMetadataModal}">
+		{#each gameMetadata as gameMeta, i}
+			<button
+				on:click="{async () => {
+					description = gameMetadata[i].summary;
+					title = gameMetadata[i].name;
+
+					const downImagePath = await downloadImage(
+						gameMetadata[i].cover_url
+					);
+
+					imagePath = downImagePath;
+
+					gameMetadataModal.close();
+				}}"
+			>
+				{gameMeta.name}<br />
+			</button>
+		{/each}
+	</dialog>
+
 	<!-- I think you get it by now -->
-	<button
-		on:click="{() => {
-			operation_handler(operationToPerform);
-		}}"
-		class="ng-button done-btn"
-	>
-		{$t('modals.newGame.done')}
-	</button>
+	<div class="done-btn">
+		<button
+			on:click="{() => {
+				operation_handler(operationToPerform);
+			}}"
+		>
+			{$t('newGame.done')}
+		</button>
+	</div>
 </div>

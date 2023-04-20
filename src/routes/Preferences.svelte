@@ -7,6 +7,11 @@
 		saveLangData,
 		wipeLibrary,
 	} from '../scripts/Preferences';
+	import languageNames from '../locale/languages.json';
+	import { getScrapers } from '../scripts/Browse';
+	import pkgJSON from '../../package.json';
+
+	const scrapersList = getScrapers();
 
 	$: languages = Object.keys(translations);
 	$: dict.set(translations);
@@ -18,23 +23,42 @@
 		<div class="section">
 			<div class="button-group">
 				<button id="install" on:click="{installScraper}"
-					>{$t('preferences.installPlugin')}</button
+					><i class="fa-solid fa-download"></i>
+					{$t('preferences.installPlugin')}</button
 				>
 				<button id="wipe" on:click="{wipeLibrary}"
-					>{$t('preferences.wipeLibrary')}</button
+					><i class="fa-solid fa-trash-can"></i>
+					{$t('preferences.wipeLibrary')}</button
 				>
 			</div>
-			<label for="select">{$t('languageText')}</label>
-			<div class="locale-settings">
-				<select bind:value="{$locale}">
-					{#each languages as languageName}
-						<option value="{languageName}">{languageName}</option>
-					{/each}
-				</select>
+			<div class="availb-plugins">
+				<label for="available-plugins"
+					>{$t('preferences.availablePlugins')}:</label
+				>
+				<div class="available-plugins">
+					{#await scrapersList then scrapersList}
+						{#each scrapersList.scrapers as scraper}
+							<span>{scraper.name}</span>
+						{/each}
+					{/await}
+				</div>
+			</div>
+			<div class="lang-settings">
+				<label for="select">{$t('languageText')}:</label>
+				<div class="locale-settings">
+					<select bind:value="{$locale}">
+						{#each languages as languageCode, i}
+							<option value="{languageCode}"
+								>{languageNames[i]}</option
+							>
+						{/each}
+					</select>
+				</div>
 			</div>
 			<button class="save-button" on:click="{() => saveLangData($locale)}"
 				>{$t('preferences.saveText')}</button
 			>
 		</div>
+		<span class="ver"> Project Black Pearl v{pkgJSON.version} </span>
 	</div>
 </main>

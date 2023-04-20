@@ -2,28 +2,6 @@ import englishUS from './lang/en.json';
 
 export default {
 	en: englishUS,
-	// 'pt-PT': portuguesePT,
-	// 'pt-BR': portugueseBR,
-	// de: germanDE,
-	// eo: esperantoEO,
-	// hu: hungarianHU,
-	// se: swedishSE,
-	// fr: frenchFR,
-	// ee: estonianEE,
-	// ar: arabicAR,
-	// fi: finnishFI,
-	// pl: polishPL,
-	// hr: croatianHR,
-	// ba: bosnianBA,
-	// cz: czechCZ,
-	// it: italianIT,
-	// lv: latvianLV,
-	// nl: dutchNL,
-	// ru: russianRU,
-	// sr: serbianSR,
-	// tr: turkishTR,
-	// ro: romanianRO,
-	// bg: bulgarianBG,
 };
 
 /*
@@ -46,7 +24,7 @@ export default {
 		AlexanderMaxRanabel: Turkish translation
 		SoulStyle: Romanian translation
 		TeeNam:	Vietnamese translation (To be finished)
-    lyubomir501: Bulgarian translation
+    	lyubomir501: Bulgarian translation
 
 		Terrence Tingleberry: Proofreading those translations
 */

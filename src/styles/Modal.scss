@@ -16,15 +16,15 @@
 		padding: 15px;
 		max-width: 350px;
 
-		border: 1px solid #fff;
-		border-radius: 15px;
+		border: 1px solid var(--modal-border-color);
+		border-radius: var(--radius-normal);
 
-		background-color: #0b0d0e;
+		background-color: var(--modal-background-color);
 
 		span {
-			color: #fff;
+			color: var(--font-color);
 			font-family: 'Montserrat';
-			font-weight: 500;
+			font-weight: var(--modal-fetch-font-weight);
 
 			&::after {
 				content: ':';
@@ -35,16 +35,16 @@
 			text-align: center;
 			transition: all 0.25s;
 			font-family: 'Montserrat';
-			background-color: #0b0d0e;
-			color: #fff;
-			border: 1px solid #0b0d0e;
-			border-radius: 15px;
+			background-color: var(--modal-fetch-background-color);
+			color: var(--font-color);
+			border: 1px solid var(--modal-fetch-background-color);
+			border-radius: var(--radius-normal);
 			padding: 10px;
 
 			&:hover {
 				cursor: pointer;
-				border-color: #fff;
-				background-color: #2d3739;
+				border-color: var(--modal-fetch-background-color);
+				background-color: var(--modal-fetch-hover-color);
 			}
 		}
 	}
@@ -57,12 +57,12 @@
 		button.fetch-meta {
 			transition: all 0.25s;
 
-			color: #fff;
-			background-color: #0b0d0e;
-			border-color: #fff;
+			color: var(--font-color);
+			background-color: var(--modal-background-color);
+			border-color: var(--modal-border-color);
 			border-style: solid;
 			border-width: 1px;
-			border-radius: 15px;
+			border-radius: var(--radius-normal);
 			margin: 15px 0;
 
 			font-size: 15px;
@@ -79,12 +79,12 @@
 
 		input,
 		textarea {
-			color: #fff;
-			background-color: #0b0d0e;
-			border-color: #fff;
+			color: var(--font-color);
+			background-color: var(--modal-element-background-color);
+			border-color: var(--modal-element-border-color);
 			border-style: solid;
 			border-width: 1px;
-			border-radius: 15px;
+			border-radius: var(--radius-normal);
 			padding: 8px 8px 8px 8px;
 
 			outline-style: none;
@@ -94,25 +94,25 @@
 			margin-top: 8px;
 
 			&::placeholder {
-				color: #fff;
+				color: var(--modal-placeholder-color);
 				font-size: 15px;
 			}
 		}
 
 		.show-path {
-			color: #fff;
+			color: var(--font-color);
 			display: flex;
 			flex-direction: row;
 
 			.ng-button {
 				transition: all 0.25s;
 
-				color: #fff;
-				background-color: #0b0d0e;
-				border-color: #fff;
+				color: var(--font-color);
+				background-color: var(--modal-element-background-color);
+				border-color: var(--modal-border-color);
 				border-style: solid;
 				border-width: 1px;
-				border-radius: 15px;
+				border-radius: var(--radius-normal);
 				//margin-bottom: 16px;
 				//margin-top: 16px;
 				margin: 15px 0;
@@ -132,10 +132,10 @@
 			img {
 				border-style: solid;
 				border-width: 1px;
-				border-radius: 15px;
+				border-radius: var(--radius-normal);
 				padding: 5px;
-				background-color: #0b0d0e;
-				border-color: #0d0b0e;
+				background-color: var(--modal-img-background-color);
+				border-color: var(--modal-img-border-color);
 			}
 		}
 	}
@@ -145,11 +145,11 @@
 		flex-flow: row-reverse;
 
 		button {
-			background-color: #0b0d0e;
-			border: 1px solid #fff;
-			border-radius: 15px;
+			background-color: var(--modal-element-background-color);
+			border: 1px solid var(--modal-element-border-color);
+			border-radius: var(--radius-normal);
 			font-size: 1rem;
-			color: #fff;
+			color: var(--font-color);
 			padding: 5px 10px;
 		}
 	}

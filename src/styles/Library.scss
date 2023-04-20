@@ -1,7 +1,3 @@
-:root {
-	--accent-color: #00ff00;
-}
-
 * {
 	transition: all 0.25s;
 }
@@ -12,41 +8,35 @@
 
 	.search-bar {
 		width: 40%;
-		color: #fff;
+		color: var(--library-search-font-color);
 		font-size: 1rem;
 		margin: 16px 16px 16px 0;
 		padding: 8px;
-		background-color: var(--item-bg-color);
+		background-color: var(--library-element-background);
 		border-style: solid;
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
 		border-width: 1px;
 		border-radius: 15px;
-		border-color: #fff;
+		border-color: var(--library-border-color);
 
 		&[type='text']:focus {
 			outline-style: none;
 		}
 
 		&[type='text']::placeholder {
-			color: darken(#fff, 20%);
+			color: var(--library-search-placeholder-color);
 		}
 	}
 
 	button {
-		background-color: var(--item-bg-color);
-		border-color: var(--accent-color);
+		background-color: var(--library-element-background);
+		border-color: var(--library-border-color);
 		border-style: solid;
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
 		border-width: 1px;
 		border-radius: 100px;
-		border-color: #fff;
 
-		//padding: 0 12px;
 		margin-bottom: 1rem;
 		margin-top: 1rem;
-		color: #fff;
+		color: var(--font-color);
 		font-size: 16px;
 		cursor: pointer;
 		transition: all 0.25s;
@@ -89,28 +79,13 @@
 			}
 
 			p {
-				color: var(--text-color);
+				color: var(--font-color);
 				margin: 0;
-				font-weight: 400;
+				font-weight: var(--library-name-font-weight);
 				font-size: 20px;
 				font-family: 'Montserrat';
 				word-wrap: break-word;
 				text-align: center;
-			}
-		}
-
-		.game-info {
-			padding-left: 5px;
-
-			.game-desc {
-				padding-left: 8px;
-				padding-top: 10px;
-			}
-
-			.small-info {
-				padding: 2px 0px 0px 8px;
-				font-size: 16px;
-				color: #cccccc;
 			}
 		}
 	}
@@ -119,13 +94,11 @@
 		display: flex;
 
 		.game-modal {
-			background-color: var(--game-modal-bg);
-			backdrop-filter: blur(100px);
-			-webkit-backdrop-filter: blur(var(--game-modal-blur-size));
+			background-color: var(--library-game-modal-background-color);
+			border-color: var(--library-game-modal-background-color);
 			margin: 0;
 			margin-left: auto;
-			height: 100%;
-			border-color: var(--white-ph-color);
+			height: 100vh;
 			border-width: 1px;
 
 			&::backdrop {
@@ -133,7 +106,7 @@
 			}
 
 			&[open] {
-				color: var(--text-color);
+				color: var(--font-color);
 				display: flex;
 				flex-direction: column;
 				width: 300px;
@@ -141,7 +114,7 @@
 
 			#game-name {
 				font-size: 1.5rem;
-				font-weight: 800;
+				font-weight: var(--library-game-modal-title-font-weight);
 				text-align: center;
 			}
 
@@ -151,6 +124,7 @@
 				margin-right: 0.5rem;
 				font-size: 0.9rem;
 				line-height: 17px;
+				font-weight: var(--library-game-modal-desc-font-weight);
 			}
 
 			#execute {
@@ -159,12 +133,14 @@
 				margin-top: 1.5rem;
 				font-size: 1.3rem;
 				font-family: 'JetBrains Mono', monospace;
-				font-weight: 900;
+				font-weight: var(--library-game-modal-run-button-font-weight);
 				border-style: solid;
-				border-color: var(--game-modal-run);
-				border-radius: var(--border-radius);
-				background-color: var(--game-modal-run);
-				color: var(--black-text);
+				border-color: var(--library-game-modal-run-button-background);
+				border-radius: var(--radius-normal);
+				background-color: var(
+					--library-game-modal-run-button-background
+				);
+				color: var(--library-game-modal-run-button-font-color);
 			}
 
 			.buttons {
@@ -174,17 +150,17 @@
 				.game-button-run {
 					border: none;
 					background-color: inherit;
-					font-size: 2rem;
+					font-size: var(--library-game-modal-edit-delete-size);
 					cursor: pointer;
 				}
 
 				.game-button-delete {
 					float: right;
-					color: var(--delete-game-color);
+					color: var(--library-game-modal-edit-button-color);
 				}
 
 				.game-button-run {
-					color: var(--edit-game-color);
+					color: var(--library-game-modal-delete-button-color);
 				}
 			}
 		}

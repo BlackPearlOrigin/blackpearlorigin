@@ -1,0 +1,117 @@
+==== Variables to change stuff on the UI ====
+
+Global:
+	Variables:
+		--radius-round (Default: 100px)
+		--radius-normal (Default: 15px)
+		--font-color (Default: #fff)
+		--darker-font-color (Default: #0a0a0a)
+		--background-color (Default: #2d3739)
+
+Browse:
+	Elements:
+		- Input field
+		- Search button (icon)
+		- Plugin selector (select tag)
+		- Game box
+			- Download button
+			
+	Variables: 
+		--browse-border-color (Default: #fff)
+		--browse-element-background (Default: #0b0e10)
+		--browse-input-placeholder-color (Default: #fff)
+		--browse-element-font-weight (Default: 500)
+		--browse-game-border (Default: #fff)
+		--browse-game-background-color (Default: #0b0e10)
+		--browse-game-dl-border (Default: #fff)
+		--browse-game-name-font-weight (Default: 700)
+		--browse-game-dl-font-weight (Default: 500)
+		
+Library:
+	Elements:
+		- Input field
+		- Add button (icon)
+		- Game artwork
+			- Modal inside
+				- Game name
+				- Run button
+				- Description
+				- Edit button
+				- Delete button
+			
+	Variables: 
+		--library-border-color (Default: #fff)
+		--library-element-background (Default: #0b0e10)
+		--library-search-placeholder-color (Default: #fff)
+		--library-search-font-color (Default: #fff)
+		--library-name-font-weight (Default: 400)
+		--library-game-modal-title-font-weight (Default: 800)
+		--library-game-modal-desc-font-weight (Default: 400)
+		--library-game-modal-run-button-background (Default: #fff)
+		--library-game-modal-run-button-font-color (Default: #000)
+		--library-game-modal-run-button-font-weight (Default: 900)
+		--library-game-modal-edit-button-color (Default: #0087fe)
+		--library-game-modal-delete-button-color (Default: #ff0000)
+		--library-game-modal-edit-delete-size (Default: 2rem)
+		
+Preferences:
+	Elements:
+		- 3 Boxes on the top
+		- One long box on the bottom
+	Variables: 
+		--settings-container-color (Default: #1e1e1e)
+		--settings-container-button-color (Default: #0b0e10)
+		--settings-container-button-border-color (Default: #0b0e10)
+		
+Sidebar:
+	Elements:
+		- 3 Buttons
+	Variables:
+		--sidebar-background-color (Default: #0b0d0e)
+		--sidebar-font-weight (Default: 300)
+		--sidebar-logo-color (Default: #fff)
+		--sidebar-button-hover (Default: #2d3739)
+
+Modal:
+	Variables
+		--modal-background-color (Default: #0b0d0e)
+		--modal-border-color (Default: #fff)
+		--modal-placeholder-color (Default: #fff)
+		--modal-element-border-color (Default: #fff)
+		--modal-element-background-color (Default: #0b0d0e)
+		--modal-img-background-color (Default: #0b0d0e)
+		--modal-img-border-color (Default: #0b0d0e)
+		--modal-fetch-background-color (Default: #0b0d0e)
+		--modal-fetch-font-weight (Default: 500)
+		--modal-fetch-hover-color (Default: #2d3739)
+
+
+--sidebar-background-color (Default: #0b0d0e)
+--sidebar-font-weight: (Default: 300)
+--settings-container-color (Default: #1e1e1e)
+--settings-container-button-color (Default: #0b0e10)
+--settings-container-button-border-color (Default: #0b0e10)
+--library-border-color (Default: #fff)
+--library-element-background (Default: #0b0e10)
+--library-search-placeholder-color (Default: #fff)
+--library-search-font-color (Default: #fff)
+--library-name-font-weight (Default: 400)
+--library-game-modal-title-font-weight (Default: 800)
+--library-game-modal-desc-font-weight (Default: 400)
+--library-game-modal-run-button-background (Default: #fff)
+--library-game-modal-run-button-font-color (Default: #000)
+--library-game-modal-run-button-font-weight (Default: 900)
+--library-game-modal-edit-button-color (Default: #0087fe)
+--library-game-modal-delete-button-color (Default: #ff0000)
+--library-game-modal-edit-delete-size (Default: 2rem)
+--browse-border-color (Default: #fff)
+--browse-element-background (Default: #0b0e10)
+--browse-input-placeholder-color (Default: #fff)
+--browse-input-text-color (Default: #fff)
+--browse-element-font-weight (Default: 500)
+--browse-game-dl-border (Default: #fff)
+--browse-game-name-font-weight (Default: 700)
+--browse-game-dl-font-weight (Default: 500)
+--radius-round (Default: 100px)
+--radius-normal (Default: 15px)
+--font-color (Default: #fff)

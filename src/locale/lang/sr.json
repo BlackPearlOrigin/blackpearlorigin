@@ -1,42 +1,40 @@
 {
-	"homeText": "Почетна страница",
-	"browseText": "Потражи",
-	"libraryText": "Датотека",
-	"downloadsText": "Преузимања",
-	"prefsText": "Преференце",
-	"loadingText": "Учитавање",
-	"languageText": "Језик",
-	"preferences": {
-		"installPlugin": "Инсталирај додатак",
-		"wipeLibrary": "Избриши датотеку",
-		"saveText": "Сачувај"
-	},
-	"library": {
-		"add": "Додај",
-		"playtime": "сати проведено у игри",
-		"editGame": "Уреди",
-		"deleteGame": "Избриши",
-		"run": "Покрени"
-	},
-	"home": {
-		"welcomeText": "Добродошли у Project Black Pearl",
-		"changelogText": "Дневник измена: "
-	},
-	"downloads": {},
-	"browse": {
-		"selectPlugin": "Одабери додатак",
-		"nothingFound": "Ниједна игра није пронађена",
-		"downloadText": "Преузми",
-		"search": "Претражи"
-	},
-	"modals": {
-		"newGame": {
-			"gameTitle": "Наслов",
-			"addExec": "Додај извршну команду",
-			"none": "Ништа",
-			"addImg": "Додај слику",
-			"desc": "Опис",
-			"done": "Завршено"
-		}
-	}
+    "browseText": "Претрага",
+    "libraryText": "Датотеке",
+    "prefsText": "Поставке",
+    "loadingText": "Учитавање",
+    "languageText": "Језик",
+    "preferences": {
+        "installPlugin": "Инсталирај додатак",
+        "wipeLibrary": "Избриши датотеку",
+        "saveText": "Сачувај",
+        "availablePlugins": "Доступни додаци",
+        "comingSoon": "Долази ускоро..."
+    },
+    "library": {
+        "run": "Покрени",
+        "searchGame": "Претражи"
+    },
+    "browse": {
+        "selectPlugin": "Одабери додатак",
+        "nothingFound": "Ниједна игра није пронађена",
+        "downloadText": "Преузми",
+        "search": "Претражи"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Наслов игре",
+            "addExec": "Додај извршну датотеку",
+            "none": "Ништа",
+            "addImg": "Додај слику",
+            "desc": "Опис",
+            "done": "Заврши",
+            "autoFetch": "Пренеси податке о игри"
+        },
+        "fetchMeta": {
+            "selectGame": "Одабери игру"
+        }
+    },
+    "pluginText": "Додаци",
+    "themeText": "Позадине"
 }

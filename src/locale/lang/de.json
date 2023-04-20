@@ -1,42 +1,40 @@
 {
-	"homeText": "Startseite",
-	"browseText": "Stöbern",
-	"libraryText": "Bibliothek",
-	"downloadsText": "Downloads",
-	"prefsText": "Einstellungen",
-	"loadingText": "Wird geladen",
-	"languageText": "Sprache",
-	"preferences": {
-		"installPlugin": "Plugin installieren",
-		"wipeLibrary": "Bibliothek löschen",
-		"saveText": "Speichern"
-	},
-	"library": {
-		"add": "Hinzufügen",
-		"playtime": "Stunden gespielt",
-		"editGame": "Bearbeiten",
-		"deleteGame": "Löschen",
-		"run": "Ausführen"
-	},
-	"home": {
-		"welcomeText": "Wilkommen zu Project Black Pearl",
-		"changelogText": "Änderungen: "
-	},
-	"downloads": {},
-	"browse": {
-		"selectPlugin": "Plugin auswählen",
-		"nothingFound": "Keine Ergebnisse gefunden",
-		"downloadText": "Herunterladen",
-		"search": "Suchen"
-	},
-	"modals": {
-		"newGame": {
-			"gameTitle": "Titel",
-			"addExec": "Ausführbare Datei hinzufügen",
-			"none": "Kein",
-			"addImg": "Bild hinzufügen",
-			"desc": "Beschreibung",
-			"done": "Fertig"
-		}
-	}
+    "browseText": "Stöbern",
+    "libraryText": "Bibliothek",
+    "prefsText": "Einstellungen",
+    "loadingText": "Lädt",
+    "languageText": "Sprache",
+    "preferences": {
+        "installPlugin": "Ein Plug-in installieren",
+        "wipeLibrary": "Bibliothek löschen",
+        "saveText": "Speichern",
+        "availablePlugins": "Verfügbare Plug-ins",
+        "comingSoon": "Kommt bald..."
+    },
+    "library": {
+        "run": "Ausführen",
+        "searchGame": "Suchen"
+    },
+    "browse": {
+        "selectPlugin": "Plug-in auswählen",
+        "nothingFound": "Nichts gefunden",
+        "downloadText": "Herunterladen",
+        "search": "Suchen"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Titel",
+            "addExec": "Anwendung hinzufügen",
+            "none": "Kein(e)",
+            "addImg": "Bild hinzufügen",
+            "desc": "Beschreibung",
+            "done": "Fertig",
+            "autoFetch": "Metadaten erhalten"
+        },
+        "fetchMeta": {
+            "selectGame": "Spiel auswählen"
+        }
+    },
+    "pluginText": "Plug-ins",
+    "themeText": "Thema"
 }

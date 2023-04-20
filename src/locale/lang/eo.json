@@ -1,40 +1,42 @@
 {
-    "browseText": "Foliumi",
-    "libraryText": "Biblioteko",
-    "prefsText": "Preferoj",
-    "loadingText": "Ŝarĝante",
-    "languageText": "Lingvo",
-    "preferences": {
-        "installPlugin": "Instalu kromprogramon",
-        "wipeLibrary": "Viŝu bibliotekon",
-        "saveText": "Ŝpari",
-        "availablePlugins": "Haveblaj kromprogramon",
-        "comingSoon": "Baldaŭ..."
-    },
-    "library": {
-        "run": "Kuri",
-        "searchGame": "Serĉu"
-    },
-    "browse": {
-        "selectPlugin": "Elektu kromprogramon",
-        "nothingFound": "Neniuj ludoj trovitaj",
-        "downloadText": "Elŝuto",
-        "search": "Serĉu"
-    },
-    "modals": {
-        "newGame": {
-            "gameTitle": "Titolo",
-            "addExec": "Aldonu rueblan",
-            "none": "Neniu",
-            "addImg": "Aldonu bildo",
-            "desc": "Priskribo",
-            "done": "Farita",
-            "autoFetch": "Elpeti metadatenojn"
-        },
-        "fetchMeta": {
-            "selectGame": "Elektu ludo"
-        }
-    },
-    "pluginText": "Kromprogramon",
-    "themeText": "Temoj"
+	"homeText": "Hejmo",
+	"browseText": "Foliumi",
+	"libraryText": "Biblioteko",
+	"downloadsText": "Elŝutoj",
+	"prefsText": "Preferoj",
+	"loadingText": "Ŝarĝante",
+	"languageText": "Lingvo",
+	"preferences": {
+		"installPlugin": "Instalu Kromprogramon",
+		"wipeLibrary": "Viŝu bibliotekon",
+		"saveText": "Ŝpari"
+	},
+	"library": {
+		"add": "Aldoni",
+		"playtime": "horoj luditaj",
+		"editGame": "Redakti",
+		"deleteGame": "Forigi",
+		"run": "Kuri"
+	},
+	"home": {
+		"welcomeText": "Bonvenon al Project Black Pearl",
+		"changelogText": "Ŝanĝprotokolo: "
+	},
+	"downloads": {},
+	"browse": {
+		"selectPlugin": "Elektu Kromprogramon",
+		"nothingFound": "Neniuj ludoj trovitaj",
+		"downloadText": "Elŝuto",
+		"search": "Serĉu"
+	},
+	"modals": {
+		"newGame": {
+			"gameTitle": "Titolo",
+			"addExec": "Aldonu ruleblan",
+			"none": "Neniu",
+			"addImg": "Aldonu bildo",
+			"desc": "Priskribo",
+			"done": "Farita"
+		}
+	}
 }

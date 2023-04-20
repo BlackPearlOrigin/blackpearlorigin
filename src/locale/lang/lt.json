@@ -1,1 +1,40 @@
-
+{
+    "browseText": "Naršyti",
+    "libraryText": "Biblioteka",
+    "prefsText": "Pasirinkimai",
+    "loadingText": "Kraunama",
+    "languageText": "Kalba",
+    "preferences": {
+        "installPlugin": "Instaliuoti priedą",
+        "wipeLibrary": "Išvalyti biblioteka",
+        "saveText": "Išsaugoti",
+        "availablePlugins": "Pasiekiami priedai",
+        "comingSoon": "Tuoj atsiras..."
+    },
+    "library": {
+        "run": "Paleisti",
+        "searchGame": "Ieškoti"
+    },
+    "browse": {
+        "selectPlugin": "Pasirinkti priedą",
+        "nothingFound": "Nieko nerasta",
+        "downloadText": "Atsiųsti",
+        "search": "Ieškoti"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Pavadinimas",
+            "addExec": "Pridėti Paleisties failą",
+            "none": "Ne vienas",
+            "addImg": "Pridėti nuotrauka",
+            "desc": "Aprašymas",
+            "done": "Baigta",
+            "autoFetch": "Gauti metadata"
+        },
+        "fetchMeta": {
+            "selectGame": "Pasirinkti žaidimą"
+        }
+    },
+    "pluginText": "Priedai",
+    "themeText": "Temos"
+}

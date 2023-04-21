@@ -2,12 +2,14 @@
 
 Project Black Pearl has full localization support and any number of languages can be added and changed natively.
 
-### Guidelines/Tips for adding Translations:
+### Guidelines / Tips for Adding Translations
 
--   Only add translations for things that you are 100% sure on. Partially translating files is ok as long as you put in some effort.
+-   Only add translations for things you are 100% sure about. You don't have to translate everything, partially translating files is fine as well.
+-   Quality > quantity.
 -   If you are unsure about a translation, leave it blank. It is better to have a blank translation than a wrong one.
+-   Feel free to join our [Discord](https://discord.com/invite/NMwySKFjQY) if you have any questions!
 
-## How to translate:
+## How to Translate
 
 There are two ways of doing it:<br>
 
@@ -15,8 +17,8 @@ There are two ways of doing it:<br>
 <details>
 
 1. Create an account on [POEditor](https://poeditor.com)
-2. Join [our project](https://poeditor.com/join/project/G4mEFhRCt0) on it
-3. Search for your language you want to translate
+2. Join [our project](https://poeditor.com/join/project/GMut4xJe7I) on it
+3. Search for the language you'd like to translate. If it isn't listed, feel free to ask for it to be added via [Discord](https://discord.com/invite/NMwySKFjQY)
 4. Start translating!
  </details>
 
@@ -40,7 +42,7 @@ There are two ways of doing it:<br>
     ohvii: Swedish translation
     despair: French translation
     plaga: Hungarian translation
-    superweird7: Arabic translation
+    superweird7 and MasterSwords: Arabic translation
     GooUckd: Estonian and Finnish translation
     Q99: Bosnian and Serbian translation
     Mirza Čustović: Croatian translation
@@ -56,5 +58,6 @@ There are two ways of doing it:<br>
     SoulStyle: Romanian translation
     TeeNam:	Vietnamese translation (To be finished)
     lyubomir501: Bulgarian translation
+    Sweeflyboy: Afrikaans translation
 
-    Terrence Tingleberry: Proofreading those translations
+    Terrence: Proofreading those translations

@@ -10,7 +10,7 @@ Unify your game sources in one place by using modules made by the community.
 
 ## What is Project Black Pearl?
 
-**Project Black Pearl** (or PBP) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing  extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
+**Project Black Pearl** (or PBP) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
 
 ## What is the current state of the project?
 
@@ -18,31 +18,12 @@ PBP is currently in early Beta stages and its overall functionality is very limi
 
 ## How can I contribute?
 
-### Recommended IDE Setup
+We welcome any contributions to the project, be it code, translations, or just general feedback. You can check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file for more information on how to contribute.
+Please remember that translations are managed differently than code contributions as mentioned below.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+## Translations:
 
--   ### Clone the repository
-
-```bash
-git clone https://github.com/ProjectBlackPearl/pbpl.git
-cd pbpl
-```
-
--   ### Install the dependencies
-
-```bash
- npm install
-```
-
--   ### Make your changes
--   ### Run the project
-
-```bash
-npm run tauri dev
-```
-
--   ### Create a Pull Request!
+Project Black Pearl supports full localization. Instructions to help translate the project can be found in [LOCALIZATION.md](./LOCALIZATION.md).
 
 ## Wiki
 

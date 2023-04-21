@@ -16,38 +16,6 @@ You will need [git](https://git-scm.com) for contributing.
 4. Push them to Github `git push -u origin branchname`
 5. Open a PR
 
-## **Translating**
-
----
-
-PBP supports other languages, which means you can use it without knowing English. Any translation is greatly appreciated.<br>
-
-There are two ways of doing it:<br>
-
-<details>
-    <summary>Using POEditor</summary>
-
-1. Create an account on [POEditor](https://poeditor.com)
-2. Join [our project](https://poeditor.com/join/project/G4mEFhRCt0) on it
-3. Search for your language you want to translate
-4. Start translating!
- </details>
-
-<details>
-    <summary>Using Github</summary>
-
-1. [Fork the repo](https://github.com/ProjectBlackPearl/PBPL/fork)
-2. Create a branch `git checkout -b klingon-translation`
-3. Go to `src/locale/lang`
-4. Create a new file named after the [2-letter ISO code (ISO-639-1)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
-5. Copy the `en.json` file into it
-6. Edit the file but not the keys (Example: `loadingText`)
-7. Throw everything into your fork
-8. Open a PR
-
-</details>
-<br>
-
 ## **Style guidelines**
 
 ---

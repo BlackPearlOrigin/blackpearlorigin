@@ -2,9 +2,9 @@ use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 pub enum LogLevel {
-    ERROR = 0,
-    WARNING = 1,
-    INFO = 2,
+    Error = 0,
+    Warning = 1,
+    Info = 2,
 }
 
 #[tauri::command]

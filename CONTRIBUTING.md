@@ -103,7 +103,7 @@ function functionName(): void {
 
 -   Use different cases:
     -   `snake_case` for functions and variables
-    -   `camelCase` for structs
+    -   `PascalCase` for structs
     -   `SCREAMING_SNAKE_CASE` for constants
 
 ### **Documentation guideline**

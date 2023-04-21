@@ -44,8 +44,5 @@ fn main() {
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")
-        // If you close the window, it won't be terminated, but minimized to your system tray
-        .run(|_app, event| match event {
-            _ => {}
-        });
+        .run(|_app, _event| {});
 }

@@ -18,10 +18,10 @@ PBP is currently in beta. You can check [the to-do list](https://github.com/orgs
 
 ## How can I contribute?
 
-We welcome any contributions to the project, be it code, translations, or just general feedback. You can check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file for more information on how to contribute.
+We welcome any contributions to the project, be it code, translations, or just general feedback. You can check out the [CONTRIBUTING.md](./CONTRIBUTING.md) file for more information on how to contribute via code.
 Please remember that translations are managed differently than code contributions as mentioned below.
 
-## Translations:
+## Translations
 
 Project Black Pearl supports full localization. Instructions to help translate the project can be found in [LOCALIZATION.md](./LOCALIZATION.md).
 

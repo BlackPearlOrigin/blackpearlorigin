@@ -38,19 +38,17 @@ pub fn init() {
 
     // Folders
     let pbp_path = crate::paths::get_pbp();
-    let scraper_path = pbp_path.join("scrapers");
+    let plugin_path = pbp_path.join("plugin");
     let queries_path = pbp_path.join("queries");
     let images_path = pbp_path.join("images");
     let temp_path = pbp_path.join("temp");
 
-    // Files
-    let tempfile_path = temp_path.join("scrapers.json");
     let gamedb_path = pbp_path.join("library.db");
     let configfile_path = pbp_path.join("config.json");
 
     let paths = [
         &pbp_path,
-        &scraper_path,
+        &plugin_path,
         &queries_path,
         &images_path,
         &temp_path,
@@ -107,11 +105,6 @@ pub fn init() {
         }
     }
 
-    // If there are any temporary files created in the last instance of PBP, delete them.
-    if tempfile_path.exists() {
-        fs::remove_file(&tempfile_path).expect("Error while deleting temp file");
-    }
-
     // Simplified function for creating directories
     fn create_folder(path: &path::Path) {
         match fs::create_dir_all(path) {
@@ -129,33 +122,6 @@ pub fn init() {
             ),
         }
     }
-
-    #[derive(serde::Serialize)]
-    struct Json {
-        scrapers: Vec<Scraper>,
-    }
-
-    #[derive(serde::Serialize)]
-    struct Scraper {
-        name: String,
-        location: String,
-    }
-
-    let mut file = fs::File::create(tempfile_path).unwrap();
-    let scan = fs::read_dir(&scraper_path).expect("Reading scrapers path failed");
-
-    let mut scrapers = vec![];
-    for entry in scan {
-        let entry = entry.unwrap();
-        scrapers.push(Scraper {
-            name: entry.file_name().to_string_lossy().to_string(),
-            location: entry.path().to_string_lossy().to_string(),
-        })
-    }
-
-    let json = Json { scrapers };
-    let json = serde_json::to_vec_pretty(&json).unwrap();
-    file.write_all(&json).unwrap();
 
     log(2, "Welcome to Project Black Pearl")
 }

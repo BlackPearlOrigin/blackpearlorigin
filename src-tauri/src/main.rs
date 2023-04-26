@@ -17,10 +17,11 @@
 
 mod commands;
 mod paths;
+mod plugins;
 mod startup;
 
 fn main() {
-    // Create the usual directories and look for scrapers.
+    // Create the usual directories if they don't exist.
     startup::init();
 
     // This object is the initial tauri window
@@ -28,11 +29,9 @@ fn main() {
     tauri::Builder::default()
         // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
-            commands::handle_scraper,
             commands::file_dialog,
             commands::image_dialog,
             commands::run_game,
-            commands::install_scraper,
             commands::logging::log,
             commands::database::save_to_db,
             commands::database::get_from_db,
@@ -41,6 +40,9 @@ fn main() {
             commands::database::wipe_library,
             commands::metadata::get_game_metadata,
             commands::metadata::download_image,
+            plugins::install_plugin,
+            plugins::scan_plugins,
+            plugins::search,
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

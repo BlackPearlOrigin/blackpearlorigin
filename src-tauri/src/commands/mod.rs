@@ -1,4 +1,4 @@
-use std::{fs, path, process, thread, time::Instant};
+use std::{process, thread, time::Instant};
 
 use crate::commands::logging::log;
 use execute::Execute;
@@ -7,66 +7,6 @@ use rfd::FileDialog;
 pub mod database;
 pub mod logging;
 pub mod metadata;
-
-#[tauri::command]
-// This function is ran everytime a search query is made
-pub fn handle_scraper(path: String, query: String) {
-    let start_time = Instant::now();
-
-    // Create a command object for the scraper chosen (The command is just its path)
-    // Pass in its path, a query and the destination folder for the cache file as arguments
-    let mut command = process::Command::new(path.clone());
-    command.arg(query.clone());
-    command.arg(crate::paths::get_pbp().join("queries"));
-
-    log(2, &format!("Searching for \"{}\" with {}", query, path));
-
-    // Run the scraper and tell us about its exit code
-    if let Some(exit_code) = command.execute().unwrap() {
-        if exit_code == 0 {
-            log(2, "Scraper query completed successfully");
-            let final_time = Instant::now() - start_time;
-            log(2, &format!("Took {} second(s)", final_time.as_secs()))
-        } else {
-            log(0, "Scraper query failed successfully");
-        }
-    } else {
-        log(2, "Scraper query interrupted");
-    }
-}
-
-#[tauri::command]
-// This function is ran everytime the user clicks the "Install scraper" button on the Preferences page
-pub fn install_scraper() {
-    let file = match FileDialog::new()
-        .add_filter("Executables", &["exe", "com", "cmd", "bat"])
-        .set_directory("/")
-        .pick_file()
-    {
-        Some(file) => file.display().to_string(),
-        None => "None".to_string(),
-    };
-
-    // Copy the scraper from the location the user selected to the scrapers folder
-    if file != "None" {
-        let file = path::Path::new(&file);
-        fs::copy(
-            file,
-            crate::paths::get_pbp()
-                .join("scrapers")
-                .join(file.file_name().unwrap()),
-        )
-        .expect("Installing scraper failed");
-    }
-
-    log(
-        2,
-        &format!(
-            "Installed scraper with path {}",
-            path::Path::new(&file).display()
-        ),
-    );
-}
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable

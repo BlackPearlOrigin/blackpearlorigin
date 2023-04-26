@@ -8,5 +8,7 @@
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},
 	"i18n-ally.localesPaths": ["src/locale/lang"],
-	"i18n-ally.keystyle": "nested"
+	"i18n-ally.keystyle": "nested",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"rust-analyzer.linkedProjects": ["./src-tauri/Cargo.toml"]
 }

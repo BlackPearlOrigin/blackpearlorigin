@@ -3,7 +3,7 @@
 	import { dict, locale, t } from '../locale/i18n.js';
 	import '../styles/Preferences.scss';
 	import {
-		installScraper,
+		installPlugin,
 		saveLangData,
 		wipeLibrary,
 	} from '../scripts/Preferences.js';
@@ -27,7 +27,7 @@
 					<Cube size="18px" />
 				</div>
 				<div class="buttons">
-					<button id="install" on:click="{installScraper}">
+					<button id="install" on:click="{installPlugin}">
 						<Cube class="cube" size="18px" />
 						{$t('preferences.installPlugin')}</button
 					>

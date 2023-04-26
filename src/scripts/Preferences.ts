@@ -4,11 +4,11 @@ import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
 
 /**
  * Typescript Function -> Rust Function
- * - Invokes a function that installs a scraper
+ * - Invokes a function that installs a plugin
  *
  * @returns Nothing
  */
-export const installScraper = () => invoke('install_scraper');
+export const installPlugin = async () => await invoke('install_plugin');
 
 /**
  * Typescript Function -> Rust Function

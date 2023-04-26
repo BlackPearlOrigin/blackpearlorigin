@@ -9,22 +9,26 @@ import type { TempScrapers, SearchResults } from './Interfaces';
  *
  * @returns {Promise<TempScrapers>} Scrapers read from temp/scrapers.json
  */
-export const getScrapers = async (): Promise<TempScrapers> => {
+export const getScrapers = async () => {
+	//: Promise<TempScrapers> => {
 	// Read the file from AppData path
-	const file: string = await readTextFile('temp/scrapers.json', {
-		dir: BaseDirectory.AppLocalData,
-	}).catch((e) => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to open file',
-		});
+	// const file: string = await readTextFile('temp/scrapers.json', {
+	// 	dir: BaseDirectory.AppLocalData,
+	// }).catch((e) => {
+	// 	invoke('log', {
+	// 		logLevel: 0,
+	// 		logMessage: 'Failed to open file',
+	// 	});
 
-		return e;
-	});
+	// 	return e;
+	// });
 
-	// Parse the JSON and return it
-	const json = JSON.parse(file);
-	return json;
+	// // Parse the JSON and return it
+	// const json = JSON.parse(file);
+	// return json;
+
+	const data = await invoke('scan_plugins');
+	console.log(data);
 };
 
 /**

@@ -38,7 +38,7 @@ fn get_extension() -> ffi::OsString {
 
 #[tauri::command]
 // This function is ran everytime the user clicks the "Install plugin" button on the Preferences page
-pub fn install_plugin() {
+pub fn install_plugin() -> Result<(), String> {
     let extension = get_extension();
     let extension = extension.to_str().unwrap();
     let file = match FileDialog::new()
@@ -47,19 +47,21 @@ pub fn install_plugin() {
         .pick_file()
     {
         Some(file) => file.display().to_string(),
-        None => "None".to_string(),
+        None => return Err("No file selected".to_string()),
     };
 
     // Copy the plugin from the location the user selected to the plugins folder
-    if file != "None" {
-        let file = path::Path::new(&file);
-        fs::copy(
-            file,
-            crate::paths::get_pbp()
-                .join("plugins")
-                .join(file.file_name().unwrap()),
-        )
-        .expect("Installing plugin failed");
+    let file = path::Path::new(&file);
+    match fs::copy(
+        file,
+        crate::paths::get_pbp()
+            .join("plugins")
+            .join(file.file_name().unwrap()),
+    ) {
+        Ok(_) => {}
+        Err(e) => {
+            return Err(format!("Failed to copy plugin: {}", e));
+        }
     }
 
     log(
@@ -69,6 +71,7 @@ pub fn install_plugin() {
             path::Path::new(&file).display()
         ),
     );
+    Ok(())
 }
 
 #[tauri::command]

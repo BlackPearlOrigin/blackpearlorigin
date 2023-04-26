@@ -60,7 +60,7 @@ pub fn install_plugin() -> Result<(), String> {
     ) {
         Ok(_) => {}
         Err(e) => {
-            log(3, &format!("Failed to copy plugin: {}", e));
+            log(2, &format!("Failed to copy plugin: {}", e));
             return Err(format!("Failed to copy plugin: {}", e));
         }
     }
@@ -92,7 +92,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
         let entry = match entry {
             Ok(entry) => entry,
             Err(e) => {
-                log(1, format!("Failed to read entry: {}", e).as_str());
+                log(0, format!("Failed to read entry: {}", e).as_str());
                 continue;
             }
         };
@@ -101,21 +101,21 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
         let entry_extension = match path.extension() {
             Some(extension) => extension,
             None => {
-                log(2, "Failed to get extension");
+                log(1, "Failed to get extension");
                 continue;
             }
         };
         let plugin_name = match entry.file_name().into_string() {
             Ok(plugin_name) => plugin_name,
             Err(e) => {
-                log(2, format!("Failed to get plugin name: {:?}", e).as_str());
+                log(1, format!("Failed to get plugin name: {:?}", e).as_str());
                 continue;
             }
         };
 
         if entry_extension != get_extension() {
             log(
-                3,
+                2,
                 format!(
                     "Skipping plugin {} because it is not a dynamic library",
                     plugin_name
@@ -131,7 +131,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
                 Ok(plugin) => plugin,
                 Err(e) => {
                     log(
-                        1,
+                        0,
                         format!("Failed to load plugin {}: {}", plugin_name, e.to_string())
                             .as_str(),
                     );
@@ -146,7 +146,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
                 Ok(version) => version,
                 Err(e) => {
                     log(
-                        2,
+                        1,
                         format!(
                             "Failed to get version of plugin {}: {}",
                             plugin_name,
@@ -166,7 +166,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
                 Ok(name) => name,
                 Err(e) => {
                     log(
-                        2,
+                        1,
                         format!(
                             "Failed to get name of plugin {}: {}",
                             plugin_name,
@@ -187,7 +187,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
                 Ok(author) => author,
                 Err(e) => {
                     log(
-                        2,
+                        1,
                         format!(
                             "Failed to get author of plugin {}: {}",
                             plugin_name,
@@ -208,7 +208,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
                 Ok(source) => source,
                 Err(e) => {
                     log(
-                        2,
+                        1,
                         format!(
                             "Failed to get source of plugin {}: {}",
                             plugin_name,
@@ -241,7 +241,7 @@ pub fn search(plugin_path: String, query: String) -> Result<Vec<Game>, String> {
         match libloading::Library::new(plugin_path.clone()) {
             Ok(plugin) => plugin,
             Err(e) => {
-                log(1, &format!("Failed to load plugin: {}", e));
+                log(0, &format!("Failed to load plugin: {}", e));
                 return Err(format!("Failed to load plugin: {}", e.to_string()));
             }
         }
@@ -254,7 +254,7 @@ pub fn search(plugin_path: String, query: String) -> Result<Vec<Game>, String> {
 
     //  Version check
     if !service.check_version("0.1.0") {
-        log(1, "Plugin version mismatch");
+        log(0, "Plugin version mismatch");
         Err("Plugin version mismatch".to_string())
     } else {
         service.search(query)

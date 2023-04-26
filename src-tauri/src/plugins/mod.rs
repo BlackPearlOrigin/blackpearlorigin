@@ -126,102 +126,32 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
         }
 
         //  Load the plugin
-        let plugin = unsafe {
-            match libloading::Library::new(path.clone()) {
-                Ok(plugin) => plugin,
-                Err(e) => {
-                    log(
-                        0,
-                        format!("Failed to load plugin {}: {}", plugin_name, e.to_string())
-                            .as_str(),
-                    );
-                    continue;
-                }
+        let plugin = match unsafe { libloading::Library::new(path.clone()) } {
+            Ok(plugin) => plugin,
+            Err(e) => {
+                log(
+                    0,
+                    format!("Failed to load plugin {}: {}", plugin_name, e.to_string()).as_str(),
+                );
+                continue;
             }
         };
+        //  Get plugin service
+        let new_service: libloading::Symbol<fn() -> Box<dyn PluginInterface>> =
+            unsafe { plugin.get(b"new_service") }.expect("Failed to load symbol");
+        let service = new_service();
 
         //  Get plugin version
-        let version: libloading::Symbol<fn() -> Box<dyn PluginInterface>> = unsafe {
-            match plugin.get(b"version") {
-                Ok(version) => version,
-                Err(e) => {
-                    log(
-                        1,
-                        format!(
-                            "Failed to get version of plugin {}: {}",
-                            plugin_name,
-                            e.to_string()
-                        )
-                        .as_str(),
-                    );
-                    continue;
-                }
-            }
-        };
-        let version = version().version().to_string();
+        let version = service.version().to_string();
 
         //  Get plugin name
-        let name: libloading::Symbol<fn() -> Box<dyn PluginInterface>> = unsafe {
-            match plugin.get(b"name") {
-                Ok(name) => name,
-                Err(e) => {
-                    log(
-                        1,
-                        format!(
-                            "Failed to get name of plugin {}: {}",
-                            plugin_name,
-                            e.to_string()
-                        )
-                        .as_str(),
-                    );
-                    continue;
-                }
-            }
-        };
-
-        let name = name().name().to_string();
+        let name = service.name().to_string();
 
         //  Get plugin author
-        let author: libloading::Symbol<fn() -> Box<dyn PluginInterface>> = unsafe {
-            match plugin.get(b"author") {
-                Ok(author) => author,
-                Err(e) => {
-                    log(
-                        1,
-                        format!(
-                            "Failed to get author of plugin {}: {}",
-                            plugin_name,
-                            e.to_string()
-                        )
-                        .as_str(),
-                    );
-                    continue;
-                }
-            }
-        };
-
-        let author = author().author().to_string();
+        let author = service.author().to_string();
 
         //  Get plugin source
-        let source: libloading::Symbol<fn() -> Box<dyn PluginInterface>> = unsafe {
-            match plugin.get(b"source") {
-                Ok(source) => source,
-                Err(e) => {
-                    log(
-                        1,
-                        format!(
-                            "Failed to get source of plugin {}: {}",
-                            plugin_name,
-                            e.to_string()
-                        )
-                        .as_str(),
-                    );
-                    continue;
-                }
-            }
-        };
-
-        let source = source().source().to_string();
+        let source = service.source().to_string();
 
         plugins.push(Plugin {
             name,
@@ -237,13 +167,11 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
 #[tauri::command]
 pub fn search(plugin_path: String, query: String) -> Result<Vec<Game>, String> {
     let plugin_path = path::PathBuf::from(plugin_path);
-    let plugin = unsafe {
-        match libloading::Library::new(plugin_path.clone()) {
-            Ok(plugin) => plugin,
-            Err(e) => {
-                log(0, &format!("Failed to load plugin: {}", e));
-                return Err(format!("Failed to load plugin: {}", e.to_string()));
-            }
+    let plugin = match unsafe { libloading::Library::new(plugin_path.clone()) } {
+        Ok(plugin) => plugin,
+        Err(e) => {
+            log(0, &format!("Failed to load plugin: {}", e));
+            return Err(format!("Failed to load plugin: {}", e.to_string()));
         }
     };
 

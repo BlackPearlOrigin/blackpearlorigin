@@ -38,7 +38,7 @@ pub fn init() {
 
     // Folders
     let pbp_path = crate::paths::get_pbp();
-    let plugin_path = pbp_path.join("plugin");
+    let plugin_path = pbp_path.join("plugins");
     let queries_path = pbp_path.join("queries");
     let images_path = pbp_path.join("images");
     let temp_path = pbp_path.join("temp");

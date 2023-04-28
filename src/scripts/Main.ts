@@ -8,10 +8,7 @@ export async function getCurrentLocale() {
 	const config: string = await readTextFile('config.json', {
 		dir: BaseDirectory.AppLocalData,
 	}).catch(() => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to read file',
-		});
+		log(0, 'Failed to read config.json');
 
 		return '';
 	});
@@ -24,4 +21,15 @@ export async function getCurrentLocale() {
 // - Loads the current locale
 export async function loadLocale() {
 	locale.set(await getCurrentLocale());
+}
+
+// TS Function -> Rust Function
+// - Logs a message to the Rust backend
+export function log(logLevel: number, logMessage: string) {
+	const levels: string[] = ['ERROR', 'WARNING', 'INFO'];
+	console.log(`[${levels[logLevel]}]: ${logMessage}`);
+	invoke('log', {
+		logLevel: logLevel,
+		logMessage: `From TS: ${logMessage}`,
+	});
 }

@@ -10,7 +10,7 @@
 	import languageNames from '../locale/languages.json';
 	import { getPlugins } from '../scripts/Browse.js';
 	import pkgJSON from '../../package.json';
-	import { Cube, TrashBin, Albums } from 'svelte-ionicons';
+	import { Cube, TrashBin, Albums, Open } from 'svelte-ionicons';
 
 	const plugins = getPlugins();
 
@@ -74,15 +74,33 @@
 				<span>{$t('preferences.availablePlugins')}</span>
 				<Cube size="18px" />
 			</div>
-			<div class="buttons">
+			<ul class="cards">
 				{#await plugins then plugins}
-					<ul>
-						{#each plugins as plugin}
-							<li>{plugin.name}</li>
-						{/each}
-					</ul>
+					{#each plugins as plugin}
+						<li class="card">
+							<p class="card-header buttons">
+								{plugin.name} &nbsp;
+								<span class="version">v{plugin.version}</span>
+							</p>
+							<div class="card-footer">
+								<p>
+									<span class="author" title="Plugin author"
+										>{plugin.author}</span
+									>
+									<a
+										href="{plugin.source}"
+										target="_blank"
+										rel="noreferrer"
+										title="Open plugin source"
+									>
+										<Open size="18px" />
+									</a>
+								</p>
+							</div>
+						</li>
+					{/each}
 				{/await}
-			</div>
+			</ul>
 		</div>
 		<span class="ver"> Project Black Pearl v{pkgJSON.version} </span>
 	</div>

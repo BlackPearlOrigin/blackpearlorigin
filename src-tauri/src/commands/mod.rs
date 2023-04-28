@@ -3,6 +3,10 @@ use std::{process, thread, time::Instant};
 use crate::commands::logging::log;
 use execute::Execute;
 use rfd::FileDialog;
+#[cfg(target_family = "unix")]
+use std::fs;
+#[cfg(target_family = "unix")]
+use std::os::unix::fs::PermissionsExt;
 
 pub mod database;
 pub mod logging;
@@ -49,12 +53,19 @@ pub fn image_dialog() -> String {
     }
 }
 
+#[cfg(target_family = "unix")]
+fn ensure_executable(target: &std::path::Path) {
+    let perms = fs::Permissions::from_mode(0o770);
+    fs::set_permissions(target, perms).unwrap();
+}
+
 #[tauri::command]
 // This function is ran everytime the user clicks "Run" on a library entry
 pub fn run_game(path: String) {
     let start_time = Instant::now();
-    let mut command = process::Command::new(path);
-
+    let mut command = process::Command::new(&path);
+    #[cfg(target_family = "unix")]
+    ensure_executable(std::path::Path::new(&path));
     thread::spawn(move || {
         if let Some(exit_code) = command.execute().unwrap() {
             if exit_code == 0 {
@@ -65,7 +76,7 @@ pub fn run_game(path: String) {
                     &format!("Game ran for {} second(s)", final_time.as_secs()),
                 )
             } else {
-                log(0, "Scraper query failed successfully");
+                log(0, "Could not run game.");
             }
         };
     });

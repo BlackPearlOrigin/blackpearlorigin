@@ -1,130 +1,95 @@
-import { BaseDirectory, join } from '@tauri-apps/api/path';
-import { readTextFile, removeFile } from '@tauri-apps/api/fs';
 import { invoke } from '@tauri-apps/api/tauri';
-import type { TempScrapers, SearchResults } from './Interfaces';
-
+import type { Plugin, SearchedGame } from './Interfaces';
+import { log } from './Main';
 /**
- * Typescript Function
- * - Reads the values from temp/scrapers.json and returns it
+ * Typescript Function -> Rust Function
+ * - Runs the scan_plugins function from the Rust backend
+ *  and returns the data
  *
- * @returns {Promise<TempScrapers>} Scrapers read from temp/scrapers.json
+ * @returns {Promise<Plugin[]>} Array of plugins
  */
-export const getScrapers = async () => {
-	//: Promise<TempScrapers> => {
-	// Read the file from AppData path
-	// const file: string = await readTextFile('temp/scrapers.json', {
-	// 	dir: BaseDirectory.AppLocalData,
-	// }).catch((e) => {
-	// 	invoke('log', {
-	// 		logLevel: 0,
-	// 		logMessage: 'Failed to open file',
-	// 	});
 
-	// 	return e;
-	// });
+export const getPlugins = async (): Promise<Plugin[]> => {
+	const data: Plugin[] = await invoke('scan_plugins')
+		.then((data: Plugin[]) => {
+			return data;
+		})
+		.catch((e: string) => {
+			log(0, `Failed to scan plugins. Error: ${e}`);
+			return [];
+		});
 
-	// // Parse the JSON and return it
-	// const json = JSON.parse(file);
-	// return json;
-
-	const data = await invoke('scan_plugins');
-	console.log(data);
+	return data;
 };
 
 /**
  * Typescript Function -> Rust Function
- * - Runs the handle_scraper function passing the
+ * - Runs the search function passing the
  *   same arguments from the TS function to the Rust
  *   function
  *
- * @param {string} path
+ * @param {string} pluginPath
  * @param {string} query
- * @returns {Promise<void>} Nothing
+ * @returns {Promise<SearchedGame[]>} Array of SearchedGame
  */
 export const searchGame = async (
-	path: string,
+	pluginPath: string,
 	query: string
-): Promise<void> => {
+): Promise<SearchedGame[]> => {
 	// Params:
-	// title: Game title
-	// path: Path to the scraper
-
-	// Invoke the rust backend for initializing the scraper when a user presses the search button
-	if (path.endsWith('.exe')) {
-		await invoke('handle_scraper', { path: path, query: query });
+	// - pluginPath: string
+	// - query: string
+	if (query === '') {
+		log(1, 'No query entered');
+		return [];
 	}
-};
-
-/**
- * Typescript Function
- * - Returns the JSON read from queries/results.json as an Object
- *
- * @returns {Promise<SearchResults>} Search results gotten from queries/results.json
- */
-export const displayResults = async (): Promise<SearchResults> => {
-	let locationCache: string = await join('queries', 'results.json');
-
-	// Reads the cache file
-	const file = await readTextFile(locationCache, {
-		dir: BaseDirectory.AppLocalData,
-	}).catch((e) => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to open file',
+	if (pluginPath === '') {
+		log(1, 'No plugin selected!');
+		return [];
+	}
+	const data: SearchedGame[] = await invoke('search', {
+		pluginPath: pluginPath,
+		query: query,
+	})
+		.then((data: SearchedGame[]) => {
+			return data;
+		})
+		.catch((e: string) => {
+			log(0, `Failed to search game. Error: ${e}`);
+			return [];
 		});
 
-		return e;
-	});
-
-	// Parses that same file and then returns it
-	const json = JSON.parse(file);
-
-	await removeResults();
-	return json;
+	return data;
 };
-
-/**
- * Typescript function
- * - Removes the queries/results.json file
- *
- * @returns {Promise<void>} Nothing
- */
-export const removeResults = async (): Promise<void> => {
-	await removeFile('queries/results.json', {
-		dir: BaseDirectory.AppLocalData,
-	}).catch((e) => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to remove file',
-		});
-
-		return e;
-	});
-};
-
 /**
  * Typescript Function
  * - Handles the keypress, if the keypress is "Enter",
  *   searches for a game
  *
  * @param {string} pressedKey
- * @param {string} scraperPath
- * @param {string} searchQuery
- * @returns {Promise<SearchResults>} Search results gathered by {@link searchGame}
+ * @param {string} pluginPath
+ * @param {string} search
+ * @returns {Promise<SearchedGame[]>} Search results gathered by {@link searchGame}
  */
-export const handleKeypress = (
+export const handleKeypress = async (
 	pressedKey: string,
-	scraperPath: string,
-	searchQuery: string
-): Promise<SearchResults> => {
+	pluginPath: string,
+	search: string
+): Promise<SearchedGame[]> => {
 	let key = pressedKey;
 
 	if (key.toString() == 'Enter') {
-		const searchResults = searchGame(scraperPath, searchQuery).then(() => {
-			return displayResults();
-		});
-
-		console.log(searchResults);
+		const searchResults: SearchedGame[] = await searchGame(
+			pluginPath,
+			search
+		)
+			.then((data: SearchedGame[]) => {
+				return data;
+			})
+			.catch((e: string) => {
+				log(0, `Failed to search game. Error: ${e}`);
+				return [];
+			});
 		return searchResults;
 	}
 };

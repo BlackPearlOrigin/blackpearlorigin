@@ -6,23 +6,21 @@
 export interface Config {
 	currentLang: string;
 }
-
-export interface TempScrapers {
-	scrapers: Scraper[];
-}
-
-export interface Scraper {
+export interface Plugin {
 	name: string;
-	location: string;
+	path: string;
+	author: string;
+	version: string;
+	source: string;
+}
+export interface Links {
+	label: string;
+	url: string;
 }
 
-export interface SearchResults {
-	response: Response[];
-}
-
-export interface Response {
+export interface SearchedGame {
 	title: string;
-	urls: string[];
+	links: Links[];
 }
 
 export interface Game {

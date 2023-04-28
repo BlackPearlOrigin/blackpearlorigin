@@ -8,11 +8,11 @@
 		wipeLibrary,
 	} from '../scripts/Preferences.js';
 	import languageNames from '../locale/languages.json';
-	import { getScrapers } from '../scripts/Browse.js';
+	import { getPlugins } from '../scripts/Browse.js';
 	import pkgJSON from '../../package.json';
 	import { Cube, TrashBin, Albums } from 'svelte-ionicons';
 
-	const scrapersList = getScrapers();
+	const plugins = getPlugins();
 
 	$: languages = Object.keys(translations);
 	$: dict.set(translations);
@@ -75,10 +75,12 @@
 				<Cube size="18px" />
 			</div>
 			<div class="buttons">
-				{#await scrapersList then scrapersList}
-					{#each scrapersList.scrapers as scraper}
-						<ul>- {scraper.name}</ul>
-					{/each}
+				{#await plugins then plugins}
+					<ul>
+						{#each plugins as plugin}
+							<li>{plugin.name}</li>
+						{/each}
+					</ul>
 				{/await}
 			</div>
 		</div>

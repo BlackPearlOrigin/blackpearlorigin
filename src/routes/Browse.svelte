@@ -1,36 +1,37 @@
 <script lang="ts">
-	import {
-		getScrapers,
-		searchGame,
-		displayResults,
-		handleKeypress,
-	} from '../scripts/Browse';
+	import { getPlugins, searchGame, handleKeypress } from '../scripts/Browse';
 	import '../styles/Browse.scss';
 	import { t } from '../locale/i18n';
+	import type { SearchedGame } from '../scripts/Interfaces';
+	import { log } from '../scripts/Main';
 
 	// Defines variables for the:
 	// - Search text
-	// - Scraper selected
+	// - Selected plugin
 	// - And the search data
 	let inputText: string;
-	let selectedScraper: string;
-	let searchData: any = {
-		response: [],
-	};
-
-	const data = getScrapers();
+	let selectedPlugin: string = '';
+	let searchData: SearchedGame[] = [];
 </script>
 
 <!--
 	Checks if the enter key has been pressed
  	If it has been pressed, then re-define the variable searchData
- 	Otherwise, don't do nothing 
+ 	Otherwise, don't do nothing
 -->
 <svelte:window
-	on:keydown="{({ key }) =>
-		key === 'Enter'
-			? (searchData = handleKeypress(key, selectedScraper, inputText))
-			: void 0}"
+	on:keydown="{({ key }) => {
+		if (key === 'Enter') {
+			handleKeypress(key, selectedPlugin, inputText)
+				.then((data) => {
+					searchData = data;
+				})
+				.catch((error) => {
+					log(1, `No games searched. msg: ${error}`);
+					searchData = [];
+				});
+		}
+	}}"
 />
 
 <main class="container">
@@ -41,8 +42,8 @@
 			<button
 				type="submit"
 				on:click="{() =>
-					searchGame(selectedScraper, inputText).then(() => {
-						searchData = displayResults();
+					searchGame(selectedPlugin, inputText).then((data) => {
+						searchData = data;
 					})}"
 			>
 				<i class="fa-solid fa-magnifying-glass"></i>
@@ -52,50 +53,39 @@
 				type="text"
 				bind:value="{inputText}"
 			/>
-			<select bind:value="{selectedScraper}" name="Plugins">
-				<option value="Select">{$t('browse.selectPlugin')}</option>
+			<select bind:value="{selectedPlugin}" name="Plugins">
+				<option selected>{$t('browse.selectPlugin')}</option>
 
-				<!-- 
+				<!--
 					Awaits the data to be resolved
-					After that adds an option for each scraper
+					After that adds an option for each plugin
 				-->
-				{#await data then d}
-					{#each d.scrapers as Scrapers}
-						<option value="{Scrapers.location}"
-							>{Scrapers.name.replace(
-								/(\.exe)|(\.lua)/g,
-								''
-							)}</option
-						>
+				{#await getPlugins() then plugins}
+					{#each plugins as plugin}
+						<option value="{plugin.path}">{plugin.name}</option>
 					{/each}
 				{/await}
 			</select>
-			<!-- 
-				When the button is clicked, refefine the var searchData
-				With the function displayResults
-			-->
 		</div>
 
-		<!-- 
+		<!--
 			Awaits for search data to be resolved
-			After that add an div with the game title 
+			After that add an div with the game title
 			And url for each object
 		-->
-		{#await searchData then sd}
-			{#each sd.response as Response}
-				{#if sd.response.length == 0}
-					<h1>{$t('browse.nothingFound')}</h1>
-				{/if}
-				<div class="game">
-					<p>{Response.title}</p>
-					{#each Response.urls as urls}
-						<a href="{urls}" target="_blank" rel="noreferrer">
-							<i class="fa-solid fa-download"></i>
-							{$t('browse.downloadText')}
-						</a>
-					{/each}
-				</div>
-			{/each}
-		{/await}
+		{#if searchData.length === 0}
+			<h1>No Results Found</h1>
+		{/if}
+		{#each searchData as Response}
+			<div class="game">
+				<p>{Response.title}</p>
+				{#each Response.links as url}
+					<a href="{url.url}" target="_blank" rel="noreferrer">
+						<i class="fa-solid fa-download"></i>
+						{url.label}
+					</a>
+				{/each}
+			</div>
+		{/each}
 	</div>
 </main>

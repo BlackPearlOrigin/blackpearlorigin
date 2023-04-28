@@ -41,18 +41,11 @@ pub fn init() {
     let plugin_path = pbp_path.join("plugins");
     let queries_path = pbp_path.join("queries");
     let images_path = pbp_path.join("images");
-    let temp_path = pbp_path.join("temp");
 
     let gamedb_path = pbp_path.join("library.db");
     let configfile_path = pbp_path.join("config.json");
 
-    let paths = [
-        &pbp_path,
-        &plugin_path,
-        &queries_path,
-        &images_path,
-        &temp_path,
-    ];
+    let paths = [&pbp_path, &plugin_path, &queries_path, &images_path];
 
     // Create the default directories if they don't exist
     for path in paths {

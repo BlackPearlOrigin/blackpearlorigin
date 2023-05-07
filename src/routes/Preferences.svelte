@@ -16,10 +16,6 @@
 		Albums,
 		Open,
 		OpenOutline,
-		Close,
-		CloseOutline,
-		TrashOutline,
-		CloseCircle,
 		CloseCircleOutline,
 	} from 'svelte-ionicons';
 

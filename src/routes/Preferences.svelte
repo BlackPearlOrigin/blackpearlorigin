@@ -10,7 +10,18 @@
 	import languageNames from '../locale/languages.json';
 	import { getPlugins } from '../scripts/Browse.js';
 	import pkgJSON from '../../package.json';
-	import { Cube, TrashBin, Albums, Open } from 'svelte-ionicons';
+	import {
+		Cube,
+		TrashBin,
+		Albums,
+		Open,
+		OpenOutline,
+		Close,
+		CloseOutline,
+		TrashOutline,
+		CloseCircle,
+		CloseCircleOutline,
+	} from 'svelte-ionicons';
 
 	const plugins = getPlugins();
 
@@ -98,6 +109,55 @@
 								</p>
 							</div>
 						</li>
+
+						<div class="card">
+							<div class="card-left">
+								<p class="card-header">
+									{plugin.name}
+									<a
+										href="https://www.example.com"
+										target="_blank"
+										rel="noreferrer"
+										title="Open plugin source"
+									>
+										<OpenOutline size="20px" />
+									</a>
+								</p>
+								<div class="card-footer">
+									<span class="version"
+										><b
+											>{$t(
+												'preferences.pluginCard.version'
+											)}</b
+										>
+										{plugin.version}</span
+									>
+									<span class="author" title="Plugin author"
+										><b
+											>{$t(
+												'preferences.pluginCard.author'
+											)}</b
+										>
+										{plugin.author}</span
+									>
+									<span class="desc">
+										<!-- TODO: Add plugin.desc to plugin system -->
+										<b
+											>{$t(
+												'preferences.pluginCard.desc'
+											)}</b
+										>
+										{plugin.desc}
+									</span>
+								</div>
+							</div>
+
+							<div class="buttons">
+								<button class="remove">
+									<CloseCircleOutline size="22px" />
+								</button>
+							</div>
+						</div>
 					{/each}
 				{/await}
 			</ul>

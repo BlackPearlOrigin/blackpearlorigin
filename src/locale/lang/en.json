@@ -9,7 +9,12 @@
 		"wipeLibrary": "Wipe library",
 		"saveText": "Save",
 		"availablePlugins": "Available plugins",
-		"comingSoon": "Coming Soon..."
+		"comingSoon": "Coming Soon...",
+		"pluginCard": {
+			"version": "Version:",
+			"author": "Author:",
+			"desc": "Description:"
+		}
 	},
 	"library": {
 		"run": "Run",

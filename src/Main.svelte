@@ -27,6 +27,7 @@
 <!-- Otherwise, ignore it -->
 <body
 	style="
+		--shadow-color: rgba(0, 0, 0, 0.25);
 		--radius-round: 100px;
 		--radius-normal: 15px;
 		--font-color: #fff;

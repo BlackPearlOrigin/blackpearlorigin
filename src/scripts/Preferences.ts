@@ -1,6 +1,7 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
+import type { Plugin } from './Interfaces';
 
 /**
  * Typescript Function -> Rust Function
@@ -51,4 +52,15 @@ export const saveLangData = async (lang: string): Promise<void> => {
 
 		return '';
 	});
+};
+
+/**
+ * Typescript Function -> Rust Function
+ * - Invokes a function that uninstalls a plugin
+ *
+ * @returns Nothing
+ */
+export const uninstallPlugin = async (plugin: Plugin) => {
+	await invoke('uninstall_plugin', { plugin: plugin });
+	return;
 };

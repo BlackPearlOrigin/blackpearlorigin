@@ -5,6 +5,7 @@
     import {
         installPlugin,
         saveLangData,
+        uninstallPlugin,
         wipeLibrary,
     } from '../scripts/Preferences.js';
     import languageNames from '../locale/languages.json';
@@ -124,8 +125,10 @@
                             </div>
 
                             <div class="buttons">
-                                <!-- TODO: Actually make the button work -->
-                                <button class="remove">
+                                <button
+                                    class="remove"
+                                    on:click="{() => uninstallPlugin(plugin)}"
+                                >
                                     <Close size="22px" />
                                 </button>
                             </div>

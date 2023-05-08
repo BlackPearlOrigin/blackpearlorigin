@@ -7,7 +7,7 @@ use crate::commands::logging::log;
 use self::interface::{Game, PluginInterface};
 pub mod interface;
 
-#[derive(Debug, serde::Serialize)]
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct Plugin {
     pub name: String,
     pub version: String,
@@ -73,6 +73,19 @@ pub fn install_plugin() -> Result<(), String> {
             path::Path::new(&file).display()
         ),
     );
+    Ok(())
+}
+
+#[tauri::command]
+pub fn uninstall_plugin(plugin: Plugin) -> Result<(), String> {
+    let plugin_path = plugin.path;
+    match fs::remove_file(plugin_path) {
+        Ok(_) => {}
+        Err(e) => {
+            log(2, &format!("Failed to remove plugin: {}", e));
+            return Err(format!("Failed to remove plugin: {}", e));
+        }
+    }
     Ok(())
 }
 
@@ -165,7 +178,6 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
             description,
             path,
         };
-        log(2, &format!("Found plugin: {:?}", plugin));
         plugins.push(plugin);
     }
     Ok(plugins)

@@ -41,6 +41,7 @@ fn main() {
             commands::metadata::get_game_metadata,
             commands::metadata::download_image,
             plugins::install_plugin,
+            plugins::uninstall_plugin,
             plugins::scan_plugins,
             plugins::search,
         ])

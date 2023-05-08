@@ -4,7 +4,7 @@ version = "0.3.0"
 description = "Unify your game sources in one place by using modules made by the community. "
 authors = ["zun1uwu", "infinity-plus", "Brisolo32", "Contributors of Project Black Pearl"]
 license = "BSD-3-Clause"
-repository = "https://github.com/ProjectBlackPearl/pbpl"
+repository = "https://github.com/ProjectBlackPearl/project_black_pearl"
 edition = "2021"
 rust-version = "1.57"
 

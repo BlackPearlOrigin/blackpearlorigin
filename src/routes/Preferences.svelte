@@ -14,9 +14,8 @@
 		Cube,
 		TrashBin,
 		Albums,
-		Open,
 		OpenOutline,
-		CloseCircleOutline,
+		CloseOutline,
 	} from 'svelte-ionicons';
 
 	const plugins = getPlugins();
@@ -84,28 +83,6 @@
 			<ul class="cards">
 				{#await plugins then plugins}
 					{#each plugins as plugin}
-						<li class="card">
-							<p class="card-header buttons">
-								{plugin.name} &nbsp;
-								<span class="version">v{plugin.version}</span>
-							</p>
-							<div class="card-footer">
-								<p>
-									<span class="author" title="Plugin author"
-										>{plugin.author}</span
-									>
-									<a
-										href="{plugin.source}"
-										target="_blank"
-										rel="noreferrer"
-										title="Open plugin source"
-									>
-										<Open size="18px" />
-									</a>
-								</p>
-							</div>
-						</li>
-
 						<div class="card">
 							<div class="card-left">
 								<p class="card-header">
@@ -149,8 +126,9 @@
 							</div>
 
 							<div class="buttons">
+								<!-- TODO: Actually make the button work -->
 								<button class="remove">
-									<CloseCircleOutline size="22px" />
+									<CloseOutline size="22px" />
 								</button>
 							</div>
 						</div>

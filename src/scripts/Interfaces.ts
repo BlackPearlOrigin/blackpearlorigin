@@ -8,10 +8,11 @@ export interface Config {
 }
 export interface Plugin {
 	name: string;
-	path: string;
-	author: string;
 	version: string;
+	author: string;
 	source: string;
+	description: string;
+	path: string;
 }
 export interface Links {
 	label: string;

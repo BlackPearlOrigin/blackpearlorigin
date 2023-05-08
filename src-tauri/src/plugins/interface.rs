@@ -22,6 +22,9 @@ pub trait PluginInterface {
     // Add a method to get source of the plugin.
     fn source(&self) -> &'static str;
 
+    // Add a method to get the description of the plugin.
+    fn description(&self) -> &'static str;
+
     //  Add a search method to the interface.
     fn search(&self, query: String) -> Result<Vec<Game>, String>;
 }

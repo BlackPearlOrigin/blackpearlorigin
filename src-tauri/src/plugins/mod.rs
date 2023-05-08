@@ -13,6 +13,7 @@ pub struct Plugin {
     pub version: String,
     pub author: String,
     pub source: String,
+    pub description: String,
     pub path: path::PathBuf,
 }
 
@@ -153,13 +154,19 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
         //  Get plugin source
         let source = service.source().to_string();
 
-        plugins.push(Plugin {
+        // Get plugin description
+        let description = service.description().to_string();
+
+        let plugin: Plugin = Plugin {
             name,
-            path,
             version,
             author,
             source,
-        });
+            description,
+            path,
+        };
+        log(2, &format!("Found plugin: {:?}", plugin));
+        plugins.push(plugin);
     }
     Ok(plugins)
 }

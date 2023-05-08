@@ -3,7 +3,7 @@ import './styles/Global.scss';
 import Main from './Main.svelte';
 
 const app = new Main({
-	target: document.getElementById('app'),
+    target: document.getElementById('app'),
 });
 
 export default app;

@@ -9,12 +9,12 @@ import type { Game, IGDBData } from './Interfaces';
  * @returns {Promise<void | unknown>} Nothing
  */
 export const runGame = async (path: string): Promise<void | unknown> =>
-	await invoke('run_game', { path: path }).catch(() => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to invoke function "run_game"',
-		});
-	});
+    await invoke('run_game', { path: path }).catch(() => {
+        invoke('log', {
+            logLevel: 0,
+            logMessage: 'Failed to invoke function "run_game"',
+        });
+    });
 
 /**
  * Typescript Function -> Rust Function
@@ -24,12 +24,12 @@ export const runGame = async (path: string): Promise<void | unknown> =>
  * @returns {Promise<void>} Nothing
  */
 export const deleteGame = async (id: number): Promise<void> => {
-	await invoke('delete_from_db', { id: id }).catch(() => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed delete from db',
-		});
-	});
+    await invoke('delete_from_db', { id: id }).catch(() => {
+        invoke('log', {
+            logLevel: 0,
+            logMessage: 'Failed delete from db',
+        });
+    });
 };
 
 /**
@@ -40,18 +40,18 @@ export const deleteGame = async (id: number): Promise<void> => {
  * @returns {Promise<unknown>} An array of games object
  */
 export const getGames = async (): Promise<unknown> => {
-	const games = await invoke('get_from_db')
-		.then((data) => {
-			return data;
-		})
-		.catch((error) => {
-			invoke('log', {
-				logLevel: 0,
-				logMessage: 'Failed to get games',
-			});
-			return error;
-		});
-	return games;
+    const games = await invoke('get_from_db')
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            invoke('log', {
+                logLevel: 0,
+                logMessage: 'Failed to get games',
+            });
+            return error;
+        });
+    return games;
 };
 
 /**
@@ -65,22 +65,22 @@ export const getGames = async (): Promise<unknown> => {
  * @returns {Promise<void>} Nothing
  */
 export const saveData = async (
-	title: string,
-	executablePath: string,
-	description: string,
-	imagePath: string
+    title: string,
+    executablePath: string,
+    description: string,
+    imagePath: string
 ): Promise<void> => {
-	await invoke('save_to_db', {
-		title: title,
-		exePath: executablePath,
-		description: description,
-		image: imagePath,
-	}).catch((error) => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to save data',
-		});
-	});
+    await invoke('save_to_db', {
+        title: title,
+        exePath: executablePath,
+        description: description,
+        image: imagePath,
+    }).catch((error) => {
+        invoke('log', {
+            logLevel: 0,
+            logMessage: 'Failed to save data',
+        });
+    });
 };
 
 /**
@@ -95,24 +95,24 @@ export const saveData = async (
  * @returns {Promise<void>} Nothing
  */
 export const editData = async (
-	id: number,
-	title: string,
-	executablePath: string,
-	description: string,
-	imagePath: string
+    id: number,
+    title: string,
+    executablePath: string,
+    description: string,
+    imagePath: string
 ): Promise<void> => {
-	await invoke('edit_in_db', {
-		id: id,
-		name: title,
-		executable: executablePath,
-		description: description,
-		image: imagePath,
-	}).catch(() => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to edit game',
-		});
-	});
+    await invoke('edit_in_db', {
+        id: id,
+        name: title,
+        executable: executablePath,
+        description: description,
+        image: imagePath,
+    }).catch(() => {
+        invoke('log', {
+            logLevel: 0,
+            logMessage: 'Failed to edit game',
+        });
+    });
 };
 
 /**
@@ -124,16 +124,16 @@ export const editData = async (
  * @returns {Game[]} An array of type Game[]
  */
 export const getFilteredGames = (
-	games: Game[],
-	gameToSearch?: string
+    games: Game[],
+    gameToSearch?: string
 ): Game[] => {
-	if (typeof gameToSearch !== 'undefined') {
-		return games.filter((game) => {
-			return game.name.toLowerCase().includes(gameToSearch.toLowerCase());
-		});
-	} else {
-		return games;
-	}
+    if (typeof gameToSearch !== 'undefined') {
+        return games.filter((game) => {
+            return game.name.toLowerCase().includes(gameToSearch.toLowerCase());
+        });
+    } else {
+        return games;
+    }
 };
 
 /**
@@ -144,18 +144,18 @@ export const getFilteredGames = (
  * @returns {Promise<void>} Nothing
  */
 export const operationHandler = async (operation: () => void): Promise<void> =>
-	operation();
+    operation();
 
 export const getGameMetadata = async (gameName: string) => {
-	const gameMeta: unknown = await invoke('get_game_metadata', {
-		name: gameName,
-	});
+    const gameMeta: unknown = await invoke('get_game_metadata', {
+        name: gameName,
+    });
 
-	return gameMeta as IGDBData[];
+    return gameMeta as IGDBData[];
 };
 
 export const downloadImage = async (imageURL: string) => {
-	const imageFile = await invoke('download_image', { url: imageURL });
+    const imageFile = await invoke('download_image', { url: imageURL });
 
-	return imageFile as string;
+    return imageFile as string;
 };

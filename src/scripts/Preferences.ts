@@ -19,14 +19,14 @@ export const installPlugin = async () => await invoke('install_plugin');
  * @returns {Promise<void>} Nothing
  */
 export const wipeLibrary = async (): Promise<void> => {
-	const areYouSure = await ask(
-		"Are you sure, this action can't be undone",
-		'Library Deletion'
-	);
-	if (areYouSure) {
-		invoke('wipe_library');
-		await message('Library successfully deleted', 'Library Deletion');
-	}
+    const areYouSure = await ask(
+        "Are you sure, this action can't be undone",
+        'Library Deletion'
+    );
+    if (areYouSure) {
+        invoke('wipe_library');
+        await message('Library successfully deleted', 'Library Deletion');
+    }
 };
 
 /**
@@ -36,22 +36,22 @@ export const wipeLibrary = async (): Promise<void> => {
  * @param {string} lang
  */
 export const saveLangData = async (lang: string): Promise<void> => {
-	let dataObj = {
-		currentLang: lang,
-	};
+    let dataObj = {
+        currentLang: lang,
+    };
 
-	let dataObjString = JSON.stringify(dataObj);
+    let dataObjString = JSON.stringify(dataObj);
 
-	await writeTextFile('config.json', dataObjString, {
-		dir: BaseDirectory.AppLocalData,
-	}).catch(() => {
-		invoke('log', {
-			logLevel: 0,
-			logMessage: 'Failed to write file',
-		});
+    await writeTextFile('config.json', dataObjString, {
+        dir: BaseDirectory.AppLocalData,
+    }).catch(() => {
+        invoke('log', {
+            logLevel: 0,
+            logMessage: 'Failed to write file',
+        });
 
-		return '';
-	});
+        return '';
+    });
 };
 
 /**
@@ -61,6 +61,5 @@ export const saveLangData = async (lang: string): Promise<void> => {
  * @returns Nothing
  */
 export const uninstallPlugin = async (plugin: Plugin) => {
-	await invoke('uninstall_plugin', { plugin: plugin });
-	return;
+    await invoke('uninstall_plugin', { plugin: plugin });
 };

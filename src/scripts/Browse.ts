@@ -10,16 +10,16 @@ import { log } from './Main';
  */
 
 export const getPlugins = async (): Promise<Plugin[]> => {
-	const data: Plugin[] = await invoke('scan_plugins')
-		.then((data: Plugin[]) => {
-			return data;
-		})
-		.catch((e: string) => {
-			log(0, `Failed to scan plugins. Error: ${e}`);
-			return [];
-		});
+    const data: Plugin[] = await invoke('scan_plugins')
+        .then((data: Plugin[]) => {
+            return data;
+        })
+        .catch((e: string) => {
+            log(0, `Failed to scan plugins. Error: ${e}`);
+            return [];
+        });
 
-	return data;
+    return data;
 };
 
 /**
@@ -33,33 +33,33 @@ export const getPlugins = async (): Promise<Plugin[]> => {
  * @returns {Promise<SearchedGame[]>} Array of SearchedGame
  */
 export const searchGame = async (
-	pluginPath: string,
-	query: string
+    pluginPath: string,
+    query: string
 ): Promise<SearchedGame[]> => {
-	// Params:
-	// - pluginPath: string
-	// - query: string
-	if (query === '') {
-		log(1, 'No query entered');
-		return [];
-	}
-	if (pluginPath === '') {
-		log(1, 'No plugin selected!');
-		return [];
-	}
-	const data: SearchedGame[] = await invoke('search', {
-		pluginPath: pluginPath,
-		query: query,
-	})
-		.then((data: SearchedGame[]) => {
-			return data;
-		})
-		.catch((e: string) => {
-			log(0, `Failed to search game. Error: ${e}`);
-			return [];
-		});
+    // Params:
+    // - pluginPath: string
+    // - query: string
+    if (query === '') {
+        log(1, 'No query entered');
+        return [];
+    }
+    if (pluginPath === '') {
+        log(1, 'No plugin selected!');
+        return [];
+    }
+    const data: SearchedGame[] = await invoke('search', {
+        pluginPath: pluginPath,
+        query: query,
+    })
+        .then((data: SearchedGame[]) => {
+            return data;
+        })
+        .catch((e: string) => {
+            log(0, `Failed to search game. Error: ${e}`);
+            return [];
+        });
 
-	return data;
+    return data;
 };
 /**
  * Typescript Function
@@ -72,24 +72,24 @@ export const searchGame = async (
  * @returns {Promise<SearchedGame[]>} Search results gathered by {@link searchGame}
  */
 export const handleKeypress = async (
-	pressedKey: string,
-	pluginPath: string,
-	search: string
+    pressedKey: string,
+    pluginPath: string,
+    search: string
 ): Promise<SearchedGame[]> => {
-	let key = pressedKey;
+    let key = pressedKey;
 
-	if (key.toString() == 'Enter') {
-		const searchResults: SearchedGame[] = await searchGame(
-			pluginPath,
-			search
-		)
-			.then((data: SearchedGame[]) => {
-				return data;
-			})
-			.catch((e: string) => {
-				log(0, `Failed to search game. Error: ${e}`);
-				return [];
-			});
-		return searchResults;
-	}
+    if (key.toString() == 'Enter') {
+        const searchResults: SearchedGame[] = await searchGame(
+            pluginPath,
+            search
+        )
+            .then((data: SearchedGame[]) => {
+                return data;
+            })
+            .catch((e: string) => {
+                log(0, `Failed to search game. Error: ${e}`);
+                return [];
+            });
+        return searchResults;
+    }
 };

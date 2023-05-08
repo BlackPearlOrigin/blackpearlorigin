@@ -2,113 +2,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 :root {
-	font-family: 'Montserrat';
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 400;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
 
-	// Variables, These are set not using SCSS variables
-	// because they will be modified by the user.
-	// No variables are set here, because they are
-	// set on Main.svelte (Router>main.container)
+    // Variables, These are set not using SCSS variables
+    // because they will be modified by the user.
+    // No variables are set here, because they are
+    // set on Main.svelte (Router>main.container)
 }
 
 :focus {
-	outline: none;
+    outline: none;
 }
 
 body {
-	background-size: 100%;
-	background-color: var(--global-background-color);
-	color: rgb(255, 255, 255);
-	overflow-x: hidden;
-	width: 100%;
-	height: 100vh;
-	margin-top: 0;
-	margin-bottom: 0;
+    background-size: 100%;
+    background-color: var(--global-background-color);
+    color: rgb(255, 255, 255);
+    overflow-x: hidden;
+    width: 100%;
+    height: 100vh;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .sidenav {
-	height: 100%;
-	width: 190px;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	overflow-x: hidden;
-	padding-top: 20px;
-	background-color: var(--sidebar-background-color);
+    height: 100%;
+    width: 190px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    background-color: var(--sidebar-background-color);
 
-	.menu-item {
-		margin: 3px;
-		margin-bottom: 10px;
+    .menu-item {
+        margin: 3px;
+        margin-bottom: 10px;
 
-		.menu-button {
-			height: 30px;
-			max-height: 30px;
-			font-family: 'Montserrat', monospace;
-			padding: 4px;
-			text-decoration: none;
-			font-size: 17px;
-			color: #fff;
-			transition: all 0.25s;
-			border-style: none;
+        .menu-button {
+            height: 30px;
+            max-height: 30px;
+            font-family: 'Montserrat', monospace;
+            padding: 4px;
+            text-decoration: none;
+            font-size: 17px;
+            color: #fff;
+            transition: all 0.25s;
+            border-style: none;
 
-			svg {
-				position: relative;
-				top: 4px;
-				padding-left: 10px;
-			}
+            svg {
+                position: relative;
+                top: 4px;
+                padding-left: 10px;
+            }
 
-			.link {
-				display: inline-block;
-				width: 100px;
-				height: 38px;
-				padding-left: 5px;
-				font-family: 'Montserrat', monospace;
-				text-decoration: none;
-				font-size: 17px;
-				color: #fff;
-			}
+            .link {
+                display: inline-block;
+                width: 100px;
+                height: 38px;
+                padding-left: 5px;
+                font-family: 'Montserrat', monospace;
+                text-decoration: none;
+                font-size: 17px;
+                color: #fff;
+            }
 
-			&:hover {
-				border: 0px solid var(--sidebar-button-hover);
-				border-radius: 100px;
+            &:hover {
+                border: 0px solid var(--sidebar-button-hover);
+                border-radius: 100px;
 
-				background-color: var(--sidebar-button-hover);
+                background-color: var(--sidebar-button-hover);
 
-				margin: inherit;
-				cursor: pointer;
-			}
-		}
-	}
+                margin: inherit;
+                cursor: pointer;
+            }
+        }
+    }
 
-	.branding {
-		display: inline-flex;
-		margin: 0px;
-		width: 100%;
+    .branding {
+        display: inline-flex;
+        margin: 0px;
+        width: 100%;
 
-		justify-content: center;
-		align-items: center;
+        justify-content: center;
+        align-items: center;
 
-		img {
-			margin-bottom: 25px;
-			transition: all 0.5s;
-			border: 5px solid var(--sidebar-logo-color);
-			background-color: var(--sidebar-logo-color);
-			border-radius: 100%;
-		}
-	}
+        img {
+            margin-bottom: 25px;
+            transition: all 0.5s;
+            border: 5px solid var(--sidebar-logo-color);
+            background-color: var(--sidebar-logo-color);
+            border-radius: 100%;
+        }
+    }
 }
 
 .main {
-	margin-left: 176px;
-	font-size: 16px;
-	margin-right: 15px;
+    margin-left: 176px;
+    font-size: 16px;
+    margin-right: 15px;
 }

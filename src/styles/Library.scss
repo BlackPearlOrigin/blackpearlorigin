@@ -1,172 +1,172 @@
 * {
-	transition: all 0.25s;
+    transition: all 0.25s;
 }
 
 .top {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
-	.search-bar {
-		width: 40%;
-		color: var(--library-search-font-color);
-		font-size: 1rem;
-		margin: 16px 16px 16px 0;
-		padding: 8px;
-		background-color: var(--library-element-background);
-		border-style: solid;
-		border-width: 1px;
-		border-radius: 15px;
-		border-color: var(--library-border-color);
+    .search-bar {
+        width: 40%;
+        color: var(--library-search-font-color);
+        font-size: 1rem;
+        margin: 16px 16px 16px 0;
+        padding: 8px;
+        background-color: var(--library-element-background);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 15px;
+        border-color: var(--library-border-color);
 
-		&[type='text']:focus {
-			outline-style: none;
-		}
+        &[type='text']:focus {
+            outline-style: none;
+        }
 
-		&[type='text']::placeholder {
-			color: var(--library-search-placeholder-color);
-		}
-	}
+        &[type='text']::placeholder {
+            color: var(--library-search-placeholder-color);
+        }
+    }
 
-	button {
-		background-color: var(--library-element-background);
-		border-color: var(--library-border-color);
-		border-style: solid;
-		border-width: 1px;
-		border-radius: 100px;
+    button {
+        background-color: var(--library-element-background);
+        border-color: var(--library-border-color);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 100px;
 
-		margin-bottom: 1rem;
-		margin-top: 1rem;
-		color: var(--font-color);
-		font-size: 16px;
-		cursor: pointer;
-		transition: all 0.25s;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        color: var(--font-color);
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.25s;
 
-		svg {
-			position: relative;
-			top: 2px;
-		}
-	}
+        svg {
+            position: relative;
+            top: 2px;
+        }
+    }
 }
 
 .game-panel {
-	transition: all 0.25s;
-	display: inline-block;
-	padding: 8px 8px 8px 8px;
-	margin: 8px 0px 8px 0px;
+    transition: all 0.25s;
+    display: inline-block;
+    padding: 8px 8px 8px 8px;
+    margin: 8px 0px 8px 0px;
 
-	.game-text {
-		display: flex;
-		flex-direction: column;
-		padding-top: 8px;
-		padding-left: 10px;
-		width: 203px;
+    .game-text {
+        display: flex;
+        flex-direction: column;
+        padding-top: 8px;
+        padding-left: 10px;
+        width: 203px;
 
-		button {
-			padding: 0;
-			margin: 0;
-			background-color: inherit;
-			border: none;
+        button {
+            padding: 0;
+            margin: 0;
+            background-color: inherit;
+            border: none;
 
-			&:hover {
-				text-shadow: none;
-			}
+            &:hover {
+                text-shadow: none;
+            }
 
-			img {
-				transition: all 0.25s;
-				align-self: center;
-				margin-bottom: 1rem;
-				box-shadow: 0px 10px 24px 7px var(--shadow-color);
-			}
+            img {
+                transition: all 0.25s;
+                align-self: center;
+                margin-bottom: 1rem;
+                box-shadow: 0px 10px 24px 7px var(--shadow-color);
+            }
 
-			p {
-				color: var(--font-color);
-				margin: 0;
-				font-weight: var(--library-name-font-weight);
-				font-size: 20px;
-				font-family: 'Montserrat';
-				word-wrap: break-word;
-				text-align: center;
-			}
-		}
-	}
+            p {
+                color: var(--font-color);
+                margin: 0;
+                font-weight: var(--library-name-font-weight);
+                font-size: 20px;
+                font-family: 'Montserrat';
+                word-wrap: break-word;
+                text-align: center;
+            }
+        }
+    }
 
-	.gm-flex {
-		display: flex;
+    .gm-flex {
+        display: flex;
 
-		.game-modal {
-			background-color: var(--library-game-modal-background-color);
-			border-color: var(--library-game-modal-background-color);
-			margin: 0;
-			margin-left: auto;
-			height: 100vh;
-			border-width: 1px;
+        .game-modal {
+            background-color: var(--library-game-modal-background-color);
+            border-color: var(--library-game-modal-background-color);
+            margin: 0;
+            margin-left: auto;
+            height: 100vh;
+            border-width: 1px;
 
-			&::backdrop {
-				background-color: inherit;
-			}
+            &::backdrop {
+                background-color: inherit;
+            }
 
-			&[open] {
-				color: var(--font-color);
-				display: flex;
-				flex-direction: column;
-				width: 300px;
-			}
+            &[open] {
+                color: var(--font-color);
+                display: flex;
+                flex-direction: column;
+                width: 300px;
+            }
 
-			#game-name {
-				font-size: 1.5rem;
-				font-weight: var(--library-game-modal-title-font-weight);
-				text-align: center;
-			}
+            #game-name {
+                font-size: 1.5rem;
+                font-weight: var(--library-game-modal-title-font-weight);
+                text-align: center;
+            }
 
-			#game-desc {
-				flex-grow: 2;
-				margin-left: 0.5rem;
-				margin-right: 0.5rem;
-				font-size: 0.9rem;
-				line-height: 17px;
-				font-weight: var(--library-game-modal-desc-font-weight);
-			}
+            #game-desc {
+                flex-grow: 2;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+                font-size: 0.9rem;
+                line-height: 17px;
+                font-weight: var(--library-game-modal-desc-font-weight);
+            }
 
-			#execute {
-				margin-left: 3rem;
-				margin-right: 3rem;
-				margin-top: 1.5rem;
-				font-size: 1.3rem;
-				font-family: 'JetBrains Mono', monospace;
-				font-weight: var(--library-game-modal-run-button-font-weight);
-				border-style: solid;
-				border-color: var(--library-game-modal-run-button-background);
-				border-radius: var(--radius-normal);
-				background-color: var(
-					--library-game-modal-run-button-background
-				);
-				color: var(--library-game-modal-run-button-font-color);
-			}
+            #execute {
+                margin-left: 3rem;
+                margin-right: 3rem;
+                margin-top: 1.5rem;
+                font-size: 1.3rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: var(--library-game-modal-run-button-font-weight);
+                border-style: solid;
+                border-color: var(--library-game-modal-run-button-background);
+                border-radius: var(--radius-normal);
+                background-color: var(
+                    --library-game-modal-run-button-background
+                );
+                color: var(--library-game-modal-run-button-font-color);
+            }
 
-			.buttons {
-				flex-direction: row;
+            .buttons {
+                flex-direction: row;
 
-				.game-button-delete,
-				.game-button-run {
-					border: none;
-					background-color: inherit;
-					font-size: var(--library-game-modal-edit-delete-size);
-					cursor: pointer;
-				}
+                .game-button-delete,
+                .game-button-run {
+                    border: none;
+                    background-color: inherit;
+                    font-size: var(--library-game-modal-edit-delete-size);
+                    cursor: pointer;
+                }
 
-				.game-button-delete {
-					float: right;
-					color: var(--library-game-modal-edit-button-color);
-				}
+                .game-button-delete {
+                    float: right;
+                    color: var(--library-game-modal-edit-button-color);
+                }
 
-				.game-button-run {
-					color: var(--library-game-modal-delete-button-color);
-				}
-			}
-		}
-	}
+                .game-button-run {
+                    color: var(--library-game-modal-delete-button-color);
+                }
+            }
+        }
+    }
 }
 
 .main {
-	margin-left: 183px;
+    margin-left: 183px;
 }

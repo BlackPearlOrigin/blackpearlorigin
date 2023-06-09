@@ -10,7 +10,7 @@
 
 */
 
-use crate::commands::logging::log;
+use crate::{commands::logging::log, paths::get_bpo};
 use lazy_static::lazy_static;
 use rusqlite::{Connection, Result};
 use rusqlite_migration::{Migrations, M};
@@ -34,87 +34,56 @@ fn setup_database(gamedb_path: &path::PathBuf) -> Result<(), rusqlite_migration:
 }
 
 pub fn init() {
-    // Declare paths for directories and files inside of the BPO folder
+    let bpo_path = get_bpo();
 
-    // Folders
-    let bpo_path = crate::paths::get_bpo();
-    let plugin_path = bpo_path.join("plugins");
-    let queries_path = bpo_path.join("queries");
-    let images_path = bpo_path.join("images");
+    // Create default folders
+    let folders = vec!["plugins", "queries", "images"];
+    for folder in folders {
+        create_folder(&bpo_path.join(folder));
+    }
 
     let gamedb_path = bpo_path.join("library.db");
     let configfile_path = bpo_path.join("config.json");
 
-    let paths = [&bpo_path, &plugin_path, &queries_path, &images_path];
-
-    // Create the default directories if they don't exist
-    for path in paths {
-        if !path.exists() {
-            create_folder(path.as_path());
-        }
-    }
-
     if !configfile_path.exists() {
         let mut file = match fs::File::create(&configfile_path) {
-            Ok(k) => {
-                log(
-                    2,
-                    &format!("Successfully created file {}", &configfile_path.display()),
-                );
-                k
+            Ok(file) => {
+                log(2, format!("Successfully created file {}", &configfile_path.display()));
+                file
             }
             Err(e) => {
-                panic!("[ERROR] Error while creating config file: {}", e)
+                panic!("[ERROR] Error while creating config file: {}", e);
             }
         };
 
-        file.write_all(br#"{{ "currentLang": "en" }}"#)
-            .expect("Failed to write to config file");
+        if file.write_all(br#"{{ "currentLang": "en" }}"#).is_err() {
+            log(0, "Failed to write config file!".to_owned());
+        }
     }
 
     if !gamedb_path.exists() {
-        match fs::File::create(&gamedb_path) {
-            Ok(_) => {
-                log(
-                    2,
-                    &format!("Successfully created file {}", &gamedb_path.display()),
-                );
-            }
-            Err(e) => {
-                panic!("[ERROR] Error while creating config file: {}", e)
-            }
+        if let Err(e) = fs::File::create(&gamedb_path) {
+            panic!("[ERROR] Error while creating config file: {}", e);
+        } else {
+            log(2, format!("Successfully created file {}", &gamedb_path.display()));
         }
     }
 
-    match setup_database(&gamedb_path) {
-        Ok(_) => {
-            log(
-                2,
-                &format!("Successfully created database {}", &gamedb_path.display()),
-            );
-        }
-        Err(e) => {
-            panic!("[ERROR] Error while creating database: {}", e)
-        }
+    if let Err(e) = setup_database(&gamedb_path) {
+        panic!("[ERROR] Error while creating database: {}", e)
+    } else {
+        log(2, format!("Successfully created database {}", &gamedb_path.display()));
     }
 
     // Simplified function for creating directories
-    fn create_folder(path: &path::Path) {
-        match fs::create_dir_all(path) {
-            Ok(k) => {
-                log(
-                    2,
-                    &format!("Successfully created folder {}", &path.display()),
-                );
-                k
-            }
-            Err(e) => eprintln!(
-                "[ERROR] Error while creating folder {}: {}\n Your data will not be saved.",
-                &path.display(),
-                e
-            ),
+    fn create_folder(path: &path::PathBuf) {
+        if let Err(e) = fs::create_dir_all(path) {
+            eprintln!("[ERROR] Error while creating folder {}: {}", &path.display(), e);
+            eprintln!("Your data may not be saved.");
+        } else {
+            log(2, format!("Created folder {}", &path.display()));
         }
     }
 
-    log(2, "Welcome to Black Pearl Origin")
+    println!("Welcome to Black Pearl Origin!")
 }

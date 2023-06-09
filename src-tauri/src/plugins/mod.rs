@@ -22,18 +22,15 @@ pub struct Plugin {
 fn get_extension() -> ffi::OsString {
     #[cfg(target_os = "windows")]
     {
-        let extension = ffi::OsString::from("dll");
-        extension
+        ffi::OsString::from("dll")
     }
     #[cfg(target_os = "linux")]
     {
-        let extension = ffi::OsString::from("so");
-        extension
+        ffi::OsString::from("so")
     }
     #[cfg(target_os = "macos")]
     {
-        let extension = ffi::OsString::from("dylib");
-        extension
+        ffi::OsString::from("dylib")
     }
 }
 
@@ -61,18 +58,12 @@ pub fn install_plugin() -> Result<(), String> {
     ) {
         Ok(_) => {}
         Err(e) => {
-            log(2, &format!("Failed to copy plugin: {}", e));
+            log(2, format!("Failed to copy plugin: {}", e));
             return Err(format!("Failed to copy plugin: {}", e));
         }
     }
 
-    log(
-        2,
-        &format!(
-            "Installed plugin with path {}",
-            path::Path::new(&file).display()
-        ),
-    );
+    log(2, format!("Installed plugin with path {}", file.display()));
     Ok(())
 }
 
@@ -82,7 +73,7 @@ pub fn uninstall_plugin(plugin: Plugin) -> Result<(), String> {
     match fs::remove_file(plugin_path) {
         Ok(_) => {}
         Err(e) => {
-            log(2, &format!("Failed to remove plugin: {}", e));
+            log(2, format!("Failed to remove plugin: {}", e));
             return Err(format!("Failed to remove plugin: {}", e));
         }
     }
@@ -92,105 +83,64 @@ pub fn uninstall_plugin(plugin: Plugin) -> Result<(), String> {
 #[tauri::command]
 pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
     let plugin_dir = crate::paths::get_bpo().join("plugins");
+    let mut plugins = vec![];
 
-    let scan = fs::read_dir(plugin_dir).map_err(|e| format!("Failed to read plugin dir: {}", e));
-    let scan = match scan {
-        Ok(scan) => scan,
+    let rd = match fs::read_dir(plugin_dir) {
+        Ok(rd) => rd,
         Err(e) => {
-            return Err(e);
-        }
+            log(0, "Error reading plugin directory".to_owned());
+            return Err(e.to_string())
+        },
     };
 
-    let mut plugins = vec![];
-    for entry in scan {
-        let entry = match entry {
-            Ok(entry) => entry,
-            Err(e) => {
-                log(0, format!("Failed to read entry: {}", e).as_str());
-                continue;
-            }
-        };
+    for entry in rd.flatten() {
+        let entry_path = entry.path();
+        let plugin_name = entry.file_name();
+        
         //  Check if the entry is a dynamic library
-        let path = entry.path();
-        let entry_extension = match path.extension() {
-            Some(extension) => extension,
-            None => {
-                log(1, "Failed to get extension");
+        if let Some(ext) = entry_path.extension() {
+            if ext != get_extension() {
                 continue;
             }
-        };
-        let plugin_name = match entry.file_name().into_string() {
-            Ok(plugin_name) => plugin_name,
-            Err(e) => {
-                log(1, format!("Failed to get plugin name: {:?}", e).as_str());
-                continue;
-            }
-        };
-
-        if entry_extension != get_extension() {
-            log(
-                2,
-                format!(
-                    "Skipping plugin {} because it is not a dynamic library",
-                    plugin_name
-                )
-                .as_str(),
-            );
+        } else {
             continue;
         }
 
         //  Load the plugin
-        let plugin = match unsafe { libloading::Library::new(path.clone()) } {
+        let plugin = match unsafe { libloading::Library::new(&entry_path) } {
             Ok(plugin) => plugin,
             Err(e) => {
-                log(
-                    0,
-                    format!("Failed to load plugin {}: {}", plugin_name, e.to_string()).as_str(),
-                );
+                log(0, format!("Failed to load plugin {}: {}", plugin_name.to_string_lossy(), e));
                 continue;
             }
         };
-        //  Get plugin service
-        let new_service: libloading::Symbol<fn() -> Box<dyn PluginInterface>> =
-            unsafe { plugin.get(b"new_service") }.expect("Failed to load symbol");
+    
+        let new_service: libloading::Symbol<fn() -> Box<dyn PluginInterface>> = unsafe { plugin.get(b"new_service").expect("Failed to load symbol") };
         let service = new_service();
 
-        //  Get plugin version
-        let version = service.version().to_string();
-
-        //  Get plugin name
-        let name = service.name().to_string();
-
-        //  Get plugin author
-        let author = service.author().to_string();
-
-        //  Get plugin source
-        let source = service.source().to_string();
-
-        // Get plugin description
-        let description = service.description().to_string();
-
-        let plugin: Plugin = Plugin {
-            name,
-            version,
-            author,
-            source,
-            description,
-            path,
+        let plugin = Plugin {
+            name: service.name().to_owned(),
+            version: service.version().to_owned(),
+            author: service.author().to_owned(),
+            source: service.source().to_owned(),
+            description: service.description().to_owned(),
+            path: entry_path,
         };
+
         plugins.push(plugin);
     }
+    
     Ok(plugins)
 }
 
 #[tauri::command]
 pub fn search(plugin_path: String, query: String) -> Result<Vec<Game>, String> {
     let plugin_path = path::PathBuf::from(plugin_path);
-    let plugin = match unsafe { libloading::Library::new(plugin_path.clone()) } {
+    let plugin = match unsafe { libloading::Library::new(plugin_path) } {
         Ok(plugin) => plugin,
         Err(e) => {
-            log(0, &format!("Failed to load plugin: {}", e));
-            return Err(format!("Failed to load plugin: {}", e.to_string()));
+            log(0, format!("Failed to load plugin: {}", e));
+            return Err(format!("Failed to load plugin: {}", e));
         }
     };
 
@@ -201,7 +151,7 @@ pub fn search(plugin_path: String, query: String) -> Result<Vec<Game>, String> {
 
     //  Version check
     if !service.check_version("0.1.0") {
-        log(0, "Plugin version mismatch");
+        log(0, "Plugin version mismatch".to_owned());
         Err("Plugin version mismatch".to_string())
     } else {
         service.search(query)

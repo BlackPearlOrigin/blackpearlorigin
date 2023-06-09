@@ -137,6 +137,6 @@
                 {/await}
             </ul>
         </div>
-        <span class="ver"> Project Black Pearl v{pkgJSON.version} </span>
+        <span class="ver"> Black Pearl Origin v{pkgJSON.version} </span>
     </div>
 </main>

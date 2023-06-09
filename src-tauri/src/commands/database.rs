@@ -26,7 +26,7 @@ pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> 
     let mut image_path = Path::new("").to_path_buf();
     if !image.is_empty() {
         let image = Path::new(&image);
-        image_path = paths::get_pbp().join("images").join(format!(
+        image_path = paths::get_bpo().join("images").join(format!(
             "{}.{}",
             uuid_simple,
             image.extension().unwrap().to_str().unwrap()
@@ -58,7 +58,7 @@ pub fn save_to_db(
 
     // Establish a connection to the database file (library.db)
     let mut connection =
-        Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
+        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
 
     // Declare the query to execute in the sqlite file
     let query = "INSERT INTO games (name, executable, description, image) VALUES (?, ?, ?, ?)";
@@ -77,7 +77,7 @@ pub fn save_to_db(
 pub fn get_from_db() -> Result<Vec<Game>, String> {
     // Establish a connection to the database file (library.db)
     let connection =
-        Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
+        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
 
     // Declare the query to execute in the sqlite file
     let query = "SELECT * FROM games";
@@ -115,7 +115,7 @@ pub fn edit_in_db(
     image: String,
 ) -> Result<(), String> {
     let mut connection =
-        Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
+        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
     // copy new image to location
     let image_path = if image == "None" {
         log(1, "No image was copied since no image was provided");
@@ -144,7 +144,7 @@ pub fn edit_in_db(
 #[tauri::command]
 pub fn delete_from_db(id: i64) -> Result<(), String> {
     let mut connection =
-        Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
+        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
 
     let query = "DELETE FROM games WHERE id = ?;";
     let tx = connection.transaction().map_err(|e| e.to_string())?;
@@ -158,7 +158,7 @@ pub fn delete_from_db(id: i64) -> Result<(), String> {
 #[tauri::command]
 pub fn wipe_library() -> Result<(), String> {
     let mut connection =
-        Connection::open(paths::get_pbp().join("library.db")).map_err(|e| e.to_string())?;
+        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
     let query = "DELETE FROM games;";
     let tx = connection.transaction().map_err(|e| e.to_string())?;
     tx.execute(query, []).map_err(|e| e.to_string())?;

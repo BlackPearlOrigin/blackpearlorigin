@@ -1,4 +1,4 @@
-# Contributing to PBP
+# Contributing to BPO
 
 The following are a few ways you can contribute to the project, along with a guideline to follow when writing code or making a commit.
 
@@ -10,11 +10,11 @@ Contributing to this project is easy and appreciated.
 
 You will need [git](https://git-scm.com) for contributing.
 
-1. [Fork the repo](https://github.com/ProjectBlackPearl/PBPL/fork)
-2. Create a branch `git checkout -b branch-name`
-3. Commit them `git commit -m "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rhoncus."`
-4. Push them to Github `git push -u origin branchname`
-5. Open a PR
+1. [Fork the repo](https://github.com/BlackPearlOrigin/blackpearlorigin/fork)
+2. Create a new branch `git checkout -b branch-name`
+3. Commit your changes and set commit message `git commit -m "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rhoncus."`
+4. Push your changes `git push -u origin branch-name`
+5. Open a new pull request
 
 ## **Style guidelines**
 
@@ -24,13 +24,13 @@ Most of these here are taken from the Atom guidelines <sup>(they're really good)
 
 ### **Git commit messages**
 
--   Use the present tense ("Add feature" not "Added feature")
--   Use the imperative mood ("Move cursor to..."not "Moves cursor to")
+-   Use the present tense ("Add feature", not "Added feature")
+-   Use the imperative mood ("Move cursor to...", not "Moves cursor to")
 -   Limit the first line to 72 characters or less
 -   Describe the additions on the next line
 -   When changing documentation, prefix `[ci skip]` on the commit message
 
-### **Typescript guideline**
+### **TypeScript guidelines**
 
 All of our code is styled with [Prettier](https://prettier.io).
 
@@ -67,21 +67,21 @@ function functionName(): void {
 }
 ```
 
-### **Rust Guidelines**
+### **Rust guidelines**
 
 -   Use different cases:
     -   `snake_case` for functions and variables
-    -   `PascalCase` for structs
+    -   `PascalCase` for structs and enums
     -   `SCREAMING_SNAKE_CASE` for constants
 
-### **Documentation guideline**
+### **Documentation guidelines**
 
 -   Use [JSDoc](https://jsdoc.app)
 -   Use [Markdown](https://www.markdownguide.org/)
 -   Reference types in documentation using `{}`
--   When making a function use this
-    -   If it invokes a Rust function use `Typescript Function -> Rust Function`
-    -   If it's only a Typescript function use `Typescript Function`
+-   When making a function, use this
+    -   If it invokes a Rust function, use `Typescript Function -> Rust Function`
+    -   If it's only a TypeScript function, use `Typescript Function`
 
 Example:
 

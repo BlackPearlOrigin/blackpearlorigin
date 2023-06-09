@@ -55,7 +55,7 @@ pub fn install_plugin() -> Result<(), String> {
     let file = path::Path::new(&file);
     match fs::copy(
         file,
-        crate::paths::get_pbp()
+        crate::paths::get_bpo()
             .join("plugins")
             .join(file.file_name().unwrap()),
     ) {
@@ -91,7 +91,7 @@ pub fn uninstall_plugin(plugin: Plugin) -> Result<(), String> {
 
 #[tauri::command]
 pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
-    let plugin_dir = crate::paths::get_pbp().join("plugins");
+    let plugin_dir = crate::paths::get_bpo().join("plugins");
 
     let scan = fs::read_dir(plugin_dir).map_err(|e| format!("Failed to read plugin dir: {}", e));
     let scan = match scan {

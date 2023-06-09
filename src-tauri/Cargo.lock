@@ -108,6 +108,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
+name = "blackpearlorigin"
+version = "0.3.0"
+dependencies = [
+ "execute",
+ "lazy_static",
+ "libloading 0.8.0",
+ "reqwest",
+ "rfd",
+ "rusqlite",
+ "rusqlite_migration",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "uuid 1.2.2",
+]
+
+[[package]]
 name = "block"
 version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2153,24 +2171,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "57a8eca9f9c4ffde41714334dee777596264c7825420f521abc92b5b5deb63a5"
 dependencies = [
  "unicode-ident",
-]
-
-[[package]]
-name = "project_black_pearl"
-version = "0.3.0"
-dependencies = [
- "execute",
- "lazy_static",
- "libloading 0.8.0",
- "reqwest",
- "rfd",
- "rusqlite",
- "rusqlite_migration",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "uuid 1.2.2",
 ]
 
 [[package]]

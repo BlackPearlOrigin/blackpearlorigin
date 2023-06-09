@@ -1,6 +1,4 @@
-# Trans rights are human rights! 🏳️‍⚧️
-
-# BlackPearlOrigin
+# <img src="https://cdn.discordapp.com/attachments/1116703491293978694/1116773624100163678/bpo.png" width="300"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/1920px-Transgender_Pride_flag.svg.png"  width="1200" height="20">
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
@@ -8,15 +6,15 @@
 
 ![Discord](https://img.shields.io/discord/1031496547696914482?label=Discord&logo=discord&logoColor=white&style=for-the-badge)
 
-Unify your game sources in one place by using modules made by the community.
+Black Pearl Origin is a fork of Project Black Pearl. It was forked by former developers of the latter project, due to the questionable behaviour of certain project members.
 
-## What is BlackPearlOrigin?
+## What is Black Pearl Origin?
 
-**BlackPearlOrigin** (or BPO) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem. It has been born from a fork from PBP
+**Black Pearl Origin** (or BPO) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
 
 ## What is the current state of the project?
 
-PBP is currently in beta. You can check [the to-do list](https://github.com/orgs/ProjectBlackPearl/projects/3) to see what features are planned or currently in development.
+BPO is currently in beta. You can check [the to-do list](https://github.com/orgs/BlackPearlOrigin/projects/1) to see what features are planned or currently in development.
 
 ## How can I contribute?
 
@@ -25,7 +23,7 @@ Please remember that translations are managed differently than code contribution
 
 ## Translations
 
-Project Black Pearl supports full localization. Instructions to help translate the project can be found in [LOCALIZATION.md](./LOCALIZATION.md).
+Black Pearl Origin supports full localization. Instructions to help translate the project can be found in [LOCALIZATION.md](./LOCALIZATION.md).
 
 ## Wiki
 
@@ -38,17 +36,3 @@ You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) serv
 ## Credit
 
 Special thanks to the developers of the [Stremio Addon SDK](https://github.com/Stremio/stremio-addon-sdk) for allowing us to use their code as a base for our Plugin SDK.
-
-## Donations
-
-If you would like to support the project, you can donate to any of the following wallets. All donations will go toward operating costs and supporting the Project Black Pearl team.
-
-**NOTE:** If you would like to be given the **Epic Donators** role on Discord and have your name added to the list of donators, please DM any of the Senior Project Managers on Discord with the proof of your donation.
-
-**BTC (Bitcoin):** bc1q0c7kxkr3mh436htjpxhku87nhf859h7ens69zl
-
-**XMR (Monero):** 4AUjCnbeY5j6yz6xSHtHFuDMYkniHydz3fu48pr3eqUSV8vRjrRTpxgVSHfgp5gJpwiqbxiN7bVixX1YF6bED668LWMqqBX
-
-**ETH (Ethereum):** 0x53550c028f95b6a633D9c0EeaBd4887F013de038
-
-**LTC (Litecoin):** Lg9Uim9p3dj2KGy4225x6vMnZXBtr5DneN

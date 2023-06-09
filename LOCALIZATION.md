@@ -1,13 +1,13 @@
 # Localization
 
-Project Black Pearl has full localization support and any number of languages can be added and changed natively.
+Black Pearl Origin has full localization support and any number of languages can be added and changed natively.
 
 ### Guidelines / Tips for Adding Translations
 
 -   Only add translations for things you are 100% sure about. You don't have to translate everything, partially translating files is fine as well.
 -   Quality > quantity.
 -   If you are unsure about a translation, leave it blank. It is better to have a blank translation than a wrong one.
--   Feel free to join our [Discord](https://discord.com/invite/NMwySKFjQY) if you have any questions!
+-   Feel free to join our [Discord](https://discord.gg/3VxVbWaeY6) if you have any questions!
 
 ## How to Translate
 
@@ -18,14 +18,14 @@ There are two ways of doing it:<br>
 
 1. Create an account on [POEditor](https://poeditor.com)
 2. Join [our project](https://poeditor.com/join/project/GMut4xJe7I) on it
-3. Search for the language you'd like to translate. If it isn't listed, feel free to ask for it to be added via [Discord](https://discord.com/invite/NMwySKFjQY)
+3. Search for the language you'd like to translate. If it isn't listed, feel free to ask for it to be added via [Discord](https://discord.gg/3VxVbWaeY6)
 4. Start translating!
  </details>
 
 -   ### Using Github
 <details>
 
-1. [Fork the repo](https://github.com/ProjectBlackPearl/PBPL/fork)
+1. [Fork the repo](https://github.com/BlackPearlOrigin/blackpearlorigin/fork)
 2. Create a branch `git checkout -b klingon-translation`
 3. Go to `src/locale/lang`
 4. Create a new file named after the [2-letter ISO code (ISO-639-1)](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
@@ -59,5 +59,3 @@ There are two ways of doing it:<br>
     TeeNam:	Vietnamese translation (To be finished)
     lyubomir501: Bulgarian translation
     Sweeflyboy: Afrikaans translation
-
-    Terrence: Proofreading those translations

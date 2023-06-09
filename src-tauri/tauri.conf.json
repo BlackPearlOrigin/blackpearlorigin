@@ -7,7 +7,7 @@
 		"withGlobalTauri": false
 	},
 	"package": {
-		"productName": "Project Black Pearl",
+		"productName": "Black Pearl Origin",
 		"version": "0.3.0"
 	},
 	"tauri": {
@@ -61,7 +61,7 @@
 				"icons/icon.icns",
 				"icons/icon.ico"
 			],
-			"identifier": "org.blackpearl.PBP",
+			"identifier": "io.github.blackpearlorigin",
 			"longDescription": "",
 			"macOS": {
 				"entitlements": null,
@@ -87,7 +87,7 @@
 				"fullscreen": false,
 				"height": 720,
 				"resizable": true,
-				"title": "Project Black Pearl | version 0.3.0",
+				"title": "Black Pearl Origin",
 				"width": 1280
 			}
 		]

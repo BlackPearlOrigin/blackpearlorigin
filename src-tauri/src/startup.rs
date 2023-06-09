@@ -1,8 +1,8 @@
 /*
 
-    Project name: Project Black Pearl
+    Project name: Black Pearl Origin
     Date: Thursday, December 16th 2022
-    Copyright holder: Project Black Pearl and its contributors
+    Copyright holder: Black Pearl Origin and its contributors
     Copyright year: 2022
 
     This software is licensed under the BSD-3-Clause license.
@@ -34,18 +34,18 @@ fn setup_database(gamedb_path: &path::PathBuf) -> Result<(), rusqlite_migration:
 }
 
 pub fn init() {
-    // Declare paths for directories and files inside of the PBP folder
+    // Declare paths for directories and files inside of the BPO folder
 
     // Folders
-    let pbp_path = crate::paths::get_pbp();
-    let plugin_path = pbp_path.join("plugins");
-    let queries_path = pbp_path.join("queries");
-    let images_path = pbp_path.join("images");
+    let bpo_path = crate::paths::get_bpo();
+    let plugin_path = bpo_path.join("plugins");
+    let queries_path = bpo_path.join("queries");
+    let images_path = bpo_path.join("images");
 
-    let gamedb_path = pbp_path.join("library.db");
-    let configfile_path = pbp_path.join("config.json");
+    let gamedb_path = bpo_path.join("library.db");
+    let configfile_path = bpo_path.join("config.json");
 
-    let paths = [&pbp_path, &plugin_path, &queries_path, &images_path];
+    let paths = [&bpo_path, &plugin_path, &queries_path, &images_path];
 
     // Create the default directories if they don't exist
     for path in paths {
@@ -116,5 +116,5 @@ pub fn init() {
         }
     }
 
-    log(2, "Welcome to Project Black Pearl")
+    log(2, "Welcome to Black Pearl Origin")
 }

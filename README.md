@@ -1,3 +1,5 @@
+# Trans rights are human rights! 🏳️‍⚧️
+
 # Project Black Pearl (PBP)
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')

@@ -1,6 +1,6 @@
 # Trans rights are human rights! 🏳️‍⚧️
 
-# Project Black Pearl (PBP)
+# BlackPearlOrigin
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
@@ -10,9 +10,9 @@
 
 Unify your game sources in one place by using modules made by the community.
 
-## What is Project Black Pearl?
+## What is BlackPearlOrigin?
 
-**Project Black Pearl** (or PBP) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
+**BlackPearlOrigin** (or BPO) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem. It has been born from a fork from PBP
 
 ## What is the current state of the project?
 

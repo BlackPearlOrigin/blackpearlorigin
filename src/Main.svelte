@@ -77,6 +77,10 @@
     <Router>
         <main class="container">
             <div class="sidenav">
+                <div class="branding">
+                    <img src="bpo.png" width="100" alt="branding" />
+                </div>
+
                 <div class="menu-item">
                     <div class="menu-button">
                         <AppsOutline size="20px" />

@@ -88,6 +88,19 @@ body {
             }
         }
     }
+
+    .branding {
+        display: inline-flex;
+        margin: 0px;
+        width: 100%;
+
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-bottom: 25px;
+        }
+    }
 }
 
 .main {

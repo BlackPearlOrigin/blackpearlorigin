@@ -7,7 +7,7 @@ Black Pearl Origin has full localization support and any number of languages can
 -   Only add translations for things you are 100% sure about. You don't have to translate everything, partially translating files is fine as well.
 -   Quality > quantity.
 -   If you are unsure about a translation, leave it blank. It is better to have a blank translation than a wrong one.
--   Feel free to join our [Discord](https://discord.gg/3VxVbWaeY6) if you have any questions!
+-   Feel free to join our [Discord](https://discord.gg/WpBr3hJVf5) if you have any questions!
 
 ## How to Translate
 
@@ -18,7 +18,7 @@ There are two ways of doing it:<br>
 
 1. Create an account on [POEditor](https://poeditor.com)
 2. Join [our project](https://poeditor.com/join/project/GMut4xJe7I) on it
-3. Search for the language you'd like to translate. If it isn't listed, feel free to ask for it to be added via [Discord](https://discord.gg/3VxVbWaeY6)
+3. Search for the language you'd like to translate. If it isn't listed, feel free to ask for it to be added via [Discord](https://discord.gg/WpBr3hJVf5)
 4. Start translating!
  </details>
 

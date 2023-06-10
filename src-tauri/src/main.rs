@@ -1,15 +1,3 @@
-/*
-
-    Project name: Black Pearl Origin
-    Date: Thursday, December 16th 2022
-    Copyright holder: Black Pearl Origin and its contributors
-    Copyright year: 2022
-
-    This software is licensed under the BSD-3-Clause license.
-    For more information -> https://opensource.org/licenses/BSD-3-Clause
-
-*/
-
 #![cfg_attr(
     all(not(debug_assertions), target_os = "windows"),
     windows_subsystem = "windows"

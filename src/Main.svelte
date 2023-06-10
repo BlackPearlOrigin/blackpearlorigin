@@ -78,7 +78,7 @@
         <main class="container">
             <div class="sidenav">
                 <div class="branding">
-                    <img src="Logo.svg" width="100" alt="branding" />
+                    <img src="bpo.png" width="100" alt="branding" />
                 </div>
 
                 <div class="menu-item">

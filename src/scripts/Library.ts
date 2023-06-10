@@ -78,7 +78,7 @@ export const saveData = async (
     }).catch((error) => {
         invoke('log', {
             logLevel: 0,
-            logMessage: 'Failed to save data',
+            logMessage: 'Failed to save data: ' + error,
         });
     });
 };
@@ -107,10 +107,10 @@ export const editData = async (
         executable: executablePath,
         description: description,
         image: imagePath,
-    }).catch(() => {
+    }).catch((error) => {
         invoke('log', {
             logLevel: 0,
-            logMessage: 'Failed to edit game',
+            logMessage: 'Failed to edit game: ' + error,
         });
     });
 };

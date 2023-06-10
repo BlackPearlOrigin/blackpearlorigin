@@ -44,7 +44,9 @@ pub fn download_image(url: String) -> Result<String, String> {
     let image = response
         .bytes()
         .map_err(|err| format!("Failed to get image bytes: {}", err))?;
+
     let uuid = Uuid::new_v4();
+
     let image_path = paths::get_bpo()
         .join("images")
         .join(format!("{}.jpg", uuid.simple())); // Extension is hardcoded for now

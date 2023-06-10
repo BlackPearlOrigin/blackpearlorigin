@@ -25,6 +25,7 @@ tauri = { version = "1.2", features = ["api-all", "macos-private-api", "system-t
 uuid = { version = "1.2.2", features = ["v4", "fast-rng"] }
 lazy_static = "1.4.0"
 libloading = "0.8.0"
+anyhow = "1.0.71"
 
 
 [features]

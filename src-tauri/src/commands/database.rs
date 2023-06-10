@@ -1,9 +1,8 @@
+use crate::commands::logging::log;
 use crate::paths;
 use rusqlite::{params, Connection};
-use std::path::Path;
+use std::{fs, path::PathBuf};
 use uuid::Uuid;
-
-use crate::commands::logging::log;
 
 #[derive(serde::Serialize)]
 pub struct Game {
@@ -14,29 +13,23 @@ pub struct Game {
     pub image: String,
 }
 
-pub fn copy_image(image: &String) -> Result<std::path::PathBuf, std::io::Error> {
-    let uuid = Uuid::new_v4();
-    let uuid_simple = uuid.simple().to_string();
+pub fn copy_image(image_path: PathBuf) -> PathBuf {
+    let uuid = Uuid::new_v4().simple().to_string();
 
     log(
         2,
-        format!("Generated the following (simple) UUID: {}", uuid_simple),
+        format!("Generated the following (simple) UUID: {}", uuid),
     );
 
-    let mut image_path = Path::new("").to_path_buf();
-    if !image.is_empty() {
-        let image = Path::new(&image);
-
-        image_path = paths::get_bpo().join("images").join(format!(
-            "{}.{}",
-            uuid_simple,
-            image.extension().unwrap().to_str().unwrap()
-        ));
-
-        std::fs::copy(image, image_path.clone()).expect("Copying image failed");
-        log(2, "Copied image".to_owned());
+    let file_name = match image_path.extension() {
+        Some(extension) => format!("{}.{}", uuid, extension.to_string_lossy()),
+        None => uuid,
     };
-    Ok(image_path)
+
+    let new_path = paths::get_bpo().join("images").join(file_name);
+    fs::copy(image_path, &new_path).expect("Copying image failed");
+
+    new_path
 }
 
 #[tauri::command]
@@ -46,30 +39,27 @@ pub fn save_to_db(
     description: String,
     image: String,
 ) -> Result<(), String> {
-    // copy the image to the images folder
-    let image_path = if image == "None" {
-        log(1, "No image was copied since no image was provided".to_owned());
-        "None".to_string()
+
+    let image_path: PathBuf = if image.as_str() == "None" {
+        "None".into()
     } else {
-        log(2, "Copying image".to_owned());
-        copy_image(&image)
-            .unwrap_or(Path::new("").to_path_buf())
-            .display()
-            .to_string()
+        copy_image(image.into())
     };
 
     // Establish a connection to the database file (library.db)
-    let mut connection =
-        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
+    let db_path = paths::get_db();
+    let mut connection = Connection::open(db_path).map_err(|e| e.to_string())?;
 
     // Declare the query to execute in the sqlite file
     let query = "INSERT INTO games (name, executable, description, image) VALUES (?, ?, ?, ?)";
+    let transaction = connection.transaction().map_err(|e| e.to_string())?;
+    let params = params![title, exe_path, description, image_path.to_string_lossy()];
 
-    let tx = connection.transaction().map_err(|e| e.to_string())?;
-
-    tx.execute(query, params![title, exe_path, description, image_path])
+    transaction
+        .execute(query, params)
         .map_err(|e| e.to_string())?;
-    tx.commit().map_err(|e| e.to_string())?;
+
+    transaction.commit().map_err(|e| e.to_string())?;
 
     log(2, format!("Saved game with name \"{}\" to the DB", title));
     Ok(())
@@ -78,8 +68,8 @@ pub fn save_to_db(
 #[tauri::command]
 pub fn get_from_db() -> Result<Vec<Game>, String> {
     // Establish a connection to the database file (library.db)
-    let connection =
-        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
+    let db_path = paths::get_db();
+    let connection = Connection::open(db_path).map_err(|e| e.to_string())?;
 
     // Declare the query to execute in the sqlite file
     let query = "SELECT * FROM games";
@@ -88,19 +78,12 @@ pub fn get_from_db() -> Result<Vec<Game>, String> {
 
     let mut games = vec![];
     while let Ok(Some(row)) = rows.next() {
-        let row = row;
-        let id: i64 = row.get(0).map_err(|e| e.to_string())?;
-        let name: String = row.get(1).map_err(|e| e.to_string())?;
-        let exe_path: String = row.get(2).map_err(|e| e.to_string())?;
-        let description: String = row.get(3).map_err(|e| e.to_string())?;
-        let image: String = row.get(4).map_err(|e| e.to_string())?;
-
         games.push(Game {
-            id,
-            name,
-            exe_path,
-            description,
-            image,
+            id: row.get(0).map_err(|e| e.to_string())?,
+            name: row.get(1).map_err(|e| e.to_string())?,
+            exe_path: row.get(2).map_err(|e| e.to_string())?,
+            description: row.get(3).map_err(|e| e.to_string())?,
+            image: row.get(4).map_err(|e| e.to_string())?,
         });
     }
 
@@ -116,37 +99,33 @@ pub fn edit_in_db(
     description: String,
     image: String,
 ) -> Result<(), String> {
-    let mut connection =
-        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
+    let db_path = paths::get_bpo().join("library.db");
+    let mut connection = Connection::open(db_path).map_err(|e| e.to_string())?;
+
     // copy new image to location
-    let image_path = if image == "None" {
-        log(1, "No image was copied since no image was provided".to_owned());
-        "None".to_string()
+    let image_path: PathBuf = if image.as_str() == "None" {
+        "None".into()
     } else {
-        log(2, "Copying image".to_owned());
-        copy_image(&image)
-            .unwrap_or(Path::new("").to_path_buf())
-            .display()
-            .to_string()
+        copy_image(image.into())
     };
 
     let query =
         "UPDATE games SET name = ?, executable = ?, description = ?, image = ? WHERE id = ?";
+    let transaction = connection.transaction().map_err(|e| e.to_string())?;
+    let params = params![name, executable, description, image_path.to_string_lossy(), id];
 
-    let tx = connection.transaction().map_err(|e| e.to_string())?;
-    tx.execute(
-        query,
-        params![name, executable, description, image_path, id],
-    )
-    .map_err(|e| e.to_string())?;
-    tx.commit().map_err(|e| e.to_string())?;
+    transaction
+        .execute(query, params)
+        .map_err(|e| e.to_string())?;
+
+    transaction.commit().map_err(|e| e.to_string())?;
     Ok(())
 }
 
 #[tauri::command]
 pub fn delete_from_db(id: i64) -> Result<(), String> {
-    let mut connection =
-        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
+    let db_path = paths::get_bpo().join("library.db");
+    let mut connection = Connection::open(db_path).map_err(|e| e.to_string())?;
 
     let query = "DELETE FROM games WHERE id = ?;";
     let tx = connection.transaction().map_err(|e| e.to_string())?;
@@ -159,8 +138,9 @@ pub fn delete_from_db(id: i64) -> Result<(), String> {
 
 #[tauri::command]
 pub fn wipe_library() -> Result<(), String> {
-    let mut connection =
-        Connection::open(paths::get_bpo().join("library.db")).map_err(|e| e.to_string())?;
+    let db_path = paths::get_bpo().join("library.db");
+    let mut connection = Connection::open(db_path).map_err(|e| e.to_string())?;
+
     let query = "DELETE FROM games;";
     let tx = connection.transaction().map_err(|e| e.to_string())?;
     tx.execute(query, []).map_err(|e| e.to_string())?;

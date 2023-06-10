@@ -1,15 +1,3 @@
-/*
-
-    Project name: Black Pearl Origin
-    Date: Thursday, December 16th 2022
-    Copyright holder: Black Pearl Origin and its contributors
-    Copyright year: 2022
-
-    This software is licensed under the BSD-3-Clause license.
-    For more information -> https://opensource.org/licenses/BSD-3-Clause
-
-*/
-
 use crate::{commands::logging::log, paths::get_bpo};
 use lazy_static::lazy_static;
 use rusqlite::{Connection, Result};
@@ -48,7 +36,10 @@ pub fn init() {
     if !configfile_path.exists() {
         let mut file = match fs::File::create(&configfile_path) {
             Ok(file) => {
-                log(2, format!("Successfully created file {}", &configfile_path.display()));
+                log(
+                    2,
+                    format!("Successfully created file {}", &configfile_path.display()),
+                );
                 file
             }
             Err(e) => {
@@ -65,20 +56,30 @@ pub fn init() {
         if let Err(e) = fs::File::create(&gamedb_path) {
             panic!("[ERROR] Error while creating config file: {}", e);
         } else {
-            log(2, format!("Successfully created file {}", &gamedb_path.display()));
+            log(
+                2,
+                format!("Successfully created file {}", &gamedb_path.display()),
+            );
         }
     }
 
     if let Err(e) = setup_database(&gamedb_path) {
         panic!("[ERROR] Error while creating database: {}", e)
     } else {
-        log(2, format!("Successfully created database {}", &gamedb_path.display()));
+        log(
+            2,
+            format!("Successfully created database {}", &gamedb_path.display()),
+        );
     }
 
     // Simplified function for creating directories
     fn create_folder(path: &path::PathBuf) {
         if let Err(e) = fs::create_dir_all(path) {
-            eprintln!("[ERROR] Error while creating folder {}: {}", &path.display(), e);
+            eprintln!(
+                "[ERROR] Error while creating folder {}: {}",
+                &path.display(),
+                e
+            );
             eprintln!("Your data may not be saved.");
         } else {
             log(2, format!("Created folder {}", &path.display()));

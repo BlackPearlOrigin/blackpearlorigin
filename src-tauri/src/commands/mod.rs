@@ -63,7 +63,7 @@ pub fn run_game(path: String) {
     let mut command = process::Command::new(path);
     #[cfg(target_family = "unix")]
     ensure_executable(std::path::Path::new(&path));
-    
+
     let start_time = Instant::now();
 
     thread::spawn(move || {
@@ -75,7 +75,10 @@ pub fn run_game(path: String) {
         if let Ok(code) = child.wait() {
             if code.success() {
                 let final_time = Instant::now() - start_time;
-                log(2, format!("Game ran for {} second(s)", final_time.as_secs()));
+                log(
+                    2,
+                    format!("Game ran for {} second(s)", final_time.as_secs()),
+                );
             } else {
                 log(0, "Could not run game.".to_owned());
             }

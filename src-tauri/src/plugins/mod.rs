@@ -89,14 +89,14 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
         Ok(rd) => rd,
         Err(e) => {
             log(0, "Error reading plugin directory".to_owned());
-            return Err(e.to_string())
-        },
+            return Err(e.to_string());
+        }
     };
 
     for entry in rd.flatten() {
         let entry_path = entry.path();
         let plugin_name = entry.file_name();
-        
+
         //  Check if the entry is a dynamic library
         if let Some(ext) = entry_path.extension() {
             if ext != get_extension() {
@@ -110,12 +110,20 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
         let plugin = match unsafe { libloading::Library::new(&entry_path) } {
             Ok(plugin) => plugin,
             Err(e) => {
-                log(0, format!("Failed to load plugin {}: {}", plugin_name.to_string_lossy(), e));
+                log(
+                    0,
+                    format!(
+                        "Failed to load plugin {}: {}",
+                        plugin_name.to_string_lossy(),
+                        e
+                    ),
+                );
                 continue;
             }
         };
-    
-        let new_service: libloading::Symbol<fn() -> Box<dyn PluginInterface>> = unsafe { plugin.get(b"new_service").expect("Failed to load symbol") };
+
+        let new_service: libloading::Symbol<fn() -> Box<dyn PluginInterface>> =
+            unsafe { plugin.get(b"new_service").expect("Failed to load symbol") };
         let service = new_service();
 
         let plugin = Plugin {
@@ -129,7 +137,7 @@ pub fn scan_plugins() -> Result<Vec<Plugin>, String> {
 
         plugins.push(plugin);
     }
-    
+
     Ok(plugins)
 }
 

@@ -57,12 +57,12 @@
             button {
                 background: var(--settings-container-button-color);
                 color: var(--font-color);
-                border: 5px solid var(--settings-container-button-border-color);
+                border: 1px solid var(--settings-container-button-border-color);
                 border-radius: var(--radius-round);
 
                 font-size: 16px;
-
                 margin: 10px 5px;
+                padding: 8px 32px;
             }
 
             .cube {
@@ -111,7 +111,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 5px 0px;
-    margin: 8px;
+    margin: 16px 8px 0px 8px;
 
     height: auto;
 

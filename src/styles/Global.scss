@@ -78,11 +78,6 @@ body {
             }
 
             &:hover {
-                border: 0px solid var(--sidebar-button-hover);
-                border-radius: 100px;
-
-                background-color: var(--sidebar-button-hover);
-
                 margin: inherit;
                 cursor: pointer;
             }

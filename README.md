@@ -6,7 +6,7 @@
 
 ![Discord](https://img.shields.io/discord/1031496547696914482?label=Discord&logo=discord&logoColor=white&style=for-the-badge)
 
-Black Pearl Origin is a fork of Project Black Pearl. It was forked by former developers of the latter project, due to the questionable behaviour of certain project members.
+Black Pearl Origin is a fork of the Project Black Pearl, founded and maintained by the former PBP lead developers. It was forked due to a fallout with one of the owners in PBP.
 
 ## What is Black Pearl Origin?
 
@@ -14,7 +14,7 @@ Black Pearl Origin is a fork of Project Black Pearl. It was forked by former dev
 
 ## What is the current state of the project?
 
-BPO is currently in beta. You can check [the to-do list](https://github.com/orgs/BlackPearlOrigin/projects/1) to see what features are planned or currently in development.
+BPO is currently in beta. You can check [the to-do list](https://github.com/orgs/BlackPearlOrigin/projects/2/views/1) to see what features are planned or currently in development.
 
 ## How can I contribute?
 
@@ -25,13 +25,9 @@ Please remember that translations are managed differently than code contribution
 
 Black Pearl Origin supports full localization. Instructions to help translate the project can be found in [LOCALIZATION.md](./LOCALIZATION.md).
 
-## Wiki
-
-You can find the official wiki [here](https://projectblackpearl.github.io/wiki/#/).
-
 ## Support
 
-You are always welcome to join our [Discord](https://discord.gg/NMwySKFjQY) server to get help or just to hang out with us!
+You are always welcome to join our [Discord](https://discord.gg/WpBr3hJVf5) server to get help or just to hang out with us!
 
 ## Credit
 

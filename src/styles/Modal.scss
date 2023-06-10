@@ -69,6 +69,7 @@
 
             &:hover {
                 cursor: pointer;
+                background-color: #161616;
             }
         }
 
@@ -80,7 +81,7 @@
         input,
         textarea {
             color: var(--font-color);
-            background-color: var(--modal-element-background-color);
+            background-color: var(--modal-background-color);
             border-color: var(--modal-element-border-color);
             border-style: solid;
             border-width: 1px;
@@ -88,10 +89,8 @@
             padding: 8px 8px 8px 8px;
 
             outline-style: none;
-
+            font-family: 'Montserrat';
             font-size: 15px;
-            margin-bottom: 8px;
-            margin-top: 8px;
 
             &::placeholder {
                 color: var(--modal-placeholder-color);
@@ -108,20 +107,21 @@
                 transition: all 0.25s;
 
                 color: var(--font-color);
-                background-color: var(--modal-element-background-color);
+                background-color: var(--modal-background-color);
                 border-color: var(--modal-border-color);
                 border-style: solid;
                 border-width: 1px;
                 border-radius: var(--radius-normal);
                 //margin-bottom: 16px;
                 //margin-top: 16px;
-                margin: 15px 0;
+                margin: 0 0 10px;
                 margin-right: 10px;
 
                 font-size: 15px;
 
                 &:hover {
                     cursor: pointer;
+                    background-color: #161616;
                 }
             }
 
@@ -136,6 +136,7 @@
                 padding: 5px;
                 background-color: var(--modal-img-background-color);
                 border-color: var(--modal-img-border-color);
+                margin-bottom: 8px;
             }
         }
     }
@@ -145,14 +146,23 @@
         flex-flow: row-reverse;
 
         button {
-            background-color: var(--modal-element-background-color);
+            background-color: var(--modal-background-color);
             border: 1px solid var(--modal-element-border-color);
             border-radius: var(--radius-normal);
             font-size: 1rem;
             color: var(--font-color);
-            padding: 5px 10px;
+            padding: 8px 16px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #161616;
+            }
         }
     }
+}
+
+.title-el {
+     margin: 0px 0 10px 0;
 }
 
 .main {

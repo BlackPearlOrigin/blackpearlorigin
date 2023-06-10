@@ -125,11 +125,25 @@
                 {/each}
 
                 <div class="gm-flex">
-                    <dialog class="game-modal" bind:this="{gameModal}">
+                    <dialog
+                        class="game-modal"
+                        bind:this="{gameModal}"
+                        onclick="event.target==this && this.close()"
+                    >
                         {#if gameModalOpened}
                             <span id="game-name">
                                 {gameOnModal.name}
                             </span>
+
+                            <img
+                                id="game-image"
+                                src="{gameOnModal.image == 'None'
+                                    ? 'Default.png'
+                                    : convertFileSrc(gameOnModal.image)}"
+                                alt="{gameOnModal.name}"
+                                height="210"
+                                width="150"
+                            />
 
                             <button
                                 class="game-button-run"
@@ -139,7 +153,7 @@
                                         runGame(gameOnModal.exe_path)
                                     )}">{$t('library.run')}</button
                             >
-                            <p id="game-desc">
+                            <p id="game-desc" class="game-desc">
                                 {gameOnModal.description}
                             </p>
 

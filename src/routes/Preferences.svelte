@@ -134,6 +134,9 @@
                             </div>
                         </div>
                     {/each}
+                    {#if plugins.length === 0}
+                        <h3 class="noresults">None yet...</h3>
+                    {/if}
                 {/await}
             </ul>
         </div>

@@ -78,6 +78,7 @@
             name="Title"
             placeholder="{$t('modals.newGame.gameTitle')}"
             bind:value="{title}"
+            class="title-el"
         />
         <div class="show-path">
             <!-- When the button is clicked, run chooseExecutable -->

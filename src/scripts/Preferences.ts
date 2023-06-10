@@ -20,7 +20,7 @@ export const installPlugin = async () => await invoke('install_plugin');
  */
 export const wipeLibrary = async (): Promise<void> => {
     const areYouSure = await ask(
-        "Are you sure, this action can't be undone",
+        "Are you sure? This action can not be undone.",
         'Library Deletion'
     );
     if (areYouSure) {

@@ -74,7 +74,7 @@
 			And url for each object
 		-->
         {#if searchData.length === 0}
-            <h1>No Results Found</h1>
+            <h1 class="noresults">No results found</h1>
         {/if}
         {#each searchData as Response}
             <div class="game">

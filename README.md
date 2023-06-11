@@ -1,4 +1,4 @@
-# <img src="https://cdn.discordapp.com/attachments/1116703491293978694/1116773624100163678/bpo.png" width="300"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/1920px-Transgender_Pride_flag.svg.png"  width="1200" height="20">
+<img src="./assets/bpo.png" width="300"> <img src="./assets/trans_flag.png"  width="1200" height="20">
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
 
@@ -11,6 +11,8 @@ Black Pearl Origin is a fork of the Project Black Pearl, founded and maintained 
 ## What is Black Pearl Origin?
 
 **Black Pearl Origin** (or BPO) is a [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) project that aims to unify game sources in one place by utilizing extensions made by the community. It is aimed to provide a convenient way of dealing with games sourced from all sorts of websites and provides a store system powered by a powerful extension ecosystem.
+
+<img src="./assets/screenshot.png">
 
 ## What is the current state of the project?
 

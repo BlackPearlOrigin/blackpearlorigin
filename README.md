@@ -16,7 +16,7 @@ Black Pearl Origin is a fork of the Project Black Pearl, founded and maintained 
 
 ## What is the current state of the project?
 
-BPO is currently in beta. You can check [the to-do list](https://github.com/orgs/BlackPearlOrigin/projects/2/views/1) to see what features are planned or currently in development.
+BPO is currently in beta. You can check [the to-do list](https://github.com/orgs/BlackPearlOrigin/projects/4/views/1) to see what features are planned or currently in development.
 
 ## How can I contribute?
 

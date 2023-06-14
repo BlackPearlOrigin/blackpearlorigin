@@ -2,10 +2,11 @@ use std::{process, thread, time::Instant};
 
 use crate::commands::logging::log;
 use rfd::FileDialog;
-#[cfg(target_family = "unix")]
-use std::fs;
+
 #[cfg(target_family = "unix")]
 use std::os::unix::fs::PermissionsExt;
+use std::path::PathBuf;
+use std::fs;
 
 pub mod database;
 pub mod logging;
@@ -52,7 +53,7 @@ pub fn image_dialog() -> String {
 }
 
 #[cfg(target_family = "unix")]
-fn ensure_executable(target: &std::path::Path) {
+fn ensure_executable(target: PathBuf) {
     let perms = fs::Permissions::from_mode(0o770);
     fs::set_permissions(target, perms).unwrap();
 }
@@ -60,9 +61,10 @@ fn ensure_executable(target: &std::path::Path) {
 #[tauri::command]
 // This function is ran everytime the user clicks "Run" on a library entry
 pub fn run_game(path: String) {
-    let mut command = process::Command::new(path);
+    let mut command = process::Command::new(&path);
+
     #[cfg(target_family = "unix")]
-    ensure_executable(std::path::Path::new(&path));
+    ensure_executable(PathBuf::from(path));
 
     let start_time = Instant::now();
 

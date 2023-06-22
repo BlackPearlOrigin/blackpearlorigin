@@ -393,6 +393,11 @@
   dependencies:
     "@types/node" "*"
 
+"@zerodevx/svelte-toast@^0.9.3":
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/@zerodevx/svelte-toast/-/svelte-toast-0.9.3.tgz#6382c370d72343d2206f86491c3448a9ddf6d517"
+  integrity sha512-VPKWR4A9y01fyXRscu9HiTj7tV2hFrpRKZvGwMmaPXfHIXR1D9+NNsz0HXcQ7qZ0C5UaHS3n9uNtPtIcAXT7RQ==
+
 abbrev@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

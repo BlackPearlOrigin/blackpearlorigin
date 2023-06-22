@@ -4,7 +4,7 @@
 
 ![Version](https://img.shields.io/badge/Version-0.3.0-blue?style=for-the-badge) ![Build Status](https://img.shields.io/badge/Status-Beta-green?style=for-the-badge) ![License](https://img.shields.io/badge/License-BSD--3--Clause-blue?style=for-the-badge)
 
-![Discord](https://img.shields.io/discord/1031496547696914482?label=Discord&logo=discord&logoColor=white&style=for-the-badge)
+![Discord](https://img.shields.io/discord/1116707367246123019?label=Discord&logo=discord&logoColor=white&style=for-the-badge)
 
 Black Pearl Origin is a fork of the Project Black Pearl, founded and maintained by the former PBP lead developers. It was forked due to a fallout with one of the owners in PBP.
 

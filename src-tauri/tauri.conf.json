@@ -1,95 +1,96 @@
 {
-	"build": {
-		"beforeDevCommand": "npm run dev",
-		"beforeBuildCommand": "npm run build",
-		"devPath": "http://localhost:1420",
-		"distDir": "../dist",
-		"withGlobalTauri": false
-	},
-	"package": {
-		"productName": "Black Pearl Origin",
-		"version": "0.3.0"
-	},
-	"tauri": {
-		"macOSPrivateApi": true,
-		"allowlist": {
-			"all": true,
-			"fs": {
-				"all": false,
-				"readFile": true,
-				"writeFile": true,
-				"exists": true,
-				"createDir": true,
-				"readDir": false,
-				"removeDir": false,
-				"removeFile": true,
-				"renameFile": false,
-				"copyFile": false,
-				"scope": ["$APPLOCALDATA/**/*"]
-			},
-			"path": {
-				"all": true
-			},
-			"http": {
-				"scope": [
-					"https://api.github.com/repos/*",
-					"https://raw.githubusercontent.com/*"
-				]
-			},
-			"protocol": {
-				"all": false,
-				"asset": true,
-				"assetScope": ["$APPLOCALDATA/**/*", "/**/*"]
-			}
-		},
-		"systemTray": {
-			"iconPath": "icons/icon.png",
-			"iconAsTemplate": true
-		},
-		"bundle": {
-			"active": true,
-			"category": "DeveloperTool",
-			"copyright": "",
-			"deb": {
-				"depends": []
-			},
-			"externalBin": [],
-			"icon": [
-				"icons/32x32.png",
-				"icons/128x128.png",
-				"icons/128x128@2x.png",
-				"icons/icon.icns",
-				"icons/icon.ico"
-			],
-			"identifier": "io.github.blackpearlorigin",
-			"longDescription": "",
-			"macOS": {
-				"entitlements": null,
-				"exceptionDomain": "",
-				"frameworks": [],
-				"providerShortName": null,
-				"signingIdentity": null
-			},
-			"resources": [],
-			"shortDescription": "",
-			"targets": "all",
-			"windows": {
-				"certificateThumbprint": null,
-				"digestAlgorithm": "sha256",
-				"timestampUrl": ""
-			}
-		},
-		"updater": {
-			"active": false
-		},
-		"windows": [
-			{
-				"fullscreen": false,
-				"height": 720,
-				"resizable": true,
-				"title": "Black Pearl Origin",
-				"width": 1280
-			}
-		]
-	}
+    "build": {
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build",
+        "devPath": "http://localhost:1420",
+        "distDir": "../dist",
+        "withGlobalTauri": false
+    },
+    "package": {
+        "productName": "Black Pearl Origin",
+        "version": "0.3.0"
+    },
+    "tauri": {
+        "macOSPrivateApi": true,
+        "allowlist": {
+            "all": true,
+            "fs": {
+                "all": false,
+                "readFile": true,
+                "writeFile": true,
+                "exists": true,
+                "createDir": true,
+                "readDir": false,
+                "removeDir": false,
+                "removeFile": true,
+                "renameFile": false,
+                "copyFile": false,
+                "scope": ["$APPLOCALDATA/**/*"]
+            },
+            "path": {
+                "all": true
+            },
+            "http": {
+                "scope": [
+                    "https://api.github.com/repos/*",
+                    "https://raw.githubusercontent.com/*"
+                ]
+            },
+            "protocol": {
+                "all": false,
+                "asset": true,
+                "assetScope": ["$APPLOCALDATA/**/*", "/**/*"]
+            }
+        },
+        "systemTray": {
+            "iconPath": "icons/icon.png",
+            "iconAsTemplate": true
+        },
+        "bundle": {
+            "active": true,
+            "category": "DeveloperTool",
+            "copyright": "",
+            "deb": {
+                "depends": []
+            },
+            "externalBin": [],
+            "icon": [
+                "icons/32x32.png",
+                "icons/128x128.png",
+                "icons/128x128@2x.png",
+                "icons/icon.icns",
+                "icons/icon.ico"
+            ],
+            "identifier": "io.github.blackpearlorigin",
+            "longDescription": "",
+            "macOS": {
+                "entitlements": null,
+                "exceptionDomain": "",
+                "frameworks": [],
+                "providerShortName": null,
+                "signingIdentity": null
+            },
+            "resources": [],
+            "shortDescription": "",
+            "targets": "all",
+            "windows": {
+                "certificateThumbprint": null,
+                "digestAlgorithm": "sha256",
+                "timestampUrl": ""
+            }
+        },
+        "updater": {
+            "active": false,
+            "dialog": false
+        },
+        "windows": [
+            {
+                "fullscreen": false,
+                "height": 720,
+                "resizable": true,
+                "title": "Black Pearl Origin",
+                "width": 1280
+            }
+        ]
+    }
 }

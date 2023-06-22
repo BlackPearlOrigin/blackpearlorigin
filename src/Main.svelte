@@ -4,15 +4,37 @@
     import Browse from './routes/Browse.svelte';
     import Library from './routes/Library.svelte';
     import Preferences from './routes/Preferences.svelte';
+    import Toast from './routes/modals/Toast.svelte';
     import { Modal } from 'svelte-simple-modal';
     import { dict, t } from './locale/i18n.js';
     import { loadLocale } from './scripts/Main.js';
     import { Router, Link, Route } from 'svelte-navigator';
     import { Grid, AppsOutline, SettingsOutline } from 'svelte-ionicons';
+    import { checkUpdate } from '@tauri-apps/api/updater';
+    import { SvelteToast, toast } from '@zerodevx/svelte-toast';
+
     $: dict.set(translations);
 
     // Loads the current locale
     loadLocale();
+
+    (async () => {
+        const { shouldUpdate } = await checkUpdate();
+
+        if (shouldUpdate) {
+            toast.push('New update available', {
+                component: {
+                    src: Toast,
+                },
+                theme: {
+                    '--toastBackground': '#171717',
+                },
+                duration: 10000,
+                pausable: true,
+            });
+        } else {
+        }
+    })();
 </script>
 
 <svelte:head>
@@ -21,6 +43,8 @@
         crossorigin="anonymous"
     ></script>
 </svelte:head>
+
+<SvelteToast />
 
 <!-- Only touch this file if adding a new page -->
 <!-- Or styling a Modal -->

@@ -1,45 +1,49 @@
 {
-	"browseText": "Browse",
-	"libraryText": "Library",
-	"prefsText": "Preferences",
-	"loadingText": "Loading",
-	"languageText": "Language",
-	"preferences": {
-		"installPlugin": "Install a plugin",
-		"wipeLibrary": "Wipe library",
-		"saveText": "Save",
-		"availablePlugins": "Available plugins",
-		"comingSoon": "Coming Soon...",
-		"pluginCard": {
-			"version": "Version:",
-			"author": "Author:",
-			"desc": "Description:"
-		}
-	},
-	"library": {
-		"run": "Run",
-		"searchGame": "Search"
-	},
-	"browse": {
-		"selectPlugin": "Select a plugin",
-		"nothingFound": "Nothing Found",
-		"downloadText": "Download",
-		"search": "Search"
-	},
-	"modals": {
-		"newGame": {
-			"gameTitle": "Title",
-			"addExec": "Add Executable",
-			"none": "None",
-			"addImg": "Add Image",
-			"desc": "Description",
-			"done": "Done",
-			"autoFetch": "Fetch metadata"
-		},
-		"fetchMeta": {
-			"selectGame": "Select a Game"
-		}
-	},
-	"pluginText": "Plugins",
-	"themeText": "Themes"
+    "browseText": "Browse",
+    "libraryText": "Library",
+    "prefsText": "Preferences",
+    "loadingText": "Loading",
+    "languageText": "Language",
+    "preferences": {
+        "installPlugin": "Install a plugin",
+        "wipeLibrary": "Wipe library",
+        "saveText": "Save",
+        "availablePlugins": "Available plugins",
+        "comingSoon": "Coming Soon...",
+        "pluginCard": {
+            "version": "Version:",
+            "author": "Author:",
+            "desc": "Description:"
+        }
+    },
+    "library": {
+        "run": "Run",
+        "searchGame": "Search"
+    },
+    "browse": {
+        "selectPlugin": "Select a plugin",
+        "nothingFound": "Nothing Found",
+        "downloadText": "Download",
+        "search": "Search"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Title",
+            "addExec": "Add Executable",
+            "none": "None",
+            "addImg": "Add Image",
+            "desc": "Description",
+            "done": "Done",
+            "autoFetch": "Fetch metadata"
+        },
+        "fetchMeta": {
+            "selectGame": "Select a Game"
+        },
+        "updater": {
+            "updateAvailable": "New update available.",
+            "reboot": "Rebooting in 5 seconds"
+        }
+    },
+    "pluginText": "Plugins",
+    "themeText": "Themes"
 }

@@ -7,7 +7,7 @@
     import Toast from './routes/modals/Toast.svelte';
     import { Modal } from 'svelte-simple-modal';
     import { dict, t } from './locale/i18n.js';
-    import { loadLocale } from './scripts/Main.js';
+    import { getConfig, loadLocale } from './scripts/Main.js';
     import { Router, Link, Route } from 'svelte-navigator';
     import { Grid, AppsOutline, SettingsOutline } from 'svelte-ionicons';
     import { checkUpdate } from '@tauri-apps/api/updater';
@@ -19,9 +19,11 @@
     loadLocale();
 
     (async () => {
-        // const { shouldUpdate } = await checkUpdate();
+        const config = await getConfig();
 
-        let shouldUpdate = true;
+        const { shouldUpdate } = await checkUpdate();
+
+        if (!config.updater) return;
         if (shouldUpdate) {
             toast.push('New update available', {
                 component: {

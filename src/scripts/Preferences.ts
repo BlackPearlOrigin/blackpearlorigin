@@ -20,7 +20,7 @@ export const installPlugin = async () => await invoke('install_plugin');
  */
 export const wipeLibrary = async (): Promise<void> => {
     const areYouSure = await ask(
-        "Are you sure? This action can not be undone.",
+        'Are you sure? This action can not be undone.',
         'Library Deletion'
     );
     if (areYouSure) {
@@ -35,9 +35,13 @@ export const wipeLibrary = async (): Promise<void> => {
  *
  * @param {string} lang
  */
-export const saveLangData = async (lang: string): Promise<void> => {
+export const saveData = async (
+    lang: string,
+    updaterToggle: boolean
+): Promise<void> => {
     let dataObj = {
         currentLang: lang,
+        updater: updaterToggle,
     };
 
     let dataObjString = JSON.stringify(dataObj);

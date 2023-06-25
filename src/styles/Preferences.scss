@@ -1,15 +1,16 @@
 .section {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-wrap: wrap;
 
     margin: 0px 10px 0px 10px;
 
     .plugin-card {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         padding: 5px 0px;
+        margin-bottom: 20px;
 
         width: 300px;
         height: 188px;
@@ -90,6 +91,41 @@
                 border-width: 1px;
                 border-radius: var(--radius-round);
                 border-color: var(--settings-container-button-border-color);
+            }
+        }
+
+        .checkbox {
+            display: flex;
+            flex-direction: row;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 300px;
+            height: 170px;
+
+            p {
+                padding-left: 10px;
+            }
+
+            [type='checkbox'] {
+                appearance: none;
+                position: relative;
+
+                top: -2px;
+
+                background-color: var(--settings-container-button-color);
+                border-style: solid;
+                border-width: 1px;
+                border-radius: var(--radius-round);
+                border-color: var(--settings-container-button-border-color);
+
+                padding: 10px;
+
+                &:checked {
+                    appearance: none;
+                    background-color: invert($color: #121212);
+                }
             }
         }
     }

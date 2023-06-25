@@ -19,8 +19,9 @@
     loadLocale();
 
     (async () => {
-        const { shouldUpdate } = await checkUpdate();
+        // const { shouldUpdate } = await checkUpdate();
 
+        let shouldUpdate = true;
         if (shouldUpdate) {
             toast.push('New update available', {
                 component: {
@@ -29,7 +30,7 @@
                 theme: {
                     '--toastBackground': '#171717',
                 },
-                duration: 10000,
+                duration: 6000,
                 pausable: true,
             });
         } else {

@@ -80,11 +80,18 @@
             }
         },
         "updater": {
+            "endpoints": [
+                "https://github.com/BlackPearlOrigin/blackpearlorigin/releases/",
+                "https://github.com/BlackPearlOrigin/blackpearlorigin/releases/",
+                "https://github.com/BlackPearlOrigin/blackpearlorigin/releases/"
+            ],
             "active": false,
-            "dialog": false
+            "dialog": false,
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDg4RkY2MDUyMEMwNzNDQ0YKUldUUFBBY01VbUQvaUt3TkRTRnlrdFdMTEFBVVVVa2ozalg3b21oQmxoZVg1dDZrRGF3K0NsVkcK"
         },
         "windows": [
             {
+                "installMode": "passive",
                 "fullscreen": false,
                 "height": 720,
                 "resizable": true,

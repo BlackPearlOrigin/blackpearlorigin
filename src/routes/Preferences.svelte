@@ -4,7 +4,7 @@
     import '../styles/Preferences.scss';
     import {
         installPlugin,
-        saveLangData,
+        saveData,
         uninstallPlugin,
         wipeLibrary,
     } from '../scripts/Preferences.js';
@@ -17,12 +17,17 @@
         Albums,
         OpenOutline,
         Close,
+        CloudDownload,
+        CloudUpload,
     } from 'svelte-ionicons';
+    import { getConfig } from '../scripts/Main.js';
 
     const plugins = getPlugins();
 
     $: languages = Object.keys(translations);
     $: dict.set(translations);
+
+    let updaterStatus: boolean;
 </script>
 
 <main class="container">
@@ -55,6 +60,18 @@
 
             <div class="plugin-card">
                 <div class="header">
+                    <span>Updater</span>
+                    <CloudDownload size="18px" />
+                </div>
+
+                <div class="checkbox">
+                    <input type="checkbox" bind:checked="{updaterStatus}" />
+                    <p>Turn updater off</p>
+                </div>
+            </div>
+
+            <div class="plugin-card">
+                <div class="header">
                     <span>{$t('languageText')}</span>
                     <Cube size="18px" />
                 </div>
@@ -66,10 +83,19 @@
                             </option>
                         {/each}
                     </select>
+                </div>
+            </div>
 
+            <div class="plugin-card">
+                <div class="header">
+                    <span>Save</span>
+                    <CloudUpload size="18px" />
+                </div>
+
+                <div class="buttons">
                     <button
                         class="save-button"
-                        on:click="{() => saveLangData($locale)}"
+                        on:click="{() => saveData($locale, updaterStatus)}"
                     >
                         {$t('preferences.saveText')}
                     </button>

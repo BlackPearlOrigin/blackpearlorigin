@@ -125,14 +125,6 @@
                                     </a>
                                 </p>
                                 <div class="card-footer">
-                                    <span class="version">
-                                        <b>
-                                            {$t(
-                                                'preferences.pluginCard.version'
-                                            )}
-                                        </b>
-                                        {plugin.version}
-                                    </span>
                                     <span class="author" title="Plugin author">
                                         <b>
                                             {$t(

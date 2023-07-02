@@ -62,7 +62,7 @@
 				-->
                 {#await getPlugins() then plugins}
                     {#each plugins as plugin}
-                        <option value="{plugin.path}">{plugin.name}</option>
+                        <option value="{plugin.location}">{plugin.name}</option>
                     {/each}
                 {/await}
             </select>

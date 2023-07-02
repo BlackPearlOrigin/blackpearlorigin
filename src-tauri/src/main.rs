@@ -28,10 +28,9 @@ fn main() {
             commands::database::wipe_library,
             commands::metadata::get_game_metadata,
             commands::metadata::download_image,
-            plugins::install_plugin,
-            plugins::uninstall_plugin,
             plugins::scan_plugins,
-            plugins::search,
+            plugins::uninstall_plugin,
+            plugins::search
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

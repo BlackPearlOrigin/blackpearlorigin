@@ -39,7 +39,6 @@ pub fn save_to_db(
     description: String,
     image: String,
 ) -> Result<(), String> {
-
     let image_path: PathBuf = if image.as_str() == "None" {
         "None".into()
     } else {
@@ -112,7 +111,13 @@ pub fn edit_in_db(
     let query =
         "UPDATE games SET name = ?, executable = ?, description = ?, image = ? WHERE id = ?";
     let transaction = connection.transaction().map_err(|e| e.to_string())?;
-    let params = params![name, executable, description, image_path.to_string_lossy(), id];
+    let params = params![
+        name,
+        executable,
+        description,
+        image_path.to_string_lossy(),
+        id
+    ];
 
     transaction
         .execute(query, params)

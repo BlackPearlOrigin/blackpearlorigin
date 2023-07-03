@@ -139,11 +139,14 @@ pub fn search(lua_file: String, query: String) -> Result<Vec<Game>, String> {
     }
 
     lua.globals()
-        .set("query", query)
+        .set("Query", query)
         .map_err(|e| e.to_string())?;
     
     let code = fs::read_to_string(lua_path).map_err(|e| e.to_string())?;
     lua.load(&code).exec().map_err(|e| e.to_string())?;
+
+    let returned = lua.globals().get::<_, String>("PluginReturn").map_err(|e| e.to_string())?;
+    println!("{returned}");
 
     let contents = fs::read_to_string(folder.join("result.json")).map_err(|e| e.to_string())?;
     let games: Vec<Game> = serde_json::from_str(&contents).map_err(|e| e.to_string())?;

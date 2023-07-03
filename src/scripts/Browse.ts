@@ -48,7 +48,7 @@ export const searchGame = async (
         return [];
     }
     const data: SearchedGame[] = await invoke('search', {
-        pluginPath: pluginPath,
+        luaFile: pluginPath,
         query: query,
     })
         .then((data: SearchedGame[]) => {

@@ -13,14 +13,10 @@ export interface Plugin {
     source: string;
     location: string;
 }
-export interface Links {
-    label: string;
-    url: string;
-}
 
 export interface SearchedGame {
-    title: string;
-    links: Links[];
+    name: string;
+    links: string[];
 }
 
 export interface Game {

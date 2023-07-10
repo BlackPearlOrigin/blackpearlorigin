@@ -118,7 +118,7 @@ pub fn uninstall_plugin(plugin: Plugin) -> Result<(), String> {
 }
 
 #[tauri::command]
-pub fn search(lua_file: String, query: String) -> Result<Vec<Game>, String> {
+pub fn search(lua_file: String, query: String) -> Result<String, String> {
     let lua = Lua::new();
 
     let lua_path = &PathBuf::from(lua_file);
@@ -148,8 +148,8 @@ pub fn search(lua_file: String, query: String) -> Result<Vec<Game>, String> {
     let returned = lua.globals().get::<_, String>("PluginReturn").map_err(|e| e.to_string())?;
     println!("{returned}");
 
-    let contents = fs::read_to_string(folder.join("result.json")).map_err(|e| e.to_string())?;
-    let games: Vec<Game> = serde_json::from_str(&contents).map_err(|e| e.to_string())?;
+    // let contents = fs::read_to_string(folder.join("result.json")).map_err(|e| e.to_string())?;
+    // let games: Vec<Game> = serde_json::from_str(&contents).map_err(|e| e.to_string())?;
 
-    Ok(games)
+    Ok(returned)
 }

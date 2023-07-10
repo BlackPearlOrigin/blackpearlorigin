@@ -18,7 +18,7 @@ export const getPlugins = async (): Promise<Plugin[]> => {
             log(0, `Failed to scan plugins. Error: ${e}`);
             return [];
         });
-
+    
     return data;
 };
 
@@ -43,23 +43,21 @@ export const searchGame = async (
         log(1, 'No query entered');
         return [];
     }
+
     if (pluginPath === '') {
         log(1, 'No plugin selected!');
         return [];
+    
     }
     const data: SearchedGame[] = await invoke('search', {
         luaFile: pluginPath,
         query: query,
-    })
-        .then((data: SearchedGame[]) => {
-            return data;
-        })
-        .catch((e: string) => {
+    }).catch((e: string) => {
             log(0, `Failed to search game. Error: ${e}`);
             return [];
-        });
-
-    return data;
+    });
+  
+    return data
 };
 /**
  * Typescript Function
@@ -76,20 +74,6 @@ export const handleKeypress = async (
     pluginPath: string,
     search: string
 ): Promise<SearchedGame[]> => {
-    let key = pressedKey;
-
-    if (key.toString() == 'Enter') {
-        const searchResults: SearchedGame[] = await searchGame(
-            pluginPath,
-            search
-        )
-            .then((data: SearchedGame[]) => {
-                return data;
-            })
-            .catch((e: string) => {
-                log(0, `Failed to search game. Error: ${e}`);
-                return [];
-            });
-        return searchResults;
-    }
+    const searchResults = await searchGame(pluginPath, search)
+    return searchResults;
 };

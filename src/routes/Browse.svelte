@@ -24,7 +24,7 @@
         if (key === 'Enter') {
             handleKeypress(key, selectedPlugin, inputText)
                 .then((data) => {
-                    searchData = data;
+                    searchData = JSON.parse(data);
                 })
                 .catch((error) => {
                     log(1, `No games searched. msg: ${error}`);
@@ -43,7 +43,7 @@
                 type="submit"
                 on:click="{() =>
                     searchGame(selectedPlugin, inputText).then((data) => {
-                        searchData = data;
+                        searchData = JSON.parse(data);
                     })}"
             >
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -78,11 +78,13 @@
         {/if}
         {#each searchData as Response}
             <div class="game">
-                <p>{Response.title}</p>
-                {#each Response.links as url}
-                    <a href="{url.url}" target="_blank" rel="noreferrer">
+                <p>{Response.name}</p>
+                {#each Response.links as url, index}
+                    <a href="{Response.links[index]}" target="_blank" rel="noreferrer">
                         <i class="fa-solid fa-download"></i>
-                        {url.label}
+                        { Response.links[index].startsWith("magnet:") 
+                            ? $t("browse.downloadTextMagnet") 
+                            : $t("browse.downloadText") }
                     </a>
                 {/each}
             </div>

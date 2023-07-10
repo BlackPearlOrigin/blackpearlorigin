@@ -61,7 +61,7 @@ fn ensure_executable(target: PathBuf) {
 #[tauri::command]
 // This function is ran everytime the user clicks "Run" on a library entry
 pub fn run_game(path: String) {
-    let mut command = process::Command::new(path);
+    let mut command = process::Command::new(path.clone());
 
     #[cfg(target_family = "unix")]
     ensure_executable(PathBuf::from(path));

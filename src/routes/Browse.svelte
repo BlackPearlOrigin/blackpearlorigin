@@ -22,7 +22,7 @@
 <svelte:window
     on:keydown="{({ key }) => {
         if (key === 'Enter') {
-            handleKeypress(key, selectedPlugin, inputText)
+            handleKeypress(selectedPlugin, inputText)
                 .then((data) => {
                     searchData = JSON.parse(data);
                 })
@@ -43,7 +43,7 @@
                 type="submit"
                 on:click="{() =>
                     searchGame(selectedPlugin, inputText).then((data) => {
-                        searchData = JSON.parse(data);
+						searchData = JSON.parse(data);
                     })}"
             >
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -79,13 +79,13 @@
         {#each searchData as Response}
             <div class="game">
                 <p>{Response.name}</p>
-                {#each Response.links as url, index}
-                    <a href="{Response.links[index]}" target="_blank" rel="noreferrer">
+                {#each Response.links as url}
+                    <a href="{url}" target="_blank" rel="noreferrer">
                         <i class="fa-solid fa-download"></i>
-                        { Response.links[index].startsWith("magnet:") 
+						{ url.toString().startsWith("magnet:") 
                             ? $t("browse.downloadTextMagnet") 
                             : $t("browse.downloadText") }
-                    </a>
+					</a>
                 {/each}
             </div>
         {/each}

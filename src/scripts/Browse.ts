@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api/tauri';
-import type { Plugin, SearchedGame } from './Interfaces';
+import type { Plugin } from './Interfaces';
 import { log } from './Main';
 /**
  * Typescript Function -> Rust Function
@@ -30,50 +30,48 @@ export const getPlugins = async (): Promise<Plugin[]> => {
  *
  * @param {string} pluginPath
  * @param {string} query
- * @returns {Promise<SearchedGame[]>} Array of SearchedGame
+ * @returns {Promise<string>} Array of SearchedGame
  */
 export const searchGame = async (
     pluginPath: string,
     query: string
-): Promise<SearchedGame[]> => {
+): Promise<string> => {
     // Params:
     // - pluginPath: string
     // - query: string
     if (query === '') {
         log(1, 'No query entered');
-        return [];
+        return "{}";
     }
 
     if (pluginPath === '') {
         log(1, 'No plugin selected!');
-        return [];
+        return "{}";
     
     }
-    const data: SearchedGame[] = await invoke('search', {
+    const data = await invoke('search', {
         luaFile: pluginPath,
         query: query,
     }).catch((e: string) => {
             log(0, `Failed to search game. Error: ${e}`);
-            return [];
+            return {};
     });
   
-    return data
+    return data as string
 };
 /**
  * Typescript Function
  * - Handles the keypress, if the keypress is "Enter",
  *   searches for a game
  *
- * @param {string} pressedKey
  * @param {string} pluginPath
  * @param {string} search
- * @returns {Promise<SearchedGame[]>} Search results gathered by {@link searchGame}
+ * @returns {Promise<string>} Search results gathered by {@link searchGame}
  */
 export const handleKeypress = async (
-    pressedKey: string,
     pluginPath: string,
     search: string
-): Promise<SearchedGame[]> => {
+): Promise<string> => {
     const searchResults = await searchGame(pluginPath, search)
-    return searchResults;
+    return searchResults as string;
 };

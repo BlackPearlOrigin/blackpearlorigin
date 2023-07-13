@@ -43,7 +43,7 @@
                 type="submit"
                 on:click="{() =>
                     searchGame(selectedPlugin, inputText).then((data) => {
-						searchData = JSON.parse(data);
+                        searchData = JSON.parse(data);
                     })}"
             >
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -82,10 +82,10 @@
                 {#each Response.links as url}
                     <a href="{url}" target="_blank" rel="noreferrer">
                         <i class="fa-solid fa-download"></i>
-						{ url.toString().startsWith("magnet:") 
-                            ? $t("browse.downloadTextMagnet") 
-                            : $t("browse.downloadText") }
-					</a>
+                        {url.toString().startsWith('magnet:')
+                            ? $t('browse.downloadTextMagnet')
+                            : $t('browse.downloadText')}
+                    </a>
                 {/each}
             </div>
         {/each}

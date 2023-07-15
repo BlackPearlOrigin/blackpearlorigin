@@ -82,7 +82,7 @@
                 {#each Response.links as url}
                     <a href="{url}" target="_blank" rel="noreferrer">
                         <i class="fa-solid fa-download"></i>
-                        {url.toString().startsWith('magnet:')
+                        {url.link.toString().startsWith('magnet:')
                             ? $t('browse.downloadTextMagnet')
                             : $t('browse.downloadText')}
                     </a>

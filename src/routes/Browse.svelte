@@ -43,7 +43,6 @@
                 type="submit"
                 on:click="{() =>
                     searchGame(selectedPlugin, inputText).then((data) => {
-                        console.log(data);
                         searchData = JSON.parse(data);
                     })}"
             >

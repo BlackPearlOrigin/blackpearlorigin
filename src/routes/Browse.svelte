@@ -80,7 +80,7 @@
             <div class="game">
                 <p>{Response.name}</p>
                 {#each Response.links as url}
-                    <a href="{url}" target="_blank" rel="noreferrer">
+                    <a href="{url.link}" target="_blank" rel="noreferrer">
                         <i class="fa-solid fa-download"></i>
                         {url.link.toString().startsWith('magnet:')
                             ? $t('browse.downloadTextMagnet')

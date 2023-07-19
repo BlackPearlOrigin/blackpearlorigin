@@ -5,6 +5,8 @@
     import {
         installPlugin,
         saveData,
+        steamLogin,
+        steamUnlink,
         uninstallPlugin,
         wipeLibrary,
     } from '../scripts/Preferences.js';
@@ -19,6 +21,7 @@
         Close,
         CloudDownload,
         CloudUpload,
+        Link,
     } from 'svelte-ionicons';
     import { getConfig } from '../scripts/Main.js';
 
@@ -88,6 +91,42 @@
 
             <div class="plugin-card">
                 <div class="header">
+                    <span>{$t('steamLoginText')}</span>
+                    <Cube size="18px" />
+                </div>
+                <div class="buttons">
+                    {#if localStorage.getItem('steamData') !== null && localStorage
+                            .getItem('steamData')
+                            .includes('steam')}
+                        <div class="steam">
+                            <div class="steamUser">
+                                <img
+                                    class="steamUserPicture"
+                                    src="{JSON.parse(
+                                        localStorage.getItem('steamData')
+                                    ).avatarfull}"
+                                    alt="{JSON.parse(
+                                        localStorage.getItem('steamData')
+                                    ).personaname}"
+                                />
+                                {JSON.parse(localStorage.getItem('steamData'))
+                                    .personaname}
+                            </div>
+                            <button on:click="{steamUnlink}">
+                                {$t('preferences.steamUnlink')}</button
+                            >
+                        </div>
+                    {:else}
+                        <button on:click="{steamLogin}">
+                            <Link class="bin" size="18px" />
+                            {$t('preferences.steamLogin')}
+                        </button>
+                    {/if}
+                </div>
+            </div>
+
+            <div class="plugin-card">
+                <div class="header">
                     <span>Save</span>
                     <CloudUpload size="18px" />
                 </div>
@@ -124,6 +163,7 @@
                                         <OpenOutline size="20px" />
                                     </a>
                                 </p>
+
                                 <div class="card-footer">
                                     <span class="author" title="Plugin author">
                                         <b>

@@ -40,6 +40,10 @@
                 "all": false,
                 "asset": true,
                 "assetScope": ["$APPLOCALDATA/**/*", "/**/*"]
+            },
+            "shell": {
+                "scope": [{ "name": "./bin/BPO-steam", "sidecar": true }],
+                "sidecar": true
             }
         },
         "systemTray": {
@@ -53,7 +57,7 @@
             "deb": {
                 "depends": []
             },
-            "externalBin": [],
+            "externalBin": ["./bin/BPO-steam"],
             "icon": [
                 "icons/32x32.png",
                 "icons/128x128.png",

@@ -8,7 +8,14 @@ mod paths;
 mod plugins;
 mod startup;
 
+use tauri::api::process::Command;
+
 fn main() {
+    Command::new_sidecar("BPO-steam")
+  .expect("failed to create `BPO-steam` binary command")
+  .spawn()
+  .expect("Failed to spawn sidecar");
+
     // Create the usual directories if they don't exist.
     startup::init();
 
@@ -30,9 +37,19 @@ fn main() {
             commands::metadata::download_image,
             plugins::scan_plugins,
             plugins::uninstall_plugin,
-            plugins::search
+            plugins::search,
+            steam_login
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")
         .run(|_, _| {});
+}
+
+#[tauri::command]
+async fn steam_login(handle: tauri::AppHandle) {
+   tauri::WindowBuilder::new(
+    &handle,
+    "Steam",
+    tauri::WindowUrl::External("http://localhost:5274/login".parse().unwrap())
+  ).title("Steam Login").build().unwrap();
 }

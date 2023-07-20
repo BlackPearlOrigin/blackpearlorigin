@@ -1,15 +1,15 @@
 **What changes were made?**
-Explain clearly what was changed on this PR
+Explain what changes you've implemented with this PR.
 
-**This fixes an issue?**
-Explain what issue this fixes, if this is an feature, link to the feature request
+**Does this PR solve an issue?**
+If so, please provide a link to the issue this PR resolved.
 
 **Does this code introduce any issues or warnings?**
-If any issues or warnings are generated, please list them here
+If any issues or warnings are generated, please list them here.
 
-**Were you able to test on multiple platforms?**
-If you were able to test it on multiple platforms, list them here
+**Which platforms were you able to test this code on?**
+Please select all the platforms that apply.
 
 -   [ ] Linux
 -   [ ] Windows
--   [ ] macOS
+-   [ ] MacOS

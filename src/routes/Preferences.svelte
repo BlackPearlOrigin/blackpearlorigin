@@ -5,8 +5,6 @@
     import {
         installPlugin,
         saveData,
-        steamLogin,
-        steamUnlink,
         uninstallPlugin,
         wipeLibrary,
     } from '../scripts/Preferences.js';
@@ -24,8 +22,18 @@
         Link,
     } from 'svelte-ionicons';
     import { getConfig } from '../scripts/Main.js';
+    import Sidebar from '../components/Sidebar.svelte';
+    import { invoke } from '@tauri-apps/api/tauri';
 
     const plugins = getPlugins();
+
+    const steamLogin = async () => {
+        await invoke('steam_login');
+    };
+
+    const steamUnlink = () => {
+        localStorage.removeItem('steamData');
+    };
 
     $: languages = Object.keys(translations);
     $: dict.set(translations);
@@ -34,6 +42,7 @@
 </script>
 
 <main class="container">
+    <Sidebar />
     <div class="main">
         <div class="section">
             <div class="plugin-card">

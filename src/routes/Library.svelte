@@ -13,6 +13,7 @@
     import { convertFileSrc } from '@tauri-apps/api/tauri';
     import type { Game } from '../scripts/Interfaces.js';
     import { AddOutline } from 'svelte-ionicons';
+    import Sidebar from '../components/Sidebar.svelte';
 
     let gameModal: HTMLDialogElement;
     let gameOnModal: Game;
@@ -69,6 +70,7 @@
 </script>
 
 <main class="container">
+    <Sidebar />
     <div class="main">
         <div class="top">
             <!-- Creates a modal when the button is clicked -->

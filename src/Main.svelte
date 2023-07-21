@@ -12,6 +12,7 @@
     import { Grid, AppsOutline, SettingsOutline } from 'svelte-ionicons';
     import { checkUpdate } from '@tauri-apps/api/updater';
     import { SvelteToast, toast } from '@zerodevx/svelte-toast';
+    import Steam from './routes/Steam.svelte';
 
     $: dict.set(translations);
 
@@ -53,6 +54,7 @@
 <!-- Or styling a Modal -->
 <!-- Otherwise, ignore it -->
 <body
+    id="fakeBody"
     style="
 		--shadow-color: rgba(0, 0, 0, 0.25);
 		--radius-round: 4px;
@@ -103,54 +105,30 @@
 	"
 >
     <Router>
-        <main class="container">
-            <div class="sidenav">
-                <div class="branding">
-                    <img src="bpo.png" width="100" alt="branding" />
-                </div>
+        <Route path="browse">
+            <Browse />
+        </Route>
+        <Route path="/" primary="{false}">
+            <Modal
+                styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}"
+                styleWindow="{{
+                    backgroundColor: '#0b0d0e',
+                    border: '1px solid #0b0d0e',
+                    borderRadius: '15px',
+                    float: 'center',
+                }}"
+                transitionBgProps="{{ duration: 0 }}"
+                closeButton="{false}"
+            >
+                <Library />
+            </Modal>
+        </Route>
 
-                <div class="menu-item">
-                    <div class="menu-button">
-                        <AppsOutline size="20px" />
-                        <Link class="link" to="browse">{$t('browseText')}</Link>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-button">
-                        <Grid size="20px" />
-                        <Link class="link" to="/">{$t('libraryText')}</Link>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-button">
-                        <SettingsOutline size="20px" />
-                        <Link class="link" to="prefs">{$t('prefsText')}</Link>
-                    </div>
-                </div>
-            </div>
-            <Route path="browse">
-                <Browse />
-            </Route>
-
-            <Route path="/" primary="{false}">
-                <Modal
-                    styleBg="{{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}"
-                    styleWindow="{{
-                        backgroundColor: '#0b0d0e',
-                        border: '1px solid #0b0d0e',
-                        borderRadius: '15px',
-                        float: 'center',
-                    }}"
-                    transitionBgProps="{{ duration: 0 }}"
-                    closeButton="{false}"
-                >
-                    <Library />
-                </Modal>
-            </Route>
-
-            <Route path="prefs">
-                <Preferences />
-            </Route>
-        </main>
+        <Route path="prefs">
+            <Preferences />
+        </Route>
+        <Route path="steam">
+            <Steam />
+        </Route>
     </Router>
 </body>

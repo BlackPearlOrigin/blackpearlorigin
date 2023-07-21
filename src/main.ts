@@ -12,19 +12,19 @@ function updateSteamData() {
         localStorage.getItem('steamData') !== null &&
         localStorage.getItem('steamData').includes('steam')
     ) {
-        const currentData = JSON.parse(localStorage.getItem('steamData'));
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `http://localhost:5274/user?steamId=${currentData.steamid}`,
+            url: `https://bpo-steam-dev.vercel.app/api/user?steamId=${
+                JSON.parse(localStorage.getItem('steamData')).steamid
+            }`,
+            Headers: {},
         };
         axios
             .request(config)
             .then((res) => {
-                localStorage.setItem(
-                    'steamData',
-                    JSON.stringify(res.data.response.players[0])
-                );
+                const steamData = res.data.response.players[0];
+                localStorage.setItem('steamData', JSON.stringify(steamData));
             })
             .catch((error) => {
                 console.log(error);

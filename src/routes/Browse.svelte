@@ -4,6 +4,7 @@
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
     import { log } from '../scripts/Main';
+    import Sidebar from '../components/Sidebar.svelte';
 
     // Defines variables for the:
     // - Search text
@@ -35,6 +36,7 @@
 />
 
 <main class="container">
+    <Sidebar />
     <div class="main">
         <!-- <h1>{$t('browseText')}</h1> -->
 

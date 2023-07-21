@@ -16,6 +16,7 @@ function updateSteamData() {
             method: 'get',
             maxBodyLength: Infinity,
             url: `https://bpo-steam-dev.vercel.app/api/user?steamId=${
+                // Remove "-dev" in url for production
                 JSON.parse(localStorage.getItem('steamData')).steamid
             }`,
             Headers: {},

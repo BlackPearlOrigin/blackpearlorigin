@@ -22,7 +22,6 @@
         Link,
     } from 'svelte-ionicons';
     import Sidebar from '../components/Sidebar.svelte';
-    import { invoke } from '@tauri-apps/api/tauri';
     import { WebviewWindow } from '@tauri-apps/api/window';
 
     const plugins = getPlugins();
@@ -129,7 +128,7 @@
                                 const steamWindow = new WebviewWindow(
                                     'steamLogin',
                                     {
-                                        url: 'https://bpo-steam-dev.vercel.app/api/login', // Remove "-dev" for production
+                                        url: 'https://bpo-steam-dev.vercel.app/api/login', // Remove "-dev" in url for production
                                         title: 'Steam Login',
                                         center: true,
                                     }

@@ -21,22 +21,17 @@
         CloudUpload,
         Link,
     } from 'svelte-ionicons';
-    import { getConfig } from '../scripts/Main.js';
     import Sidebar from '../components/Sidebar.svelte';
     import { invoke } from '@tauri-apps/api/tauri';
+    import { WebviewWindow } from '@tauri-apps/api/window';
 
     const plugins = getPlugins();
 
-    const steamLogin = async () => {
-        await invoke('steam_login');
-    };
-
-    const steamUnlink = () => {
-        localStorage.removeItem('steamData');
-    };
-
     $: languages = Object.keys(translations);
     $: dict.set(translations);
+    $: isSteamLinked =
+        localStorage.getItem('steamData') !== null &&
+        localStorage.getItem('steamData').includes('steam');
 
     let updaterStatus: boolean;
 </script>
@@ -104,9 +99,7 @@
                     <Cube size="18px" />
                 </div>
                 <div class="buttons">
-                    {#if localStorage.getItem('steamData') !== null && localStorage
-                            .getItem('steamData')
-                            .includes('steam')}
+                    {#if isSteamLinked}
                         <div class="steam">
                             <div class="steamUser">
                                 <img
@@ -121,12 +114,43 @@
                                 {JSON.parse(localStorage.getItem('steamData'))
                                     .personaname}
                             </div>
-                            <button on:click="{steamUnlink}">
+                            <button
+                                on:click="{() => {
+                                    localStorage.removeItem('steamData');
+                                    isSteamLinked = false;
+                                }}"
+                            >
                                 {$t('preferences.steamUnlink')}</button
                             >
                         </div>
                     {:else}
-                        <button on:click="{steamLogin}">
+                        <button
+                            on:click="{async () => {
+                                const steamWindow = new WebviewWindow(
+                                    'steamLogin',
+                                    {
+                                        url: 'https://bpo-steam-dev.vercel.app/api/login', // Remove "-dev" for production
+                                        title: 'Steam Login',
+                                        center: true,
+                                    }
+                                );
+                                steamWindow.once(
+                                    'tauri://close-requested',
+                                    () => {
+                                        if (
+                                            localStorage.getItem(
+                                                'steamData'
+                                            ) !== null &&
+                                            localStorage
+                                                .getItem('steamData')
+                                                .includes('steam')
+                                        ) {
+                                            isSteamLinked = true;
+                                        }
+                                    }
+                                );
+                            }}"
+                        >
                             <Link class="bin" size="18px" />
                             {$t('preferences.steamLogin')}
                         </button>

@@ -18,7 +18,7 @@
         <img
             class="icon"
             src="https://media.discordapp.net/attachments/1117412589689909339/1117412636586430536/bpo_square.png?width=468&height=468"
-            alt=""
+            alt="Black Pearl Origin Logo"
         />
         <svg
             xmlns="http://www.w3.org/2000/svg"

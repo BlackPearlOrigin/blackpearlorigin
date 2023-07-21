@@ -15,7 +15,7 @@ fn main() {
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below
     tauri::Builder::default()
-        // Invoke your commands here
+    // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
             commands::file_dialog,
             commands::image_dialog,
@@ -31,18 +31,8 @@ fn main() {
             plugins::scan_plugins,
             plugins::uninstall_plugin,
             plugins::search,
-            steam_login
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")
         .run(|_, _| {});
-}
-
-#[tauri::command]
-async fn steam_login(handle: tauri::AppHandle) {
-   tauri::WindowBuilder::new(
-    &handle,
-    "Steam",
-    tauri::WindowUrl::External("https://bpo-steam-dev.vercel.app/api/login".parse().unwrap())
-  ).title("Steam Login").build().unwrap();
 }

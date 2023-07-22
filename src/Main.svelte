@@ -12,11 +12,37 @@
     import { Grid, AppsOutline, SettingsOutline } from 'svelte-ionicons';
     import { checkUpdate } from '@tauri-apps/api/updater';
     import { SvelteToast, toast } from '@zerodevx/svelte-toast';
+    import NewGame from './routes/modals/NewGame.svelte';
+    import { getContext } from 'svelte';
+
+    import { getGames } from './scripts/Library.js';
 
     $: dict.set(translations);
 
+    // Gets the open function from simple-modal context
+
+    // TODO: Move this.
+    // When the modal is closed re-run the function getGames
+    const showNewModal = () =>
+        open(
+            // 1° Arg: Component
+            // 2° Arg: Props
+            // 3° Arg: Options
+            // 4° Arg: Callbacks
+            NewGame,
+            {},
+            {},
+            {
+                onClose: () => {
+                    games = getGames();
+                },
+            }
+        );
+
     // Loads the current locale
     loadLocale();
+
+    let games: any = getGames();
 
     (async () => {
         const config = await getConfig();
@@ -104,17 +130,23 @@
 >
     <Router>
         <main class="container">
+            <div class="top">
+                <input
+                    type="text"
+                    placeholder="{$t('library.searchGame')}"
+                    class="search-bar"
+                    on:keydown="{(event) =>
+                        // TODO: Dropdown with entries once something is typed & new page at "Add New" instead of modal.
+                        event.key === 'Enter' ? showNewModal() : undefined}"
+                />
+            </div>
             <div class="sidenav">
                 <div class="branding">
                     <img src="bpo.png" width="100" alt="branding" />
                 </div>
 
-                <div class="menu-item">
-                    <div class="menu-button">
-                        <AppsOutline size="20px" />
-                        <Link class="link" to="browse">{$t('browseText')}</Link>
-                    </div>
-                </div>
+                <!-- TODO: When searching and Enter is pressed, open Browse - otherwise this page is hidden (nothing is searched) -->
+
                 <div class="menu-item">
                     <div class="menu-button">
                         <Grid size="20px" />
@@ -128,6 +160,7 @@
                     </div>
                 </div>
             </div>
+
             <Route path="browse">
                 <Browse />
             </Route>

@@ -32,6 +32,7 @@ body {
     height: 100vh;
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 0;
 }
 
 .sidenav {
@@ -41,6 +42,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
+    top: 40px;
     overflow-x: hidden;
     padding-top: 20px;
     background-color: var(--sidebar-background-color);

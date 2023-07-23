@@ -2,7 +2,6 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
 import type { Plugin } from './Interfaces';
-import exp from 'constants';
 
 /**
  * Typescript Function -> Rust Function
@@ -67,31 +66,4 @@ export const saveData = async (
  */
 export const uninstallPlugin = async (plugin: Plugin) => {
     await invoke('uninstall_plugin', { plugin: plugin });
-};
-
-export const steamLogin = async () => {
-    await invoke('steam_login');
-};
-
-export const steamUnlink = () => {
-    localStorage.removeItem('steamData');
-};
-
-let socket = new WebSocket('ws://localhost:5274/ws');
-console.log('Attempting Connection...');
-socket.onopen = () => {
-    console.log('Successfully Connected');
-};
-socket.onclose = (event) => {
-    console.log('Socket Closed Connection: ', event);
-};
-
-socket.onmessage = (msg) => {
-    if (msg.data.includes('steam')) {
-        const data = JSON.parse(msg.data);
-        localStorage.setItem(
-            'steamData',
-            JSON.stringify(data.response.players[0])
-        );
-    }
 };

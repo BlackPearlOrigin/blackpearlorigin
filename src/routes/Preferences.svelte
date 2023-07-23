@@ -10,7 +10,6 @@
     } from '../scripts/Preferences.js';
     import languageNames from '../locale/languages.json';
     import { getPlugins } from '../scripts/Browse.js';
-    import pkgJSON from '../../package.json';
     import {
         Cube,
         TrashBin,
@@ -20,7 +19,6 @@
         CloudDownload,
         CloudUpload,
     } from 'svelte-ionicons';
-    import { getConfig } from '../scripts/Main.js';
 
     const plugins = getPlugins();
 
@@ -158,6 +156,5 @@
                 {/await}
             </ul>
         </div>
-        <span class="ver"> Black Pearl Origin v{pkgJSON.version} </span>
     </div>
 </main>

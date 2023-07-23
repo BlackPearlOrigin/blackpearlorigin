@@ -4,7 +4,6 @@
     "prefsText": "Preferences",
     "loadingText": "Loading",
     "languageText": "Language",
-    "steamLoginText": "Steam",
     "preferences": {
         "installPlugin": "Install a plugin",
         "wipeLibrary": "Wipe library",
@@ -15,9 +14,7 @@
             "version": "Version:",
             "author": "Author:",
             "desc": "Description:"
-        },
-        "steamLogin": "Login With Steam",
-        "steamUnlink": "Unlink Steam"
+        }
     },
     "library": {
         "run": "Run",

@@ -60,7 +60,6 @@
                 color: var(--font-color);
                 border: 1px solid var(--settings-container-button-border-color);
                 border-radius: var(--radius-round);
-                cursor: pointer;
 
                 font-size: 16px;
                 margin: 10px 5px;
@@ -84,7 +83,6 @@
 
                 padding: 7px 35px 7px 7px;
 
-                cursor: pointer;
                 font-size: 1rem;
                 margin: 8px 0px;
                 color: var(--font-color);
@@ -99,6 +97,7 @@
         .checkbox {
             display: flex;
             flex-direction: row;
+
             align-items: center;
             justify-content: center;
 
@@ -112,7 +111,7 @@
             [type='checkbox'] {
                 appearance: none;
                 position: relative;
-                cursor: pointer;
+
                 top: -2px;
 
                 background-color: var(--settings-container-button-color);
@@ -309,22 +308,7 @@
         }
     }
 }
-.steam {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-.steamUser {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
 
-    .steamUserPicture {
-        height: 3.5rem;
-        width: 3.5rem;
-        border-radius: 50%;
-    }
-}
 @media (hover: hover) {
     .card:hover .buttons > button {
         opacity: 1;

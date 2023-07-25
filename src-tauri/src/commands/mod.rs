@@ -1,6 +1,6 @@
 use std::{process, thread, time::Instant};
 
-use crate::commands::logging::log;
+use crate::{commands::logging::log, paths::get_bpo};
 use rfd::FileDialog;
 
 use std::fs;
@@ -14,13 +14,13 @@ pub mod metadata;
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable
-pub fn file_dialog() -> String {
+pub fn file_dialog() -> i32 {
     log(2, "Executable file dialog opened".to_owned());
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
-    match FileDialog::new()
-        .add_filter("Executables", &["exe", "com", "cmd", "bat", "sh"])
+    let file = match FileDialog::new()
+        .add_filter("7z archive", &["7z"])
         .set_directory("/")
         .pick_file()
     {
@@ -28,6 +28,23 @@ pub fn file_dialog() -> String {
         Some(file) => file.display().to_string(),
         // If the user just closed the window, without picking a file, return "None" to the frontend
         None => "None".to_string(),
+    };
+
+    // Creates a dir for the plugin
+    let zip_name = PathBuf::from(file.clone());
+    let plugin_path = get_bpo().join("plugins").join(zip_name.file_stem().unwrap()); 
+
+    if !plugin_path.exists() {
+        fs::create_dir(&plugin_path).expect("failed to create dir");
+    
+        // holy shit how didn't i think of this
+        sevenz_rust::decompress_file(file, plugin_path).expect("complete");
+    
+        0
+    } else {
+        log(0, "Folder already exists, can't extract plugin".to_owned());
+        
+        1
     }
 }
 

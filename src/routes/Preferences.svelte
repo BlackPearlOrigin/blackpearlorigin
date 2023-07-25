@@ -20,6 +20,7 @@
         CloudUpload,
     } from 'svelte-ionicons';
 
+    import { toast } from '@zerodevx/svelte-toast';
     const plugins = getPlugins();
 
     $: languages = Object.keys(translations);
@@ -37,7 +38,31 @@
                     <Cube size="18px" />
                 </div>
                 <div class="buttons">
-                    <button id="install" on:click="{installPlugin}">
+                    <button
+                        id="install"
+                        on:click="{() =>
+                            installPlugin().then((res) => {
+                                if (res === 0) {
+                                    toast.push(
+                                        'Successfully installed plugin',
+                                        {
+                                            theme: {
+                                                '--toastBackground': '#171717',
+                                            },
+                                        }
+                                    );
+                                } else {
+                                    toast.push(
+                                        'Failed to install plugin, Directory already exists',
+                                        {
+                                            theme: {
+                                                '--toastBackground': '#171717',
+                                            },
+                                        }
+                                    );
+                                }
+                            })}"
+                    >
                         <Cube class="cube" size="18px" />
                         {$t('preferences.installPlugin')}
                     </button>

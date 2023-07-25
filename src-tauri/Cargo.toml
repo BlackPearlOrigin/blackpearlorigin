@@ -27,7 +27,7 @@ lazy_static = "1.4.0"
 libloading = "0.8.0"
 anyhow = "1.0.71"
 mlua = { version = "0.8", features = ["lua54", "vendored"] }
-
+sevenz-rust = { version = "0.2" }
 
 [features]
 # by default Tauri runs in production mode

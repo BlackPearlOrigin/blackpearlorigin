@@ -41,12 +41,26 @@
                     <button
                         id="install"
                         on:click="{() =>
-                            installPlugin().then(() => {
-                                toast.push("Successfully installed plugin", {
-                                        theme: {
-                                                "--toastBackground": "#171717"
-                                            }
-                                    })
+                            installPlugin().then((res) => {
+                                if (res === 0) {
+                                    toast.push(
+                                        'Successfully installed plugin',
+                                        {
+                                            theme: {
+                                                '--toastBackground': '#171717',
+                                            },
+                                        }
+                                    );
+                                } else {
+                                    toast.push(
+                                        'Failed to install plugin, Directory already exists',
+                                        {
+                                            theme: {
+                                                '--toastBackground': '#171717',
+                                            },
+                                        }
+                                    );
+                                }
                             })}"
                     >
                         <Cube class="cube" size="18px" />

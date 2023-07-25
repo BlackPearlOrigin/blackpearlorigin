@@ -9,10 +9,10 @@ import type { Plugin } from './Interfaces';
  *
  * @returns Nothing
  */
-export const installPlugin = async () => await invoke('file_dialog').then((file) => {
-   console.log(file) 
-});
-
+export const installPlugin = async (): Promise<number> => {
+    let returnValue = await invoke('file_dialog');
+    return returnValue as number;
+};
 /**
  * Typescript Function -> Rust Function
  * - Opens a pop-up window, then if the user selects yes,
@@ -64,7 +64,7 @@ export const saveData = async (
  * Typescript Function -> Rust Function
  * - Invokes a function that uninstalls a plugin
  *
- * @returns Nothing
+ * @returns nothing
  */
 export const uninstallPlugin = async (plugin: Plugin) => {
     await invoke('uninstall_plugin', { plugin: plugin });

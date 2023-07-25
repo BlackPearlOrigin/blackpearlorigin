@@ -1,4 +1,4 @@
-use std::{process, thread, time::Instant, io::Error};
+use std::{process, thread, time::Instant};
 
 use crate::{commands::logging::log, paths::get_bpo};
 use rfd::FileDialog;
@@ -14,7 +14,7 @@ pub mod metadata;
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable
-pub fn file_dialog() {
+pub fn file_dialog() -> i32 {
     log(2, "Executable file dialog opened".to_owned());
 
     // Prompt the user to select a file from their computer as an input
@@ -34,10 +34,18 @@ pub fn file_dialog() {
     let zip_name = PathBuf::from(file.clone());
     let plugin_path = get_bpo().join("plugins").join(zip_name.file_stem().unwrap()); 
 
-    fs::create_dir(&plugin_path).expect("failed to create dir");
-
-    // holy shit how didn't i think of this
-    sevenz_rust::decompress_file(file, plugin_path).expect("complete");
+    if !plugin_path.exists() {
+        fs::create_dir(&plugin_path).expect("failed to create dir");
+    
+        // holy shit how didn't i think of this
+        sevenz_rust::decompress_file(file, plugin_path).expect("complete");
+    
+        0
+    } else {
+        log(0, "Folder already exists, can't extract plugin".to_owned());
+        
+        1
+    }
 }
 
 #[tauri::command]

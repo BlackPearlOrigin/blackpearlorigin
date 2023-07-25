@@ -9,7 +9,9 @@ import type { Plugin } from './Interfaces';
  *
  * @returns Nothing
  */
-export const installPlugin = async () => await invoke('install_plugin');
+export const installPlugin = async () => await invoke('file_dialog').then((file) => {
+   console.log(file) 
+});
 
 /**
  * Typescript Function -> Rust Function

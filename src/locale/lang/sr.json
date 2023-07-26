@@ -9,7 +9,12 @@
         "wipeLibrary": "Избриши датотеку",
         "saveText": "Сачувај",
         "availablePlugins": "Доступни додаци",
-        "comingSoon": "Долази ускоро..."
+        "comingSoon": "Долази ускоро...",
+        "pluginCard": {
+            "version": "Верзија:",
+            "author": "Аутор:",
+            "desc": "Опис:"
+        }
     },
     "library": {
         "run": "Покрени",
@@ -33,6 +38,10 @@
         },
         "fetchMeta": {
             "selectGame": "Одабери игру"
+        },
+        "updater": {
+            "updateAvailable": "Доступна је нова верзија",
+            "reboot": "Поновно покретање за 5 секунди..."
         }
     },
     "pluginText": "Додаци",

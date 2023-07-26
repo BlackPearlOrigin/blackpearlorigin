@@ -1,0 +1,49 @@
+{
+    "browseText": "Foliumi",
+    "libraryText": "Biblioteko",
+    "prefsText": "Preferoj",
+    "loadingText": "Ŝarĝante",
+    "languageText": "Lingvo",
+    "preferences": {
+        "installPlugin": "Instalu kromprogramon",
+        "wipeLibrary": "Viŝu bibliotekon",
+        "saveText": "Ŝpari",
+        "availablePlugins": "Haveblaj kromprogramon",
+        "comingSoon": "Baldaŭ...",
+        "pluginCard": {
+            "version": "Versio:",
+            "author": "Aŭtoro:",
+            "desc": "Priskribo:"
+        }
+    },
+    "library": {
+        "run": "Kuri",
+        "searchGame": "Serĉu"
+    },
+    "browse": {
+        "selectPlugin": "Elektu kromprogramon",
+        "nothingFound": "Neniuj ludoj trovitaj",
+        "downloadText": "Elŝuto",
+        "search": "Serĉu"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Titolo",
+            "addExec": "Aldonu rueblan",
+            "none": "Neniu",
+            "addImg": "Aldonu bildo",
+            "desc": "Priskribo",
+            "done": "Farita",
+            "autoFetch": "Elpeti metadatenojn"
+        },
+        "fetchMeta": {
+            "selectGame": "Elektu ludo"
+        },
+        "updater": {
+            "updateAvailable": "Nova ĝisdatigo disponebla",
+            "reboot": "Rekomenco post 5 sekundoj..."
+        }
+    },
+    "pluginText": "Kromprogramon",
+    "themeText": "Temoj"
+}

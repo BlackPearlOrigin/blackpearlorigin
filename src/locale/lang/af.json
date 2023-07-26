@@ -1,0 +1,49 @@
+{
+    "browseText": "Blaai",
+    "libraryText": "Versameling",
+    "prefsText": "Voorkeure",
+    "loadingText": "Laai",
+    "languageText": "Taal",
+    "preferences": {
+        "installPlugin": "Instaleer n' inprop",
+        "wipeLibrary": "Uitvee versameling",
+        "saveText": "Stoor",
+        "availablePlugins": "Beskikbaar inproppe",
+        "comingSoon": "Binnekort beskikbaar...",
+        "pluginCard": {
+            "version": "Weergawe:",
+            "author": "Outeur:",
+            "desc": "Beskrywing:"
+        }
+    },
+    "library": {
+        "run": "Uitvoer",
+        "searchGame": "Soek"
+    },
+    "browse": {
+        "selectPlugin": "Kies n inprop",
+        "nothingFound": "Niks gevind nie",
+        "downloadText": "Aflaai",
+        "search": "Soek"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Titel",
+            "addExec": "Voeg uitvoorbare leer by",
+            "none": "Niks",
+            "addImg": "Voeg beeld by",
+            "desc": "Beskrywing",
+            "done": "Klaar",
+            "autoFetch": "Kry metadata"
+        },
+        "fetchMeta": {
+            "selectGame": "Kies n speletjie"
+        },
+        "updater": {
+            "updateAvailable": "Nuwe opdatering beskikbaar",
+            "reboot": "Herbegin binne 5 sekonde..."
+        }
+    },
+    "pluginText": "Inproppe",
+    "themeText": "Temas"
+}

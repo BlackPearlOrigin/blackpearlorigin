@@ -1,0 +1,49 @@
+{
+    "browseText": "Przeglądaj",
+    "libraryText": "Biblioteka",
+    "prefsText": "Preferencje",
+    "loadingText": "Ładowanie",
+    "languageText": "Język",
+    "preferences": {
+        "installPlugin": "Zainstaluj rozszerzenie",
+        "wipeLibrary": "Wyczyść biblioteke",
+        "saveText": "Zapisz",
+        "availablePlugins": "Dostępne rozszerzenia",
+        "comingSoon": "Wkrótce...",
+        "pluginCard": {
+            "version": "Wersja:",
+            "author": "Autor:",
+            "desc": "Opis:"
+        }
+    },
+    "library": {
+        "run": "Start",
+        "searchGame": "Wyszukaj"
+    },
+    "browse": {
+        "selectPlugin": "Zaznacz rozszerzenie",
+        "nothingFound": "Nic nie znaleziono",
+        "downloadText": "Pobierz",
+        "search": "Wyszukaj"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Tytuł",
+            "addExec": "Dodaj plik wykonawczy",
+            "none": "Brak",
+            "addImg": "Dodaj obraz",
+            "desc": "Opis",
+            "done": "Gotowe",
+            "autoFetch": "Pobierz metadane"
+        },
+        "fetchMeta": {
+            "selectGame": "Zaznacz gre"
+        },
+        "updater": {
+            "updateAvailable": "Dostępna nowa aktualizacja",
+            "reboot": "Restart za 5 sekund..."
+        }
+    },
+    "pluginText": "Rozszerzenia",
+    "themeText": "Style"
+}

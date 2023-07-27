@@ -10,6 +10,8 @@
         downloadImage,
     } from '../../scripts/Library';
 
+    import { isEmpty } from "../../scripts/Main.js";
+
     const { close }: any = getContext('simple-modal');
     export let title: string;
     export let id: number;
@@ -20,11 +22,8 @@
     let moreThanOneGameMeta: boolean;
     let gameMetadata: IGDBData[] = [];
     let gameMetadataModal: HTMLDialogElement;
-
-    // Defines a function that checks if the same string is empty
-    function isEmpty(string: string) {
-        return string === undefined || string.length === 0 || !string.trim();
-    }
+    
+    
 
     // TS Function -> Rust Function
     // - Opens a File selector dialog

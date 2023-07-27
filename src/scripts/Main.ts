@@ -34,3 +34,8 @@ export function log(logLevel: number, logMessage: string) {
         logMessage: `From TS: ${logMessage}`,
     });
 }
+
+// Defines a function that checks if the same string is empty
+export const isEmpty = (string: string) => {
+    return string === undefined || string.length === 0 || !string.trim();
+};

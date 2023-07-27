@@ -8,12 +8,12 @@
 
     input {
         margin: 0 0 2rem 0;
-        color: var(--font-color);
+        color: #dddddd;
         font-size: 1rem;
         padding: 8px 8px 8px 8px;
-        background-color: var(--browse-element-background);
-        border-radius: var(--radius-normal);
-        border: 1px solid var(--browse-border-color);
+        background-color: #121212;
+        border-radius: 4px;
+        border: 1px solid #323232;
         box-shadow: 0px 2px 8px #00000055;
 
         flex-grow: 1;
@@ -23,22 +23,22 @@
         }
 
         &[type='text']::placeholder {
-            color: var(--browse-input-placeholder-color);
+            color: #dddddd;
         }
     }
 
     button {
         margin: 0 8px 2rem 0;
         padding: 8px 32px;
-        background-color: var(--browse-element-background);
-        border: 1px solid var(--browse-border-color);
-        border-radius: var(--radius-round);
+        background-color: #121212;
+        border: 1px solid #323232;
+        border-radius: 4px;
         box-shadow: 0px 2px 8px #00000055;
 
         cursor: pointer;
 
         i {
-            color: var(--font-color);
+            color: #dddddd;
             font-size: 1.2rem;
         }
 
@@ -51,15 +51,15 @@
         appearance: none;
         margin: 0 0 2rem 8px;
         padding: 3px 30px 3px 5px;
-        color: var(--font-color);
-        border: 1px solid var(--browse-border-color);
-        border-radius: var(--radius-normal);
+        color: #dddddd;
+        border: 1px solid #323232;
+        border-radius: 4px;
         box-shadow: 0px 2px 8px #00000055;
-        background-color: var(--browse-element-background);
+        background-color: #121212;
     }
 
     select:hover, button:hover, input:hover {
-        background-color: var(--browse-element-background-hovered);
+        background-color: #181818;
     }
 }
 
@@ -77,11 +77,11 @@
 
     border-style: solid;
     border-width: 1px;
-    border-color: var(--browse-game-border);
-    background-color: var(--browse-game-background-color);
+    border-color: #323232;
+    background-color: #0b0e10;
     margin: 10px 1px 0px 2px;
     padding: 5px 5px 20px 8px;
-    border-radius: var(--radius-normal);
+    border-radius: 4px;
 
     line-height: 10px;
 
@@ -99,12 +99,12 @@
         border-style: solid;
         background-color: inherit;
 
-        color: var(--font-color);
+        color: #dddddd;
         margin: 0 5px;
         margin-bottom: 100px;
         padding: 4px 10px 4px 10px;
-        border-radius: var(--radius-normal);
-        border-color: var(--browse-game-dl-border);
+        border-radius: 4px;
+        border-color: #323232;
         border-width: 1px;
     }
 }

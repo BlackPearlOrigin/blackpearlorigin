@@ -39,12 +39,16 @@ export const wipeLibrary = async (): Promise<void> => {
  */
 export const saveData = async (
     lang: string,
-    updaterToggle: boolean
+    updaterToggle: boolean,
+    cssUrl: string
 ): Promise<void> => {
     let dataObj = {
         currentLang: lang,
         updater: updaterToggle,
+        cssUrl: cssUrl,
     };
+
+    switchTheme(cssUrl);
 
     let dataObjString = JSON.stringify(dataObj);
 
@@ -68,4 +72,35 @@ export const saveData = async (
  */
 export const uninstallPlugin = async (plugin: Plugin) => {
     await invoke('uninstall_plugin', { plugin: plugin });
+};
+
+/*
+ * Typescript Function
+ * - Theme switcher poggers
+ */
+export const switchTheme = (cssUrl: string) => {
+    let head = document.getElementsByTagName('head')[0];
+    // let link = document.createElement('link');
+
+    let link = getOrCreateElement('custom-stylesheet');
+
+    link.setAttribute('href', cssUrl);
+    link.setAttribute('type', 'text/css');
+    link.setAttribute('rel', 'stylesheet');
+
+    head.appendChild(link);
+};
+
+const getOrCreateElement = (id: string) => {
+    // Check if the element already exists in the DOM
+    const element = document.getElementById(id);
+    if (element) {
+        // The element exists, return a reference to it
+        return element;
+    } else {
+        // The element doesn't exist, create a new one
+        const newElement = document.createElement('link');
+        newElement.setAttribute('id', id);
+        return newElement;
+    }
 };

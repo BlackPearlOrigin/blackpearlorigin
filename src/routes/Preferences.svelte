@@ -18,13 +18,14 @@
         CloudDownload,
         CloudUpload,
     } from 'svelte-ionicons';
-
     import { toast } from '@zerodevx/svelte-toast';
+    import { convertFileSrc } from '@tauri-apps/api/tauri';
     const plugins = getPlugins();
 
     $: languages = Object.keys(translations);
     $: dict.set(translations);
 
+    let stylesheetUrl: string;
     let updaterStatus: boolean;
 </script>
 
@@ -77,7 +78,12 @@
                     <span>{$t('themeText')}</span>
                     <Albums size="18px" />
                 </div>
-                <input type="text" class="input" placeholder="Insert a theme URL"/>
+                <input
+                    type="text"
+                    class="input"
+                    placeholder="Insert a theme URL"
+                    bind:value="{stylesheetUrl}"
+                />
             </div>
 
             <div class="plugin-card">
@@ -117,7 +123,15 @@
                 <div class="buttons">
                     <button
                         class="save-button"
-                        on:click="{() => saveData($locale, updaterStatus)}"
+                        on:click="{() =>
+                            saveData(
+                                $locale,
+                                updaterStatus,
+                                stylesheetUrl.startsWith("https:\/\/raw.githubusercontent") 
+                                    ? stylesheetUrl
+                                    : convertFileSrc(stylesheetUrl)
+                                     
+                            )}"
                     >
                         {$t('preferences.saveText')}
                     </button>

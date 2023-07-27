@@ -14,11 +14,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-
-    // Variables, These are set not using SCSS variables
-    // because they will be modified by the user.
-    // No variables are set here, because they are
-    // set on Main.svelte (Router>main.container)
 }
 
 :focus {
@@ -27,7 +22,7 @@
 
 body {
     background-size: 100%;
-    background-color: var(--global-background-color);
+    background-color: #171717;
     color: rgb(255, 255, 255);
     overflow-x: hidden;
     width: 100%;
@@ -45,7 +40,7 @@ body {
     left: 0;
     overflow-x: hidden;
     padding-top: 20px;
-    background-color: var(--sidebar-background-color);
+    background-color: #101010;
 
     .menu-item {
         margin: 3px;

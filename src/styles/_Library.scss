@@ -8,15 +8,15 @@
 
     .search-bar {
         width: 100%;
-        color: var(--library-search-font-color);
+        color: #dddddd;
         font-size: 1rem;
         margin: 0 0 32px 0;
         padding: 8px;
-        background-color: var(--library-element-background);
+        background-color: #121212;
         border-style: solid;
         border-width: 1px;
-        border-color: var(--library-border-color);
-        border-radius: var(--radius-normal);
+        border-color: #323232;
+        border-radius: 4px;
         box-shadow: 0px 2px 8px #00000055;
 
         &[type='text']:focus {
@@ -24,22 +24,22 @@
         }
 
         &[type='text']::placeholder {
-            color: var(--library-search-placeholder-color);
+            color: #dddddd;
         }
     }
 
     button {
-        background-color: var(--library-element-background);
-        border-color: var(--library-border-color);
+        background-color: #121212;
+        border-color: #323232;
         border-style: solid;
         border-width: 1px;
-        border-radius: var(--radius-normal);
+        border-radius: 4px;
         box-shadow: 0px 2px 8px #00000055;
 
         margin-bottom: 2rem;
         margin-top: 0rem;
         margin-right: 8px;
-        color: var(--font-color);
+        color: #dddddd;
         font-size: 16px;
         cursor: pointer;
         transition: all 0.25s;
@@ -53,7 +53,7 @@
     }
 
     .search-bar:hover, button:hover {
-        background-color: var(--library-element-background-hovered);
+        background-color: #181818;
     }
 }
 
@@ -90,9 +90,9 @@
             }
 
             p {
-                color: var(--font-color);
+                color: #dddddd;
                 margin: 0;
-                font-weight: var(--library-name-font-weight);
+                font-weight: 400;
                 font-size: 20px;
                 font-family: 'Montserrat';
                 word-wrap: break-word;
@@ -106,8 +106,8 @@
         
         .game-modal {
             box-shadow: 0px 0px 32px #00000055;
-            background-color: var(--library-game-modal-background-color);
-            border-color: var(--library-game-modal-background-color);
+            background-color: #101010;
+            border-color: #101010;
             margin: 0;
             margin-left: auto;
             height: 100vh;
@@ -118,7 +118,7 @@
             }
 
             &[open] {
-                color: var(--font-color);
+                color: #dddddd;
                 display: flex;
                 flex-direction: column;
                 width: 300px;
@@ -133,7 +133,7 @@
 
             #game-name {
                 font-size: 1.5rem;
-                font-weight: var(--library-game-modal-title-font-weight);
+                font-weight: 800;
                 text-align: center;
             }
 
@@ -143,7 +143,7 @@
                 margin-right: 0.5rem;
                 font-size: 0.9rem;
                 line-height: 17px;
-                font-weight: var(--library-game-modal-desc-font-weight);
+                font-weight: 400;
                 text-align: center;
             }
 
@@ -153,19 +153,17 @@
                 margin-top: 1rem;
                 font-size: 1.3rem;
                 font-family: 'JetBrains Mono', monospace;
-                font-weight: var(--library-game-modal-run-button-font-weight);
+                font-weight: 900;
                 border-style: solid;
                 border-width: 1px;
-                border-color: var(--library-border-color);
-                border-radius: var(--radius-normal);
-                background-color: var(
-                    --library-game-modal-run-button-background
-                );
-                color: var(--library-game-modal-run-button-font-color);
+                border-color: #323232;
+                border-radius: 4px;
+                background-color: #121212;
+                color: #dddddd;
                 padding: 8px 16px;
 
                 &:hover {
-                    background-color: var(--library-element-background-hovered);
+                    background-color: #181818;
                 }
             }
 
@@ -176,17 +174,17 @@
                 .game-button-run {
                     border: none;
                     background-color: inherit;
-                    font-size: var(--library-game-modal-edit-delete-size);
+                    font-size: 2rem;
                     cursor: pointer;
                 }
 
                 .game-button-delete {
                     float: right;
-                    color: var(--library-game-modal-edit-button-color);
+                    color: #fff;
                 }
 
                 .game-button-run {
-                    color: var(--library-game-modal-delete-button-color);
+                    color: #fff;
                 }
             }
         }

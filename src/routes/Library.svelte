@@ -8,7 +8,6 @@
     } from '../scripts/Library.js';
     import { getContext } from 'svelte';
     import NewGame from './modals/NewGame.svelte';
-    import '../styles/Library.scss';
     import { t } from '../locale/i18n.js';
     import { convertFileSrc } from '@tauri-apps/api/tauri';
     import type { Game } from '../scripts/Interfaces.js';

@@ -19,6 +19,20 @@
         box-shadow: 0px 4px 4px var(--shadow-color);
         border-radius: var(--radius-normal);
 
+        .input {
+            background: var(--settings-container-button-color);
+            color: var(--font-color);
+            border: 1px solid var(--settings-container-button-border-color);
+            border-radius: var(--radius-round);
+
+            padding: 5px;
+            margin: 67px 1.2rem;
+
+            display: flex;
+
+            font-size: 1rem;
+        }
+
         .header {
             box-sizing: border-box;
 

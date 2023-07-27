@@ -1,7 +1,6 @@
 <script lang="ts">
     import translations from '../locale/locales.js';
     import { dict, locale, t } from '../locale/i18n.js';
-    import '../styles/Preferences.scss';
     import {
         installPlugin,
         saveData,
@@ -78,7 +77,7 @@
                     <span>{$t('themeText')}</span>
                     <Albums size="18px" />
                 </div>
-                <p class="buttons">{$t('preferences.comingSoon')}</p>
+                <input type="text" class="input" placeholder="Insert a theme URL"/>
             </div>
 
             <div class="plugin-card">

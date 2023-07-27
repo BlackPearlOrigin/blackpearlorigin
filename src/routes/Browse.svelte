@@ -1,6 +1,5 @@
 <script lang="ts">
     import { getPlugins, searchGame, handleKeypress } from '../scripts/Browse';
-    import '../styles/Browse.scss';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
     import { log } from '../scripts/Main';

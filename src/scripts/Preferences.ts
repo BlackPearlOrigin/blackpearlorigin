@@ -2,6 +2,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
 import type { Plugin } from './Interfaces';
+import { isEmpty } from './Main';
 
 /**
  * Typescript Function -> Rust Function
@@ -79,6 +80,8 @@ export const uninstallPlugin = async (plugin: Plugin) => {
  * - Theme switcher poggers
  */
 export const switchTheme = (cssUrl: string) => {
+    if (isEmpty(cssUrl)) return;
+
     let head = document.getElementsByTagName('head')[0];
     // let link = document.createElement('link');
 

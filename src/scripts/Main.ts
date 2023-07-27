@@ -1,6 +1,7 @@
 import { readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 import { invoke } from '@tauri-apps/api/tauri';
 import { locale } from '../locale/i18n';
+import { switchTheme } from './Preferences';
 
 // TS Function
 // - Gets the current locale from config.json
@@ -22,6 +23,7 @@ export async function getConfig() {
 export async function loadLocale() {
     const config = await getConfig();
     locale.set(config.currentLang);
+    switchTheme(config.cssUrl)
 }
 
 // TS Function -> Rust Function

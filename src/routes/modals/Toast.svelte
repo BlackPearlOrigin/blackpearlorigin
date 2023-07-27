@@ -1,6 +1,5 @@
 <script lang="ts">
     import { log } from '../../scripts/Main';
-    import '../../styles/Modal.scss';
     import { t } from '../../locale/i18n';
     import { checkUpdate, installUpdate } from '@tauri-apps/api/updater';
     import { relaunch } from '@tauri-apps/api/process';

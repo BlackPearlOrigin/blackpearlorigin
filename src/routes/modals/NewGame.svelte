@@ -1,9 +1,7 @@
 <script lang="ts">
     import { convertFileSrc, invoke } from '@tauri-apps/api/tauri';
     import { getContext } from 'svelte';
-    import './../../styles/Modal.scss';
     import { t } from '../../locale/i18n.js';
-    import { exists } from '@tauri-apps/api/fs';
     import type { IGDBData } from '../../scripts/Interfaces';
     import {
         saveData,

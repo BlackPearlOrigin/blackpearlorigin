@@ -94,6 +94,14 @@ export const switchTheme = (cssUrl: string) => {
     head.appendChild(link);
 };
 
+export const resetTheme = async () => {
+    let head = document.getElementsByTagName('head')[0];
+    let child = document.getElementById('custom-stylesheet');
+
+    // now we kill the children
+    head.removeChild(child);
+};
+
 const getOrCreateElement = (id: string) => {
     // Check if the element already exists in the DOM
     const element = document.getElementById(id);

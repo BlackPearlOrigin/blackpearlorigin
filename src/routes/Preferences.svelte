@@ -5,6 +5,7 @@
         installPlugin,
         saveData,
         uninstallPlugin,
+        resetTheme,
         wipeLibrary,
     } from '../scripts/Preferences.js';
     import languageNames from '../locale/languages.json';
@@ -78,12 +79,22 @@
                     <span>{$t('themeText')}</span>
                     <Albums size="18px" />
                 </div>
-                <input
-                    type="text"
-                    class="input"
-                    placeholder="Insert a theme URL"
-                    bind:value="{stylesheetUrl}"
-                />
+
+                <div class="buttons">
+                    <input
+                        type="text"
+                        class="input"
+                        placeholder="Insert a theme URL"
+                        bind:value="{stylesheetUrl}"
+                    />
+
+                    <button
+                        on:click="{() =>
+                            resetTheme().then(() => {
+                                stylesheetUrl = '';
+                            })}">Reset to default</button
+                    >
+                </div>
             </div>
 
             <div class="plugin-card">
@@ -127,10 +138,11 @@
                             saveData(
                                 $locale,
                                 updaterStatus,
-                                stylesheetUrl.startsWith("https:\/\/raw.githubusercontent") 
+                                stylesheetUrl.startsWith(
+                                    'https://raw.githubusercontent'
+                                ) || stylesheetUrl === undefined
                                     ? stylesheetUrl
                                     : convertFileSrc(stylesheetUrl)
-                                     
                             )}"
                     >
                         {$t('preferences.saveText')}

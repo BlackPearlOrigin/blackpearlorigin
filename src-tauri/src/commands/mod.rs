@@ -14,7 +14,7 @@ pub mod metadata;
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable
-pub fn file_dialog() -> i32 {
+pub fn plugin_installer() -> i32 {
     log(2, "Executable file dialog opened".to_owned());
 
     // Prompt the user to select a file from their computer as an input
@@ -45,6 +45,25 @@ pub fn file_dialog() -> i32 {
         log(0, "Folder already exists, can't extract plugin".to_owned());
         
         1
+    }
+}
+
+#[tauri::command]
+// Opens a file dialog that prompts the user for an executable
+pub fn file_dialog() -> String {
+    log(2, "Executable file dialog opened".to_owned());
+
+    // Prompt the user to select a file from their computer as an input
+    // For error handling, you can use if- and match statements
+    match FileDialog::new()
+        .add_filter("Executables", &["exe", "com", "cmd", "bat", "sh"])
+        .set_directory("/")
+        .pick_file()
+    {
+        // If the user picked a file, return the path to the frontend
+        Some(file) => file.display().to_string(),
+        // If the user just closed the window, without picking a file, return "None" to the frontend
+        None => "None".to_string(),
     }
 }
 

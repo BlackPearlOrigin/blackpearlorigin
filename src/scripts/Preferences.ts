@@ -11,7 +11,7 @@ import { isEmpty } from './Main';
  * @returns Nothing
  */
 export const installPlugin = async (): Promise<number> => {
-    let returnValue = await invoke('file_dialog');
+    let returnValue = await invoke('plugin_installer');
     return returnValue as number;
 };
 /**

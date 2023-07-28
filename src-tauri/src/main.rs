@@ -17,6 +17,7 @@ fn main() {
     tauri::Builder::default()
         // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
+            commands::plugin_installer,
             commands::file_dialog,
             commands::image_dialog,
             commands::run_game,

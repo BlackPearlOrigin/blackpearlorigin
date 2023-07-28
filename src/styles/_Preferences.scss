@@ -19,20 +19,6 @@
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         border-radius: 4px;
 
-        .input {
-            background: #121212;
-            color: #dddddd;
-            border: 1px solid #323232;
-            border-radius: 4px;
-
-            padding: 5px;
-            margin: 67px 1.2rem;
-
-            display: flex;
-
-            font-size: 1rem;
-        }
-
         .header {
             box-sizing: border-box;
 
@@ -68,6 +54,16 @@
 
             width: 300px;
             height: 170px;
+
+            input {
+                background: #121212;
+                color: #dddddd;
+                border: 1px solid #323232;
+                border-radius: 4px;
+
+                padding: 7px;
+                font-size: 1rem;
+            }
 
             button {
                 background: #121212;

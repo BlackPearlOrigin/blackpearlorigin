@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-@import "Browse", "Library", "Modal", "Preferences";
+@import 'Browse', 'Library', 'Modal', 'Preferences';
 
 :root {
     font-family: 'Montserrat';
@@ -14,6 +14,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+
+    --toastBackground: #171717;
 }
 
 :focus {

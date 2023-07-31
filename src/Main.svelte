@@ -29,9 +29,6 @@
                 component: {
                     src: Toast,
                 },
-                theme: {
-                    '--toastBackground': '#171717',
-                },
                 duration: 6000,
                 pausable: true,
             });

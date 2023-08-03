@@ -9,10 +9,15 @@
         "wipeLibrary": "Išvalyti biblioteka",
         "saveText": "Išsaugoti",
         "availablePlugins": "Pasiekiami priedai",
-        "comingSoon": "Tuoj atsiras..."
+        "comingSoon": "Netrukus pasirodys...",
+        "pluginCard": {
+            "version": "Versija:",
+            "author": "Autorius:",
+            "desc": "Aprašymas:"
+        }
     },
     "library": {
-        "run": "Paleisti",
+        "run": "Atidaryti",
         "searchGame": "Ieškoti"
     },
     "browse": {
@@ -25,14 +30,18 @@
         "newGame": {
             "gameTitle": "Pavadinimas",
             "addExec": "Pridėti Paleisties failą",
-            "none": "Ne vienas",
+            "none": "Nė vienas",
             "addImg": "Pridėti nuotrauka",
             "desc": "Aprašymas",
             "done": "Baigta",
-            "autoFetch": "Gauti metadata"
+            "autoFetch": "Gauti metadatą"
         },
         "fetchMeta": {
-            "selectGame": "Pasirinkti žaidimą"
+            "selectGame": "Pasirinkite žaidimą"
+        },
+        "updater": {
+            "updateAvailable": "Pasiekiamas naujas atnaujinimas",
+            "reboot": "Persikraunama po 5 sekundžių..."
         }
     },
     "pluginText": "Priedai",

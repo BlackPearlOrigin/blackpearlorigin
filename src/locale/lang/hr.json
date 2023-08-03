@@ -1,15 +1,20 @@
 {
     "browseText": "Pretražuj",
-    "libraryText": "Datoteka",
+    "libraryText": "Datoteke",
     "prefsText": "Postavke",
     "loadingText": "Učitavanje",
     "languageText": "Jezik",
     "preferences": {
         "installPlugin": "Instaliraj proširenje",
-        "wipeLibrary": "Obriši datoteke",
+        "wipeLibrary": "Izbriši sve datoteke",
         "saveText": "Spasi",
         "availablePlugins": "Dostupna proširenja",
-        "comingSoon": "Dolazi uskoro..."
+        "comingSoon": "Dolazi uskoro...",
+        "pluginCard": {
+            "version": "Verzija:",
+            "author": "Autor:",
+            "desc": "Opis:"
+        }
     },
     "library": {
         "run": "Pokreni",
@@ -33,6 +38,10 @@
         },
         "fetchMeta": {
             "selectGame": "Odaberi igru"
+        },
+        "updater": {
+            "updateAvailable": "Dostupna je nova verzija",
+            "reboot": "Ponovno pokretanje za 5 sekundi..."
         }
     },
     "pluginText": "Proširenja",

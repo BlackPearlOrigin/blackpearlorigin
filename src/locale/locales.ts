@@ -6,6 +6,9 @@ import croatianHR from './lang/hr.json';
 import bosnianBA from './lang/ba.json';
 import serbianSR from './lang/sr.json';
 import lithuaninanLT from './lang/lt.json';
+import afrikaansAF from "./lang/af.json";
+import esperantoEO from "./lang/eo.json";
+import polishPL from "./lang/pl.json";
 
 export default {
     en: englishUS,
@@ -16,4 +19,7 @@ export default {
     ba: bosnianBA,
     sr: serbianSR,
     lt: lithuaninanLT,
+    af: afrikaansAF,
+    eo: esperantoEO,
+    pl: polishPL
 };

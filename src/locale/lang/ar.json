@@ -1,15 +1,20 @@
 {
     "browseText": "تصفح",
-    "libraryText": "مكتبة",
-    "prefsText": "التفضيلات",
+    "libraryText": "المكتبة",
+    "prefsText": "الإعدادات",
     "loadingText": "تحميل",
     "languageText": "اللغة",
     "preferences": {
         "installPlugin": "تثبيت إضافة",
         "wipeLibrary": "امسح المكتبة",
         "saveText": "إحفظ",
-        "availablePlugins": "الإضافة المتوفرة",
-        "comingSoon": "قريبا..."
+        "availablePlugins": "الإضافات المتوفرة",
+        "comingSoon": "قريبا...",
+        "pluginCard": {
+            "version": "الإصدار:",
+            "author": "المؤلف:",
+            "desc": "الوصف:"
+        }
     },
     "library": {
         "run": "تشغيل",
@@ -29,12 +34,16 @@
             "addImg": "أضف صورة",
             "desc": "الوصف",
             "done": "انتهى",
-            "autoFetch": "إجلب البيانات الوصاية"
+            "autoFetch": "إجلب البيانات الوصفية"
         },
         "fetchMeta": {
             "selectGame": "إختر لعبة"
+        },
+        "updater": {
+            "updateAvailable": "تحديث جديد متوفر",
+            "reboot": "اعادت التشغيل في ٥ ثواني..."
         }
     },
-    "pluginText": "الإضافة",
-    "themeText": "نمودج"
+    "pluginText": "الإضافات",
+    "themeText": "الأشكال"
 }

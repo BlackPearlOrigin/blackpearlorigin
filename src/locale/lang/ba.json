@@ -9,7 +9,12 @@
         "wipeLibrary": "Izbriši sve datoteke",
         "saveText": "Spasi",
         "availablePlugins": "Dostupni dodaci",
-        "comingSoon": "Dolazi uskoro..."
+        "comingSoon": "Dolazi uskoro...",
+        "pluginCard": {
+            "version": "Verzija:",
+            "author": "Autor:",
+            "desc": "Opis:"
+        }
     },
     "library": {
         "run": "Pokreni",
@@ -33,6 +38,10 @@
         },
         "fetchMeta": {
             "selectGame": "Odaberi igru"
+        },
+        "updater": {
+            "updateAvailable": "Dostupna je nova verzija",
+            "reboot": "Restartiranje programa za 5 sekundi..."
         }
     },
     "pluginText": "Dodaci",

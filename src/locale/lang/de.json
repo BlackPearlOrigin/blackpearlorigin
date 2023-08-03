@@ -9,7 +9,12 @@
         "wipeLibrary": "Bibliothek löschen",
         "saveText": "Speichern",
         "availablePlugins": "Verfügbare Plug-ins",
-        "comingSoon": "Kommt bald..."
+        "comingSoon": "Kommt bald...",
+        "pluginCard": {
+            "version": "Version:",
+            "author": "Autor:",
+            "desc": "Beschreibung:"
+        }
     },
     "library": {
         "run": "Ausführen",
@@ -33,6 +38,10 @@
         },
         "fetchMeta": {
             "selectGame": "Spiel auswählen"
+        },
+        "updater": {
+            "updateAvailable": "Neues Update verfügbar",
+            "reboot": "Neustart in 5 Sekunden..."
         }
     },
     "pluginText": "Plug-ins",

@@ -91,7 +91,7 @@
 
                 <div class="checkbox">
                     <input type="checkbox" bind:checked="{updaterStatus}" />
-                    <p>Turn updater off</p>
+                    <p>Supress updater</p>
                 </div>
             </div>
 

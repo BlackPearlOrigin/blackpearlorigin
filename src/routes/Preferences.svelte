@@ -44,13 +44,9 @@
                         on:click="{() =>
                             installPlugin().then((res) => {
                                 if (res === 0) {
-                                    toast.push(
-                                        'Successfully installed plugin',
-                                    );
-                                } else {
-                                    toast.push(
-                                        'Failed to install plugin, Directory already exists',
-                                    );
+                                    toast.push('Successfully installed plugin');
+                                } else if (res === 1) {
+                                    toast.push('Plugin installation failed');
                                 }
                             })}"
                     >

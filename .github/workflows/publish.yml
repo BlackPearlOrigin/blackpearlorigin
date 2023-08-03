@@ -9,6 +9,7 @@ on: [workflow_dispatch]
 
 jobs:
     create-release:
+        permissions: write-all
         runs-on: ubuntu-20.04
         outputs:
             release_id: ${{ steps.create-release.outputs.result }}

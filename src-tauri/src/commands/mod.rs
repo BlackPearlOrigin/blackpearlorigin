@@ -19,33 +19,44 @@ pub fn plugin_installer() -> i32 {
 
     // Prompt the user to select a file from their computer as an input
     // For error handling, you can use if- and match statements
-    let file = match FileDialog::new()
+    if let Some(file) = FileDialog::new()
         .add_filter("7z archive", &["7z"])
         .set_directory("/")
         .pick_file()
     {
-        // If the user picked a file, return the path to the frontend
-        Some(file) => file.display().to_string(),
-        // If the user just closed the window, without picking a file, return "None" to the frontend
-        None => "None".to_string(),
-    };
+        let file = file.display().to_string();
 
-    // Creates a dir for the plugin
-    let zip_name = PathBuf::from(file.clone());
-    let plugin_path = get_bpo().join("plugins").join(zip_name.file_stem().unwrap()); 
+        // Creates a dir for the plugin
+        let zip_name = PathBuf::from(file.clone());
 
-    if !plugin_path.exists() {
-        fs::create_dir(&plugin_path).expect("failed to create dir");
-    
-        // holy shit how didn't i think of this
-        sevenz_rust::decompress_file(file, plugin_path).expect("complete");
-    
-        0
-    } else {
-        log(0, "Folder already exists, can't extract plugin".to_owned());
-        
-        1
+        let file_stem = if let Some(stem) = zip_name.file_stem() {
+            stem
+        } else {
+            log(0, "Extracting file stem from archive name failed".to_owned());
+            return 1;
+        };
+
+        let plugin_path = get_bpo().join("plugins").join(file_stem); 
+
+        if !plugin_path.exists() {
+            if fs::create_dir(&plugin_path).is_err() {
+                log(0, "Failed to create plugin directory".to_owned());
+                return 1;
+            }
+
+            if sevenz_rust::decompress_file(file, plugin_path).is_ok() {
+                return 0;
+            } else {
+                log(0, "Failed to decompress plugin archive".to_owned());
+                return 1;
+            }
+        } else {
+            log(0, "Plugin folder already exists".to_owned());
+            return 1;
+        }
     }
+    
+    2
 }
 
 #[tauri::command]

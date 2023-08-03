@@ -6,14 +6,15 @@
     import { toast } from '@zerodevx/svelte-toast';
 
     const update = async (toastText) => {
-        // const { manifest } = await checkUpdate();
+        const { manifest } = await checkUpdate();
 
-        // log(
-        //     0,
-        //     `Installing update: ${manifest?.version}, ${manifest?.date}, ${manifest?.body}`
-        // );
+        log(
+             0,
+             `Installing update: ${manifest?.version}, ${manifest?.date}, ${manifest?.body}`
+        );
 
-        // await installUpdate();
+        await installUpdate();
+        
         toast.push(toastText, {
             theme: {
                 '--toastBackground': '#171717',
@@ -22,7 +23,7 @@
         });
 
         setTimeout(async () => {
-            // await relaunch();
+            await relaunch();
         }, 5000);
     };
 </script>

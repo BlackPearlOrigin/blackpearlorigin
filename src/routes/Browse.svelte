@@ -35,38 +35,6 @@
 
 <main class="container">
     <div class="main">
-        <!-- <h1>{$t('browseText')}</h1> -->
-
-        <div class="search">
-            <button
-                type="submit"
-                on:click="{() =>
-                    searchGame(selectedPlugin, inputText).then((data) => {
-                        searchData = JSON.parse(data);
-                    })}"
-            >
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <input
-                placeholder="{$t('library.searchGame')}"
-                type="text"
-                bind:value="{inputText}"
-            />
-            <select bind:value="{selectedPlugin}" name="Plugins">
-                <option selected>{$t('browse.selectPlugin')}</option>
-
-                <!--
-					Awaits the data to be resolved
-					After that adds an option for each plugin
-				-->
-                {#await getPlugins() then plugins}
-                    {#each plugins as plugin}
-                        <option value="{plugin.location}">{plugin.name}</option>
-                    {/each}
-                {/await}
-            </select>
-        </div>
-
         <!--
 			Awaits for search data to be resolved
 			After that add an div with the game title

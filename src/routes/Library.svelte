@@ -20,23 +20,6 @@
     // Gets the open function from simple-modal context
     const { open }: any = getContext('simple-modal');
 
-    // When the modal is closed re-run the function getGames
-    const showNewModal = () =>
-        open(
-            // 1° Arg: Component
-            // 2° Arg: Props
-            // 3° Arg: Options
-            // 4° Arg: Callbacks
-            NewGame,
-            {},
-            {},
-            {
-                onClose: () => {
-                    games = getGames();
-                },
-            }
-        );
-
     // Show modal to edit games using prepolulated values
     const showEditModal = (game: any) =>
         open(
@@ -69,19 +52,6 @@
 
 <main class="container">
     <div class="main">
-        <div class="top">
-            <!-- Creates a modal when the button is clicked -->
-            <button on:click="{() => showNewModal()}"
-                ><AddOutline size="25" /></button
-            >
-            <input
-                type="text"
-                placeholder="{$t('browseText')}"
-                class="search-bar"
-                bind:value="{query}"
-            />
-        </div>
-
         <!-- Awaits for games to be resolved -->
         <!-- After that, loop over every object in that array -->
         <!-- And add those results to a div -->

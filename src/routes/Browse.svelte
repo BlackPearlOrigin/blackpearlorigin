@@ -1,5 +1,10 @@
+<!--
+    TODO: Add a basic scraper to the backend so i can implement 
+          on the frontend
+-->
+
 <script lang="ts">
-    import { getPlugins, searchGame, handleKeypress } from '../scripts/Browse';
+    import { searchGame, handleKeypress } from '../scripts/Browse';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
     import { log } from '../scripts/Main';
@@ -35,8 +40,6 @@
 
 <main class="container">
     <div class="main">
-        <!-- <h1>{$t('browseText')}</h1> -->
-
         <div class="search">
             <button
                 type="submit"
@@ -52,19 +55,6 @@
                 type="text"
                 bind:value="{inputText}"
             />
-            <select bind:value="{selectedPlugin}" name="Plugins">
-                <option selected>{$t('browse.selectPlugin')}</option>
-
-                <!--
-					Awaits the data to be resolved
-					After that adds an option for each plugin
-				-->
-                {#await getPlugins() then plugins}
-                    {#each plugins as plugin}
-                        <option value="{plugin.location}">{plugin.name}</option>
-                    {/each}
-                {/await}
-            </select>
         </div>
 
         <!--

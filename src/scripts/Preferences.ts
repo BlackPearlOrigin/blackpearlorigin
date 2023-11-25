@@ -6,16 +6,6 @@ import { isEmpty } from './Main';
 
 /**
  * Typescript Function -> Rust Function
- * - Invokes a function that installs a plugin
- *
- * @returns Nothing
- */
-export const installPlugin = async (): Promise<number> => {
-    let returnValue = await invoke('plugin_installer');
-    return returnValue as number;
-};
-/**
- * Typescript Function -> Rust Function
  * - Opens a pop-up window, then if the user selects yes,
  *   wipes the library
  *
@@ -63,16 +53,6 @@ export const saveData = async (
 
         return '';
     });
-};
-
-/**
- * Typescript Function -> Rust Function
- * - Invokes a function that uninstalls a plugin
- *
- * @returns nothing
- */
-export const uninstallPlugin = async (plugin: Plugin) => {
-    await invoke('uninstall_plugin', { plugin: plugin });
 };
 
 /*

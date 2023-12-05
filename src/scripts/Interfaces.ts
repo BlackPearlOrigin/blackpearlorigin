@@ -6,13 +6,6 @@
 export interface Config {
     currentLang: string;
 }
-export interface Plugin {
-    name: string;
-    description: string;
-    author: string;
-    source: string;
-    location: string;
-}
 
 interface Links {
     link: string;

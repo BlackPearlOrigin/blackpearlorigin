@@ -1,15 +1,18 @@
+<!--
+    TODO: Add a basic scraper to the backend so i can implement 
+          on the frontend
+-->
+
 <script lang="ts">
-    import { getPlugins, searchGame, handleKeypress } from '../scripts/Browse';
+    import { searchGame, handleKeypress } from '../scripts/Browse';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
-    import { log } from '../scripts/Main';
 
     // Defines variables for the:
     // - Search text
     // - Selected plugin
     // - And the search data
     let inputText: string;
-    let selectedPlugin: string = '';
     let searchData: SearchedGame[] = [];
 </script>
 
@@ -21,27 +24,18 @@
 <svelte:window
     on:keydown="{({ key }) => {
         if (key === 'Enter') {
-            handleKeypress(selectedPlugin, inputText)
-                .then((data) => {
-                    searchData = JSON.parse(data);
-                })
-                .catch((error) => {
-                    log(1, `No games searched. msg: ${error}`);
-                    searchData = [];
-                });
+            // search for game
         }
     }}"
 />
 
 <main class="container">
     <div class="main">
-        <!-- <h1>{$t('browseText')}</h1> -->
-
         <div class="search">
             <button
                 type="submit"
                 on:click="{() =>
-                    searchGame(selectedPlugin, inputText).then((data) => {
+                    searchGame(inputText).then((data) => {
                         searchData = JSON.parse(data);
                     })}"
             >
@@ -52,19 +46,6 @@
                 type="text"
                 bind:value="{inputText}"
             />
-            <select bind:value="{selectedPlugin}" name="Plugins">
-                <option selected>{$t('browse.selectPlugin')}</option>
-
-                <!--
-					Awaits the data to be resolved
-					After that adds an option for each plugin
-				-->
-                {#await getPlugins() then plugins}
-                    {#each plugins as plugin}
-                        <option value="{plugin.location}">{plugin.name}</option>
-                    {/each}
-                {/await}
-            </select>
         </div>
 
         <!--

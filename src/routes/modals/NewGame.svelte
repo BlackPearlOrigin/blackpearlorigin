@@ -10,7 +10,7 @@
         downloadImage,
     } from '../../scripts/Library';
 
-    import { isEmpty } from "../../scripts/Main.js";
+    import { isEmpty } from '../../scripts/Main.js';
 
     const { close }: any = getContext('simple-modal');
     export let title: string;
@@ -22,8 +22,6 @@
     let moreThanOneGameMeta: boolean;
     let gameMetadata: IGDBData[] = [];
     let gameMetadataModal: HTMLDialogElement;
-    
-    
 
     // TS Function -> Rust Function
     // - Opens a File selector dialog
@@ -109,7 +107,8 @@
             maxlength="800"
             name="Description"
             placeholder="{$t('modals.newGame.desc')}"
-            bind:value="{description}"></textarea>
+            bind:value="{description}"
+        ></textarea>
 
         <button
             class="fetch-meta ng-button"
@@ -131,7 +130,7 @@
                             title = gameMeta[0].name;
 
                             const downImagePath = await downloadImage(
-                                gameMeta[0].cover_url
+                                gameMeta[0].cover_url,
                             );
 
                             imagePath = downImagePath;
@@ -169,7 +168,7 @@
                     title = gameMetadata[i].name;
 
                     const downImagePath = await downloadImage(
-                        gameMetadata[i].cover_url
+                        gameMetadata[i].cover_url,
                     );
 
                     imagePath = downImagePath;

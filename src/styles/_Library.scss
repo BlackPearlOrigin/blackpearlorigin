@@ -52,7 +52,8 @@
         padding: 0px 32px;
     }
 
-    .search-bar:hover, button:hover {
+    .search-bar:hover,
+    button:hover {
         background-color: #181818;
     }
 }
@@ -103,7 +104,7 @@
 
     .gm-flex {
         display: flex;
-        
+
         .game-modal {
             box-shadow: 0px 0px 32px #00000055;
             background-color: #101010;

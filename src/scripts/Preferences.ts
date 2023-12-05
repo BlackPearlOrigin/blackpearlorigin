@@ -1,19 +1,8 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
-import type { Plugin } from './Interfaces';
 import { isEmpty } from './Main';
 
-/**
- * Typescript Function -> Rust Function
- * - Invokes a function that installs a plugin
- *
- * @returns Nothing
- */
-export const installPlugin = async (): Promise<number> => {
-    let returnValue = await invoke('plugin_installer');
-    return returnValue as number;
-};
 /**
  * Typescript Function -> Rust Function
  * - Opens a pop-up window, then if the user selects yes,
@@ -55,24 +44,14 @@ export const saveData = async (
 
     await writeTextFile('config.json', dataObjString, {
         dir: BaseDirectory.AppLocalData,
-    }).catch(() => {
+    }).catch((e) => {
         invoke('log', {
             logLevel: 0,
-            logMessage: 'Failed to write file',
+            logMessage: `Failed to write file: ${e}`,
         });
 
         return '';
     });
-};
-
-/**
- * Typescript Function -> Rust Function
- * - Invokes a function that uninstalls a plugin
- *
- * @returns nothing
- */
-export const uninstallPlugin = async (plugin: Plugin) => {
-    await invoke('uninstall_plugin', { plugin: plugin });
 };
 
 /*

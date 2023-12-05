@@ -14,7 +14,6 @@
         );
 
         await installUpdate();
-
         toast.push(toastText, {
             theme: {
                 '--toastBackground': '#171717',

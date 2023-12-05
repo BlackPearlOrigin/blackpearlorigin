@@ -1,5 +1,10 @@
+<!--
+    TODO: Add a basic scraper to the backend so i can implement 
+          on the frontend
+-->
+
 <script lang="ts">
-    import { searchGame } from '../scripts/Browse';
+    import { searchGame, handleKeypress } from '../scripts/Browse';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
 
@@ -26,8 +31,6 @@
 
 <main class="container">
     <div class="main">
-        <!-- <h1>{$t('browseText')}</h1> -->
-
         <div class="search">
             <button
                 type="submit"

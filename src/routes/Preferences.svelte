@@ -2,9 +2,7 @@
     import translations from '../locale/locales.js';
     import { dict, locale, t } from '../locale/i18n.js';
     import {
-        installPlugin,
         saveData,
-        uninstallPlugin,
         resetTheme,
         wipeLibrary,
     } from '../scripts/Preferences.js';
@@ -30,19 +28,6 @@
 <main class="container">
     <div class="main">
         <div class="section">
-            <div class="plugin-card">
-                <div class="header">
-                    <span>{$t('pluginText')}</span>
-                    <Cube size="18px" />
-                </div>
-                <div class="buttons">
-                    <button id="wipe" on:click="{wipeLibrary}">
-                        <TrashBin class="bin" size="18px" />
-                        {$t('preferences.wipeLibrary')}
-                    </button>
-                </div>
-            </div>
-
             <div class="plugin-card">
                 <div class="header">
                     <span>{$t('themeText')}</span>

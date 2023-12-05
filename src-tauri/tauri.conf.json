@@ -81,7 +81,7 @@
         },
         "updater": {
             "endpoints": [
-            "https://github.com/BlackPearlOrigin/updater/blob/main/endpoint.json" 
+              "https://github.com/BlackPearlOrigin/updater/blob/main/endpoint.json" 
             ],
             "active": true,
             "dialog": false,

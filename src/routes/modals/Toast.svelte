@@ -9,12 +9,12 @@
         const { manifest } = await checkUpdate();
 
         log(
-             0,
-             `Installing update: ${manifest?.version}, ${manifest?.date}, ${manifest?.body}`
+            0,
+            `Installing update: ${manifest?.version}, ${manifest?.date}, ${manifest?.body}`,
         );
 
         await installUpdate();
-        
+
         toast.push(toastText, {
             theme: {
                 '--toastBackground': '#171717',

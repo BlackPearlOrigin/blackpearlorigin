@@ -9,7 +9,6 @@
         wipeLibrary,
     } from '../scripts/Preferences.js';
     import languageNames from '../locale/languages.json';
-    import { getPlugins } from '../scripts/Browse.js';
     import {
         Cube,
         TrashBin,
@@ -19,9 +18,7 @@
         CloudDownload,
         CloudUpload,
     } from 'svelte-ionicons';
-    import { toast } from '@zerodevx/svelte-toast';
     import { convertFileSrc } from '@tauri-apps/api/tauri';
-    const plugins = getPlugins();
 
     $: languages = Object.keys(translations);
     $: dict.set(translations);
@@ -39,20 +36,6 @@
                     <Cube size="18px" />
                 </div>
                 <div class="buttons">
-                    <button
-                        id="install"
-                        on:click="{() =>
-                            installPlugin().then((res) => {
-                                if (res === 0) {
-                                    toast.push('Successfully installed plugin');
-                                } else if (res === 1) {
-                                    toast.push('Plugin installation failed');
-                                }
-                            })}"
-                    >
-                        <Cube class="cube" size="18px" />
-                        {$t('preferences.installPlugin')}
-                    </button>
                     <button id="wipe" on:click="{wipeLibrary}">
                         <TrashBin class="bin" size="18px" />
                         {$t('preferences.wipeLibrary')}
@@ -91,7 +74,7 @@
 
                 <div class="checkbox">
                     <input type="checkbox" bind:checked="{updaterStatus}" />
-                    <p>Supress updater</p>
+                    <p>Suppress updater</p>
                 </div>
             </div>
 
@@ -125,72 +108,16 @@
                                 $locale,
                                 updaterStatus,
                                 stylesheetUrl.startsWith(
-                                    'https://raw.githubusercontent'
+                                    'https://raw.githubusercontent',
                                 ) || stylesheetUrl === undefined
                                     ? stylesheetUrl
-                                    : convertFileSrc(stylesheetUrl)
+                                    : convertFileSrc(stylesheetUrl),
                             )}"
                     >
                         {$t('preferences.saveText')}
                     </button>
                 </div>
             </div>
-        </div>
-
-        <div class="available-plugins">
-            <div class="header">
-                <span>{$t('preferences.availablePlugins')}</span>
-                <Cube size="18px" />
-            </div>
-            <ul class="cards">
-                {#await plugins then plugins}
-                    {#each plugins as plugin}
-                        <div class="card">
-                            <div class="card-left">
-                                <p class="card-header">
-                                    {plugin.name}
-                                    <a
-                                        href="{plugin.source}"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        title="Open plugin source"
-                                    >
-                                        <OpenOutline size="20px" />
-                                    </a>
-                                </p>
-                                <div class="card-footer">
-                                    <span class="author" title="Plugin author">
-                                        <b>
-                                            {$t(
-                                                'preferences.pluginCard.author'
-                                            )}
-                                        </b>
-                                        {plugin.author}
-                                    </span>
-                                    <span class="desc">
-                                        <b>
-                                            {$t('preferences.pluginCard.desc')}
-                                        </b>
-                                        {plugin.description}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="buttons">
-                                <button
-                                    class="remove"
-                                    on:click="{() => uninstallPlugin(plugin)}"
-                                >
-                                    <Close size="22px" />
-                                </button>
-                            </div>
-                        </div>
-                    {/each}
-                    {#if plugins.length === 0}
-                        <h3 class="noresults">None yet...</h3>
-                    {/if}
-                {/await}
-            </ul>
         </div>
     </div>
 </main>

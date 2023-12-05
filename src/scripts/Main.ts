@@ -10,7 +10,6 @@ export async function getConfig() {
         dir: BaseDirectory.AppLocalData,
     }).catch(() => {
         log(0, 'Failed to read config.json');
-
         return '';
     });
 
@@ -23,18 +22,29 @@ export async function getConfig() {
 export async function loadLocale() {
     const config = await getConfig();
     locale.set(config.currentLang);
-    switchTheme(config.cssUrl)
+    switchTheme(config.cssUrl);
 }
 
 // TS Function -> Rust Function
 // - Logs a message to the Rust backend
 export function log(logLevel: number, logMessage: string) {
-    const levels: string[] = ['ERROR', 'WARNING', 'INFO'];
-    console.log(`[${levels[logLevel]}]: ${logMessage}`);
-    invoke('log', {
-        logLevel: logLevel,
-        logMessage: `From TS: ${logMessage}`,
-    });
+    switch (logLevel) {
+        case 0:
+            invoke('log_error', {
+                msg: `From TS: ${logMessage}`,
+            });
+            break;
+        case 1:
+            invoke('log_warn', {
+                msg: `From TS: ${logMessage}`,
+            });
+            break;
+        case 2:
+            invoke('log_info', {
+                msg: `From TS: ${logMessage}`,
+            });
+            break;
+    }
 }
 
 // Defines a function that checks if the same string is empty

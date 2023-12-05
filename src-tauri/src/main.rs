@@ -5,10 +5,11 @@
 
 mod commands;
 mod paths;
-mod plugins;
 mod startup;
 
 fn main() {
+    env_logger::init();
+
     // Create the usual directories if they don't exist.
     startup::init();
 
@@ -17,11 +18,12 @@ fn main() {
     tauri::Builder::default()
         // Invoke your commands here
         .invoke_handler(tauri::generate_handler![
-            commands::plugin_installer,
             commands::file_dialog,
             commands::image_dialog,
             commands::run_game,
-            commands::logging::log,
+            commands::logging::log_error,
+            commands::logging::log_warn,
+            commands::logging::log_info,
             commands::database::save_to_db,
             commands::database::get_from_db,
             commands::database::edit_in_db,
@@ -29,9 +31,6 @@ fn main() {
             commands::database::wipe_library,
             commands::metadata::get_game_metadata,
             commands::metadata::download_image,
-            plugins::scan_plugins,
-            plugins::uninstall_plugin,
-            plugins::search
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

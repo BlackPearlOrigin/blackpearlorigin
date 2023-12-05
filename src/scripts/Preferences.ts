@@ -1,7 +1,6 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
-import type { Plugin } from './Interfaces';
 import { isEmpty } from './Main';
 
 /**
@@ -55,10 +54,10 @@ export const saveData = async (
 
     await writeTextFile('config.json', dataObjString, {
         dir: BaseDirectory.AppLocalData,
-    }).catch(() => {
+    }).catch((e) => {
         invoke('log', {
             logLevel: 0,
-            logMessage: 'Failed to write file',
+            logMessage: `Failed to write file: ${e}`,
         });
 
         return '';

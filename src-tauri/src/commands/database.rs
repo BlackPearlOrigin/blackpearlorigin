@@ -1,8 +1,9 @@
-use crate::commands::logging::log;
 use crate::paths;
 use rusqlite::{params, Connection};
 use std::{fs, path::PathBuf};
 use uuid::Uuid;
+
+use super::logging::log_info;
 
 #[derive(serde::Serialize)]
 pub struct Game {
@@ -16,10 +17,7 @@ pub struct Game {
 pub fn copy_image(image_path: PathBuf) -> PathBuf {
     let uuid = Uuid::new_v4().simple().to_string();
 
-    log(
-        2,
-        format!("Generated the following (simple) UUID: {}", uuid),
-    );
+    log_info(&format!("Generated the following (simple) UUID: {}", uuid));
 
     let file_name = match image_path.extension() {
         Some(extension) => format!("{}.{}", uuid, extension.to_string_lossy()),
@@ -60,7 +58,7 @@ pub fn save_to_db(
 
     transaction.commit().map_err(|e| e.to_string())?;
 
-    log(2, format!("Saved game with name \"{}\" to the DB", title));
+    log_info(&format!("Saved game with name \"{}\" to the DB", title));
     Ok(())
 }
 
@@ -86,7 +84,7 @@ pub fn get_from_db() -> Result<Vec<Game>, String> {
         });
     }
 
-    log(2, format!("Got {} game(s) from DB", games.len()));
+    log_info(&format!("Got {} game(s) from DB", games.len()));
     Ok(games)
 }
 
@@ -137,7 +135,7 @@ pub fn delete_from_db(id: i64) -> Result<(), String> {
     tx.execute(query, params![id]).map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;
 
-    log(2, format!("Deleted game with id: {}", id));
+    log_info(&format!("Deleted game with id: {}", id));
     Ok(())
 }
 
@@ -151,6 +149,6 @@ pub fn wipe_library() -> Result<(), String> {
     tx.execute(query, []).map_err(|e| e.to_string())?;
     tx.commit().map_err(|e| e.to_string())?;
 
-    log(2, "Wiped the entire library".to_owned());
+    log_info("Wiped the entire library");
     Ok(())
 }

@@ -34,7 +34,7 @@
                 onClose: () => {
                     games = getGames();
                 },
-            }
+            },
         );
 
     // Show modal to edit games using prepolulated values
@@ -58,7 +58,7 @@
                 onClose: () => {
                     games = getGames();
                 },
-            }
+            },
         );
 
     const openGameModal = () => gameModal.showModal();
@@ -149,7 +149,7 @@
                                 id="execute"
                                 on:click="{() =>
                                     operationHandler(() =>
-                                        runGame(gameOnModal.exe_path)
+                                        runGame(gameOnModal.exe_path),
                                     )}">{$t('library.run')}</button
                             >
                             <p id="game-desc" class="game-desc">
@@ -161,7 +161,7 @@
                                     class="game-button-run"
                                     on:click="{() =>
                                         operationHandler(() =>
-                                            showEditModal(gameOnModal)
+                                            showEditModal(gameOnModal),
                                         ).then(() => {
                                             games = getGames();
                                         })}"
@@ -174,7 +174,7 @@
                                             console.log(gameOnModal.id);
                                         }
                                         operationHandler(() =>
-                                            deleteGame(gameOnModal.id)
+                                            deleteGame(gameOnModal.id),
                                         ).then(() => {
                                             games = getGames();
                                         });

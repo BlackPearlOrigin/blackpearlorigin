@@ -7,7 +7,6 @@
         wipeLibrary,
     } from '../scripts/Preferences.js';
     import languageNames from '../locale/languages.json';
-    import { getPlugins } from '../scripts/Browse.js';
     import {
         Cube,
         TrashBin,
@@ -17,9 +16,7 @@
         CloudDownload,
         CloudUpload,
     } from 'svelte-ionicons';
-    import { toast } from '@zerodevx/svelte-toast';
     import { convertFileSrc } from '@tauri-apps/api/tauri';
-    const plugins = getPlugins();
 
     $: languages = Object.keys(translations);
     $: dict.set(translations);
@@ -62,7 +59,7 @@
 
                 <div class="checkbox">
                     <input type="checkbox" bind:checked="{updaterStatus}" />
-                    <p>Supress updater</p>
+                    <p>Suppress updater</p>
                 </div>
             </div>
 
@@ -96,10 +93,10 @@
                                 $locale,
                                 updaterStatus,
                                 stylesheetUrl.startsWith(
-                                    'https://raw.githubusercontent'
+                                    'https://raw.githubusercontent',
                                 ) || stylesheetUrl === undefined
                                     ? stylesheetUrl
-                                    : convertFileSrc(stylesheetUrl)
+                                    : convertFileSrc(stylesheetUrl),
                             )}"
                     >
                         {$t('preferences.saveText')}

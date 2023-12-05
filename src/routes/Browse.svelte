@@ -7,14 +7,12 @@
     import { searchGame, handleKeypress } from '../scripts/Browse';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
-    import { log } from '../scripts/Main';
 
     // Defines variables for the:
     // - Search text
     // - Selected plugin
     // - And the search data
     let inputText: string;
-    let selectedPlugin: string = '';
     let searchData: SearchedGame[] = [];
 </script>
 
@@ -26,14 +24,7 @@
 <svelte:window
     on:keydown="{({ key }) => {
         if (key === 'Enter') {
-            handleKeypress(selectedPlugin, inputText)
-                .then((data) => {
-                    searchData = JSON.parse(data);
-                })
-                .catch((error) => {
-                    log(1, `No games searched. msg: ${error}`);
-                    searchData = [];
-                });
+            // search for game
         }
     }}"
 />
@@ -44,7 +35,7 @@
             <button
                 type="submit"
                 on:click="{() =>
-                    searchGame(selectedPlugin, inputText).then((data) => {
+                    searchGame(inputText).then((data) => {
                         searchData = JSON.parse(data);
                     })}"
             >

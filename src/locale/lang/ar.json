@@ -5,7 +5,6 @@
     "loadingText": "تحميل",
     "languageText": "اللغة",
     "preferences": {
-        "installPlugin": "تثبيت إضافة",
         "wipeLibrary": "امسح المكتبة",
         "saveText": "إحفظ",
         "availablePlugins": "الإضافات المتوفرة",
@@ -46,6 +45,5 @@
             "reboot": "اعادت التشغيل في ٥ ثواني..."
         }
     },
-    "pluginText": "الإضافات",
     "themeText": "الأشكال"
 }

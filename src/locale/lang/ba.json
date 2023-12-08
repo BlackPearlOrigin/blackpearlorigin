@@ -5,7 +5,6 @@
     "loadingText": "Učitavanje",
     "languageText": "Jezik",
     "preferences": {
-        "installPlugin": "Instaliraj dodatak",
         "wipeLibrary": "Izbriši sve datoteke",
         "saveText": "Spasi",
         "availablePlugins": "Dostupni dodaci",
@@ -46,6 +45,5 @@
             "reboot": "Restartiranje programa za 5 sekundi..."
         }
     },
-    "pluginText": "Dodaci",
     "themeText": "Pozadine"
 }

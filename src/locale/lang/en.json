@@ -5,7 +5,6 @@
     "loadingText": "Loading",
     "languageText": "Language",
     "preferences": {
-        "installPlugin": "Install a plugin",
         "wipeLibrary": "Wipe library",
         "saveText": "Save",
         "availablePlugins": "Available plugins",
@@ -24,7 +23,7 @@
     },
     "browse": {
         "selectPlugin": "Select a plugin",
-        "nothingFound": "Nothing Found",
+        "nothingFound": "Nothing found",
         "downloadText": "Download (DDL)",
         "downloadTextMagnet": "Download (Magnet)",
         "search": "Search"
@@ -32,21 +31,20 @@
     "modals": {
         "newGame": {
             "gameTitle": "Title",
-            "addExec": "Add Executable",
+            "addExec": "Add executable",
             "none": "None",
-            "addImg": "Add Image",
+            "addImg": "Add image",
             "desc": "Description",
             "done": "Done",
             "autoFetch": "Fetch metadata"
         },
         "fetchMeta": {
-            "selectGame": "Select a Game"
+            "selectGame": "Select a game"
         },
         "updater": {
             "updateAvailable": "New update available.",
             "reboot": "Rebooting in 5 seconds"
         }
     },
-    "pluginText": "Plugins",
     "themeText": "Themes"
 }

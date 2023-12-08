@@ -5,7 +5,6 @@
     "loadingText": "Ŝarĝante",
     "languageText": "Lingvo",
     "preferences": {
-        "installPlugin": "Instalu kromprogramon",
         "wipeLibrary": "Viŝu bibliotekon",
         "saveText": "Ŝpari",
         "availablePlugins": "Haveblaj kromprogramon",
@@ -46,6 +45,5 @@
             "reboot": "Rekomenco post 5 sekundoj..."
         }
     },
-    "pluginText": "Kromprogramon",
     "themeText": "Temoj"
 }

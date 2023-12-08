@@ -5,7 +5,6 @@
     "loadingText": "Учитавање",
     "languageText": "Језик",
     "preferences": {
-        "installPlugin": "Инсталирај додатак",
         "wipeLibrary": "Избриши датотеку",
         "saveText": "Сачувај",
         "availablePlugins": "Доступни додаци",
@@ -46,6 +45,5 @@
             "reboot": "Поновно покретање за 5 секунди..."
         }
     },
-    "pluginText": "Додаци",
     "themeText": "Позадине"
 }

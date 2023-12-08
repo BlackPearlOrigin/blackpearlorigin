@@ -5,7 +5,6 @@
     "loadingText": "Ładowanie",
     "languageText": "Język",
     "preferences": {
-        "installPlugin": "Zainstaluj rozszerzenie",
         "wipeLibrary": "Wyczyść biblioteke",
         "saveText": "Zapisz",
         "availablePlugins": "Dostępne rozszerzenia",
@@ -46,6 +45,5 @@
             "reboot": "Restart za 5 sekund..."
         }
     },
-    "pluginText": "Rozszerzenia",
     "themeText": "Style"
 }

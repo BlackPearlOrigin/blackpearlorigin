@@ -5,7 +5,6 @@
     "loadingText": "Carregando",
     "languageText": "Idioma",
     "preferences": {
-        "installPlugin": "Instalar um plugin",
         "wipeLibrary": "Apagar biblioteca",
         "saveText": "Salvar",
         "availablePlugins": "Plugins disponiveis",
@@ -46,6 +45,5 @@
             "reboot": "Reiniciando em 5 segundos..."
         }
     },
-    "pluginText": "Plugins",
     "themeText": "Temas"
 }

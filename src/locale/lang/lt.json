@@ -5,7 +5,6 @@
     "loadingText": "Kraunama",
     "languageText": "Kalba",
     "preferences": {
-        "installPlugin": "Instaliuoti priedą",
         "wipeLibrary": "Išvalyti biblioteka",
         "saveText": "Išsaugoti",
         "availablePlugins": "Pasiekiami priedai",
@@ -46,6 +45,5 @@
             "reboot": "Persikraunama po 5 sekundžių..."
         }
     },
-    "pluginText": "Priedai",
     "themeText": "Temos"
 }

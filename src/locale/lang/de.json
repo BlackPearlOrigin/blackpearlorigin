@@ -14,7 +14,9 @@
             "version": "Version:",
             "author": "Autor:",
             "desc": "Beschreibung:"
-        }
+        },
+        "resetToDefault": "Zurücksetzen",
+        "suppressUpdater": "Updater stummschalten"
     },
     "library": {
         "run": "Ausführen",

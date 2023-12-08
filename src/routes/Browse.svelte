@@ -4,7 +4,7 @@
 -->
 
 <script lang="ts">
-    import { searchGame, handleKeypress } from '../scripts/Browse';
+    import { searchGame } from '../scripts/Browse';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
 
@@ -54,7 +54,7 @@
 			And url for each object
 		-->
         {#if searchData.length === 0}
-            <h1 class="noresults">No results found</h1>
+            <h1 class="noresults">{$t('browse.nothingFound')}</h1>
         {/if}
         {#each searchData as Response}
             <div class="game">

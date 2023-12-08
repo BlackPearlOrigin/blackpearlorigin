@@ -14,7 +14,9 @@
             "version": "Version:",
             "author": "Author:",
             "desc": "Description:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Run",

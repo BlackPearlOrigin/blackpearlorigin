@@ -14,7 +14,9 @@
             "version": "Wersja:",
             "author": "Autor:",
             "desc": "Opis:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Start",

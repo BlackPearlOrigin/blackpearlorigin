@@ -14,7 +14,9 @@
             "version": "Weergawe:",
             "author": "Outeur:",
             "desc": "Beskrywing:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Uitvoer",

@@ -14,7 +14,9 @@
             "version": "Versio:",
             "author": "Aŭtoro:",
             "desc": "Priskribo:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Kuri",

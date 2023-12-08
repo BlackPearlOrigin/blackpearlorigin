@@ -14,7 +14,9 @@
             "version": "Versija:",
             "author": "Autorius:",
             "desc": "Aprašymas:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Atidaryti",

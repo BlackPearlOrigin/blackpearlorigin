@@ -14,7 +14,9 @@
             "version": "Verzija:",
             "author": "Autor:",
             "desc": "Opis:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Pokreni",

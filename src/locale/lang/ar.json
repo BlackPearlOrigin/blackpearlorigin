@@ -14,7 +14,9 @@
             "version": "الإصدار:",
             "author": "المؤلف:",
             "desc": "الوصف:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "تشغيل",

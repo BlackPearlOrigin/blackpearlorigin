@@ -14,7 +14,9 @@
             "version": "Верзија:",
             "author": "Аутор:",
             "desc": "Опис:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Покрени",

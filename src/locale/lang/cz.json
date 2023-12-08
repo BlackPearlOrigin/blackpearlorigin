@@ -1,0 +1,49 @@
+{
+    "browseText": "Hledat",
+    "libraryText": "Knihovna",
+    "prefsText": "Preference",
+    "loadingText": "Načítá se",
+    "languageText": "Jazyk",
+    "preferences": {
+        "wipeLibrary": "Smazat knihovnu",
+        "saveText": "Uložit",
+        "availablePlugins": "Dostupné pluginy",
+        "comingSoon": "Již brzy...",
+        "pluginCard": {
+            "version": "Verze:",
+            "author": "Autor:",
+            "desc": "Popis:"
+        },
+        "resetToDefault": "Obnovit do základního nastavení",
+        "suppressUpdater": "Potlačit aktualizátor"
+    },
+    "library": {
+        "run": "Načíst",
+        "searchGame": "Hledat"
+    },
+    "browse": {
+        "nothingFound": "Nic nebylo nalezeno",
+        "downloadText": "Stáhnout (DDL)",
+        "downloadTextMagnet": "Stáhnout (Magnet)",
+        "search": "Hledat"
+    },
+    "modals": {
+        "newGame": {
+            "gameTitle": "Název hry",
+            "addExec": "Přidat spustitelný soubor",
+            "none": "Bez",
+            "addImg": "Přidat obrázek",
+            "desc": "Popis",
+            "done": "Hotovo",
+            "autoFetch": "Načíst metadata"
+        },
+        "fetchMeta": {
+            "selectGame": "Vyberte hru."
+        },
+        "updater": {
+            "updateAvailable": "Dostupný nový update.",
+            "reboot": "Restart za 5 sekund..."
+        }
+    },
+    "themeText": "Témata"
+}

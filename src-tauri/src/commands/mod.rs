@@ -5,11 +5,15 @@ use rfd::FileDialog;
 #[cfg(target_family = "unix")]
 use std::os::unix::fs::PermissionsExt;
 
+use std::fs;
+use std::path::PathBuf;
+
 use self::logging::{log_error, log_info};
 
 pub mod database;
 pub mod logging;
 pub mod metadata;
+pub mod scrapers;
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable

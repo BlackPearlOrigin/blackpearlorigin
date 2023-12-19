@@ -28,6 +28,7 @@ anyhow = "1.0.71"
 sevenz-rust = { version = "0.2" }
 log = "0.4.20"
 env_logger = "0.10.1"
+rayon = "1.8.0"
 
 [features]
 # by default Tauri runs in production mode

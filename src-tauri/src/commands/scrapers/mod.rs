@@ -5,7 +5,7 @@ use crate::commands::scrapers::rezi::rezi_scraper;
 use super::logging::log_error;
 use rayon::prelude::*;
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, Debug)]
 pub struct Item {
     scraper: String,
     name: String,
@@ -18,23 +18,31 @@ struct Query {
     scrapers: Vec<String>
 }
 
-fn run_scraper(scraper_list: String) {
-    let scraper_deser: Query = serde_json::from_str(&scraper_list).unwrap();
+#[tauri::command]
+pub async fn run_scraper(scrapers: Vec<String>, query: String) {
+    let mut ret: Vec<Vec<Item>> = vec![];
 
-    let results = scraper_deser.scrapers
-        .par_iter()
-        .map(|scraper| {
-            parse_scrapers(scraper.clone(), scraper_deser.query.clone())
-        }); 
+    let results: Vec<Item> = scrapers
+        .into_par_iter()
+        .flat_map(async |scraper| {
+            let parsed = parse_scrapers(scraper.clone(), query.clone());
+            parsed.await.into_iter()
+        })
+        .collect();
+
+    println!("{:?}", results); 
 }
 
 // todo: fix this code, my brain melted
-fn parse_scrapers(scraper: String, query: String) -> Vec<Item> {
+async fn parse_scrapers(scraper: String, query: String) -> Vec<Item> {
     match scraper.as_str() {
-        "Rezi" => rezi_scraper(query),
+        "rezi" => {
+            let res = rezi_scraper(query);
+            res.await
+        },
         _ => {
             log_error("Scraper not found");
             Vec::new()
-        },
-    };
+        }
+    }
 }

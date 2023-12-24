@@ -4,7 +4,7 @@
 -->
 
 <script lang="ts">
-    import { searchGame, handleKeypress } from '../scripts/Browse';
+    import { searchGame } from '../scripts/Browse';
     import { t } from '../locale/i18n';
     import type { SearchedGame } from '../scripts/Interfaces';
 

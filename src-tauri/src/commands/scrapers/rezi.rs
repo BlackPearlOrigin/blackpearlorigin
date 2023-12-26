@@ -1,10 +1,17 @@
-use reqwest::header::AUTHORIZATION;
-use crate::commands::scrapers::Item;
+use crate::commands::logging::log_error;
+use reqwest::header::{AUTHORIZATION, CONTENT_TYPE};
+
+#[derive(serde::Serialize, Debug)]
+pub struct Item {
+    scraper: String,
+    name: String,
+    links: Vec<String>,
+}
 
 #[derive(serde::Serialize)]
 struct Payload {
     q: String,
-    limit: i32
+    limit: i32,
 }
 
 #[derive(serde::Deserialize)]
@@ -14,44 +21,74 @@ struct Response {
 
 #[derive(serde::Deserialize)]
 struct Hit {
-    id: String,
     link: String,
     title: String,
-    igdb_url: String,
-    site: String
 }
 
-pub async fn rezi_scraper(query: String) -> Vec<Item> {
+#[tauri::command]
+pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
     let payload = Payload {
-        q: query,
-        limit: 15
+        q: query.to_owned(),
+        limit: 16,
     };
-    let payload_ser = serde_json::to_string(&payload).unwrap();
 
-    let result = reqwest::Client::new()
-        .get("https://search.rezi.one/indexes/rezi/search")
-        .header(AUTHORIZATION, "e2a1974678b37386fef69bb3638a1fb36263b78a8be244c04795ada0fa250d3d")
-        .body(payload_ser)
+    let payload_str = match serde_json::to_string(&payload).map_err(|e| e.to_string()) {
+        Ok(str) => str,
+        Err(e) => {
+            log_error(&e);
+            return Err(e);
+        }
+    };
+
+    let client = reqwest::blocking::Client::new();
+
+    let response = match client
+        .post("https://search.rezi.one/indexes/rezi/search")
+        .header(
+            AUTHORIZATION,
+            "Bearer e2a1974678b37386fef69bb3638a1fb36263b78a8be244c04795ada0fa250d3d",
+        )
+        .header(CONTENT_TYPE, "application/json")
+        .body(payload_str)
         .send()
-        .await
-        .expect("failed to make request")
-        .text()
-        .await;
+        .map_err(|e| e.to_string())
+    {
+        Ok(r) => r,
+        Err(e) => {
+            log_error(&e);
+            return Err(e);
+        }
+    };
 
-    let result_json: Response = serde_json::from_str(&result.unwrap()).unwrap();
-    let mut to_frontend: Vec<Item> = vec![];
+    let text = match response.text().map_err(|e| e.to_string()) {
+        Ok(t) => t,
+        Err(e) => {
+            log_error(&e);
+            return Err(e);
+        }
+    };
 
-    for hit in result_json.hits {    
+    let result_json: Response = match serde_json::from_str(&text).map_err(|e| e.to_string()) {
+        Ok(j) => j,
+        Err(e) => {
+            log_error(&e);
+            return Err(e);
+        }
+    };
+
+    let mut items: Vec<Item> = vec![];
+
+    for hit in result_json.hits {
         let links = vec![hit.link];
 
         let res = Item {
             scraper: "Rezi".to_string(),
             name: hit.title,
-            links 
+            links,
         };
-        
-        to_frontend.push(res);
+
+        items.push(res);
     }
 
-    return to_frontend;
+    Ok(items)
 }

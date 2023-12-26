@@ -3,6 +3,8 @@
     windows_subsystem = "windows"
 )]
 
+use commands::{logging::log_error, scrapers::rezi::search_rezi};
+
 mod commands;
 mod paths;
 mod startup;
@@ -12,6 +14,12 @@ fn main() {
 
     // Create the usual directories if they don't exist.
     startup::init();
+
+    // example invokation of rezi scraper
+    match search_rezi("starfield") {
+        Ok(r) => println!("{r:#?}"),
+        Err(e) => log_error(&e),
+    }
 
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below
@@ -31,7 +39,7 @@ fn main() {
             commands::database::wipe_library,
             commands::metadata::get_game_metadata,
             commands::metadata::download_image,
-            commands::scrapers::run_scraper
+            commands::scrapers::rezi::search_rezi,
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

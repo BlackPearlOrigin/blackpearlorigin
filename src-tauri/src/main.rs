@@ -3,7 +3,7 @@
     windows_subsystem = "windows"
 )]
 
-use commands::{logging::log_error, scrapers::rezi::search_rezi};
+use commands::{logging::log_info, scrapers::rezi::search_rezi};
 
 mod commands;
 mod paths;
@@ -17,8 +17,8 @@ fn main() {
 
     // example invokation of rezi scraper
     match search_rezi("starfield") {
-        Ok(r) => println!("{r:#?}"),
-        Err(e) => log_error(&e),
+        Some(r) => println!("{r:#?}"),
+        None => log_info("Scraper returned no results"),
     }
 
     // This object is the initial tauri window

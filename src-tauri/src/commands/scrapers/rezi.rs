@@ -26,7 +26,7 @@ struct Hit {
 }
 
 #[tauri::command]
-pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
+pub fn search_rezi(query: &str) -> Option<Vec<Item>> {
     let payload = Payload {
         q: query.to_owned(),
         limit: 16,
@@ -36,7 +36,7 @@ pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
         Ok(str) => str,
         Err(e) => {
             log_error(&e);
-            return Err(e);
+            return None;
         }
     };
 
@@ -56,7 +56,7 @@ pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
         Ok(r) => r,
         Err(e) => {
             log_error(&e);
-            return Err(e);
+            return None;
         }
     };
 
@@ -64,7 +64,7 @@ pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
         Ok(t) => t,
         Err(e) => {
             log_error(&e);
-            return Err(e);
+            return None;
         }
     };
 
@@ -72,7 +72,7 @@ pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
         Ok(j) => j,
         Err(e) => {
             log_error(&e);
-            return Err(e);
+            return None;
         }
     };
 
@@ -90,5 +90,5 @@ pub fn search_rezi(query: &str) -> Result<Vec<Item>, String> {
         items.push(res);
     }
 
-    Ok(items)
+    Some(items)
 }

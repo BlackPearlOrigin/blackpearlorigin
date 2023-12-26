@@ -14,6 +14,7 @@ interface Links {
 export interface SearchedGame {
     name: string;
     links: Links[];
+    scraper: string;
 }
 
 export interface Game {

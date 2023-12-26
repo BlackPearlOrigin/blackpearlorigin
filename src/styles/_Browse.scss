@@ -64,7 +64,7 @@
     border-width: 1px;
     border-color: #323232;
     background-color: #0b0e10;
-    margin: 10px 1px 0px 2px;
+    margin: 10px 8px 0px 2px;
     padding: 5px 5px 20px 8px;
     border-radius: 4px;
 
@@ -91,6 +91,15 @@
         border-radius: 4px;
         border-color: #323232;
         border-width: 1px;
+    }
+
+    #source {
+        float: right;
+        margin-right: 15px;
+        font-size: 0.8rem;
+
+        position: relative;
+        top: 6px;
     }
 }
 

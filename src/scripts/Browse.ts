@@ -24,13 +24,11 @@ export const searchGame = async (query: string): Promise<string> => {
         return '{}';
     }
 
-    const data = await invoke('run_scraper', {
-        query: query,
-        scrapers: ['rezi'],
-    }).catch((e: string) => {
+    const data = await invoke('search_rezi', {
+        query: `${query}`,
+    }).catch((e) => {
         log(0, `Failed to search game. Error: ${e}`);
-        return {};
     });
 
-    return data as string;
+    return JSON.stringify(data);
 };

@@ -44,6 +44,11 @@ export function log(logLevel: number, logMessage: string) {
                 msg: `From TS: ${logMessage}`,
             });
             break;
+        default:
+            invoke('log_info', {
+                msg: `From TS: ${logMessage}`,
+            });
+            break;
     }
 }
 

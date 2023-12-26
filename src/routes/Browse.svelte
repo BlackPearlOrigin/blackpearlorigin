@@ -66,6 +66,7 @@
                             ? $t('browse.downloadTextMagnet')
                             : $t('browse.downloadText')}
                     </a>
+                    <span id="source">{Response.scraper}</span>
                 {/each}
             </div>
         {/each}

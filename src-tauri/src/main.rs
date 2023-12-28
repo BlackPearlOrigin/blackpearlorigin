@@ -3,8 +3,6 @@
     windows_subsystem = "windows"
 )]
 
-use commands::{logging::log_info, scrapers::rezi::search_rezi};
-
 mod commands;
 mod paths;
 mod startup;
@@ -14,12 +12,6 @@ fn main() {
 
     // Create the usual directories if they don't exist.
     startup::init();
-
-    // example invokation of rezi scraper
-    match search_rezi("starfield") {
-        Some(r) => println!("{r:#?}"),
-        None => log_info("Scraper returned no results"),
-    }
 
     // This object is the initial tauri window
     // Tauri commands that can be called from the frontend are to be invoked below

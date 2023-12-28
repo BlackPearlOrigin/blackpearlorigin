@@ -31,3 +31,9 @@ export interface IGDBData {
     name: string;
     summary: string;
 }
+
+export interface ScraperResponseEntry {
+    links: string[];
+    name: string;
+    scraper: string;
+}

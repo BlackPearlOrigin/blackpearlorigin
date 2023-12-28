@@ -6,14 +6,25 @@
 <script lang="ts">
     import { searchGame } from '../scripts/Browse';
     import { t } from '../locale/i18n';
-    import type { SearchedGame } from '../scripts/Interfaces';
+    import type {
+        ScraperResponseEntry,
+        SearchedGame,
+    } from '../scripts/Interfaces';
 
     // Defines variables for the:
     // - Search text
     // - Selected plugin
     // - And the search data
     let inputText: string;
-    let searchData: SearchedGame[] = [];
+    let searchData: ScraperResponseEntry[] = [];
+
+    const executeQuery = async () => {
+        if (inputText.length < 1) return;
+
+        await searchGame(inputText).then((data) => {
+            searchData = data;
+        });
+    };
 </script>
 
 <!--
@@ -24,7 +35,7 @@
 <svelte:window
     on:keydown="{({ key }) => {
         if (key === 'Enter') {
-            // search for game
+            executeQuery();
         }
     }}"
 />
@@ -32,13 +43,7 @@
 <main class="container">
     <div class="main">
         <div class="search">
-            <button
-                type="submit"
-                on:click="{() =>
-                    searchGame(inputText).then((data) => {
-                        searchData = JSON.parse(data);
-                    })}"
-            >
+            <button type="submit" on:click="{() => executeQuery()}">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
             <input
@@ -53,14 +58,14 @@
 			After that add an div with the game title
 			And url for each object
 		-->
-        {#if searchData.length === 0}
+        {#if searchData.length < 1}
             <h1 class="noresults">No results found</h1>
         {/if}
         {#each searchData as Response}
             <div class="game">
                 <p>{Response.name}</p>
                 {#each Response.links as url}
-                    <a href="{url.link}" target="_blank" rel="noreferrer">
+                    <a href="{url}" target="_blank" rel="noreferrer">
                         <i class="fa-solid fa-download"></i>
                         {url.link.toString().startsWith('magnet:')
                             ? $t('browse.downloadTextMagnet')

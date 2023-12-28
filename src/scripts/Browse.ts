@@ -1,5 +1,6 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { log } from './Main';
+import type { ScraperResponseEntry } from './Interfaces';
 
 /**
  * Typescript Function -> Rust Function
@@ -18,10 +19,12 @@ import { log } from './Main';
  * @param {string} query
  * @returns {Promise<string>} Array of SearchedGame
  */
-export const searchGame = async (query: string): Promise<string> => {
+export const searchGame = async (
+    query: string
+): Promise<ScraperResponseEntry[] | null> => {
     if (query === '') {
         log(1, 'No query entered');
-        return '{}';
+        return null;
     }
 
     const data = await invoke('search_rezi', {
@@ -30,5 +33,5 @@ export const searchGame = async (query: string): Promise<string> => {
         log(0, `Failed to search game. Error: ${e}`);
     });
 
-    return JSON.stringify(data);
+    return data as ScraperResponseEntry[];
 };

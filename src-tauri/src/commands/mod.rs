@@ -1,6 +1,5 @@
-use std::{process, thread, time::Instant};
-
 use rfd::FileDialog;
+use std::{process, thread, time::Instant};
 
 use std::fs;
 #[cfg(target_family = "unix")]

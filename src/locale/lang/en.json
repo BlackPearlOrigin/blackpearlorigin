@@ -23,7 +23,7 @@
     "browse": {
         "selectPlugin": "Select a plugin",
         "nothingFound": "Nothing Found",
-        "downloadText": "Download (DDL)",
+        "downloadText": "Download",
         "downloadTextMagnet": "Download (Magnet)",
         "search": "Search"
     },

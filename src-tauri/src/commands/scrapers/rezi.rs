@@ -3,9 +3,9 @@ use reqwest::header::{AUTHORIZATION, CONTENT_TYPE};
 
 #[derive(serde::Serialize, Debug)]
 pub struct Item {
-    scraper: String,
-    name: String,
-    links: Vec<String>,
+    pub scraper: String,
+    pub name: String,
+    pub links: Vec<String>,
 }
 
 #[derive(serde::Serialize)]

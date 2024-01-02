@@ -33,7 +33,6 @@ pub fn search_fitgirl(query: &str) -> Option<Vec<Item>> {
 
     let document = Html::parse_document(&text);
     let a_selector = Selector::parse(".entry-title a").unwrap();
-    let title_selector = Selector::parse(".entry-title").unwrap();
 
     // get all links and iter over them, making a new request, yada yada yada
     let links = document
@@ -47,7 +46,7 @@ pub fn search_fitgirl(query: &str) -> Option<Vec<Item>> {
         .collect::<Vec<String>>();
 
     let titles = document
-        .select(&title_selector)
+        .select(&a_selector)
         .map(|element| element.inner_html())
         .collect::<Vec<String>>();
 
@@ -89,7 +88,7 @@ fn parse_link(link: String) -> Option<String> {
     };
 
     let document = Html::parse_document(&text);
-    let magnet_selector = Selector::parse("li>a").unwrap();
+    let magnet_selector = Selector::parse(".entry-content li > a").unwrap();
 
     if let Some(magnet_link) = document.select(&magnet_selector).nth(1) {
         if let Some(href) = magnet_link.value().attr("href") {

@@ -5,7 +5,6 @@
     "loadingText": "Учитавање",
     "languageText": "Језик",
     "preferences": {
-        "installPlugin": "Инсталирај додатак",
         "wipeLibrary": "Избриши датотеку",
         "saveText": "Сачувај",
         "availablePlugins": "Доступни додаци",
@@ -14,7 +13,9 @@
             "version": "Верзија:",
             "author": "Аутор:",
             "desc": "Опис:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Покрени",
@@ -44,6 +45,5 @@
             "reboot": "Поновно покретање за 5 секунди..."
         }
     },
-    "pluginText": "Додаци",
     "themeText": "Позадине"
 }

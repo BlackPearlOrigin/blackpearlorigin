@@ -55,8 +55,8 @@
 			After that add an div with the game title
 			And url for each object
 		-->
-        {#if searchData.length < 1}
-            <h1 class="noresults">No results found</h1>
+        {#if searchData.length === 0}
+            <h1 class="noresults">{$t('browse.nothingFound')}</h1>
         {/if}
         {#each searchData as ScraperResponse}
             {#each ScraperResponse as Response}

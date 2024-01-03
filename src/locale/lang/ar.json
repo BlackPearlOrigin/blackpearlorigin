@@ -5,7 +5,6 @@
     "loadingText": "تحميل",
     "languageText": "اللغة",
     "preferences": {
-        "installPlugin": "تثبيت إضافة",
         "wipeLibrary": "امسح المكتبة",
         "saveText": "إحفظ",
         "availablePlugins": "الإضافات المتوفرة",
@@ -14,7 +13,9 @@
             "version": "الإصدار:",
             "author": "المؤلف:",
             "desc": "الوصف:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "تشغيل",
@@ -44,6 +45,5 @@
             "reboot": "اعادت التشغيل في ٥ ثواني..."
         }
     },
-    "pluginText": "الإضافات",
     "themeText": "الأشكال"
 }

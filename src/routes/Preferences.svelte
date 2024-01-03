@@ -51,7 +51,7 @@
                     <input
                         type="text"
                         class="input"
-                        placeholder="Insert a theme URL"
+                        placeholder="{$t('preferences.insertThemeURL')}"
                         bind:value="{stylesheetUrl}"
                     />
 
@@ -59,7 +59,7 @@
                         on:click="{() =>
                             resetTheme().then(() => {
                                 stylesheetUrl = '';
-                            })}">Reset to default</button
+                            })}">{$t('preferences.resetToDefault')}</button
                     >
                 </div>
             </div>
@@ -72,7 +72,7 @@
 
                 <div class="checkbox">
                     <input type="checkbox" bind:checked="{updaterStatus}" />
-                    <p>Suppress updater</p>
+                    <p>{$t('preferences.suppressUpdater')}</p>
                 </div>
             </div>
 

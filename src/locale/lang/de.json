@@ -14,7 +14,9 @@
             "version": "Version:",
             "author": "Autor:",
             "desc": "Beschreibung:"
-        }
+        },
+        "resetToDefault": "Zurücksetzen",
+        "suppressUpdater": "Updater stummschalten"
     },
     "library": {
         "run": "Ausführen",
@@ -30,7 +32,7 @@
         "newGame": {
             "gameTitle": "Titel",
             "addExec": "Anwendung hinzufügen",
-            "none": "Kein(e)",
+            "none": "Ohne",
             "addImg": "Bild hinzufügen",
             "desc": "Beschreibung",
             "done": "Fertig",

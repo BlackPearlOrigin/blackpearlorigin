@@ -5,7 +5,6 @@
     "loadingText": "Učitavanje",
     "languageText": "Jezik",
     "preferences": {
-        "installPlugin": "Instaliraj proširenje",
         "wipeLibrary": "Izbriši sve datoteke",
         "saveText": "Spasi",
         "availablePlugins": "Dostupna proširenja",
@@ -14,7 +13,9 @@
             "version": "Verzija:",
             "author": "Autor:",
             "desc": "Opis:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Pokreni",
@@ -44,6 +45,5 @@
             "reboot": "Ponovno pokretanje za 5 sekundi..."
         }
     },
-    "pluginText": "Proširenja",
     "themeText": "Pozadine"
 }

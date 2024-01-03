@@ -5,7 +5,6 @@
     "loadingText": "Laai",
     "languageText": "Taal",
     "preferences": {
-        "installPlugin": "Instaleer n' inprop",
         "wipeLibrary": "Uitvee versameling",
         "saveText": "Stoor",
         "availablePlugins": "Beskikbaar inproppe",
@@ -14,7 +13,9 @@
             "version": "Weergawe:",
             "author": "Outeur:",
             "desc": "Beskrywing:"
-        }
+        },
+        "resetToDefault": "Reset to default",
+        "suppressUpdater": "Suppress updater"
     },
     "library": {
         "run": "Uitvoer",
@@ -44,6 +45,5 @@
             "reboot": "Herbegin binne 5 sekonde..."
         }
     },
-    "pluginText": "Inproppe",
     "themeText": "Temas"
 }

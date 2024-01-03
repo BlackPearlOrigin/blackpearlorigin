@@ -51,7 +51,7 @@ pub fn init() {
             }
         };
 
-        if file.write_all(br#"{ "currentLang": "en" }"#).is_err() {
+        if file.write_all(br#"{ "currentLang": "en", "updater": false, "enabledScrapers": { "rezi": true, "fitgirl": true } }"#).is_err() {
             log_error("Failed to write config file");
         }
     }

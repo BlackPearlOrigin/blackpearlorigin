@@ -22,7 +22,7 @@
 
     let stylesheetUrl: string;
     let updaterStatus: boolean;
-    let enabledScrapers = {
+    let enabledScrapers: { [key: string]: boolean } = {
         rezi: true,
         fitgirl: true,
     };

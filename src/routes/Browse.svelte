@@ -13,7 +13,7 @@
     // - Selected plugin
     // - And the search data
     let inputText: string;
-    let searchData: ScraperResponseEntry[] = [];
+    let searchData: ScraperResponseEntry[][] = [];
 
     const executeQuery = async () => {
         if (inputText.length < 1) return;
@@ -58,19 +58,21 @@
         {#if searchData.length < 1}
             <h1 class="noresults">No results found</h1>
         {/if}
-        {#each searchData as Response}
-            <div class="game">
-                <p>{Response.name}</p>
-                {#each Response.links as url}
-                    <a href="{url}" target="_blank" rel="noreferrer">
-                        <i class="fa-solid fa-download"></i>
-                        {url.link.toString().includes('magnet:')
-                            ? $t('browse.downloadTextMagnet')
-                            : $t('browse.downloadText')}
-                    </a>
-                    <span id="source">{Response.scraper}</span>
-                {/each}
-            </div>
+        {#each searchData as ScraperResponse}
+            {#each ScraperResponse as Response}
+                <div class="game">
+                    <p>{Response.name}</p>
+                    {#each Response.links as url}
+                        <a href="{url}" target="_blank" rel="noreferrer">
+                            <i class="fa-solid fa-download"></i>
+                            {url.link.toString().includes('magnet:')
+                                ? $t('browse.downloadTextMagnet')
+                                : $t('browse.downloadText')}
+                        </a>
+                        <span id="source">{Response.scraper}</span>
+                    {/each}
+                </div>
+            {/each}
         {/each}
     </div>
 </main>

@@ -9,20 +9,33 @@
     import languageNames from '../locale/languages.json';
     import {
         Cube,
-        TrashBin,
         Albums,
-        OpenOutline,
-        Close,
         CloudDownload,
         CloudUpload,
+        ExtensionPuzzle,
     } from 'svelte-ionicons';
     import { convertFileSrc } from '@tauri-apps/api/tauri';
+    import { getConfig } from '../scripts/Main.js';
 
     $: languages = Object.keys(translations);
     $: dict.set(translations);
 
     let stylesheetUrl: string;
     let updaterStatus: boolean;
+    let enabledScrapers = {
+        rezi: true,
+        fitgirl: true,
+    };
+
+    const loadData = async () => {
+        const config = await getConfig();
+
+        stylesheetUrl = config.cssUrl;
+        updaterStatus = config.updater;
+        enabledScrapers = config.enabledScrapers;
+    };
+
+    loadData();
 </script>
 
 <main class="container">
@@ -92,15 +105,35 @@
                             saveData(
                                 $locale,
                                 updaterStatus,
-                                stylesheetUrl.startsWith(
-                                    'https://raw.githubusercontent',
-                                ) || stylesheetUrl === undefined
-                                    ? stylesheetUrl
+                                stylesheetUrl === undefined
+                                    ? undefined
                                     : convertFileSrc(stylesheetUrl),
+                                enabledScrapers,
                             )}"
                     >
                         {$t('preferences.saveText')}
                     </button>
+                </div>
+            </div>
+
+            <div class="plugin-card">
+                <div class="header">
+                    <span>Scrapers</span>
+                    <ExtensionPuzzle size="18px"></ExtensionPuzzle>
+                </div>
+                <div class="selector" id="first">
+                    <input
+                        type="checkbox"
+                        bind:checked="{enabledScrapers.rezi}"
+                    />
+                    <p>Rezi</p>
+                </div>
+                <div class="selector">
+                    <input
+                        type="checkbox"
+                        bind:checked="{enabledScrapers.fitgirl}"
+                    />
+                    <p>FitGirl</p>
                 </div>
             </div>
         </div>

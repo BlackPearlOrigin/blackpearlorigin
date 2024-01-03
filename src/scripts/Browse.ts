@@ -1,6 +1,6 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { log } from './Main';
-import type { ScraperResponseEntry } from './Interfaces';
+import type { ScraperResponseEntry } from 'src/Typings';
 
 /**
  * Typescript Function -> Rust Function

@@ -1,6 +1,6 @@
 [package]
 name = "blackpearlorigin"
-version = "1.2.0"
+version = "1.2.1"
 description = "Unify your game sources in one place by using modules made by the community. "
 authors = ["zun1uwu", "infinity-plus", "Brisolo32", "Contributors of Black Pearl Origin"]
 license = "BSD-3-Clause"

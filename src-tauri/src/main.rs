@@ -31,6 +31,8 @@ fn main() {
             commands::database::wipe_library,
             commands::metadata::get_game_metadata,
             commands::metadata::download_image,
+            commands::scrapers::rezi::search_rezi,
+            commands::scrapers::fitgirl::search_fitgirl
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

@@ -1,15 +1,17 @@
+use rfd::FileDialog;
 use std::{process, thread, time::Instant};
 
-use rfd::FileDialog;
-
+use std::fs;
 #[cfg(target_family = "unix")]
 use std::os::unix::fs::PermissionsExt;
+use std::path::PathBuf;
 
 use self::logging::{log_error, log_info};
 
 pub mod database;
 pub mod logging;
 pub mod metadata;
+pub mod scrapers;
 
 #[tauri::command]
 // Opens a file dialog that prompts the user for an executable

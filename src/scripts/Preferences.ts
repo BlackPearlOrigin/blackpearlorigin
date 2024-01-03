@@ -2,6 +2,7 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { ask, message } from '@tauri-apps/api/dialog';
 import { BaseDirectory, writeTextFile } from '@tauri-apps/api/fs';
 import { isEmpty } from './Main';
+import { log } from './Main';
 
 /**
  * Typescript Function -> Rust Function
@@ -30,12 +31,14 @@ export const wipeLibrary = async (): Promise<void> => {
 export const saveData = async (
     lang: string,
     updaterToggle: boolean,
-    cssUrl: string
+    cssUrl: string,
+    selectedScrapers: { [key: string]: boolean }
 ): Promise<void> => {
     let dataObj = {
         currentLang: lang,
         updater: updaterToggle,
         cssUrl: cssUrl,
+        enabledScrapers: selectedScrapers,
     };
 
     switchTheme(cssUrl);
@@ -44,15 +47,18 @@ export const saveData = async (
 
     await writeTextFile('config.json', dataObjString, {
         dir: BaseDirectory.AppLocalData,
-    }).catch((e) => {
-        invoke('log', {
-            logLevel: 0,
-            logMessage: `Failed to write file: ${e}`,
-        });
+    })
+        .catch((e) => {
+            log(0, `Failed to write config. Error: ${e}`);
 
-        return '';
-    });
+            return '';
+        })
+        .then(() => {
+            log(2, 'Successfully wrote config file');
+        });
 };
+
+export const loadData = async (): Promise<void> => {};
 
 /*
  * Typescript Function

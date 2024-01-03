@@ -2,6 +2,7 @@ import { readTextFile, BaseDirectory } from '@tauri-apps/api/fs';
 import { invoke } from '@tauri-apps/api/tauri';
 import { locale } from '../locale/i18n';
 import { switchTheme } from './Preferences';
+import type { Config } from 'src/Typings';
 
 // TS Function
 // - Gets the current locale from config.json
@@ -14,7 +15,7 @@ export async function getConfig() {
     });
 
     let configParsed = JSON.parse(config);
-    return configParsed;
+    return configParsed as Config;
 }
 
 // TS Function
@@ -40,6 +41,11 @@ export function log(logLevel: number, logMessage: string) {
             });
             break;
         case 2:
+            invoke('log_info', {
+                msg: `From TS: ${logMessage}`,
+            });
+            break;
+        default:
             invoke('log_info', {
                 msg: `From TS: ${logMessage}`,
             });

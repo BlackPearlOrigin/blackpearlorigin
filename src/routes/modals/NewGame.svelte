@@ -2,7 +2,7 @@
     import { convertFileSrc, invoke } from '@tauri-apps/api/tauri';
     import { getContext } from 'svelte';
     import { t } from '../../locale/i18n.js';
-    import type { IGDBData } from '../../scripts/Interfaces';
+    import type { IGDBData } from '../../Typings.js';
     import {
         saveData,
         editData,

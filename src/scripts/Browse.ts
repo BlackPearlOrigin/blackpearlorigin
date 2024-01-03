@@ -1,13 +1,7 @@
 import { invoke } from '@tauri-apps/api/tauri';
 import { log } from './Main';
-
-/**
- * Typescript Function -> Rust Function
- * - Runs the scan_plugins function from the Rust backend
- *  and returns the data
- *
- * @returns {Promise<Plugin[]>} Array of plugins
- */
+import type { ScraperResponseEntry } from 'src/Typings';
+import { getConfig } from './Main';
 
 /**
  * Typescript Function -> Rust Function
@@ -16,20 +10,43 @@ import { log } from './Main';
  *   function
  *
  * @param {string} query
- * @returns {Promise<string>} Array of SearchedGame
+ * @returns {Promise<ScraperResponseEntry[]>} Array of SearchedGame
  */
-export const searchGame = async (query: string): Promise<string> => {
+export const searchGame = async (
+    query: string
+): Promise<ScraperResponseEntry[][] | null> => {
     if (query === '') {
         log(1, 'No query entered');
-        return '{}';
+        return null;
     }
 
-    const data = await invoke('search', {
-        query: query,
-    }).catch((e: string) => {
-        log(0, `Failed to search game. Error: ${e}`);
-        return {};
-    });
+    const config = await getConfig();
+    const enabledScrapers = config.enabledScrapers;
 
-    return data as string;
+    const results = [];
+
+    switch (true) {
+        case enabledScrapers.rezi:
+            const reziData = await invoke('search_rezi', {
+                query: `${query}`,
+            }).catch((e) => {
+                log(0, `Failed to search game. Error: ${e}`);
+            });
+            results.push(reziData);
+
+        case enabledScrapers.fitgirl:
+            const fgData = await invoke('search_fitgirl', {
+                query: `${query}`,
+            }).catch((e) => {
+                log(0, `Failed to search game. Error: ${e}`);
+            });
+            results.push(fgData);
+    }
+
+    if (results.length === 0) {
+        log(1, 'No results found');
+        return null;
+    }
+
+    return results as ScraperResponseEntry[][];
 };

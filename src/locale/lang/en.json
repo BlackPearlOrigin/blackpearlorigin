@@ -23,8 +23,8 @@
     },
     "browse": {
         "selectPlugin": "Select a plugin",
-        "nothingFound": "Nothing found",
-        "downloadText": "Download (DDL)",
+        "nothingFound": "Nothing Found",
+        "downloadText": "Download",
         "downloadTextMagnet": "Download (Magnet)",
         "search": "Search"
     },

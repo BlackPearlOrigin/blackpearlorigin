@@ -1,14 +1,18 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true,
-	"editor.formatOnPaste": true,
-	"editor.formatOnType": true,
-	"svelte.plugin.svelte.format.enable": true,
-	"[svelte]": {
-		"editor.defaultFormatter": "svelte.svelte-vscode"
-	},
-	"i18n-ally.localesPaths": ["src/locale/lang"],
-	"i18n-ally.keystyle": "nested",
-	"typescript.tsdk": "node_modules/typescript/lib",
-	"rust-analyzer.linkedProjects": ["./src-tauri/Cargo.toml"]
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "svelte.plugin.svelte.format.enable": true,
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "i18n-ally.localesPaths": ["src/locale/lang"],
+    "i18n-ally.keystyle": "nested",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "rust-analyzer.linkedProjects": ["./src-tauri/Cargo.toml"],
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    }
 }

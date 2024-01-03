@@ -10,7 +10,7 @@
     import NewGame from './modals/NewGame.svelte';
     import { t } from '../locale/i18n.js';
     import { convertFileSrc } from '@tauri-apps/api/tauri';
-    import type { Game } from '../scripts/Interfaces.js';
+    import type { Game } from '../Typings.js';
     import { AddOutline } from 'svelte-ionicons';
 
     let gameModal: HTMLDialogElement;
@@ -124,10 +124,11 @@
                 {/each}
 
                 <div class="gm-flex">
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
                     <dialog
                         class="game-modal"
                         bind:this="{gameModal}"
-                        onclick="event.target==this && this.close()"
+                        on:click="{event.target == this && this.close()}"
                     >
                         {#if gameModalOpened}
                             <span id="game-name">

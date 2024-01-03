@@ -14,6 +14,7 @@ interface Links {
 export interface SearchedGame {
     name: string;
     links: Links[];
+    scraper: string;
 }
 
 export interface Game {
@@ -29,4 +30,19 @@ export interface IGDBData {
     id: number;
     name: string;
     summary: string;
+}
+
+export interface ScraperResponseEntry {
+    links: string[];
+    name: string;
+    scraper: string;
+}
+
+export interface Config {
+    currentLang: string;
+    cssUrl: string;
+    updater: boolean;
+    enabledScrapers: {
+        [key: string]: boolean;
+    };
 }

@@ -6,10 +6,7 @@
 <script lang="ts">
     import { searchGame } from '../scripts/Browse';
     import { t } from '../locale/i18n';
-    import type {
-        ScraperResponseEntry,
-        SearchedGame,
-    } from '../scripts/Interfaces';
+    import type { ScraperResponseEntry, SearchedGame } from '../Typings';
 
     // Defines variables for the:
     // - Search text

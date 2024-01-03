@@ -37,3 +37,12 @@ export interface ScraperResponseEntry {
     name: string;
     scraper: string;
 }
+
+export interface Config {
+    currentLang: string;
+    cssUrl: string;
+    updater: boolean;
+    enabledScrapers: {
+        [key: string]: boolean;
+    };
+}

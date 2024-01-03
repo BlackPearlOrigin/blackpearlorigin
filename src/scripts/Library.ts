@@ -1,5 +1,5 @@
 import { invoke } from '@tauri-apps/api/tauri';
-import type { Game, IGDBData } from './Typings';
+import type { Game, IGDBData } from 'src/Typings';
 
 /**
  * Typescript Function -> Rust Function

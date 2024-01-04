@@ -44,7 +44,7 @@ jobs:
               if: steps.cache-rust.outputs.cache-hit != 'true'
               run: |
                   cd src-tauri
-                  cargo check
+                  cargo check --no-default-features
                   cd ..
 
             - name: Run tests on Rust

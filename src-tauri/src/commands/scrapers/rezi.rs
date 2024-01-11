@@ -92,3 +92,14 @@ pub fn search_rezi(query: &str) -> Option<Vec<Item>> {
 
     Some(items)
 }
+
+#[cfg(test)]
+pub mod rezi_tests {
+    use super::*;
+
+    #[test]
+    fn test_search_rezi() {
+        let res = search_rezi("terraria");
+        assert!(res.unwrap().len() > 0);
+    }
+}

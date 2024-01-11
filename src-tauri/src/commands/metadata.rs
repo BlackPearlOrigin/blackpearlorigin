@@ -58,3 +58,28 @@ pub fn download_image(url: String) -> Result<String, String> {
 
     Ok(image_path.to_str().unwrap().to_string())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::startup;
+
+    fn setup() {
+        startup::init();
+    }
+
+    #[test]
+    fn test_download_img() {
+        setup();
+
+        let url = "https://picsum.photos/200";
+        let image_path = download_image(url.to_string()).unwrap();
+
+        assert!(image_path.contains("images"));
+        assert!(image_path.contains(".jpg"));
+
+        // cleanup
+        std::fs::remove_file(image_path).unwrap();
+        std::fs::remove_dir_all(paths::get_bpo()).unwrap();
+    }
+}

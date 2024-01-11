@@ -64,7 +64,7 @@ pub fn search_fitgirl(query: &str) -> Option<Vec<Item>> {
     Some(res)
 }
 
-fn parse_link(link: String) -> Option<String> {
+pub fn parse_link(link: String) -> Option<String> {
     let client = reqwest::blocking::Client::new();
     let response = match client
         .get(link)
@@ -97,4 +97,25 @@ fn parse_link(link: String) -> Option<String> {
     }
 
     None
+}
+
+#[cfg(test)]
+pub mod fg_tests {
+    use super::*;
+
+    #[test]
+    fn test_scraper() {
+        let res = search_fitgirl("Terraria");
+        println!("{:?}", res);
+        assert_eq!(res.is_some(), true);
+    }
+
+    #[test]
+    fn test_parse_link() {
+        let res = parse_link("https://www.fitgirl-repacks.site/terraria/".to_string());
+        let expected_out = "magnet:?xt=urn:btih:D131BF";
+
+        assert_eq!(res.is_some(), true);
+        assert_eq!(res.unwrap().starts_with(expected_out), true);
+    }
 }

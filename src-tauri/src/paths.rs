@@ -19,3 +19,35 @@ pub fn get_bpo() -> PathBuf {
 pub fn get_db() -> PathBuf {
     get_bpo().join("library.db")
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::{paths, startup};
+
+    fn setup() {
+        startup::init();
+    }
+
+    #[test]
+    fn test_init() {
+        startup::init();
+    }
+
+    #[test]
+    fn test_get_bpo() {
+        setup();
+        let bpo = get_bpo();
+        assert!(bpo.exists());
+        std::fs::remove_dir_all(paths::get_bpo()).unwrap();
+    }
+
+    #[test]
+    fn test_get_db() {
+        setup();
+        let db = get_db();
+        assert!(db.exists());
+
+        std::fs::remove_dir_all(paths::get_bpo()).unwrap();
+    }
+}

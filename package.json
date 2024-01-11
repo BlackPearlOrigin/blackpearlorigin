@@ -1,39 +1,40 @@
 {
-  "name": "blackpearlorigin",
-  "private": true,
-  "version": "1.2.1",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "tauri": "tauri",
-    "build:prod": "tauri build -b none",
-    "build:debug": "tauri build --debug"
-  },
-  "dependencies": {
-    "@tauri-apps/api": "^1.1.0",
-    "@zerodevx/svelte-toast": "^0.9.3",
-    "npm": "^9.6.3",
-    "svelte-i18n": "^3.6.0",
-    "svelte-modals": "^1.2.0",
-    "svelte-navigator": "^3.2.2",
-    "zod": "^3.21.4"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.1",
-    "@tauri-apps/cli": "^1.1.0",
-    "@tsconfig/svelte": "^3.0.0",
-    "@types/node": "^18.7.10",
-    "sass": "^1.57.1",
-    "svelte": "^3.49.0",
-    "svelte-check": "^2.8.0",
-    "svelte-ionicons": "^0.4.4",
-    "svelte-preprocess": "^4.10.7",
-    "svelte-simple-modal": "^1.4.5",
-    "tslib": "^2.4.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.2.7"
-  }
+    "name": "blackpearlorigin",
+    "private": true,
+    "version": "1.2.1",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "check": "svelte-check --tsconfig ./tsconfig.json",
+        "tauri": "tauri",
+        "build:prod": "tauri build -b none",
+        "build:debug": "tauri build --debug",
+        "rust:test": "pwd && cd src-tauri/ && cargo test --no-default-features"
+    },
+    "dependencies": {
+        "@tauri-apps/api": "^1.1.0",
+        "@zerodevx/svelte-toast": "^0.9.3",
+        "npm": "^9.6.3",
+        "svelte-i18n": "^3.6.0",
+        "svelte-modals": "^1.2.0",
+        "svelte-navigator": "^3.2.2",
+        "zod": "^3.21.4"
+    },
+    "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^1.0.1",
+        "@tauri-apps/cli": "^1.1.0",
+        "@tsconfig/svelte": "^3.0.0",
+        "@types/node": "^18.7.10",
+        "sass": "^1.57.1",
+        "svelte": "^3.49.0",
+        "svelte-check": "^2.8.0",
+        "svelte-ionicons": "^0.4.4",
+        "svelte-preprocess": "^4.10.7",
+        "svelte-simple-modal": "^1.4.5",
+        "tslib": "^2.4.0",
+        "typescript": "^4.6.4",
+        "vite": "^3.2.7"
+    }
 }

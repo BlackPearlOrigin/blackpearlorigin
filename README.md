@@ -1,3 +1,7 @@
+
+> [!WARNING]  
+> BPO has not been developed in a long while and can be considered discontinued, please move on onto other launchers, like [Hydra](https://github.com/hydralauncher/hydra)
+
 <img src="./assets/bpo.png" width="300"> <img src="./assets/trans_flag.png"  width="1200" height="20">
 
 ![Svelte](https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00 'Svelte') ![Tauri](https://img.shields.io/badge/Tauri-4A4A55?style=for-the-badge&logo=tauri&logoColor=00D1B2 'Tauri')
